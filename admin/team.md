@@ -16,54 +16,59 @@ Welcome to Team Databaes! We're a collaborative group of developers working toge
 - **Collaboration:** We work together to achieve our goals and support each other along the way.
 - **Kindness:** We promote a culture of kindness and respect towards everyone.
 
+Our brand and team mascot is an otter, and a lot of our values are similar to those of otters! This includes adaptability, cooperation and collaboration, resourcefulness, friendliness, and forming a tight knit community to support each other!
+
 ## Team Roster
 
 ### Yashil Vora - Leader
-- **GitHub:** [yashilvora19](https://github.com/yashilvora19)
+- [**GitHub Page**](https://yashilvora19.github.io/cse110_week1/)
 - **Email:** yvora@ucsd.edu
+- Hi! I am a second-year Computer Science major from Seventh College.
 
 ### Rona Darabi - Leader
-- **GitHub:** [ronadarabi](https://github.com/ronadarabi)
+- [**GitHub Page**](https://github.com/ronadarabi)
 - **Email:** rdarabi@ucsd.edu
 
 ### Emily Gorial - Designer
-- **GitHub:** [emilygorial1](https://github.com/emilygorial1)
+- [**GitHub Page**](https://github.com/emilygorial1)
 - **Email:** emgorial@ucsd.edu
 
 ### Avnish Kovi
-- **GitHub:** [avikovi](https://github.com/avikovi)
+- [**GitHub Page**](https://github.com/avikovi)
 - **Email:** ackovi@ucsd.edu
 
 ### Karon Luo
-- **GitHub:** [karonlan](https://github.com/karonlan)
+- [ **GitHub Page**](https://github.com/karonlan)
 - **Email:** k1luo@ucsd.edu
 
 ### Catherine Zhang
-- **GitHub:** [caz002](https://github.com/caz002)
+- [**GitHub Page**](https://github.com/caz002)
 - **Email:** caz002@ucsd.edu
 
 ### Daniel Hwang
-- **GitHub:** [de-hwang](https://github.com/de-hwang)
+- [**GitHub Page**](https://github.com/de-hwang)
 - **Email:** d3hwang@ucsd.edu
 
 ### Kyungwoo Choi
-- **GitHub:** [kyc013](https://github.com/kyc013)
+- [**GitHub Page**](https://kyc013.github.io/Lab1/)
 - **Email:** kyc013@ucsd.edu
+- Hi, I’m Kyungwoo Choi and I’m a Computer Science major in Revelle college.
 
 ### Nathan Chung
-- **GitHub:** [NathanTzChung](https://github.com/nathantzchung)
+- [**GitHub Page**](https://github.com/nathantzchung)
 - **Email:** ntchung@ucsd.edu
+- 
 
 ### Ramiz Hajj
-- **GitHub:** [ramizhajj1](https://github.com/ramizhajj1)
+- [**GitHub Page**](https://github.com/ramizhajj1)
 - **Email:** rhajj@ucsd.edu
 
 ### Henry Choi
-- **GitHub:** [hc225](https://github.com/hc225)
+- [**GitHub Page**](https://github.com/hc225)
 - **Email:** hec015@ucsd.edu
 
 ### Michelle Ho
-- **GitHub:** [mho04](https://github.com/mho04)
+- [**GitHub Page**](https://github.com/mho04)
 - **Email:** mth003@ucsd.edu
 
 ---
