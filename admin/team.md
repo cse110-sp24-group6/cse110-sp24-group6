@@ -26,15 +26,16 @@ Our brand and team mascot is an otter, and a lot of our values are similar to th
 - Hi! I am a second-year Computer Science major from Seventh College.
 
 ### Rona Darabi - Leader
-- [**GitHub Page**](https://github.com/ronadarabi)
+- [**GitHub Page**](https://ronadarabi.github.io/cse110/)
 - **Email:** rdarabi@ucsd.edu
 
 ### Emily Gorial - Designer
-- [**GitHub Page**](https://github.com/emilygorial1)
+- [**GitHub Page**](https://github.com/EmilyGorial1/110-Lab-1)
 - **Email:** emgorial@ucsd.edu
+- Hey, my name is Emily and I'm a third year Computer Science major from sixth college!
 
 ### Avnish Kovi
-- [**GitHub Page**](https://github.com/avikovi)
+- [**GitHub Page**](https://avikovi.github.io/cs110/)
 - **Email:** ackovi@ucsd.edu
 
 ### Karon Luo
@@ -42,12 +43,13 @@ Our brand and team mascot is an otter, and a lot of our values are similar to th
 - **Email:** k1luo@ucsd.edu
 
 ### Catherine Zhang
-- [**GitHub Page**](https://github.com/caz002)
+- [**GitHub Page**](https://caz002.github.io/CSE110-LabWeek1/)
 - **Email:** caz002@ucsd.edu
 
 ### Daniel Hwang
-- [**GitHub Page**](https://github.com/de-hwang)
+- [**GitHub Page**](https://de-hwang.github.io/CSE110_Lab1/)
 - **Email:** d3hwang@ucsd.edu
+- Hey! I'm a second-year Computer Science major from Thurgood Marshall College
 
 ### Kyungwoo Choi
 - [**GitHub Page**](https://kyc013.github.io/Lab1/)
@@ -55,20 +57,21 @@ Our brand and team mascot is an otter, and a lot of our values are similar to th
 - Hi, I’m Kyungwoo Choi and I’m a Computer Science major in Revelle college.
 
 ### Nathan Chung
-- [**GitHub Page**](https://github.com/nathantzchung)
+- [**GitHub Page**](https://nathantzchung.github.io/CSE110GitHubPages/)
 - **Email:** ntchung@ucsd.edu
-- 
+- Hiiii! I’m Nathan Chung, a 3rd-year Math-CS major from Sixth College 
 
 ### Ramiz Hajj
-- [**GitHub Page**](https://github.com/ramizhajj1)
+- [**GitHub Page**](https://github.com/ramizhajj1/ramizhajj-cse110)
 - **Email:** rhajj@ucsd.edu
 
 ### Henry Choi
-- [**GitHub Page**](https://github.com/hc225)
+- [**GitHub Page**](https://hc225.github.io/user-page/)
 - **Email:** hec015@ucsd.edu
+- Hi! My name is Henry Choi, computer science, 3rd year, from Muir college. Fun fact: my dog can bring me a bottle or can drink on command provided I tip him with a treat 
 
 ### Michelle Ho
-- [**GitHub Page**](https://github.com/mho04)
+- [**GitHub Page**](https://mho04.github.io/cse-110/)
 - **Email:** mth003@ucsd.edu
 
 ---
