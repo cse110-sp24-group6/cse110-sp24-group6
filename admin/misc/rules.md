@@ -12,9 +12,13 @@
 - Provide regular progress updates and be honest about ability to meet deadlines.
 
 ## Conflict Resolution 
-- First address issue with involved parties.
-- If issue persists, let group leaders know. Group leaders will have a discussion with both parties.
-- TA will be contacted if meeting with group leaders does not resolve the issue.
+- If a member fails to uphold attendance and participation expections (e.g. inactivity on Slack, unexcused absences, or failure to meet deadline):
+  -  Group leaders will hold a check-in meeting with the member to set new deadlines, create action plan, and remind member of team expectations. 
+  -  If issue persists, then group leaders will contact TA.
+- If a member has an issue with another member:
+  - First, member will address issue with involved parties. Keep encounter respectful and be mindful of language used. 
+  - If confrontation does not work, group leaders will get involved and have a discussion with both parties.
+  - If issue persists, then group leaders will contact TA. 
 
 ## Team Signatures
 I, ___________ , agree to adhere to the rules listed above. 
