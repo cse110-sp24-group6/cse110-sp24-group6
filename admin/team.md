@@ -28,6 +28,7 @@ Our brand and team mascot is an otter, and a lot of our values are similar to th
 ### Rona Darabi - Leader
 - [**GitHub Page**](https://ronadarabi.github.io/cse110/)
 - **Email:** rdarabi@ucsd.edu
+- Hi! My name is Rona and I am a third-year studying mathematics-computer science at UCSD.
 
 ### Emily Gorial - Designer
 - [**GitHub Page**](https://github.com/EmilyGorial1/110-Lab-1)
@@ -37,14 +38,17 @@ Our brand and team mascot is an otter, and a lot of our values are similar to th
 ### Avnish Kovi
 - [**GitHub Page**](https://avikovi.github.io/cs110/)
 - **Email:** ackovi@ucsd.edu
+- My name is Avnish Kovi, and I am a third year Computer Science major at UCSD.
 
 ### Karon Luo
-- [ **GitHub Page**](https://github.com/karonlan)
+- [ **GitHub Page**](https://karonlan.github.io/CSE110/)
 - **Email:** k1luo@ucsd.edu
+- I’m Karon Luo, a Computer Engineering student at UCSD, class of 2025. I am interested in computer architecture and software engineering.
 
 ### Catherine Zhang
 - [**GitHub Page**](https://caz002.github.io/CSE110-LabWeek1/)
 - **Email:** caz002@ucsd.edu
+- Hello! I am a fourth year Math-Computer Science student at UCSD pursuing a career in software engineering.
 
 ### Daniel Hwang
 - [**GitHub Page**](https://de-hwang.github.io/CSE110_Lab1/)
@@ -73,6 +77,7 @@ Our brand and team mascot is an otter, and a lot of our values are similar to th
 ### Michelle Ho
 - [**GitHub Page**](https://mho04.github.io/cse-110/)
 - **Email:** mth003@ucsd.edu
+- Hi! I'm Michelle and I am a CS major from Muir college!
 
 ---
 *Feel free to reach out to any team member for collaboration or questions related to our projects.* 
