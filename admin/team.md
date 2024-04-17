@@ -31,7 +31,7 @@ Our brand and team mascot is an otter, and a lot of our values are similar to th
 - Hi! My name is Rona and I am a third-year studying mathematics-computer science at UCSD.
 
 ### Emily Gorial - Designer
-- [**GitHub Page**](https://github.com/EmilyGorial1/110-Lab-1)
+- [**GitHub Page**](https://emilygorial1.github.io/110-Lab-1/)
 - **Email:** emgorial@ucsd.edu
 - Hey, my name is Emily and I'm a third year Computer Science major from sixth college!
 
