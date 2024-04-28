@@ -30,8 +30,6 @@ Screen captures and video demos:
 
 [YouTube video](https://www.youtube.com/watch?si=caBDOaxInNve_0Tk&v=CJLImV_TEks&feature=youtu.be)
 
-Nathan: helped with design ideas, worked on CSS, group warmup activity, UI ideas, worked on SWOT.
-
 ### What everyone has worked on till now and its significance:
 
 **Initial planning and kick-off assignments**
@@ -41,6 +39,8 @@ Nathan: helped with design ideas, worked on CSS, group warmup activity, UI ideas
 - Team Rules: Yashil
 - Team Contract: Rona
 
+The initial planning was crucial in bonding together as a team and getting to know everyone. All members were active during this phase!
+
 **Warmup Project**
 - HTML: Avnish, Catherine
 - CSS: Emily, Nathan, Yashil
@@ -49,7 +49,9 @@ Nathan: helped with design ideas, worked on CSS, group warmup activity, UI ideas
 - Documentation: Yashil
 - Video and Demo:  Michelle, Ramiz, Kyungwoo- shooting, voiceover, editing, uploading to YT.
 
-Everyone collorated on brainstorming and coming up with ideas for all aspects. Members were active on Slack and were present in our team meetings.
+This part included our first time working on technical tasks together. It was challenging to coordinate with 11 people but we came up with a great project in the end!
+
+Everyone collorated on brainstorming and coming up with ideas for all aspects. Members were active on Slack and were present in our team meetings. All members were quick to give feedback and were active throughout. Great teamwork!
 
 ## Next steps
 
