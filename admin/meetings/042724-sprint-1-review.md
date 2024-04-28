@@ -15,7 +15,6 @@
 - Kyungwoo
 - Nathan
 - Henry
-- Michelle
 
 ## Goals
 
@@ -25,29 +24,32 @@
 
 ## Review 
 
-
 Screen captures and video demos:
 
-Youtube link. github website. log and other media in our repo 
+[Sentiment Widget](https://cse110-sp24-group6.github.io/warmup-exercise/)
+
+[YouTube video](https://www.youtube.com/watch?si=caBDOaxInNve_0Tk&v=CJLImV_TEks&feature=youtu.be)
+
+Nathan: helped with design ideas, worked on CSS, group warmup activity, UI ideas, worked on SWOT.
 
 ### What everyone has worked on till now and its significance:
 
 **Initial planning and kick-off assignments**
-- Team Video: 
-- Team Logo: 
-  Emily I designed the logo and thought of the team name...
-- Team Branding: 
-- Team Rules: 
-- Team Contract: 
+- Team Video: Collaborative team effort, editing done by Avnish
+- Team Logo:  Emily + decorating poster
+- Team Branding: Collaborative effort
+- Team Rules: Yashil
+- Team Contract: Rona
 
 **Warmup Project**
-- HTML:
-- CSS:
-- JavaScript:
-- SWOT Analysis:
-- Documentation:
-- Video and Demo:  Michelle, Ramiz, Kyungwoo
-  - We worked on shooting the video and ...
+- HTML: Avnish, Catherine
+- CSS: Emily, Nathan, Yashil
+- JavaScript: Rona, Yashil, Henry
+- SWOT Analysis: Rona, Yashil, Nathan (feedback from everyone given too)
+- Documentation: Yashil
+- Video and Demo:  Michelle, Ramiz, Kyungwoo- shooting, voiceover, editing, uploading to YT.
+
+Everyone collorated on brainstorming and coming up with ideas for all aspects. Members were active on Slack and were present in our team meetings.
 
 ## Next steps
 
