@@ -7,5 +7,6 @@ module.exports = defineConfig({
     viewportHeight: 1080,
     defaultCommandTimeout: 6000,
     pageLoadTimeout: 60000,
+    supportFile: false  // Disable support file if not needed
   }
 });
