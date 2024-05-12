@@ -10,6 +10,7 @@ The primary trigger actions we chose are:
 - Any PR has to pass all checks before merging with main branch.
 
 Our pipeline included the following workflows:
+
 - Linting code in pipeline to make sure that it is consistent throughout the repository and to enforce certain styles (again, for consistency).
 - Integrating Codacity to ensure our code passes a certain quality and is well-written.
 - Checking code quality via human review- making sure that there are actual humans who review and approve the code when a PR is made.
@@ -23,10 +24,9 @@ Here is a diagram of what our pipeline looks like:
 
 ![Process diagram](./phase1.png)
 
-
 Here are some more details about each of the GitHub actions:
 
-### Code Linting
+## Code Linting
 
 To efficiently lint our code and make sure that it is consistent, we made use of a tool called super-linter. Super-linter is a ready-to-run collection of linters and code analyzers, to help validate your source code.
 
@@ -36,16 +36,14 @@ Super-linter analyzes source code files using several tools, and reports the iss
 
 We integrated this in our code mainly to check and lint HTML, CSS and JS files. This uses **stylint** for CSS code, **HTMLHint** for HTML code, and **ESLint** for Javascript code. We disabled some linters that were unimportant or that were giving unnecessary errors such as validating markdown, natural language, Javascript standard (different from ESLint- this was being problematic since the linting was too strict), GitHub actions, and infrastructure as code (Checkov).
 
-### Code Quality Check via Codacy
+## Code Quality Check via Codacy
 
 To ensure that code quality in the repository meets certain standards. Codacy is a tool that helps us by automating code reviews and code quality analysis. Codacy provides insights and actionable feedback, helping you improve code quality, maintainability, and security. We made an account on Codacy, adding this organization and repository to it (to monitor code quality and other statistics/details), generated an API key and added it as a secret key to our GitHub repository, and then wrote a YAML file to create a GitHub action and automate code quality checking.
 
-### Code Quality Check via Human Review
+## Code Quality Check via Human Review
 
-### Code Linting
+## Unit tests via automation
 
-### Unit tests via automation
+## Documentation generation via automation
 
-### Documentation generation via automation
-
-### Other Testing
+## Other Testing
