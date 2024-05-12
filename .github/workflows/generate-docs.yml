@@ -22,6 +22,9 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Install JSDoc
+        run: npm install -g jsdoc
+
       - name: Generate JSDoc
         run: npx jsdoc -c jsdoc.json
 
