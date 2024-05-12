@@ -1,5 +1,5 @@
 function greet(name) {
-    console.log("Hello, " + name)
+    console.log("Hello, " + name);
 }
 
-var age = 30
+let age = 30;
