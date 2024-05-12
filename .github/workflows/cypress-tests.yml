@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - avnish-cicd-pipeline
   pull_request:
 
 jobs:
