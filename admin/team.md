@@ -66,7 +66,7 @@ Our brand and team mascot is an otter, and a lot of our values are similar to th
 - Hiiii! I’m Nathan Chung, a 3rd-year Math-CS major from Sixth College 
 
 ### Ramiz Hajj
-- [**GitHub Page**](https://github.com/ramizhajj1/ramizhajj-cse110)
+- [**GitHub Page**](https://ramizhajj1.github.io/ramizhajj-cse110/)
 - **Email:** rhajj@ucsd.edu
 
 ### Henry Choi
