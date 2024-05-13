@@ -1,0 +1,28 @@
+{
+  "name": "example-project",
+  "version": "1.0.0",
+  "description": "A simple Node.js project with Jest and Tape tests.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "test-tape": "tape 'test/**/*.js' | tap-spec",
+    "test-jest": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/example-project.git"
+  },
+  "author": "Your Name",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^28.0.0",
+    "@types/jest": "^28.0.0",
+    "ts-jest": "^28.0.0",
+    "tape": "^5.3.2",
+    "tap-spec": "^5.0.0"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node"
+  }
+}
