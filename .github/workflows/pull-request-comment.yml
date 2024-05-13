@@ -12,10 +12,11 @@ jobs:
       - name: Comment on Pull Request
         uses: peter-evans/create-or-update-comment@v4
         with:
+          token: ${{ secrets.GITHUB_TOKEN }}
           issue-number: ${{ github.event.pull_request.number }}
           body: |
             Thank you for your contribution. Please consider the following:
             - Did you add an explanation about what your changes do?
             - Did you make tests for your changes?
             - Did you update documentation accordingly?
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
