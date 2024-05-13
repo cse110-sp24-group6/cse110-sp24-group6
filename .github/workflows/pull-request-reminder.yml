@@ -2,7 +2,7 @@ name: Pull Request Review Reminder
 
 on:
   schedule:
-    - cron: '0 11 * * 1-6'  # Runs at 11:00 AM Mon-Sat
+    - cron: '5 19 * * 1-6'  # Runs at 11:00 AM Mon-Sat
 
 jobs:
   reminder:
