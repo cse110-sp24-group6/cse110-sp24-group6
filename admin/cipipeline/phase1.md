@@ -67,3 +67,23 @@ We integrated JSDoc into out CI/CD pipeline to ensure taht our documentation is 
 Cypress is a powerfull end-to-end testing framework that is specifically designed for modern web applications, which offers a complete testing experience. Cypress is used to automate the testing of an application's entire workflow, ensuring that all functionalities work as expected. Cypress will interact with the application just like a real user, simulating clicks, typing, and otehr interactions.
 
 We integrated Cypress into our project by creating a `cypress.config.js` file that specifies the base url, test files, and other onfigurations. We also greate a github action workflow to install Cypress, start the server, and execute the tests. This setup allows up to automatically verify that our application is functioning as expected after every push.
+
+## Future Steps
+
+While we have implemented a significant amount of testing and checking within our pipelines, there is a lot more to be done. In the future we plan to work on refining this pipeline and work on adding more processes through GitHub actions to make it more efficient and simple. Here are some of the things we plan to do:
+
+**Refining the pipeline**
+
+- Removing unnecessary linting (super linter has a lot of features that can be disabled- this will speed up the process and make it simpler to run).
+- Making sure we update unit tests as we keep adding features to our website.
+- Testing out the document generation and making sure its fully functional.
+- Integrating the Cypress server when we setup the website.
+- Playing around with different features on Codacy's dashboard- its a very powerful tool and we want maximize its utility.
+
+**Adding new feature**
+
+- Adding more testing features for particular sections of the website.
+- Security Scans: Implement security scans within our pipeline to detect and address vulnerabilities in our codebase. This can involve using tools like OWASP Dependency-Check to identify and update outdated dependencies with known security issues.
+- Performance Testing: Incorporate performance testing into our pipeline to ensure our application can handle expected loads without degradation. Tools like Apache JMeter or Gatling can help simulate high traffic scenarios to identify potential bottlenecks.
+- A pipeline to automatically deploy the website whenever a push/PR to the main branch is made.
+- and many more...
