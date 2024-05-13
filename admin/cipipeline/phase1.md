@@ -44,6 +44,14 @@ To ensure that code quality in the repository meets certain standards. Codacy is
 
 ## Unit tests via automation
 
+We implemented Jest as a testing framework:
+
+- **Jest**: Used for its comprehensive testing capabilities and support for JavaScript and TypeScript.
+
+This framework is integrated into our CI/CD pipeline, allowing tests to run automatically on push to the main branch or on pull request events.
+
+First, we ensured that the project was prepared with the necessary configurations. We began by including Jest as a development dependency in this project by running npm install --save-dev jest. In the package.json file, we added a script to run Jest,  "test": "jest". This allowed me to execute the tests using npm test. Next, we created a GitHub Actions workflow by adding a YAML configuration file in the .github/workflows directory of the repository. This is triggered on push events and pull requests to the main branch, setting up a job that installs dependencies, sets up the Node.js environment, and runs the Jest tests that we implemented. We added tests and ran them as we made pull requests, and ensured that they all passed and that they were ready to merge with the main branch.
+
 ## Documentation generation via automation
 
 To automate the generation of the project documentation, we used JSDoc which is designed to parse and generate comprehensive HTML documentation. JSDoc simplifies the process of creating and maintaining documentaiton and makes it easier for developers to understand and navigate the codebase. It reads through the source code files and converts the extracted comments and annotations into a structured format that cna be easily viewed as web pages.
