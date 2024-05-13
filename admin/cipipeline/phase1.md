@@ -42,7 +42,7 @@ To ensure that code quality in the repository meets certain standards. Codacy is
 
 ## Code Quality Check via Human Review  
 
-We created a PR template to ensure that pull requests provide a clear description of their changes and that it contain necessary details related to the PR request. This helps reviewers understand the changes and why they are made, and thus streamlines the merge progress. It also contains a checklist for the contributor to go through, such as making sure that they tested their changes and that their code works to avoid failing automated checks. 
+We created a PR template to ensure that pull requests provide a clear description of their changes and that it contain necessary details related to the PR request, such as if it is a bug fix or an added feature. This helps reviewers understand the changes and why they are made without needing to dig through the code and thus improves reviewe efficiency. It also contains a checklist for the contributor to go through, such as making sure that they tested their changes and that their code works to ineffciencies such as failing automated checks because of a syntax error, for example. 
 
 This part immediately shows up when anyone makes a PR and the template can be seen in this [file](../../PULL_REQUEST_TEMPLATE.md). Essentially, the aim is to ensure that actual humans review the code quality and we are able to have that approval before the PR is made.
 
