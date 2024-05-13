@@ -46,4 +46,12 @@ To ensure that code quality in the repository meets certain standards. Codacy is
 
 ## Documentation generation via automation
 
-## Other Testing
+To automate the generation of the project documentation, we used JSDoc which is designed to parse and generate comprehensive HTML documentation. JSDoc simplifies the process of creating and maintaining documentaiton and makes it easier for developers to understand and navigate the codebase. It reads through the source code files and converts the extracted comments and annotations into a structured format that cna be easily viewed as web pages.
+
+We integrated JSDoc into out CI/CD pipeline to ensure taht our documentation is up to date. The implementation involved creating a `jsdoc.json` configuration file to specify the source files and output directory. We then updated our github actions workflow to install JSDoc and generate the documentation.
+
+## Other Testing (E2E via Cypress)
+
+Cypress is a powerfull end-to-end testing framework that is specifically designed for modern web applications, which offers a complete testing experience. Cypress is used to automate the testing of an application's entire workflow, ensuring that all functionalities work as expected. Cypress will interact with the application just like a real user, simulating clicks, typing, and otehr interactions.
+
+We integrated Cypress into our project by creating a `cypress.config.js` file that specifies the base url, test files, and other onfigurations. We also greate a github action workflow to install Cypress, start the server, and execute the tests. This setup allows up to automatically verify that our application is functioning as expected after every push.
