@@ -1,0 +1,21 @@
+name: Pull Request Reviewer Check
+
+on:
+  pull_request_review:
+    types: [submitted, dismissed, edited]
+
+jobs:
+  check-reviewers:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Make sure there are two reviewers
+        run: |
+          REVIEWERS=$(gh pr view ${{ github.event.pull_request.number }} --json reviewers -q '.reviewers | length')
+          MIN_REVIEWERS=2
+          if [[ "$REVIEWERS" -lt "$MIN_REVIEWERS" ]]; then
+            echo "Not enough reviewers. At least $MIN_REVIEWERS reviewers are required."
+            exit 1
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
