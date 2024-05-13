@@ -10,3 +10,6 @@
 ## Checklist:
 - [ ] I have performed a self-review of my own code
 - [ ] I have tested that my changes work
+- [ ] Tested locally
+- [ ] Documentation updated
+- [ ] Code follows style guidelines
