@@ -40,7 +40,9 @@ We integrated this in our code mainly to check and lint HTML, CSS and JS files. 
 
 To ensure that code quality in the repository meets certain standards. Codacy is a tool that helps us by automating code reviews and code quality analysis. Codacy provides insights and actionable feedback, helping you improve code quality, maintainability, and security. We made an account on Codacy, adding this organization and repository to it (to monitor code quality and other statistics/details), generated an API key and added it as a secret key to our GitHub repository, and then wrote a YAML file to create a GitHub action and automate code quality checking.
 
-## Code Quality Check via Human Review
+## Code Quality Check via Human Review  
+
+We created a PR template to ensure that pull requests provide a clear description of their changes and that it contain necessary details related to the PR request. This helps reviewers understand the changes and why they are made, and thus streamlines the merge progress. It also contains a checklist for the contributor to go through, such as making sure that they tested their changes and that their code works to avoid failing automated checks. 
 
 ## Unit tests via automation
 
