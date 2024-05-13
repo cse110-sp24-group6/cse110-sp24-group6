@@ -43,6 +43,22 @@ To ensure that code quality in the repository meets certain standards. Codacy is
 ## Code Quality Check via Human Review
 
 ## Unit tests via automation
+# CI/CD Pipeline Setup for Node.js Project
+
+This document outlines the setup process for our CI/CD pipelines using GitHub Actions. Our project uses Jest for unit testing to ensure code quality and reliability.
+
+## Overview
+
+I implemented Jest as a testing framework:
+
+- **Jest**: Used for its comprehensive testing capabilities and support for JavaScript and TypeScript.
+
+This framework is integrated into our CI/CD pipeline, allowing tests to run automatically on push to the main branch or on pull request events.
+
+# CI/CD Pipeline Setup
+First, I ensured that the project was prepared with the necessary configurations. I began by including Jest as a development dependency in this project by running npm install --save-dev jest. In the package.json file, I added a script to run Jest,  "test": "jest". This allowed me to execute the tests using npm test. Next, I created a GitHub Actions workflow by adding a YAML configuration file in the .github/workflows directory of the repository. This is triggered on push events and pull requests to the main branch, setting up a job that installs dependencies, sets up the Node.js environment, and runs the Jest tests that I implemented. I added tests and ran them as I made pull requests, and ensured that they all passed and that they were ready to merge with the main branch.
+
+
 
 ## Documentation generation via automation
 
