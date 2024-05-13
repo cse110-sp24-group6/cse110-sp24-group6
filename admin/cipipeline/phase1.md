@@ -44,6 +44,8 @@ To ensure that code quality in the repository meets certain standards. Codacy is
 
 We created a PR template to ensure that pull requests provide a clear description of their changes and that it contain necessary details related to the PR request. This helps reviewers understand the changes and why they are made, and thus streamlines the merge progress. It also contains a checklist for the contributor to go through, such as making sure that they tested their changes and that their code works to avoid failing automated checks. 
 
+This part immediately shows up when anyone makes a PR and the template can be seen in this [file](../../PULL_REQUEST_TEMPLATE.md). Essentially, the aim is to ensure that actual humans review the code quality and we are able to have that approval before the PR is made.
+
 ## Unit tests via automation
 
 We implemented Jest as a testing framework:
