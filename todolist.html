@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Advanced To Do List</title>
+</head>
+<body>
+  <h1>Advanced To Do List</h1>
+  
+  <form id="task-form">
+    <input type="text" id="task-input" placeholder="Enter task">
+    <input type="date" id="due-date">
+    <input type="text" id="task-description" placeholder="Enter task description">
+    <input type="text" id="task-tags" placeholder="Enter task tags">
+    <input type="text" id="task-stickers" placeholder="Enter task stickers">
+    <input type="number" id="task-subtasks" placeholder="Number of subtasks">
+    <button type="submit">Add Task</button>
+  </form>
+  
+  <ul id="task-list">
+    
+  </ul>
+  
+  <button id="delete-all">Delete All Tasks</button>
+  
+  <script>
+    const taskForm = document.getElementById('task-form');
+    const taskInput = document.getElementById('task-input');
+    const dueDate = document.getElementById('due-date');
+    const taskDescription = document.getElementById('task-description');
+    const taskTags = document.getElementById('task-tags');
+    const taskStickers = document.getElementById('task-stickers');
+    const taskSubtasks = document.getElementById('task-subtasks');
+    const taskList = document.getElementById('task-list');
+    const deleteAllBtn = document.getElementById('delete-all');
+
+    function deleteTask(event) {
+      event.target.parentNode.remove();
+    }
+
+    taskForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const task = taskInput.value;
+      const date = dueDate.value;
+      const description = taskDescription.value;
+      const tags = taskTags.value;
+      const stickers = taskStickers.value;
+      const subtasks = taskSubtasks.value;
+      
+      if (task) {
+        const li = document.createElement('li');
+        const checkbox = document.createElement('input');
+        const deleteButton = document.createElement('button');
+        
+        checkbox.type = 'checkbox';
+        deleteButton.textContent = 'Delete';
+        deleteButton.addEventListener('click', deleteTask);
+        
+        li.innerHTML = `
+          <b>Task:</b> ${task} <br>
+          <b>Due Date:</b> ${date} <br>
+          <b>Description:</b> ${description} <br>
+          <b>Tags:</b> ${tags} <br>
+          <b>Stickers:</b> ${stickers} <br>
+          <b>Subtasks:</b> ${subtasks} <br>
+        `;
+        
+        li.appendChild(checkbox);
+        li.appendChild(deleteButton);
+        taskList.appendChild(li);
+        
+        taskInput.value = '';
+        dueDate.value = '';
+        taskDescription.value = '';
+        taskTags.value = '';
+        taskStickers.value = '';
+        taskSubtasks.value = '';
+      }
+    });
+    
+    deleteAllBtn.addEventListener('click', function() {
+      taskList.innerHTML = '';
+    });
+  </script>
+</body>
+</html>
