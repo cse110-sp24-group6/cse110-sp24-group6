@@ -1,13 +1,15 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
     <head>
         <title>Projects Page</title>
     </head>
 
     <body>
+        <div class="navbar"></div>
         <header>
             <h1 style="display: inline-block">Projects</h1>
-            <h2 style="display: inline-block; margin-left: 77%">Streak Count:
+            <h2 style="display: inline-block; 
+            margin-left: 77%">Streak Count:
                 3</h2>
         </header>
 
@@ -20,6 +22,56 @@
             <div class="addProject">
                 <button style="bottom: 2%; right: 1%; position: absolute">Add
                     Project</button>
+            </div>
+        </main>
+
+    </body>
+</html>-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Projects Page</title>
+        <link rel="stylesheet" href="../CSS_Files/projectpage_CSS.css">
+    </head>
+    <body>
+        <!-- Side navigation bar-->
+        <div class="navbar">
+            <h3>Developer Diary</h3>
+            <div class="icons-container">
+                <a href = "homepage.html"><img src = "../icons/Home.png"></a>
+                <a href = "todolist.html"><img src="../icons/ToDo.png"></a>
+                <a href = "projects.html"><img src="../icons/Projects.png"></a>
+            </div>
+        </div>
+        <header>
+            <h1 style="display: inline-block">Projects</h1>
+            <!--<h2 style="display: inline-block; 
+            margin-left: 77%">Streak Count:
+                3</h2>-->
+        </header>
+        <main>
+            <div class="addProject">
+                <button>Add
+                    Project</button>
+            <!-- Current Projects -->
+            <div class="current-projects-container">
+                <h2>Current Projects</h2>
+                <div class="projectsContainer">
+                    <div class="project-element tan"></div>
+                    <div class="project-element green"></div>
+                    <div class="project-element cream"></div>
+                </div>
+            </div>
+            </div>
+            <!-- Past Projects -->
+            <div class="closed-projects-container">
+                <h2>Closed Projects</h2>
+                <div class="projectsContainer">
+                    <div class="project-element"></div>
+                    <div class="project-element"></div>
+                    <div class="project-element"></div>
+                </div>
             </div>
         </main>
 

@@ -1,0 +1,68 @@
+:root{
+    --green: #3F8984;
+    --white: #FFFFFF;
+    --tan: #CAAF8E;
+    --cream: #F6F1E2;
+    --grey: #D9D9D9;
+}
+body{
+    background-color: var(--white);
+}
+/**** text elements ****/
+h1{
+    font-size: 5rem;
+}
+h2{
+    font-size: 3rem;
+}
+.navbar{
+    background-color: var(--green);
+    position:fixed;
+    bottom: 0;
+    margin: 0;
+    height: 13vh;
+    text-align: center;
+    width: 100%;
+}
+.navbar h3{
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    margin-left: 0px;
+    margin-right: 0px;
+    font-size:4vw;
+    color:var(--white);
+}
+.icons-container{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+.navbar img{
+    width: 10vw;
+    height: 10vw;
+}
+/***Styling Layout of Page***/
+.projectsContainer{
+    display:flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+    justify-content: space-between;
+    width: 100%;
+    height: 20%;
+}
+/***Styling Individual Project Components***/
+.project-element{
+    background-color: var(--grey);
+    width: 30%;
+    height: 80%;
+    border-radius: 30px;
+}
+.project-element.tan{
+    background-color: var(--tan);
+}
+.project-element.green{
+    background-color: var(--green);
+}
+.project-element.cream{
+    background-color: var(--cream);
+}
