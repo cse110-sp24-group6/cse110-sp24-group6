@@ -52,10 +52,20 @@ h2{
 }
 /***Styling Individual Project Components***/
 .project-element{
+    display: flex;
     background-color: var(--grey);
     width: 30%;
     height: 80%;
     border-radius: 30px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 50px;
+}
+.project-element:hover{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 .project-element.tan{
     background-color: var(--tan);
