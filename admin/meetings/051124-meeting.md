@@ -13,7 +13,7 @@
 - Henry
 - Michelle
 
-**Time:** 
+**Time:** 5-6:30 pm
 
 **Location:** Zoom
 
