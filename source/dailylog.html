@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Journal Page</title>
-    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="assets/styles/dailylog.css">
 </head>
 <body>
     <div class="container">
@@ -13,23 +13,38 @@
         </div>
         <div class="entry-form">
             <input type="date" id="entry-date" placeholder="Date">
-            <textarea id="entry-content" placeholder="Write your journal entry here..."></textarea>
+            <textarea id="progress" placeholder="What progress did you make today?"></textarea>
+            <textarea id="challenges" placeholder="What challenges did you face?"></textarea>
+            <textarea id="learnings" placeholder="New things learnt..."></textarea>
+            <textarea id="future-plan" placeholder="What's your plan for tomorrow?"></textarea>
             <button id="save-entry">Save Entry</button>
+            <button id="delete-all">Delete All Entries</button>
         </div>
         <div id="entries-container"></div>
         <div class="footer">
             <div class="nav-item">
-                <img src="home-icon.png" alt="Home">
+                <a href="homepage.html">
+                    <img src="assets/icons/home-icon.png" alt="Home">
+                </a>
             </div>
             <div class="nav-item">
-                <img src="list-icon.png" alt="List">
+                <a href="dailylog.html">
+                    <img src="assets/icons/daily-log.png" alt="Daily Log">
+                </a>
             </div>
             <div class="nav-item">
-                <img src="folder-icon.png" alt="Folder">
+                <a href="todolist.html">
+                    <img src="assets/icons/todo-icon.png" alt="TODO list">
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="projects.html">
+                    <img src="assets/icons/projects-icon.png" alt="Projects">
+                </a>
             </div>
             <p>Developer Diaries</p>
         </div>
     </div>
-    <script src="scripts/scripts.js"></script>
+    <script src="assets/scripts/dailylog.js"></script>
 </body>
 </html>
