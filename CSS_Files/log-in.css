@@ -1,0 +1,51 @@
+*
+{
+    background-color: rgb(43, 62, 85);
+}
+
+main 
+{
+    font-family: 'Playfair Display';font-size: 22px;
+    text-align: center;
+    color: white;
+}
+
+main > p
+{
+    font-size: 2em;
+    font-weight: bold;
+    color: white;
+}
+
+input 
+{
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    max-width: 250px; 
+    margin: 0 auto; 
+}
+
+
+label 
+{
+    position:relative;
+    margin-left: -30px; 
+}
+
+form
+{
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+label+input
+{
+    gap: 0.5px
+}
+
+a
+{
+    color: rgb(63, 137, 132)
+}
