@@ -1,35 +1,3 @@
-<!-- 
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Projects Page</title>
-    </head>
-
-    <body>
-        <div class="navbar"></div>
-        <header>
-            <h1 style="display: inline-block">Projects</h1>
-            <h2 style="display: inline-block; 
-            margin-left: 77%">Streak Count:
-                3</h2>
-        </header>
-
-        <main>
-            <div class="projectsContainer">
-                <button>"Project 1"</button>
-                <button>"Project 2"</button>
-            </div>
-
-            <div class="addProject">
-                <button style="bottom: 2%; right: 1%; position: absolute">Add
-                    Project</button>
-            </div>
-        </main>
-
-    </body>
-</html>
--->
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -44,35 +12,73 @@
                 <a href = "homepage.html"><img src = "../icons/Home.png"></a>
                 <a href = "todolist.html"><img src="../icons/ToDo.png"></a>
                 <a href = "projects.html"><img src="../icons/Projects.png"></a>
+                <a href = "dailylog.html"><img src="missing" alt="daily log icon"></a>
             </div>
         </div>
         <header>
             <h1 style="display: inline-block">Projects</h1>
+            <div style="display: inline-block; padding-left: 20px;" class="add-button"><img src = "../icons/projectpage/plus.svg"></div>
             <!--<h2 style="display: inline-block; 
             margin-left: 77%">Streak Count:
                 3</h2>-->
+            <script src="../scripts/projects.js" type="module"></script>
         </header>
         <main>
-            <div class="addProject">
-                <button>Add
-                    Project</button>
+            <div class="addProject-container">
+                <label>Project Name</label><textarea id="input-project-name"></textarea>
+                <br>
+                <label>Project Description</label><textarea id="input-project-description"></textarea>
+                <br>
+                <label>Github Link</label><textarea id="input-github-link"></textarea>
+                <br>
+                <label for="completed-label">This project is:</label>
+                <select name="completed-select" id="completed-select-box">
+                    <option value="current">Current</option>
+                    <option value="completed">Completed</option>
+                </select>
             <!-- Current Projects -->
             <div class="current-projects-container">
                 <h2>Current Projects</h2>
                 <div class="projectsContainer">
-                    <div class="project-element tan">Project 3: "Dev Journal"</div>
-                    <div class="project-element green">Project 2: "Mobile Game"</div>
-                    <div class="project-element cream">Project 1: "Web Application"</div>
+                    <div class="project-element tan">
+                        <h3>Dev Journal</h3>
+                        <p>This is a description of the project.</p>
+                        <div class="project-buttons">
+                            <a href="https://github.com/"><img src="../icons/projectpage/github-tan.svg"></a>
+                            <div class="delete-button"><img src="../icons/projectpage/menu-tan.svg"></div>
+                        </div>
+                    </div>
+                    <div class="project-element green">
+                        <h3>Dev Journal</h3>
+                        <p>This is a description of the project.</p>
+                        <div class="project-buttons">
+                            <a href="https://github.com/"><img src="../icons/projectpage/github-green.svg"></a>
+                            <div class="delete-button"><img src="../icons/projectpage/menu-green.svg"></div>
+                        </div>
+                    </div>
+                    <div class="project-element cream">
+                        <h3>Dev Journal</h3>
+                        <p>This is a description of the project.</p>
+                        <div class="project-buttons">
+                            <a href="https://github.com/"><img src="../icons/projectpage/github-cream.svg"></a>
+                            <div class="delete-button"><img src="../icons/projectpage/menu-cream.svg"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
             </div>
             <!-- Past Projects -->
             <div class="closed-projects-container">
                 <h2>Closed Projects</h2>
-                <div class="projectsContainer">
-                    <div class="project-element"></div>
-                    <div class="project-element"></div>
-                    <div class="project-element"></div>
+                <div class="projectsContainer grey">
+                    <div class="project-element tan">
+                        <h3>Completed Project</h3>
+                        <p>This is a description of the project.</p>
+                        <div class="project-buttons">
+                            <a href="https://github.com/"><img src="../icons/projectpage/github-tan.svg"></a>
+                            <div class="delete-button"><img src="../icons/projectpage/menu-tan.svg"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
