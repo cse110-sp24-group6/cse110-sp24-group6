@@ -1,6 +1,6 @@
 // Progress Bar
-const progressNumber = document.getElementById('progressNumber');
-let counter = 0;
+// const progressNumber = document.getElementById('progressNumber');
+// let counter = 0;
 
 // setInterval(() => {
 //     if( counter == 0 ){
@@ -63,8 +63,8 @@ function updateDailyStreak() {
     const currentDay = currentDate.getDay();
     const lastVisit = localStorage.getItem('lastVisit');
     const dayNames = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
-    const checkedImgSrc = "../HTML_homepage_pics/checked_in.png”;
-    const uncheckedImgSrc = "../HTML_homepage_pics/unchecked.png”;
+    const checkedImgSrc = "../HTML_homepage_pics/checked_in.png";
+    const uncheckedImgSrc = "../HTML_homepage_pics/unchecked.png";
     dayNames.forEach(day => {
       document.getElementById(day + 'Circle').src = uncheckedImgSrc;
     });
