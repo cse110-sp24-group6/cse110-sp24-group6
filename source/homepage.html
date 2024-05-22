@@ -25,11 +25,12 @@
             <!-- Navigation bar-->
             <div class="navBarLeftContainer">
                 <nav class="navBar">
+                    <img class="databaes-icon" src="../HTML_homepage_pics/databaes_logo.png" alt="databaes logo"/>
                     <a id="homePageButton" href="#home" class="active">
                         <img class="home-icon" src="../HTML_homepage_pics/homepage_nav.png" alt="Homepage button"/>
                     </a>
                     <a id="dailyLogButton" href="./dailylog.html">
-                        <img class="daily-log-icon" src="../HTML_homepage_pics/daily_log_journal.png" alt="Daily Log Button"/>
+                        <img class="daily-log-icon" src="../HTML_homepage_pics/white_daily_log_journal.png" alt="Daily Log Button"/>
                     </a>
                     <a id="toDoListButton" href="./todolist.html">
                         <img class="to-do-list-icon" src="../HTML_homepage_pics/to-do_list_nav.png" alt="To-Do List button"/>
@@ -48,53 +49,55 @@
             </section> -->
 
             <div class="content">
-            <div>
-                <h1>Your Dashboard</h1>
-            </div>
-            <!-- Daily Streak-->
-            <div class="dailyLogContainer">
+                <div>
+                    <h1>Your Dashboard</h1>
+                </div>
+                <!-- Daily Streak-->
+                <div class="dailyLogContainer">
 
-                <section class="dailyStreakCounterContainer">
-                    <picture id="logInStreakPic">
-                        <source height="45px" srcset="../HTML_homepage_pics/daily_log_fire.png">
-                        <img src="../HTML_homepage_pics/daily_log_fire.png">
-                    </picture>
-    
-                    <section id="dayStreak">
-                        <h1 id="dailyStreak"><u>0</u></h1>
-                        <h4>Day Streak</h4>
+                    <section class="dailyStreakCounterContainer">
+                        <picture id="logInStreakPic">
+                            <source height="45px" srcset="../HTML_homepage_pics/daily_log_fire.png">
+                            <img src="../HTML_homepage_pics/daily_log_fire.png">
+                        </picture>
+        
+                        <section id="dayStreak">
+                            <h1 id="dailyStreak"><u>0</u></h1>
+                            <h4 id="dailyStreakTitle">Day Streak</h4>
+                        </section>
                     </section>
-                </section>
 
-                <!-- Used for the Sunday, Monday,... daily counter-->
-                <section class="dailyStreakVisualContainer">
-                    <!-- Daily log visual's title-->
-                    <picture id="dailyJournalPic">
-                        <source height="45px" srcset="../HTML_homepage_pics/daily_log_journal.png">
-                        <img src="../HTML_homepage_pics/daily_log_journal.png">
-                    </picture>
-                    <h1 class="dailyLogsTitle">Daily Logs</h1>
-                    
-                    <!-- Days of the week initials-->
-                    <p id="sundayAbbr"><b>S</b></p>
-                    <p id="mondayAbbr"><b>M</b></p>
-                    <p id="tuesdayAbbr"><b>T</b></p>
-                    <p id="wednesdayAbbr"><b>W</b></p>
-                    <p id="thursdayAbbr"><b>Th</b></p>
-                    <p id="fridayAbbr"><b>F</b></p>
-                    <p id="saturdayAbbr"><b>Sa</b></p>
+                    <section class="dailyLogVisualTitle">
+                        <!-- Daily log visual's title-->
+                        <picture id="dailyJournalPic">
+                            <source height="45px" srcset="../HTML_homepage_pics/daily_log_journal.png">
+                            <img src="../HTML_homepage_pics/daily_log_journal.png">
+                        </picture>
+                        <h1 id="dailyLogsTitle">Daily Logs</h1>
+                    </section>
 
-                    <!-- Days of the week "logged in" checker-->
-                    <span class="circle" id="sundayCircle"></span>
-                    <span class="circle" id="mondayCircle"></span>
-                    <span class="circle" id="tuesdayCircle"></span>
-                    <span class="circle" id="wednesdayCircle"></span>
-                    <span class="circle" id="thursdayCircle"></span>
-                    <span class="circle" id="fridayCircle"></span>
-                    <span class="circle" id="saturdayCircle"></span>
+                    <!-- Used for the Sunday, Monday,... daily counter-->
+                    <section class="dailyStreakVisualContainer">
+                        <!-- Days of the week initials-->
+                        <p id="sundayAbbr"><b>S</b></p>
+                        <p id="mondayAbbr"><b>M</b></p>
+                        <p id="tuesdayAbbr"><b>T</b></p>
+                        <p id="wednesdayAbbr"><b>W</b></p>
+                        <p id="thursdayAbbr"><b>Th</b></p>
+                        <p id="fridayAbbr"><b>F</b></p>
+                        <p id="saturdayAbbr"><b>Sa</b></p>
 
-                </section>
-            </div>
+                        <!-- Days of the week "logged in" checker-->
+                        <span class="circle" id="sundayCircle"></span>
+                        <span class="circle" id="mondayCircle"></span>
+                        <span class="circle" id="tuesdayCircle"></span>
+                        <span class="circle" id="wednesdayCircle"></span>
+                        <span class="circle" id="thursdayCircle"></span>
+                        <span class="circle" id="fridayCircle"></span>
+                        <span class="circle" id="saturdayCircle"></span>
+
+                    </section>
+                </div>
             </div>
 
         </header>
@@ -110,85 +113,83 @@
 
             <!-- Dashboard content -->
             <div class="content">
-            <div class="dashboardContainer">
+                <div class="dashboardContainer">
 
-
-                <!-- Task Overview (to-do list)-->
-                <section id="taskOverview">
-                    <h2>Today's Tasks Overview</h2>
-                    <iframe src="./todolist.html" title="Task Overview"></iframe>
-                </section>
-    
-                <!-- Overall progress-->
-                <section id="overallProgress">
-                    <h2>Project Progress</h2>
-                    <div class="progressBar">
-                        <div class="outer">
-                            <div class="inner">
-                                <div id="progressNumber">
-                                    0%
+                    <!-- Task Overview (to-do list)-->
+                    <section id="taskOverview">
+                        <h2>Today's Tasks Overview</h2>
+                        <iframe src="./todolist.html" title="Task Overview"></iframe>
+                    </section>
+        
+                    <!-- Overall progress-->
+                    <section id="overallProgress">
+                        <h2>Project Progress</h2>
+                        <div class="progressBar">
+                            <div class="outer">
+                                <div class="inner">
+                                    <div id="progressNumber">
+                                        0%
+                                    </div>
                                 </div>
                             </div>
+
+                            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px">
+                                <!-- <defs>
+                                    <lineargradient id="gradientColor">
+                                        <stop offset="0%" stop-color="#DA22FF"></stop>
+                                        <stop offset="100%" stop-color="#9733EE"></stop>
+                                    </lineargradient>
+                                </defs> -->
+                                <circle cx="80" cy="80" r="70" transform="rotate(-270)" transform-origin="center" stroke-linecap="round"></circle>
+                            </svg>
+                        </div>
+                    </section>
+
+                    <!-- Recently viewed projects-->
+                    <div class="projectCardsContainer">
+                        <h2 id="projectCardsTitle">Most Recently Viewed Projects</h2>
+
+                        <div class="projectCards">
+                            <!-- (insert) journal image-->
+                            <div class="individualProjectCardContainer">
+                            <h4><b>Tempororay: Project name</b></h4> 
+                            <p>Project description</p> 
+                            </div>
+                            <!-- (insert project progress bar)-->
+                            <!-- (insert) open link in new tab image AND github logo image-->
                         </div>
 
-                        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px">
-                            <!-- <defs>
-                                <lineargradient id="gradientColor">
-                                    <stop offset="0%" stop-color="#DA22FF"></stop>
-                                    <stop offset="100%" stop-color="#9733EE"></stop>
-                                </lineargradient>
-                            </defs> -->
-                            <circle cx="80" cy="80" r="70" transform="rotate(-270)" transform-origin="center" stroke-linecap="round"></circle>
-                        </svg>
-                    </div>
-                </section>
-
-                <!-- Recently viewed projects-->
-                <div class="projectCardsContainer">
-                    <h2 id="projectCardsTitle">Most Recently Viewed Projects</h2>
-
-                    <div class="projectCards">
-                        <!-- (insert) journal image-->
-                        <div class="individualProjectCardContainer">
-                        <h4><b>Tempororay: Project name</b></h4> 
-                        <p>Project description</p> 
+                        <div class="projectCards">
+                            <!-- (insert) journal image-->
+                            <div class="individualProjectCardContainer">
+                            <h4><b>Tempororay: Project name</b></h4> 
+                            <p>Project description</p> 
+                            </div>
+                            <!-- (insert project progress bar)-->
+                            <!-- (insert) open link in new tab image AND github logo image-->
                         </div>
-                        <!-- (insert project progress bar)-->
-                        <!-- (insert) open link in new tab image AND github logo image-->
-                    </div>
 
-                    <div class="projectCards">
-                        <!-- (insert) journal image-->
-                        <div class="individualProjectCardContainer">
-                        <h4><b>Tempororay: Project name</b></h4> 
-                        <p>Project description</p> 
+                        <div class="projectCards">
+                            <!-- (insert) journal image-->
+                            <div class="individualProjectCardContainer">
+                            <h4><b>Tempororay: Project name</b></h4> 
+                            <p>Project description</p> 
+                            </div>
+                            <!-- (insert project progress bar)-->
+                            <!-- (insert) open link in new tab image AND github logo image-->
                         </div>
-                        <!-- (insert project progress bar)-->
-                        <!-- (insert) open link in new tab image AND github logo image-->
-                    </div>
 
-                    <div class="projectCards">
-                        <!-- (insert) journal image-->
-                        <div class="individualProjectCardContainer">
-                        <h4><b>Tempororay: Project name</b></h4> 
-                        <p>Project description</p> 
+                        <div class="projectCards">
+                            <!-- (insert) journal image-->
+                            <div class="individualProjectCardContainer">
+                            <h4><b>Tempororay: Project name</b></h4> 
+                            <p>Project description</p> 
+                            </div>
+                            <!-- (insert project progress bar)-->
+                            <!-- (insert) open link in new tab image AND github logo image-->
                         </div>
-                        <!-- (insert project progress bar)-->
-                        <!-- (insert) open link in new tab image AND github logo image-->
-                    </div>
-
-                    <div class="projectCards">
-                        <!-- (insert) journal image-->
-                        <div class="individualProjectCardContainer">
-                        <h4><b>Tempororay: Project name</b></h4> 
-                        <p>Project description</p> 
-                        </div>
-                        <!-- (insert project progress bar)-->
-                        <!-- (insert) open link in new tab image AND github logo image-->
                     </div>
                 </div>
-            </div>
-
             </div>
         </main>
 

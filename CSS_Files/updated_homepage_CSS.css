@@ -6,10 +6,11 @@
 
 /* html {
     background-color: #2B3E55;
+    color: whitesmoke;
 } */
 .content {
     width: auto;
-    margin-left: 6%;
+    margin-left: 5%;
 }
 
 /* Navigation bar section */
@@ -17,9 +18,10 @@
     width: 20%;
     float: left;
 }
+
 .navBar {
     position: absolute;
-    width: 82px;
+    width: 4%;
     height: 100%;
     left: 0px;
     top: 0px;
@@ -29,28 +31,42 @@
     align-items: center;
     padding-top: 20px;
 }
-.navBar button {
+/* .navBar button {
     border: none;
     background: none;
     padding: 5px;
     cursor: pointer;
     margin-bottom: 5x;
+} */
+.navBar .databaes-icon {
+    width: 45px;
+    height: 45px;
+    margin-bottom: 25%;
+    margin-top: 5%;
 }
 .navBar .home-icon {
     width: 45px;
     height: 45px;
+    margin-bottom: 35%;
+    margin-top: 25%;
 }
 .navBar .daily-log-icon {
     width: 45px;
     height: 45px;
+    margin-bottom: 25%;
+    margin-top: 25%;
 }
 .navBar .to-do-list-icon {
     width: 45px;
     height: 45px;
+    margin-bottom: 25%;
+    margin-top: 25%;
 }
 .navBar .projects-icon {
     width: 45px;
     height: 45px;
+    margin-bottom: 25%;
+    margin-top: 25%;
 }
 
 /* Daily Log-in section */
@@ -65,10 +81,30 @@
     border-radius: 50%;
     
 }
-/* --- Setting up grid variables --- */
+/* --- Setting up grid variables: 4 Sections --- */
+/* Section: Log in streak "fire" pic and counter */
+#logInStreakPic { grid-area: logInStreakPic; }
+#dayStreak { grid-area: dayStreak; }
+
+.dailyStreakCounterContainer {
+    display: grid;
+}
+
+/* Section: Daily log visual title */
 #dailyJournalPic { grid-area: dailyJournalPic; }
 .dailyLogsTitle { grid-area: dailyLogTitle; }
 
+.dailyLogVisualTitle {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-areas: 
+        'dailyJournalPic dailyLogTitle';
+    gap: 1em;
+    width: 20%;
+    align-items: center;
+}
+
+/* Section: Daily streak days of the week icons */
 #sundayAbbr { grid-area: sundAbbr; }
 #mondayAbbr { grid-area: mondAbbr; }
 #tuesdayAbbr {grid-area: tuesAbbr; }
@@ -89,24 +125,31 @@
     
     display: grid;
     grid-template-columns: repeat(7, 1fr);
+
     grid-template-areas: 
-        'dailyJournalPic dailyLogTitle dailyLogTitle dailyLogTitle dailyLogTitle dailyLogTitle dailyLogTitle'
         'sundAbbr mondAbbr tuesAbbr wedAbbr thurAbbr friAbbr satAbbr'
         'sundCirc mondCirc tuesCirc wedCirc thurCirc friCirc satCirc';
     /* gap: 10px; */
-    padding: 10px;
+    padding: 0.5em;
     height: 100%;
-    width: 100%;
-
+    width: 20%;
+    column-gap: 1em;
+    text-align: center;
+    justify-content: center;
+    /* border: 1px solid black;
+    border-radius: 25px; */
 }
 
-.dailyStreakVisualContainer > h1 {
-    
+.dailyStreakVisualContainer span {
+    margin-left: 25%;
 }
 
-.dailyStreakVisualContainer > p {
-    width: min-content; 
-}
+/* Section: Combine previous 3 sections to a single "Daily Log in" view */
+.dailyStreakCounterContainer { grid-area: streakCounter; }
+.dailyLogVisualTitle { grid-area: streakVisualTitle; }
+.dailyStreakVisualContainer { grid-area: streakVisual; }
+
+
 
 /* Dashboard content section */
 
