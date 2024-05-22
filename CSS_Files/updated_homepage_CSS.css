@@ -566,30 +566,7 @@ iframe {
     }
     
     /* Section: Daily streak days of the week icons */
-    #sunday-abbr { grid-area: sundAbbr; }
-    #monday-abbr { grid-area: mondAbbr; }
-    #tuesday-abbr {grid-area: tuesAbbr; }
-    #wednesday-abbr { grid-area: wedAbbr; }
-    #thursday-abbr { grid-area: thurAbbr; }
-    #friday-abbr { grid-area: friAbbr; }
-    #saturday-abbr { grid-area: satAbbr; }
-    
-    #sunday-circle { grid-area: sundCirc; }
-    #monday-circle { grid-area: mondCirc; }
-    #tuesday-circle { grid-area: tuesCirc; }
-    #wednesday-circle { grid-area: wedCirc; }
-    #thursday-circle { grid-area: thurCirc; }
-    #friday-circle { grid-area: friCirc; }
-    #saturday-circle { grid-area: satCirc; }
-    
     .daily-streak-visual-container {
-        
-        display: grid;
-        grid-template-columns: repeat(7, 1fr);
-    
-        grid-template-areas: 
-            'sundAbbr mondAbbr tuesAbbr wedAbbr thurAbbr friAbbr satAbbr'
-            'sundCirc mondCirc tuesCirc wedCirc thurCirc friCirc satCirc';
         height: 100%;
         width: 20%;
         column-gap: 1em;
@@ -600,26 +577,10 @@ iframe {
         font-size: 70%;
     }
     
-    .daily-streak-visual-container img {
-        align-self: center;
-        margin: auto;
-    }
-    
-    /* Section: Combine previous 3 sections to a single "Daily Log in" view */
-    .daily-streak-counter-container { grid-area: streakCounter; }
-    .daily-log-visual-title { grid-area: streakVisualTitle; }
-    .daily-streak-visual-container { grid-area: streakVisual; }
     
     .daily-log-container {
-        display: grid;
-        grid-template-columns: 1fr 3fr;
-        grid-template-areas: 
-            'streakCounter streakVisualTitle'
-            'streakCounter streakVisual';
         row-gap: 5px;
         column-gap: 0;
-        border: 1px solid black;
-        border-radius: 25px;
         padding: 20px;
         margin-top: 20px;
         margin-left: auto;
@@ -627,8 +588,6 @@ iframe {
         width: 80vw;
         height: auto;
     
-        background-color: whitesmoke;
-        color: #2B3E55;
     }
     
     
@@ -654,48 +613,11 @@ iframe {
         height: 120px;
         width: 120px;
         border-radius: 50%;
-        justify-content: center;
-        display: flex;
-        align-items: center;
     }
     
-    #progress-number {
-        font-weight: 600;
-        font-size: 150%;
-        color:azure;
-    }
-    
-    #moving-progress {
-        fill: none;
-        stroke: #BBEDEA;
-        stroke-width: 20px;
-        stroke-dasharray: 450;
-        stroke-dashoffset: 450;
-        animation: anim 2s linear forwards;
-    }
-    
-    #stationary-progress {
-        fill: none;
-        stroke: #6BAD9D;
-        stroke-width: 20px;
-    }
-    
-    @keyframes anim {
-        100%{
-            stroke-dashoffset: 230;
-        }
-    }
-    
-    svg {
-        position: absolute;
-        top: 0;
-        left: 0;
-    }
     
     /* Tasks Overview */
     iframe {
-        background-color: whitesmoke;
-        height: auto;
         width: 90%;
         border-radius: 25px;
     }
