@@ -409,7 +409,6 @@ iframe {
     gap: 3vw;
     row-gap: 1vh;
     justify-content: center;
-
     grid-area: projCardsCont;
 }
 
@@ -563,6 +562,7 @@ iframe {
     
     /* Section: Daily log visual title */
     #daily-journal-pic { grid-area: daily-journal-pic; }
+
     #daily-logs-title { 
         grid-area: dailyLogTitle;
         font-size: 95%;
@@ -589,7 +589,8 @@ iframe {
         height: 100%;
         width: 20%;
         column-gap: 1em;
-        gap: 0.75em;
+
+        /* gap: 0.75em; */
         text-align: center;
         align-content: center;
         margin-left: 1em;
@@ -599,7 +600,8 @@ iframe {
     
     .daily-log-container {
         row-gap: 5px;
-        gap: 0;
+
+        /* gap: 0; */
         padding: 20px;
         margin-top: 20px;
         margin-left: auto;
