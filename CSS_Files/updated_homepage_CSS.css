@@ -1,0 +1,170 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* html {
+    background-color: #2B3E55;
+} */
+.content {
+    width: auto;
+    margin-left: 6%;
+}
+
+/* Navigation bar section */
+.navBarLeftContainer {
+    width: 20%;
+    float: left;
+}
+.navBar {
+    position: absolute;
+    width: 82px;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+    background-color: #3F8984;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+}
+.navBar button {
+    border: none;
+    background: none;
+    padding: 5px;
+    cursor: pointer;
+    margin-bottom: 5x;
+}
+.navBar .home-icon {
+    width: 45px;
+    height: 45px;
+}
+.navBar .daily-log-icon {
+    width: 45px;
+    height: 45px;
+}
+.navBar .to-do-list-icon {
+    width: 45px;
+    height: 45px;
+}
+.navBar .projects-icon {
+    width: 45px;
+    height: 45px;
+}
+
+/* Daily Log-in section */
+
+
+/* Daily log visual (within the daily log section) */
+/* --- Creating the circles for the daily log-in --- */
+.circle {
+    height: 20px;
+    width: 20px;
+    background: #949494;
+    border-radius: 50%;
+    
+}
+/* --- Setting up grid variables --- */
+#dailyJournalPic { grid-area: dailyJournalPic; }
+.dailyLogsTitle { grid-area: dailyLogTitle; }
+
+#sundayAbbr { grid-area: sundAbbr; }
+#mondayAbbr { grid-area: mondAbbr; }
+#tuesdayAbbr {grid-area: tuesAbbr; }
+#wednesdayAbbr { grid-area: wedAbbr; }
+#thursdayAbbr { grid-area: thurAbbr; }
+#fridayAbbr { grid-area: friAbbr; }
+#saturdayAbbr { grid-area: satAbbr; }
+
+#sundayCircle { grid-area: sundCirc; }
+#mondayCircle { grid-area: mondCirc; }
+#tuesdayCircle { grid-area: tuesCirc; }
+#wednesdayCircle { grid-area: wedCirc; }
+#thursdayCircle { grid-area: thurCirc; }
+#fridayCircle { grid-area: friCirc; }
+#saturdayCircle { grid-area: satCirc; }
+
+.dailyStreakVisualContainer {
+    
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-areas: 
+        'dailyJournalPic dailyLogTitle dailyLogTitle dailyLogTitle dailyLogTitle dailyLogTitle dailyLogTitle'
+        'sundAbbr mondAbbr tuesAbbr wedAbbr thurAbbr friAbbr satAbbr'
+        'sundCirc mondCirc tuesCirc wedCirc thurCirc friCirc satCirc';
+    /* gap: 10px; */
+    padding: 10px;
+    height: 100%;
+    width: 100%;
+
+}
+
+.dailyStreakVisualContainer > h1 {
+    
+}
+
+.dailyStreakVisualContainer > p {
+    width: min-content; 
+}
+
+/* Dashboard content section */
+
+
+
+/* Overall Progress Bar */
+.progressBar {
+    width: 160px;
+    height: 160px;
+    background-color: rgb(148, 195, 195);
+    position: relative;
+}
+
+.outer {
+    height: 160px;
+    width: 160px;
+    padding: 20px;
+    box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.1),
+                -6px -6px 10px -1px rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+}
+
+.inner {
+    height: 120px;
+    width: 120px;
+    box-shadow: inset 4px 4px 6px -1px rgba(0, 0, 0, 0.2),
+                inset -4px -4px 6px -1px rgba(255, 255, 255, 0.7),
+                -0.5px -0.5px 0px rgba(255, 255, 255, 1),
+                0.5px 0.5px 0px rgba(0, 0, 0, 0.15),
+                0px 12px 10px -10px rgba(0, 0, 0, 0.05);
+    border-radius: 50%;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+#progressNumber {
+    font-weight: 600;
+    color:azure;
+}
+
+circle {
+    fill: none;
+    stroke:cornflowerblue;
+    stroke-width: 20px;
+    stroke-dasharray: 450;
+    stroke-dashoffset: 450;
+    animation: anim 2s linear forwards;
+}
+
+@keyframes anim {
+    100%{
+        stroke-dashoffset: 225 /* 450 - (450*0.5)*/;
+    }
+}
+
+svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
