@@ -36,7 +36,7 @@
 function updateDailyStreak() {
     const currentDate = new Date().toLocaleDateString();
     const lastVisit = localStorage.getItem('lastVisit');
-    let streak = parseInt(localStorage.getItem('streak'));
+    let streak = parseInt(localStorage.getItem('streak'), 10);
     if (lastVisit === currentDate) {
         document.getElementById('daily-streak').textContent = streak;
         console.log("Current Streak:", streak);
