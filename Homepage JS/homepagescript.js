@@ -38,7 +38,7 @@ function updateDailyStreak() {
     const lastVisit = localStorage.getItem('lastVisit');
     let streak = parseInt(localStorage.getItem('streak'));
     if (lastVisit === currentDate) {
-        document.getElementById('dailyStreak').textContent = streak;
+        document.getElementById('daily-streak').textContent = streak;
         console.log("Current Streak:", streak);
         return;
     }
@@ -53,7 +53,7 @@ function updateDailyStreak() {
     //saves streak and date to browser
     localStorage.setItem('streak', streak);
     localStorage.setItem('lastVisit', currentDate);
-    document.getElementById('dailyStreak').textContent = streak;
+    document.getElementById('daily-streak').textContent = streak;
     console.log("New Streak:", streak);
   }
   // Update daily streak visual
