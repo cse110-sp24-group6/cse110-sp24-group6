@@ -73,7 +73,7 @@ function updateDailyStreak() {
       const yesterday = new Date();
       yesterday.setDate(currentDate.getDate() - 1);
       if (lastVisitDate.toLocaleDateString() === yesterday.toLocaleDateString() ||
-          lastVisitDate.toLocaleDateString() === currentDate.toLocaleDateString()) {
+        lastVisitDate.toLocaleDateString() === currentDate.toLocaleDateString()) {
         for (let i = 0; i <= currentDay; i++) {
           document.getElementById(dayNames[i] + 'Circle').src = checkedImgSrc;
         }
