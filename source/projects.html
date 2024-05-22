@@ -12,7 +12,6 @@
                 <a href = "homepage.html"><img src = "../icons/Home.png"></a>
                 <a href = "todolist.html"><img src="../icons/ToDo.png"></a>
                 <a href = "projects.html"><img src="../icons/Projects.png"></a>
-                <a href = "dailylog.html"><img src="missing" alt="daily log icon"></a>
             </div>
         </div>
         <header>
@@ -24,48 +23,51 @@
             <script src="../scripts/projects.js" type="module"></script>
         </header>
         <main>
-            <div class="addProject-container">
-                <label>Project Name</label><textarea id="input-project-name"></textarea>
+            <div class="edit-overlay">
+                <label>Project Name</label><br>
+                <textarea id="input-project-name"></textarea>
                 <br>
-                <label>Project Description</label><textarea id="input-project-description"></textarea>
+                <label>Project Description</label><br><textarea id="input-project-description"></textarea>
                 <br>
-                <label>Github Link</label><textarea id="input-github-link"></textarea>
+                <label>Github Link</label><br><textarea id="input-github-link"></textarea>
                 <br>
                 <label for="completed-label">This project is:</label>
                 <select name="completed-select" id="completed-select-box">
                     <option value="current">Current</option>
                     <option value="completed">Completed</option>
-                </select>
+                </select><br>
+                <button id="save-button">Save</button>
+                <button id="delete-button">Delete</button>
+            </div>
             <!-- Current Projects -->
             <div class="current-projects-container">
                 <h2>Current Projects</h2>
                 <div class="projectsContainer">
                     <div class="project-element tan">
-                        <h3>Dev Journal</h3>
+                        <h3>Project 1</h3>
                         <p>This is a description of the project.</p>
                         <div class="project-buttons">
                             <a href="https://github.com/"><img src="../icons/projectpage/github-tan.svg"></a>
-                            <div class="delete-button"><img src="../icons/projectpage/menu-tan.svg"></div>
+                            <div class="menu-button"><img src="../icons/projectpage/menu-tan.svg"></div>
                         </div>
                     </div>
                     <div class="project-element green">
-                        <h3>Dev Journal</h3>
+                        <h3>Project 2</h3>
                         <p>This is a description of the project.</p>
                         <div class="project-buttons">
                             <a href="https://github.com/"><img src="../icons/projectpage/github-green.svg"></a>
-                            <div class="delete-button"><img src="../icons/projectpage/menu-green.svg"></div>
+                            <div class="menu-button"><img src="../icons/projectpage/menu-green.svg"></div>
                         </div>
                     </div>
                     <div class="project-element cream">
-                        <h3>Dev Journal</h3>
+                        <h3>Project 3</h3>
                         <p>This is a description of the project.</p>
                         <div class="project-buttons">
                             <a href="https://github.com/"><img src="../icons/projectpage/github-cream.svg"></a>
-                            <div class="delete-button"><img src="../icons/projectpage/menu-cream.svg"></div>
+                            <div class="menu-button"><img src="../icons/projectpage/menu-cream.svg"></div>
                         </div>
                     </div>
                 </div>
-            </div>
             </div>
             <!-- Past Projects -->
             <div class="closed-projects-container">
@@ -76,7 +78,7 @@
                         <p>This is a description of the project.</p>
                         <div class="project-buttons">
                             <a href="https://github.com/"><img src="../icons/projectpage/github-tan.svg"></a>
-                            <div class="delete-button"><img src="../icons/projectpage/menu-tan.svg"></div>
+                            <div class="menu-button"><img src="../icons/projectpage/menu-tan.svg"></div>
                         </div>
                     </div>
                 </div>

@@ -113,10 +113,26 @@ h2{
     width: 70px;
     height: 70px;
 }
-/*** Form for adding projects ***/
-.addProject-container{
+/*** Overlay for editing projects ***/
+.edit-overlay{
+    padding: 20px;
+    z-index: 2;
     font-size: 2rem;
+    display: none;
+    position: fixed;
+    width: 70%;
+    height: 70%;
+    top: 10%;
+    left: 10%;
+    border: 5px solid black;
+    border-radius: 30px;
+    background-color: white;
 }
-.addProject-container textarea{
-    font-size: 2rem;
+.edit-overlay label, textarea, button, select, option{
+    font-size: 4rem;
+    width: 80%;
+    align-self: center;
+}
+#delete-button{
+    display:none;
 }
