@@ -34,7 +34,7 @@ document.querySelector('#save-button').addEventListener("click", () => {
         }else{
             insertPlace = document.querySelector(".closed-projects-container");
         }
-        insertPlace.querySelector(".projectsContainer").append(newProject);
+        insertPlace.querySelector(".projects-container").append(newProject);
         newProject.querySelector(".menu-button").addEventListener("click", editProject);
     }else{
         //else is editing an existing project(aka currProject)
@@ -49,7 +49,7 @@ document.querySelector('#save-button').addEventListener("click", () => {
         }else{
             insertPlace = document.querySelector(".closed-projects-container");
         }
-        insertPlace.querySelector(".projectsContainer").append(currProject);
+        insertPlace.querySelector(".projects-container").append(currProject);
     }
     //clear values in overlay to reset it
     document.querySelector("#input-project-name").value = "";
