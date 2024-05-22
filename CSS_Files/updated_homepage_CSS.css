@@ -4,25 +4,51 @@
     box-sizing: border-box;
 }
 
-/* html {
+/* Default background stuff */
+head, body, footer {
     background-color: #2B3E55;
     color: whitesmoke;
-} */
+}
+
+html {
+    height: 100%;
+}
+body {
+    min-height: 100vh;
+}
+
+/* Dashboard title spacing */
+#yourDashboard {
+    margin-top: 20px;
+    margin-left: 8vw;
+    font-size: 40px;
+    text-shadow: 1px 1px 2px #93b1af;
+}
+
+/* Separate content from navigation bar */
 .content {
     width: auto;
     margin-left: 5%;
 }
 
+/* Make all page icons that are clickable not have underline */
+.pageIcons {
+    text-decoration: none;
+}
+
+
 /* Navigation bar section */
 .navBarLeftContainer {
     width: 20%;
     float: left;
+    overflow: hidden;
 }
 
 .navBar {
     position: absolute;
-    width: 4%;
+    width: 76px;
     height: 100%;
+    /* min-height: 100vh; */
     left: 0px;
     top: 0px;
     background-color: #3F8984;
@@ -70,25 +96,52 @@
 }
 
 /* Daily Log-in section */
-
-
 /* Daily log visual (within the daily log section) */
-/* --- Creating the circles for the daily log-in --- */
-.circle {
+/* --- Gives shape to the circles --- */
+.dailyLogCircle {
     height: 20px;
     width: 20px;
     background: #949494;
     border-radius: 50%;
     
 }
+
 /* --- Setting up grid variables: 4 Sections --- */
 /* Section: Log in streak "fire" pic and counter */
 #logInStreakPic { grid-area: logInStreakPic; }
 #dayStreak { grid-area: dayStreak; }
 
+
 .dailyStreakCounterContainer {
     display: grid;
+    grid-template-columns: 40% 40%;
+    grid-template-areas: 
+        'logInStreakPic dayStreak';
+    gap: 2em;
+    align-content: center;
 }
+
+.dailyStreakCounterContainer #dayStreak {
+    width: 78.15px;
+    height: 118.5px;
+}
+
+#logInStreakPic img{
+    height: 115px;
+    width: 86px;
+    margin-left: 1vw;
+}
+
+#dailyStreak {
+    font-size: 670%;
+    text-align: center;
+    line-height: 95px;
+}
+
+#dailyStreakTitle {
+    font-size: 100%;
+}
+
 
 /* Section: Daily log visual title */
 #dailyJournalPic { grid-area: dailyJournalPic; }
@@ -100,8 +153,9 @@
     grid-template-areas: 
         'dailyJournalPic dailyLogTitle';
     gap: 1em;
-    width: 20%;
+    /* width: 20%; */
     align-items: center;
+    margin-left: 1.25em;
 }
 
 /* Section: Daily streak days of the week icons */
@@ -130,18 +184,19 @@
         'sundAbbr mondAbbr tuesAbbr wedAbbr thurAbbr friAbbr satAbbr'
         'sundCirc mondCirc tuesCirc wedCirc thurCirc friCirc satCirc';
     /* gap: 10px; */
-    padding: 0.5em;
+    /* padding-top: 1em; */
     height: 100%;
     width: 20%;
     column-gap: 1em;
+    row-gap: 0.75em;
     text-align: center;
-    justify-content: center;
-    /* border: 1px solid black;
-    border-radius: 25px; */
+    align-content: center;
+    margin-left: 1em;
 }
 
-.dailyStreakVisualContainer span {
-    margin-left: 25%;
+.dailyStreakVisualContainer img {
+    align-self: center;
+    margin: auto;
 }
 
 /* Section: Combine previous 3 sections to a single "Daily Log in" view */
@@ -149,9 +204,26 @@
 .dailyLogVisualTitle { grid-area: streakVisualTitle; }
 .dailyStreakVisualContainer { grid-area: streakVisual; }
 
+.dailyLogContainer {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-areas: 
+        'streakCounter streakVisualTitle'
+        'streakCounter streakVisual';
+    gap: 10%;
+    row-gap: 5px;
+    border: 1px solid black;
+    border-radius: 25px;
+    padding: 20px;
+    margin-top: 20px;
+    margin-left: 8vw;
+    width: 570px;
+    height: 200.5px;
 
 
-/* Dashboard content section */
+    background-color: whitesmoke;
+    color: #2B3E55;
+}
 
 
 
@@ -159,27 +231,28 @@
 .progressBar {
     width: 160px;
     height: 160px;
-    background-color: rgb(148, 195, 195);
+    background-color: rgb(63, 137, 132);
     position: relative;
+    border-radius: 25px;
 }
 
 .outer {
     height: 160px;
     width: 160px;
     padding: 20px;
-    box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.1),
-                -6px -6px 10px -1px rgba(255, 255, 255, 0.7);
+    /* box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.1),
+                -6px -6px 10px -1px rgba(255, 255, 255, 0.7); */
     border-radius: 50%;
 }
 
 .inner {
     height: 120px;
     width: 120px;
-    box-shadow: inset 4px 4px 6px -1px rgba(0, 0, 0, 0.2),
+    /* box-shadow: inset 4px 4px 6px -1px rgba(0, 0, 0, 0.2),
                 inset -4px -4px 6px -1px rgba(255, 255, 255, 0.7),
                 -0.5px -0.5px 0px rgba(255, 255, 255, 1),
                 0.5px 0.5px 0px rgba(0, 0, 0, 0.15),
-                0px 12px 10px -10px rgba(0, 0, 0, 0.05);
+                0px 12px 10px -10px rgba(0, 0, 0, 0.05); */
     border-radius: 50%;
     justify-content: center;
     display: flex;
@@ -188,21 +261,28 @@
 
 #progressNumber {
     font-weight: 600;
+    font-size: 150%;
     color:azure;
 }
 
-circle {
+#movingProgress {
     fill: none;
-    stroke:cornflowerblue;
+    stroke: #BBEDEA;
     stroke-width: 20px;
     stroke-dasharray: 450;
     stroke-dashoffset: 450;
     animation: anim 2s linear forwards;
 }
 
+#stationaryProgress {
+    fill: none;
+    stroke: #6BAD9D;
+    stroke-width: 20px;
+}
+
 @keyframes anim {
     100%{
-        stroke-dashoffset: 225 /* 450 - (450*0.5)*/;
+        stroke-dashoffset: 230;
     }
 }
 
@@ -210,4 +290,529 @@ svg {
     position: absolute;
     top: 0;
     left: 0;
+}
+
+/* Tasks Overview */
+iframe {
+    background-color: whitesmoke;
+    height: 30vh;
+    width: 90%;
+    border-radius: 25px;
+}
+
+/* Recently viewed projects section */
+/* Making the cards */
+/* Card: Card Size, text size, formatting */
+.projectCards {
+    box-shadow: 0px 4px 8px 0px rgba(238, 235, 235, 0.2);
+    transition: 0.3s;
+    width: 240px;
+    height: auto;
+    border-radius: 25px;
+    /* margin: 20px 20px 0px 20px; */
+}
+
+.projectCards div h4 {
+    font-size: 110%;
+    margin-top: 10px;
+    margin-left: 5px;
+}
+
+.projectCards div p {
+    font-size: 105%;
+    margin-top: 10px;
+    margin-left: 5px;
+}
+
+.projectCards hr {
+    width: 85%;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.projectCards:hover {
+    box-shadow: 0px 8px 16px 0px rgba(230, 230, 230, 0.7);
+}
+
+.individualProjectCardContainer {
+    padding: 2px 16px;
+}
+
+.cardsLogJournalPic {
+    height: auto;
+    width: 35%;
+    margin: 10px 0px 0px 20px;
+}
+
+/* Card: background and text color */
+#brownBackCard {
+    background-color: #CAAF8E;
+    color: #5B4B34;
+}
+
+#blueBackCard {
+    background-color: #3F8984;
+    color: #F6F1E2;
+}
+
+#offWhiteBackCard {
+    background-color: #F6F1E2;
+    color: #2B3E55;
+}
+
+#whiteBackCard {
+    background-color: #FFFFFF;
+    color: #2B3E55;
+}
+
+/* Card: github and external link icons */
+.externalIcon  {
+    height: auto;
+    width: 10%;
+    margin: 40px 0px 20px 20px;
+}
+
+.githubIcon {
+    height: auto;
+    width: 10%;
+    margin: 40px 0px 20px 0px;
+}
+
+/* Positioning cards in a container */
+#projectCardsTitle { grid-area: cardsTitle; }
+#brownBackCard { grid-area: brownBack; }
+#blueBackCard { grid-area: blueBack; }
+#offWhiteBackCard { grid-area: offWhiteBack; }
+#whiteBackCard { grid-area: whiteBack; }
+
+.projectCardsContainer {
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20%;
+    grid-template-areas: 
+        'cardsTitle cardsTitle .            .'
+        'brownBack  blueBack   offWhiteBack whiteBack';
+    gap: 3vw;
+    row-gap: 1vh;
+    justify-content: center;
+}
+
+/* Most Recently Viewed Projects title */
+#projectCardsTitle {
+    font-size: 35px;
+    text-shadow: 1px 1px 2px #93b1af;
+}
+
+/* Dashboard content section */
+.taskOverview { grid-area: taskOverview; }
+.overallProgress { grid-area: overallProg; }
+.projectCardsContainer { grid-area: projCardsCont;}
+
+
+.dashboardContainer {
+    display: grid;
+    grid-template-columns: 50% 40%;
+    grid-template-areas: 
+        'taskOverview  overallProg'
+        'projCardsCont projCardsCont';
+    gap: 20px;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+.dashboardContainer > .taskOverview {
+    margin-left: 4vw;
+}
+
+/* Title of task overview section */
+.taskOverview h2 {
+    font-size: 35px;
+    margin-bottom: 1vh;
+    text-shadow: 1px 1px 2px #93b1af;
+}
+
+/* Title of progress section */
+.overallProgress h2 {
+    font-size: 35px;
+    margin-bottom: 1vh;
+    text-shadow: 1px 1px 2px #93b1af;
+}
+
+
+@media (max-width: 1050px) {
+    .content {
+        margin-left: 0;
+    }
+
+    /* Dashboard title spacing */
+    #yourDashboard {
+        text-align: center;
+    }
+    
+    /* Navigation bar section */
+    .navBarLeftContainer {
+        position: relative;
+        float: none;
+    }
+    
+    .navBar {
+        position: fixed;
+        left: auto;
+        top: 113vh;
+        width: 100%;
+        height: 8vh;
+        flex-direction: row;
+        justify-content: center;
+        padding-top: 20px;
+        overflow: hidden;
+    }
+
+    .navBar .databaes-icon {
+        display: none;
+    }
+    .navBar .home-icon {
+        width: 100px;
+        height: 100px;
+        margin: 55px;
+    }
+    .navBar .daily-log-icon {
+        width: 100px;
+        height: 100px;
+        margin: 55px;
+    }
+    .navBar .to-do-list-icon {
+        width: 100px;
+        height: 100px;
+        margin: 55px;
+    }
+    .navBar .projects-icon {
+        width: 100px;
+        height: 100px;
+        margin: 55px;
+    }
+    
+    /* Daily Log-in section */
+    /* Daily log visual (within the daily log section) */
+    /* --- Gives shape to the circles --- */
+    .dailyLogCircle {
+        height: 20px;
+        width: 20px;
+        background: #949494;
+        border-radius: 50%;
+        
+    }
+    
+    /* --- Setting up grid variables: 4 Sections --- */
+    /* Section: Log in streak "fire" pic and counter */
+    #logInStreakPic { grid-area: logInStreakPic; }
+    #dayStreak { grid-area: dayStreak; }
+    
+    
+    .dailyStreakCounterContainer {
+        display: grid;
+        grid-template-columns: 40% 40%;
+        grid-template-areas: 
+            'logInStreakPic dayStreak';
+        gap: 2em;
+        align-content: center;
+    }
+    
+    .dailyStreakCounterContainer #dayStreak {
+        width: 78.15px;
+        height: 118.5px;
+    }
+    
+    #logInStreakPic img{
+        height: 115px;
+        width: 86px;
+        margin-left: 1vw;
+    }
+    
+    #dailyStreak {
+        font-size: 670%;
+        text-align: center;
+        line-height: 95px;
+    }
+    
+    #dailyStreakTitle {
+        font-size: 100%;
+    }
+    
+    
+    /* Section: Daily log visual title */
+    #dailyJournalPic { grid-area: dailyJournalPic; }
+    .dailyLogsTitle { grid-area: dailyLogTitle; }
+    
+    .dailyLogVisualTitle {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr);
+        grid-template-areas: 
+            'dailyJournalPic dailyLogTitle';
+        gap: 1em;
+        /* width: 20%; */
+        align-items: center;
+        margin-left: 1.25em;
+    }
+    
+    /* Section: Daily streak days of the week icons */
+    #sundayAbbr { grid-area: sundAbbr; }
+    #mondayAbbr { grid-area: mondAbbr; }
+    #tuesdayAbbr {grid-area: tuesAbbr; }
+    #wednesdayAbbr { grid-area: wedAbbr; }
+    #thursdayAbbr { grid-area: thurAbbr; }
+    #fridayAbbr { grid-area: friAbbr; }
+    #saturdayAbbr { grid-area: satAbbr; }
+    
+    #sundayCircle { grid-area: sundCirc; }
+    #mondayCircle { grid-area: mondCirc; }
+    #tuesdayCircle { grid-area: tuesCirc; }
+    #wednesdayCircle { grid-area: wedCirc; }
+    #thursdayCircle { grid-area: thurCirc; }
+    #fridayCircle { grid-area: friCirc; }
+    #saturdayCircle { grid-area: satCirc; }
+    
+    .dailyStreakVisualContainer {
+        
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+    
+        grid-template-areas: 
+            'sundAbbr mondAbbr tuesAbbr wedAbbr thurAbbr friAbbr satAbbr'
+            'sundCirc mondCirc tuesCirc wedCirc thurCirc friCirc satCirc';
+        /* gap: 10px; */
+        /* padding-top: 1em; */
+        height: 100%;
+        width: 20%;
+        column-gap: 1em;
+        row-gap: 0.75em;
+        text-align: center;
+        align-content: center;
+        margin-left: 1em;
+    }
+    
+    .dailyStreakVisualContainer img {
+        align-self: center;
+        margin: auto;
+    }
+    
+    /* Section: Combine previous 3 sections to a single "Daily Log in" view */
+    .dailyStreakCounterContainer { grid-area: streakCounter; }
+    .dailyLogVisualTitle { grid-area: streakVisualTitle; }
+    .dailyStreakVisualContainer { grid-area: streakVisual; }
+    
+    .dailyLogContainer {
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        grid-template-areas: 
+            'streakCounter streakVisualTitle'
+            'streakCounter streakVisual';
+        gap: 10%;
+        row-gap: 5px;
+        border: 1px solid black;
+        border-radius: 25px;
+        padding: 20px;
+        margin-top: 20px;
+        margin-left: 8vw;
+        width: 570px;
+        height: 200.5px;
+    
+    
+        background-color: whitesmoke;
+        color: #2B3E55;
+    }
+    
+    
+    
+    /* Overall Progress Bar */
+    .progressBar {
+        width: 160px;
+        height: 160px;
+        background-color: rgb(63, 137, 132);
+        position: relative;
+        border-radius: 25px;
+    }
+    
+    .outer {
+        height: 160px;
+        width: 160px;
+        padding: 20px;
+        /* box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.1),
+                    -6px -6px 10px -1px rgba(255, 255, 255, 0.7); */
+        border-radius: 50%;
+    }
+    
+    .inner {
+        height: 120px;
+        width: 120px;
+        /* box-shadow: inset 4px 4px 6px -1px rgba(0, 0, 0, 0.2),
+                    inset -4px -4px 6px -1px rgba(255, 255, 255, 0.7),
+                    -0.5px -0.5px 0px rgba(255, 255, 255, 1),
+                    0.5px 0.5px 0px rgba(0, 0, 0, 0.15),
+                    0px 12px 10px -10px rgba(0, 0, 0, 0.05); */
+        border-radius: 50%;
+        justify-content: center;
+        display: flex;
+        align-items: center;
+    }
+    
+    #progressNumber {
+        font-weight: 600;
+        font-size: 150%;
+        color:azure;
+    }
+    
+    #movingProgress {
+        fill: none;
+        stroke: #BBEDEA;
+        stroke-width: 20px;
+        stroke-dasharray: 450;
+        stroke-dashoffset: 450;
+        animation: anim 2s linear forwards;
+    }
+    
+    #stationaryProgress {
+        fill: none;
+        stroke: #6BAD9D;
+        stroke-width: 20px;
+    }
+    
+    @keyframes anim {
+        100%{
+            stroke-dashoffset: 230;
+        }
+    }
+    
+    svg {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    
+    /* Tasks Overview */
+    iframe {
+        background-color: whitesmoke;
+        height: 30vh;
+        width: 90%;
+        border-radius: 25px;
+    }
+    
+    /* Recently viewed projects section */
+    /* Making the cards */
+    /* Card: Card Size, text size, formatting */
+    .projectCards {
+        box-shadow: 0px 4px 8px 0px rgba(238, 235, 235, 0.2);
+        transition: 0.3s;
+        width: 240px;
+        height: auto;
+        border-radius: 25px;
+        /* margin: 20px 20px 0px 20px; */
+    }
+    
+    .projectCards div h4 {
+        font-size: 110%;
+        margin-top: 10px;
+        margin-left: 5px;
+    }
+    
+    .projectCards div p {
+        font-size: 105%;
+        margin-top: 10px;
+        margin-left: 5px;
+    }
+    
+    .projectCards hr {
+        width: 85%;
+        margin: auto;
+        margin-top: 30px;
+        margin-bottom: 10px;
+    }
+    
+    .projectCards:hover {
+        box-shadow: 0px 8px 16px 0px rgba(230, 230, 230, 0.7);
+    }
+    
+    .individualProjectCardContainer {
+        padding: 2px 16px;
+    }
+    
+    .cardsLogJournalPic {
+        height: auto;
+        width: 35%;
+        margin: 10px 0px 0px 20px;
+    }
+    
+    /* Card: background and text color */
+    #brownBackCard {
+        background-color: #CAAF8E;
+        color: #5B4B34;
+    }
+    
+    #blueBackCard {
+        background-color: #3F8984;
+        color: #F6F1E2;
+    }
+    
+    #offWhiteBackCard {
+        background-color: #F6F1E2;
+        color: #2B3E55;
+    }
+    
+    #whiteBackCard {
+        background-color: #FFFFFF;
+        color: #2B3E55;
+    }
+    
+    /* Card: github and external link icons */
+    .externalIcon  {
+        height: auto;
+        width: 10%;
+        margin: 40px 0px 20px 20px;
+    }
+    
+    .githubIcon {
+        height: auto;
+        width: 10%;
+        margin: 40px 0px 20px 0px;
+    }
+    
+    
+    /* Completely remove the project cards */
+    .projectCardsContainer {
+        display: none;
+    }
+    
+    /* Dashboard content section */
+    .taskOverview { grid-area: taskOverview; }
+    .overallProgress { grid-area: overallProg; }
+    .projectCardsContainer { grid-area: projCardsCont;}
+    
+    
+    .dashboardContainer {
+        display: grid;
+        grid-template-areas: 
+            'taskOverview'
+            'overallProg';
+        gap: 20px;
+        margin-top: 20px;
+        justify-content: center;
+    }
+    
+    .dashboardContainer > .taskOverview {
+        margin-left: 4vw;
+    }
+    
+    /* Title of task overview section */
+    .taskOverview h2 {
+        font-size: 35px;
+        margin-bottom: 1vh;
+        text-shadow: 1px 1px 2px #93b1af;
+    }
+    
+    /* Title of progress section */
+    .overallProgress h2 {
+        font-size: 35px;
+        margin-bottom: 1vh;
+        text-shadow: 1px 1px 2px #93b1af;
+    }
+    
 }
