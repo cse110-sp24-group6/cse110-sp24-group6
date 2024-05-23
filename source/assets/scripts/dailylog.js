@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', function () {
 
     //Actual Calendar
@@ -70,10 +69,12 @@ document.addEventListener('DOMContentLoaded', function () {
     // Initialize the calendar
     updateCalendar();
 
+    
+    /* CSS DISPLAY IS BUGGY, js code works fine 
     // Function to show/hide month dropdown and position it under the month text
     function toggleMonthDropdown() {
         const monthText = document.getElementById('month');
-        const monthDropdown = document.getElementById('monthDropdown');
+        const monthDropdown = document.getElementById('month-dropdown');
 
         // Position month dropdown under the month text
         const rect = monthText.getBoundingClientRect();
@@ -91,9 +92,7 @@ document.addEventListener('DOMContentLoaded', function () {
         yearDropdown.style.left = rect.left + 'px';
         yearDropdown.style.top = rect.bottom;
     }
-
-
-    /* CSS DISPLAY IS BUGGY, js code works fine 
+    
     // Function to populate month and year select options
     function populateDropdowns() {
         const monthSelect = document.getElementById('monthSelect');
@@ -138,15 +137,15 @@ document.addEventListener('DOMContentLoaded', function () {
     // Initialize calendar and dropdowns
     populateDropdowns();
 
-        document.getElementById('month').addEventListener('click', toggleMonthDropdown);
+    document.getElementById('month').addEventListener('click', toggleMonthDropdown);
     document.getElementById('year').addEventListener('click', toggleYearDropdown);
     document.getElementById('monthSelect').addEventListener('change', updateCalendarFromDropdowns);
     document.getElementById('yearSelect').addEventListener('change', updateCalendarFromDropdowns);
     */
 
     // Attach event listeners
-    document.getElementById('prevMonth').addEventListener('click', prevMonth);
-    document.getElementById('nextMonth').addEventListener('click', nextMonth);
+    document.getElementById('prev-month').addEventListener('click', prevMonth);
+    document.getElementById('next-month').addEventListener('click', nextMonth);
 
 
 
@@ -157,7 +156,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function showLogEntryModal(dateStr, logEntry) {
-        const modal = document.getElementById('logEntryModal');
+        const modal = document.getElementById('log-entry-modal');
         const modalDate = document.getElementById('modal-date');
         const progressTextarea = document.getElementById('progress');
         const challengesTextarea = document.getElementById('challenges');
