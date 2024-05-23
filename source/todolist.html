@@ -153,11 +153,15 @@
         taskStickers.value = '';
         taskSubtasks.value = '';
       }
+      
       updateProgress();
     });
     
     deleteAllBtn.addEventListener('click', function() {
-      taskList.innerHTML = '';
+      while (taskList.hasChildNodes()) {
+        taskList.removeChild(taskList.firstChild);
+      }
+      
       updateProgress();
     });
   </script>
