@@ -25,15 +25,14 @@ html, body {
     padding: 20px;
 }
 
-/*if screen is smaller than 6 inches, switch to top/down view*/
-@media screen and (max-width: 6in) {
+/* if screen is smaller than 6 inches, switch to top/down view */
+@media screen and (max-width: 576px) {
     .container {
         flex-direction: column; /* Switch to top and bottom layout */
     }
 
     .left-side, .right-side {
         width: 100%; 
-        padding: 0px;
     }
 }
 
@@ -44,8 +43,8 @@ html, body {
     background-color: #d1a689;
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 0 auto;
+    box-shadow: 0px 4px 8px #a08371;
+    margin: auto;
     display: flex;
     flex-direction: column;
 }
@@ -93,7 +92,6 @@ html, body {
 .days .day {
     margin-top: 5%;
     font-size: 2vw;
-
     font-weight: bold;
 }
 
@@ -132,7 +130,7 @@ html, body {
 }
 
 /* Media query for smaller screens */
-@media screen and (max-width: 6in) {
+@media screen and (max-width: 576px) {
     .container {
         flex-direction: column; /* Switch to top and bottom layout */
     }
@@ -150,6 +148,7 @@ html, body {
         width: 100%;
     }
 }
+
 .modal-content {
     background-color: #fefefe;
     margin: 5% auto;
@@ -160,11 +159,13 @@ html, body {
     border-radius: 5px;
     box-shadow: 0 0 10px #b78a6c;
 }
+
 textarea {
     width: 100%; /* Make the textarea fill the width of its container */
     box-sizing: border-box; 
     margin-bottom: 10px; 
 }
+
 button {
     background-color: #468c7a; 
     color: white;
@@ -175,6 +176,7 @@ button {
     margin-right: 10px; 
     margin-bottom: 10px;
 }
+
 #modal-date{
     color:#c08c66
 }
@@ -185,6 +187,7 @@ button {
     font-size: 28px;
     font-weight: bold;
 }
+
 .close:hover,
 .close:focus {
     color: black;
@@ -200,15 +203,16 @@ button {
 
 
 /* ---MONTH/YEAR DROPDOWN (buggy display)--- */
+
+/*
 .dropdown {
     position: absolute;
     background-color: transparent; 
     border-radius: 5px;
-    z-index: 1; /* Ensure dropdown appears above other content */
+    z-index: 1; 
 }
 
-/* Hide the default dropdown arrow and text */
-/*
+
 .dropdown select {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -234,7 +238,7 @@ button {
 }
 */
 
-/* FOOTER STUFF*/
+/* FOOTER STUFF */
 .footer {
     background-color: #468c7a;
     color: white;
