@@ -12,7 +12,6 @@
     
 // })
 
-
 // // Navigation bar: Sticky
 // window.onscroll = function() {myFunction()};
 
@@ -36,7 +35,7 @@
 function updateDailyStreak() {
     const currentDate = new Date().toLocaleDateString();
     const lastVisit = localStorage.getItem('lastVisit');
-    let streak = parseInt(localStorage.getItem('streak'), 10);
+    let streak = parseInt(localStorage.getItem('streak'));
     if (lastVisit === currentDate) {
         document.getElementById('daily-streak').textContent = streak;
         console.log("Current Streak:", streak);
@@ -65,17 +64,41 @@ function updateDailyStreak() {
     const dayNames = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
     const checkedImgSrc = "../HTML_homepage_pics/checked_in.png";
     const uncheckedImgSrc = "../HTML_homepage_pics/unchecked.png";
-    dayNames.forEach(day => {
-      document.getElementById(day + 'Circle').src = uncheckedImgSrc;
-    });
+    const allowedDayNames = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']; // Valid day names
+
+    for (let i = 0; i < dayNames.length; i++) {
+      // Ensure dayNames[i] is within the allowedDayNames
+      if (allowedDayNames.includes(dayNames[i])) {
+          const elementId = dayNames[i] + '-circle';
+          const element = document.getElementById(elementId);
+          if (element) {
+              element.src = uncheckedImgSrc;
+          } else {
+              console.error(`Element with ID ${elementId} not found.`);
+          }
+      } else {
+          console.error(`Invalid day name: ${dayNames[i]}`);
+      }
+    }
     if (lastVisit) {
       const lastVisitDate = new Date(lastVisit);
       const yesterday = new Date();
       yesterday.setDate(currentDate.getDate() - 1);
       if (lastVisitDate.toLocaleDateString() === yesterday.toLocaleDateString() ||
         lastVisitDate.toLocaleDateString() === currentDate.toLocaleDateString()) {
-        for (let i = 0; i <= currentDay; i++) {
-          document.getElementById(dayNames[i] + 'Circle').src = checkedImgSrc;
+        for (let i = 0; i < dayNames.length; i++) {
+            // Ensure dayNames[i] is within the allowedDayNames
+            if (allowedDayNames.includes(dayNames[i])) {
+                const elementId = dayNames[i] + '-circle';
+                const element = document.getElementById(elementId);
+                if (element) {
+                    element.src = checkedImgSrc;
+                } else {
+                    console.error(`Element with ID ${elementId} not found.`);
+                }
+            } else {
+                console.error(`Invalid day name: ${dayNames[i]}`);
+            }
         }
       }
     }
