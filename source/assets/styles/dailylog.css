@@ -15,7 +15,7 @@ html, body {
 .left-side {
     width: 65%;
     background-color: #d1a689; 
-    padding: 20px; 
+    padding: 20px;
 
 }
 
@@ -38,26 +38,29 @@ html, body {
 
 /* ---CALENDAR--- */
 .calendar {
-    width: 90%;
-    aspect-ratio: 4 / 3;
+    /* aspect-ratio: 4 / 3; */
     background-color: #d1a689;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 8px #a08371;
-    margin: auto;
+    margin: 5% auto;
+    padding: 20px;
     display: flex;
     flex-direction: column;
+    border: 1px solid #b78a6c;
+    width: 90%;
+    max-width: 800px;
+    box-shadow: 0 0 10px #b78a6c;
 }
 
 .header {
     display: flex;
-    justify-content: space-between;
+    justify-content:space-between;
     align-items: center;
-    padding: 5% 7%;
-    background-color: #d1a689;
+    padding: 3% 5%;
+    background-color: #916f59;
     color: #fff;
     box-sizing: border-box;
-
 }
 
 .month,
@@ -89,6 +92,7 @@ html, body {
     box-sizing: border-box;
 }
 
+
 .days .day {
     margin-top: 5%;
     font-size: 2vw;
@@ -105,6 +109,7 @@ html, body {
 .dates .date:hover {
     background-color: #c08c66;
     color: #fff;
+    cursor: pointer;   
 }
 
 .dates .date.selected {
@@ -154,31 +159,74 @@ html, body {
     margin: 5% auto;
     padding: 20px;
     border: 1px solid #b78a6c;
-    width: 80%;
-    max-width: 500px;
+    width: 90%;
+    max-width: 800px;
     border-radius: 5px;
     box-shadow: 0 0 10px #b78a6c;
+    align-items: center;
 }
 
 textarea {
-    width: 100%; /* Make the textarea fill the width of its container */
+    width: 100%;
     box-sizing: border-box; 
-    margin-bottom: 10px; 
+    margin-bottom: 10px;
+    height: 120px;
+    padding: 10px;
+    border: 1px solid #b78a6c;
+    border-radius: 10px;
+    font-family: 'Arial', sans-serif; /* Change font type */
+    font-size: 1.1em;
+    line-height: 1.5;
+    resize: vertical;
+    background-color: #F4EDE3;
+    color: #674832;
+}
+textarea::placeholder {
+    color: #c08c66;
+    font-style: italic;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: #468c7a;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
 button {
     background-color: #468c7a; 
     color: white;
-    padding: 10px 20px;
+    padding: 15px 30px; /* Increase padding for larger button */
     border: none;
-    border-radius: 5px;
+    border-radius: 8px; /* Slightly more rounded corners */
     cursor: pointer;
-    margin-right: 10px; 
-    margin-bottom: 10px;
+    margin: 10px 0; /* Center alignment: remove right margin, add top and bottom margin */
+    font-size: 1.2em; /* Larger font size */
+    font-family: 'Arial', sans-serif; /* Ensure consistent font family */
+    display: block; /* Make the button a block element */
+    width: fit-content; /* Ensure the button fits its content */
+    margin-left: auto; /* Center alignment */
+    margin-right: auto; /*Center alignment */
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transition for hover and focus effects */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for a nicer look */
 }
 
-#modal-date{
-    color:#c08c66
+button:hover {
+    background-color: #356d5b; /* Slightly darker background on hover */
+    transform: translateY(-2px); /* Lift the button slightly on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover */
+}
+
+
+#modal-date {
+    color: #c08c66;
+    text-align: center;
+    font-size: 2em; /* Increase font size */
+    font-family: 'Arial', sans-serif; /* Use a nice, readable font */
+    font-weight: bold; /* Make the text bold */
+    margin-bottom: 20px; /* Add some space below the text */
+    padding: 10px; /* Add padding for better spacing */
+    /* border-bottom: 2px solid #b78a6c; Add a bottom border for a nice effect */
+    display: inline-block; /* Ensure the padding and border do not stretch the full width */
 }
 
 .close {
@@ -245,20 +293,20 @@ button {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    padding: 10px 0;
+    padding: 15px 0;
     position: fixed;
     bottom: 0;
     width: 100%;
     left: 50%;
     transform: translateX(-50%);
     box-sizing: border-box;
+    z-index: 1000; /* Ensure the footer is always on top */
 }
 
 .footer .nav-item img {
-    width: 24px;
-    height: 24px;
+    width: 28px;
+    height: 28px;
 }
-
 .footer p {
     margin: 0;
     font-size: 12px;
