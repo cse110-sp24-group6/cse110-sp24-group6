@@ -1,0 +1,74 @@
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+#daily-streak {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.welcome-text {
+  font-size: 18px;
+  font-weight: normal;
+  color: #666;
+}
+
+.daily-log-button {
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.daily-log-button:hover {
+  background-color: #3e8e41;
+}
+
+.projects-button {
+  background-color: #2196F3;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.projects-button:hover {
+  background-color: #1e7e6a;
+}
+
+.to-do-list-button {
+  background-color: #9c27b0;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.to-do-list-button:hover {
+  background-color: #7b1f8d;
+}
+
+.user-feed-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#upcoming-feed {
+  margin-bottom: 20px;
+}
+
+.upcoming-text {
+  font-size: 18px;
+}
