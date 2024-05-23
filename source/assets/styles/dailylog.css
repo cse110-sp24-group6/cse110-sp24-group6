@@ -43,7 +43,7 @@ html, body {
     background-color: #d1a689;
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0px 4px 8px #a08371;
+    box-shadow: 0 4px 8px #a08371;
     margin: auto;
     display: flex;
     flex-direction: column;
