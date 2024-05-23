@@ -1,6 +1,6 @@
 // boolean to check if a new project is being added
 var newProjectAdded = 0;
-// current project selected
+// keeps track of the current project selected from the menu-button
 var currProject = null;
 // åcreate an new project and open editing overlay using add button
 document.querySelector(".add-button").addEventListener("click", () => {
@@ -20,7 +20,6 @@ document.querySelector('#save-button').addEventListener("click", () => {
     }
     // adding a new project
     if(Boolean(newProjectAdded)){
-        // hides delete button, could create later a way for the user to x of the overlay but im not sure how to implement that for now 
         const strings = ["tan", "green", "cream"];
         const newProject = document.createElement('div');
         newProject.setAttribute("class", "project-element");
@@ -38,14 +37,14 @@ document.querySelector('#save-button').addEventListener("click", () => {
         insertPlace.querySelector(".projects-container").append(newProject);
         newProject.querySelector(".menu-button").addEventListener("click", editProject);
     }else{
-        // else is editing an existing project(aka currProject)
-        // changing values to what was set
+        // else is editing an existing project
+        // changing project's html values to inputed values
         currProject.querySelector("h3").innerHTML = `${document.querySelector("#input-project-name").value}`;
         currProject.querySelector("p").innerHTML= `${document.querySelector("#input-project-description").value}`;
         currProject.querySelector("a").href = `${document.querySelector('#input-github-link').value}`;
         insertPlace.querySelector(".projects-container").append(currProject);
     }
-    // clear values in overlay to reset it
+    // clear inputed values in overlay
     document.querySelector("#input-project-name").value = "";
     document.querySelector("#input-project-description").value = "";
     document.querySelector('#input-github-link').value = "";
@@ -61,7 +60,7 @@ function deleteProject(event) {
 // opening edit overlay when pressing menu button
 function editProject(event) {
     document.querySelector('.edit-overlay').style.display = "block";
-    // a new project is not being added/set to false
+    // a new project is not being added
     newProjectAdded = 0;
     document.querySelector("#delete-button").style.display = "block";
     // assigns the project's button to currProject
@@ -72,6 +71,7 @@ function editProject(event) {
     document.querySelector("#input-project-description").value = currProject.querySelector("p").innerHTML;
     document.querySelector('#input-github-link').value = currProject.querySelector("a").href;
 }
+//adds an event listener to the menu buttons
 document.addEventListener("DOMContentLoaded", () => {
     const buttons = document.querySelectorAll('.menu-button');
     buttons.forEach(button => {
