@@ -1,104 +1,217 @@
+
 document.addEventListener('DOMContentLoaded', function () {
-    const entryDate = document.getElementById('entry-date');
-    const progress = document.getElementById('progress');
-    const challenges = document.getElementById('challenges');
-    const learnings = document.getElementById('learnings');
-    const futurePlan = document.getElementById('future-plan');
-    const saveEntryButton = document.getElementById('save-entry');
-    const deleteAllButton = document.getElementById('delete-all');
-    const entriesContainer = document.getElementById('entries-container');
 
-    let editIndex = null;
+    //Actual Calendar
+    const monthNames = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+    ];
+    const daysOfWeek = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+    let currentDate = new Date();
+    let logs = {};
 
-    function loadEntries() {
-        const entries = JSON.parse(localStorage.getItem('entries')) || [];
-        entriesContainer.innerHTML = '';
-        entries.forEach((entry, index) => {
-            const entryDiv = document.createElement('div');
-            entryDiv.classList.add('entry');
-            entryDiv.innerHTML = `
-                <p><strong>Date:</strong> ${entry.date}</p>
-                <p><strong>Progress:</strong> ${entry.progress}</p>
-                <p><strong>Challenges:</strong> ${entry.challenges}</p>
-                <p><strong>Learnings:</strong> ${entry.learnings}</p>
-                <p><strong>Future Plan:</strong> ${entry.futurePlan}</p>
-                <button class="delete-entry" data-index="${index}">Delete</button>
-                <button class="edit-entry" data-index="${index}">Edit</button>
-            `;
-            entriesContainer.appendChild(entryDiv);
-        });
-    }
+    function updateCalendar() {
+        const monthText = document.getElementById('month');
+        const yearText = document.getElementById('year');
+        const datesContainer = document.getElementById('dates');
 
-    function saveEntry() {
-        const newEntry = {
-            date: entryDate.value,
-            progress: progress.value,
-            challenges: challenges.value,
-            learnings: learnings.value,
-            futurePlan: futurePlan.value,
-        };
+        const month = currentDate.getMonth();
+        const year = currentDate.getFullYear();
 
-        const entries = JSON.parse(localStorage.getItem('entries')) || [];
-        
-        if (editIndex !== null) {
-            entries[editIndex] = newEntry;
-            editIndex = null;
-            saveEntryButton.textContent = 'Save Entry';
-        } else {
-            entries.push(newEntry);
+        monthText.textContent = monthNames[month];
+        yearText.textContent = year;
+
+        // Clear previous dates
+        datesContainer.innerHTML = '';
+
+        // Get the first day of the month and number of days in the month
+        const firstDay = new Date(year, month, 1).getDay();
+        const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+        // Add padding for the first day
+        for (let i = 0; i < firstDay; i++) {
+            const emptyDiv = document.createElement('div');
+            emptyDiv.classList.add('date');
+            datesContainer.appendChild(emptyDiv);
         }
 
-        localStorage.setItem('entries', JSON.stringify(entries));
-        clearForm();
-        loadEntries();
+        // Add the days of the month
+        for (let day = 1; day <= daysInMonth; day++) {
+            const dateDiv = document.createElement('div');
+            dateDiv.classList.add('date');
+            dateDiv.textContent = day;
+
+            // Highlight today's date
+            const today = new Date();
+            if (day === today.getDate() && month === today.getMonth() && year === today.getFullYear()) {
+                dateDiv.classList.add('today');
+            }
+
+            // Highlight dates with logs
+            const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+            if (logs[dateStr]) {
+                dateDiv.classList.add('log-entry');
+            }
+
+            dateDiv.addEventListener("click", function() { selectDate(dateStr); });
+            datesContainer.appendChild(dateDiv);
+        }
     }
 
-    function deleteEntry(index) {
-        const entries = JSON.parse(localStorage.getItem('entries')) || [];
-        entries.splice(index, 1);
-        localStorage.setItem('entries', JSON.stringify(entries));
-        loadEntries();
+
+    function prevMonth() {
+        currentDate.setMonth(currentDate.getMonth() - 1);
+        updateCalendar();
+    }
+    function nextMonth() {
+        currentDate.setMonth(currentDate.getMonth() + 1);
+        updateCalendar();
+    }
+    // Initialize the calendar
+    updateCalendar();
+
+    // Function to show/hide month dropdown and position it under the month text
+    function toggleMonthDropdown() {
+        const monthText = document.getElementById('month');
+        const monthDropdown = document.getElementById('monthDropdown');
+
+        // Position month dropdown under the month text
+        const rect = monthText.getBoundingClientRect();
+        monthDropdown.style.left = rect.left + 'px';
+        monthDropdown.style.top = rect.bottom;
+    }
+
+    // Function to show/hide year dropdown and position it under the year text
+    function toggleYearDropdown() {
+        const yearText = document.getElementById('year');
+        const yearDropdown = document.getElementById('yearDropdown');
+
+        // Position year dropdown under the year text
+        const rect = yearText.getBoundingClientRect();
+        yearDropdown.style.left = rect.left + 'px';
+        yearDropdown.style.top = rect.bottom;
+    }
+
+
+    /* CSS DISPLAY IS BUGGY, js code works fine 
+    // Function to populate month and year select options
+    function populateDropdowns() {
+        const monthSelect = document.getElementById('monthSelect');
+        const yearSelect = document.getElementById('yearSelect');
+        
+        // Populate months
+        monthNames.forEach((month, index) => {
+            const option = document.createElement('option');
+            option.value = index;
+            option.textContent = month;
+            monthSelect.appendChild(option);
+        });
+
+        // Populate years from 2000 to current year
+        const currentYear = new Date().getFullYear();
+        for (let year = currentYear; year >= 2000; year--) {
+            const option = document.createElement('option');
+            option.value = year;
+            option.textContent = year;
+            yearSelect.appendChild(option);
+        }
+
+        // Set initial selected values
+        monthSelect.value = currentDate.getMonth();
+        yearSelect.value = currentDate.getFullYear();
+    }
+
+    // Function to update calendar based on dropdown selection
+    function updateCalendarFromDropdowns() {
+        const monthSelect = document.getElementById('monthSelect');
+        const yearSelect = document.getElementById('yearSelect');
+
+        const selectedMonth = parseInt(monthSelect.value);
+        const selectedYear = parseInt(yearSelect.value);
+
+        currentDate = new Date(selectedYear, selectedMonth);
+        updateCalendar();
+        toggleMonthDropdown();
+        toggleYearDropdown();
+    }
+
+    // Initialize calendar and dropdowns
+    populateDropdowns();
+
+        document.getElementById('month').addEventListener('click', toggleMonthDropdown);
+    document.getElementById('year').addEventListener('click', toggleYearDropdown);
+    document.getElementById('monthSelect').addEventListener('change', updateCalendarFromDropdowns);
+    document.getElementById('yearSelect').addEventListener('change', updateCalendarFromDropdowns);
+    */
+
+    // Attach event listeners
+    document.getElementById('prevMonth').addEventListener('click', prevMonth);
+    document.getElementById('nextMonth').addEventListener('click', nextMonth);
+
+
+
+    // Adds log based on day selected
+    function selectDate(dateStr) {
+        const logEntry = logs[dateStr] || null;
+        showLogEntryModal(dateStr, logEntry);
+    }
+
+    function showLogEntryModal(dateStr, logEntry) {
+        const modal = document.getElementById('logEntryModal');
+        const modalDate = document.getElementById('modal-date');
+        const progressTextarea = document.getElementById('progress');
+        const challengesTextarea = document.getElementById('challenges');
+        const learningsTextarea = document.getElementById('learnings');
+        const futurePlanTextarea = document.getElementById('future-plan');
+        const saveButton = document.getElementById('save-entry');
+        const deleteButton = document.getElementById('delete-entry');
+
+
+        const [year, month, day] = dateStr.split('-').map(Number);
+        const correctDate = new Date(Date.UTC(year, month-1, day+1)); // Use Date.UTC to avoid timezone issues
+
+        // Display the selected date
+        modalDate.textContent = correctDate.toDateString();
+
+        if (logEntry) {
+            progressTextarea.value = logEntry.progress || '';
+            challengesTextarea.value = logEntry.challenges || '';
+            learningsTextarea.value = logEntry.learnings || '';
+            futurePlanTextarea.value = logEntry.futurePlan || '';
+        } else {
+            progressTextarea.value = '';
+            challengesTextarea.value = '';
+            learningsTextarea.value = '';
+            futurePlanTextarea.value = '';
+        }
+
+        saveButton.onclick = function() {
+            const logInput = {
+                progress: progressTextarea.value.trim(),
+                challenges: challengesTextarea.value.trim(),
+                learnings: learningsTextarea.value.trim(),
+                futurePlan: futurePlanTextarea.value.trim()
+            };
+
+            if (logInput.progress || logInput.challenges || logInput.learnings || logInput.futurePlan) {
+                logs[dateStr] = logInput;
+            } else {
+                delete logs[dateStr];
+            }
+            updateCalendar();
+        };
+
+        deleteButton.onclick = function() {
+            delete logs[dateStr];
+            updateCalendar();
+        };
     }
 
     function deleteAllEntries() {
-        localStorage.removeItem('entries');
-        loadEntries();
-    }
-
-    function editEntry(index) {
-        const entries = JSON.parse(localStorage.getItem('entries')) || [];
-        const entry = entries[index];
-        entryDate.value = entry.date;
-        progress.value = entry.progress;
-        challenges.value = entry.challenges;
-        learnings.value = entry.learnings;
-        futurePlan.value = entry.futurePlan;
-        editIndex = index;
-        saveEntryButton.textContent = 'Update Entry';
-    }
-
-    function clearForm() {
-        entryDate.value = '';
-        progress.value = '';
-        challenges.value = '';
-        learnings.value = '';
-        futurePlan.value = '';
-    }
-
-    saveEntryButton.addEventListener('click', saveEntry);
-    deleteAllButton.addEventListener('click', deleteAllEntries);
-
-    entriesContainer.addEventListener('click', function (event) {
-        if (event.target.classList.contains('delete-entry')) {
-            const index = event.target.getAttribute('data-index');
-            deleteEntry(index);
-        }
-
-        if (event.target.classList.contains('edit-entry')) {
-            const index = event.target.getAttribute('data-index');
-            editEntry(index);
-        }
-    });
-
-    loadEntries();
+        logs = {};
+        updateCalendar();
+      }
+    
+      // Event listener for the delete all button
+      document.getElementById('delete-all').addEventListener('click', deleteAllEntries);
 });

@@ -3,24 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Journal Page</title>
+    <title>Calendar</title>
     <link rel="stylesheet" href="assets/styles/dailylog.css">
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h1>Yashil's Dev Journal: Your Daily Log</h1>
-        </div>
-        <div class="entry-form">
-            <input type="date" id="entry-date" placeholder="Date">
-            <textarea id="progress" placeholder="What progress did you make today?"></textarea>
-            <textarea id="challenges" placeholder="What challenges did you face?"></textarea>
-            <textarea id="learnings" placeholder="New things learnt..."></textarea>
-            <textarea id="future-plan" placeholder="What's your plan for tomorrow?"></textarea>
-            <button id="save-entry">Save Entry</button>
+        <div class="left-side">
+            <!--Calendar Stuff-->
+            <div class="calendar">
+                <div class="header">
+                    <span class="nav" id="prevMonth">&lt;</span>
+                    <span class="month" id="month"></span>
+                        <!-- FIX LATER
+                        <div class="dropdown" id="monthDropdown">
+                                <select id="monthSelect"></select>
+                            </div>
+                        -->
+                    <span class="year" id="year"></span>
+                        <!--
+                        <div class="dropdown" id="yearDropdown">
+                            <select id="yearSelect"></select>
+                        </div>
+                        -->
+                    <span class="nav" id="nextMonth">&gt;</span>
+                </div>
+                <div class="days">
+                    <div class="day">SUN</div>
+                    <div class="day">MON</div>
+                    <div class="day">TUE</div>
+                    <div class="day">WED</div>
+                    <div class="day">THU</div>
+                    <div class="day">FRI</div>
+                    <div class="day">SAT</div>
+                </div>
+                <div class="dates" id="dates"></div>
+            </div>
+
+            <div id="entries-container"></div>
+
             <button id="delete-all">Delete All Entries</button>
         </div>
-        <div id="entries-container"></div>
+        <div class="right-side">
+            <!--Log Entry Stuff-->
+            <div id="logEntryModal" class="modal">
+                <div class="modal-content">
+                    <h2 id="modal-date"></h2>
+                    <span class="close" onclick="document.getElementById('logEntryModal').style.display='none'">&times;</span>
+                    <textarea id="progress" rows="3" placeholder="What progress did you make today?"></textarea>
+                    <textarea id="challenges" rows="3" placeholder="What challenges did you face?"></textarea>
+                    <textarea id="learnings" rows="3" placeholder="New things learnt..."></textarea>
+                    <textarea id="future-plan" rows="3" placeholder="What's your plan for tomorrow?"></textarea>
+                    <button id="save-entry">Save Entry</button>
+                    <button id="delete-entry">Delete Entry</button>
+                </div>
+            </div>
+        </div>
+     
         <div class="footer">
             <div class="nav-item">
                 <a href="homepage.html">
@@ -42,7 +80,6 @@
                     <img src="assets/icons/projects-icon.png" alt="Projects">
                 </a>
             </div>
-            <p>Developer Diaries</p>
         </div>
     </div>
     <script src="assets/scripts/dailylog.js"></script>

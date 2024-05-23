@@ -1,105 +1,240 @@
-/* Base Styles */
-body {
+html, body {
     margin: 0;
+    padding: 0;
+    height: 100%;
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    overflow-x: hidden;
 }
 
+/* ---SPLITING SCREEN--- */
 .container {
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-    background-color: #f9f5e8;
+    display: flex;
+    height: 100%;
+}
+
+.left-side {
+    width: 65%;
+    background-color: #d1a689; 
+    padding: 20px; 
+
+}
+
+.right-side {
+    width: 30%;
+    background-color: #FFF ; 
     padding: 20px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    box-sizing: border-box;
-    padding-bottom: 80px; /* Added padding to prevent overlap */
 }
 
-.header h1 {
-    color: #a57b53;
-    text-align: center;
-    border-bottom: 1px solid #a57b53;
-    padding-bottom: 10px;
+/*if screen is smaller than 6 inches, switch to top/down view*/
+@media screen and (max-width: 6in) {
+    .container {
+        flex-direction: column; /* Switch to top and bottom layout */
+    }
+
+    .left-side, .right-side {
+        width: 100%; 
+        padding: 0px;
+    }
 }
 
-/* Form Styles */
-.entry-form {
+/* ---CALENDAR--- */
+.calendar {
+    width: 90%;
+    aspect-ratio: 4 / 3;
+    background-color: #d1a689;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    margin-bottom: 20px;
 }
 
-.entry-form input, .entry-form textarea {
-    padding: 10px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5% 7%;
+    background-color: #d1a689;
+    color: #fff;
+    box-sizing: border-box;
+
+}
+
+.month,
+.year {
+    font-size: 3vw;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.header .nav {
+    cursor: pointer;
+}
+
+.days, .dates {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    flex-grow: 1;
+    text-align: center;
+    padding-bottom: 5px;
+}
+
+
+.days .day, .dates .date {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5% 0;
+    color: #fff;
     box-sizing: border-box;
 }
 
-.entry-form button {
-    padding: 10px;
+.days .day {
+    margin-top: 5%;
+    font-size: 2vw;
+
+    font-weight: bold;
+}
+
+.dates .date {
+    background-color: #d1a689;
+    border: 1px solid #d1a689;
+    transition: background-color 0.3s, color 0.3s;
+    font-size: 2.5vw;
+}
+
+.dates .date:hover {
+    background-color: #c08c66;
+    color: #fff;
+}
+
+.dates .date.selected {
+    background-color: #674832;
+    border-radius: 50%;
+}
+
+.dates .date.today {
+    background-color: #468c7a;
+    color: #F4EDE3;
+    border-radius: 50%;
+    font-weight: bold;
+}
+
+.date.log-entry {
+    background-color: #b78a6c; 
+    border-radius: 10%;
+}
+
+/* LOG ENTRY BOX */
+.modal {
+    position: absolute; 
+}
+
+/* Media query for smaller screens */
+@media screen and (max-width: 6in) {
+    .container {
+        flex-direction: column; /* Switch to top and bottom layout */
+    }
+
+    .left-side, .right-side {
+        width: 100%; 
+        padding: 0; 
+    }
+
+    /* Adjust modal positioning for top-down layout */
+    .modal {
+        top: auto;
+        left: auto;
+        transform: none; 
+        width: 100%;
+    }
+}
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #b78a6c;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px #b78a6c;
+}
+textarea {
+    width: 100%; /* Make the textarea fill the width of its container */
+    box-sizing: border-box; 
+    margin-bottom: 10px; 
+}
+button {
+    background-color: #468c7a; 
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px; 
+    margin-bottom: 10px;
+}
+#modal-date{
+    color:#c08c66
+}
+
+.close {
+    color: #fefefe;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#delete-all {
+    margin-top: 20px;
+    margin-left: 20px;
+    padding: 10px 20px; 
+}
+
+
+/* ---MONTH/YEAR DROPDOWN (buggy display)--- */
+.dropdown {
+    position: absolute;
+    background-color: transparent; 
+    border-radius: 5px;
+    z-index: 1; /* Ensure dropdown appears above other content */
+}
+
+/* Hide the default dropdown arrow and text */
+/*
+.dropdown select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent; 
+    background-repeat: no-repeat;
+    background-position: right center; 
+    padding-right: 20px; 
+    color: transparent;
+    border: none;
+    outline: none; 
     font-size: 16px;
-    background-color: #468c7a;
-    color: white;
-    border: none;
-    border-radius: 5px;
     cursor: pointer;
 }
 
-.entry-form button:hover {
-    background-color: #35695c;
+.dropdown select option {
+    color: #000; 
+    background-color: white; 
 }
 
-/* Entries Styles */
-.entries-container .entry {
-    margin: 20px 0;
-    background-color: #fff;
-    padding: 15px;
-    border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0,0,0,0.1);
-    position: relative;
+.dropdown select option:hover {
+    background-color: #f0f0f0;
 }
+*/
 
-.entries-container .entry p {
-    margin: 5px 0;
-}
-
-.entries-container .entry button {
-    background-color: #ff6b6b;
-    border: none;
-    border-radius: 5px;
-    padding: 5px 10px;
-    color: white;
-    cursor: pointer;
-    margin-right: 5px;
-    position: relative;
-    top: 10px;
-    right: 10px;
-    font-size: 14px;
-}
-
-.entries-container .entry button:hover {
-    background-color: #e55b5b;
-}
-
-.entries-container .entry .edit-entry {
-    background-color: #468c7a;
-}
-
-.entries-container .entry .edit-entry:hover {
-    background-color: #35695c;
-}
-
-.entries-container .entry-separator {
-    height: 1px;
-    background-color: #ccc;
-    margin: 20px 0;
-}
-
-/* Footer Styles */
+/* FOOTER STUFF*/
 .footer {
     background-color: #468c7a;
     color: white;
