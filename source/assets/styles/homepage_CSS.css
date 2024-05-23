@@ -18,7 +18,6 @@
 } */
 
 .main-container {
-    margin-left: 0px;
     margin-top: 30vh;
     display: grid;
     grid-template-areas: 
@@ -33,15 +32,13 @@
 
 .main-container > h1 {
     text-align: center;
-    margin-top: 0px;
-    margin-bottom: 0px;
     font-size: 300%;
 }
 
 .main-container > button {
     text-align: center;
     padding: 1em 2em;
-    margin: 0em 2em;
+    margin: 0 2em;
 }
 
 /* Upcoming items and user activity */
