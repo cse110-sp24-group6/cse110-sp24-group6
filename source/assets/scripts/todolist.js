@@ -57,7 +57,8 @@ function createTaskElement(description) {
   deleteButton.textContent = 'Delete';
   
   checkbox.addEventListener('change', () => {
-    const taskIndex = tasks.findIndex(task => task.description === li.textContent);
+    const taskDescription = li.textContent;
+    const taskIndex = tasks.findIndex(task => task.description === taskDescription);
     if (taskIndex !== -1) {
       tasks[taskIndex].completed = checkbox.checked;
       updateProgress();
