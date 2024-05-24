@@ -9,6 +9,8 @@ const deleteAllBtn = document.getElementById('delete-all');
 const otter = document.getElementById('otter');
 const fish = document.getElementById('fish');
 const celebration = document.getElementById('celebration');
+const progressBar = document.getElementById('progress-bar');
+const progressText = document.getElementById('progress-text');
 
 let tasks = [];
 
@@ -40,15 +42,11 @@ function addTask(event) {
     taskStickers.value = '';
     taskSubtasks.value = '';
     
-    updateProgress();
-    
     if (tasks.length === tasks.length) {
       otter.style.display = 'none';
       fish.style.display = 'none';
       celebration.style.display = 'block';
     }
-    
-    updateProgress();
   }
 }
 
@@ -83,7 +81,9 @@ function createTaskElement(task) {
     updateProgress();
   });
   
-  deleteButton.addEventListener('click', deleteTask);
+  deleteButton.addEventListener('click', () => {
+    deleteTask(event);
+  });
   
   li.appendChild(checkbox);
   li.appendChild(deleteButton);
