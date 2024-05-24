@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
         "January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December"
     ];
-    const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    //const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     let currentDate = new Date();
     let logs = getLogsFromStorage();
 
@@ -164,7 +164,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function showLogEntryModal(dateStr, logEntry) {
-        const modal = document.getElementById('log-entry-modal');
+        //const modal = document.getElementById('log-entry-modal');
         const modalDate = document.getElementById('modal-date');
         const progressTextarea = document.getElementById('progress');
         const challengesTextarea = document.getElementById('challenges');

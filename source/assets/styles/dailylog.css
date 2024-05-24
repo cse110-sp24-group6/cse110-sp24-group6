@@ -130,7 +130,7 @@ html, body {
 }
 
 .date.log-entry {
-    /*background-color: #b78a6c;*/
+    /* background-color: #b78a6c; */
     color: #468c7a;
     border-radius: 10%;
 }
@@ -195,7 +195,7 @@ textarea::placeholder {
 textarea:focus {
     outline: none;
     border-color: #468c7a;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 50%);
 }
 
 button {
@@ -213,13 +213,13 @@ button {
     margin-left: auto; /* Center alignment */
     margin-right: auto; /*Center alignment */
     transition: background-color 0.3s, transform 0.3s; /* Smooth transition for hover and focus effects */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for a nicer look */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 20%); /* Add shadow for a nicer look */
 }
 
 button:hover {
     background-color: #356d5b; /* Slightly darker background on hover */
     transform: translateY(-2px); /* Lift the button slightly on hover */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 30%); /* Stronger shadow on hover */
 }
 
 
@@ -313,6 +313,7 @@ button:hover {
     width: 28px;
     height: 28px;
 }
+
 .footer p {
     margin: 0;
     font-size: 12px;
