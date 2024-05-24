@@ -1,10 +1,6 @@
 const taskList = document.getElementById('task-list');
 const taskInput = document.getElementById('task-input');
-const dueDate = document.getElementById('due-date');
-const taskDescription = document.getElementById('task-description');
-const taskTags = document.getElementById('task-tags');
-const taskStickers = document.getElementById('task-stickers');
-const taskSubtasks = document.getElementById('task-subtasks');
+const taskForm = document.getElementById('task-form');
 const deleteAllBtn = document.getElementById('delete-all');
 const otter = document.getElementById('otter');
 const fish = document.getElementById('fish');
@@ -24,35 +20,24 @@ function updateProgress() {
 function addTask(event) {
   event.preventDefault();
   
-  const task = taskInput.value.trim();
+  const taskDescription = taskInput.value.trim();
+  const taskElement = createTaskElement(taskDescription);
+  taskList.appendChild(taskElement);
   
-  if (task) {
-    const taskElement = createTaskElement(task);
-    taskList.appendChild(taskElement);
-    
-    tasks.push({ task, completed: false });
-    
-    updateProgress();
-    
-    taskInput.value = '';
-    
-    dueDate.value = '';
-    taskDescription.value = '';
-    taskTags.value = '';
-    taskStickers.value = '';
-    taskSubtasks.value = '';
-    
-    if (tasks.length === tasks.length) {
-      otter.style.display = 'none';
-      fish.style.display = 'none';
-      celebration.style.display = 'block';
-    }
-  }
+  tasks.push({ description: taskDescription, completed: false });
+  
+  updateProgress();
+  
+  taskInput.value = '';
+  
+  otter.style.display = 'none';
+  fish.style.display = 'none';
+  celebration.style.display = 'none';
 }
 
 function deleteTask(event) {
   const taskElement = event.target.parentNode;
-  const taskIndex = tasks.findIndex(task => task.task === taskElement.textContent);
+  const taskIndex = tasks.findIndex(task => task.description === taskElement.textContent);
   
   if (taskIndex !== -1) {
     tasks.splice(taskIndex, 1);
@@ -63,7 +48,7 @@ function deleteTask(event) {
   }
 }
 
-function createTaskElement(task) {
+function createTaskElement(description) {
   const li = document.createElement('li');
   const checkbox = document.createElement('input');
   const deleteButton = document.createElement('button');
@@ -72,19 +57,18 @@ function createTaskElement(task) {
   deleteButton.textContent = 'Delete';
   
   checkbox.addEventListener('change', () => {
-    if (checkbox.checked) {
-      tasks[taskIndex].completed = true;
-    } else {
-      tasks[taskIndex].completed = false;
+    const taskIndex = tasks.findIndex(task => task.description === li.textContent);
+    if (taskIndex !== -1) {
+      tasks[taskIndex].completed = checkbox.checked;
+      updateProgress();
     }
-    
-    updateProgress();
   });
   
   deleteButton.addEventListener('click', () => {
     deleteTask(event);
   });
   
+  li.textContent = description;
   li.appendChild(checkbox);
   li.appendChild(deleteButton);
   
