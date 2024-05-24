@@ -1,4 +1,12 @@
 document.addEventListener('DOMContentLoaded', function () {
+    
+    function getLogsFromStorage() { 
+        return JSON.parse(localStorage.getItem('logs'));
+    }
+
+    function saveLogsToStorage(logs) { 
+        return localStorage.setItem('logs',JSON.stringify(logs));
+    }
 
     //Actual Calendar
     const monthNames = [
@@ -7,7 +15,8 @@ document.addEventListener('DOMContentLoaded', function () {
     ];
     const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     let currentDate = new Date();
-    let logs = {};
+    let logs = getLogsFromStorage();
+
 
     function updateCalendar() {
         const monthText = document.getElementById('month');
@@ -16,7 +25,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const month = currentDate.getMonth();
         const year = currentDate.getFullYear();
-
         monthText.textContent = monthNames[month];
         yearText.textContent = year;
 
@@ -198,18 +206,21 @@ document.addEventListener('DOMContentLoaded', function () {
                 delete logs[dateStr];
             }
             updateCalendar();
+            saveLogsToStorage(logs); 
         };
 
         deleteButton.onclick = function() {
             delete logs[dateStr];
             updateCalendar();
+            saveLogsToStorage(logs); 
         };
     }
 
     function deleteAllEntries() {
         logs = {};
+        saveLogsToStorage(logs);
         updateCalendar();
-      }
+    }
     
       // Event listener for the delete all button
       document.getElementById('delete-all').addEventListener('click', deleteAllEntries);
