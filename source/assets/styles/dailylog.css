@@ -187,6 +187,7 @@ textarea {
     background-color: #F4EDE3;
     color: #674832;
 }
+
 textarea::placeholder {
     color: #c08c66;
     font-style: italic;
@@ -195,7 +196,7 @@ textarea::placeholder {
 textarea:focus {
     outline: none;
     border-color: #468c7a;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 50%);
+    box-shadow: 0 0 5px rgba(0, 0, 0 / 50%);
 }
 
 button {
@@ -207,19 +208,19 @@ button {
     cursor: pointer;
     margin: 10px 0; /* Center alignment: remove right margin, add top and bottom margin */
     font-size: 1.2em; /* Larger font size */
-    font-family: 'Arial', sans-serif; /* Ensure consistent font family */
+    font-family: Arial, sans-serif; /* Ensure consistent font family */
     display: block; /* Make the button a block element */
     width: fit-content; /* Ensure the button fits its content */
     margin-left: auto; /* Center alignment */
-    margin-right: auto; /*Center alignment */
+    margin-right: auto; /* Center alignment */
     transition: background-color 0.3s, transform 0.3s; /* Smooth transition for hover and focus effects */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 20%); /* Add shadow for a nicer look */
+    box-shadow: 0 4px 8px rgba(0, 0, 0 / 20%); /* Add shadow for a nicer look */
 }
 
 button:hover {
     background-color: #356d5b; /* Slightly darker background on hover */
     transform: translateY(-2px); /* Lift the button slightly on hover */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 30%); /* Stronger shadow on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0 / 30%); /* Stronger shadow on hover */
 }
 
 
@@ -227,10 +228,11 @@ button:hover {
     color: #c08c66;
     text-align: center;
     font-size: 2em; /* Increase font size */
-    font-family: 'Arial', sans-serif; /* Use a nice, readable font */
+    font-family: Arial, sans-serif; /* Use a nice, readable font */
     font-weight: bold; /* Make the text bold */
     margin-bottom: 20px; /* Add some space below the text */
     padding: 10px; /* Add padding for better spacing */
+
     /* border-bottom: 2px solid #b78a6c; Add a bottom border for a nice effect */
     display: inline-block; /* Ensure the padding and border do not stretch the full width */
 }
