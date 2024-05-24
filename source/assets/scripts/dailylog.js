@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const month = currentDate.getMonth();
         const year = currentDate.getFullYear();
-        monthText.textContent = monthNames[month];
+        monthText.textContent = monthNames[`${month}`];
         yearText.textContent = year;
 
         // Clear previous dates
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Highlight dates with logs
             const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-            if (logs[dateStr]) {
+            if (logs[`${dateStr}`]) {
                 dateDiv.classList.add('log-entry');
             }
 
@@ -159,7 +159,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Adds log based on day selected
     function selectDate(dateStr) {
-        const logEntry = logs[dateStr] || null;
+        const logEntry = logs[`${dateStr}`] || null;
         showLogEntryModal(dateStr, logEntry);
     }
 
@@ -201,16 +201,16 @@ document.addEventListener('DOMContentLoaded', function () {
             };
 
             if (logInput.progress || logInput.challenges || logInput.learnings || logInput.futurePlan) {
-                logs[dateStr] = logInput;
+                logs[`${dateStr}`] = logInput;
             } else {
-                delete logs[dateStr];
+                delete logs[`${dateStr}`];
             }
             updateCalendar();
             saveLogsToStorage(logs); 
         };
 
         deleteButton.onclick = function() {
-            delete logs[dateStr];
+            delete logs[`${dateStr}`];
             updateCalendar();
             saveLogsToStorage(logs); 
         };
