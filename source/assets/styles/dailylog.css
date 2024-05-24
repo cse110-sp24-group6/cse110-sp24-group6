@@ -180,7 +180,7 @@ textarea {
     padding: 10px;
     border: 1px solid #b78a6c;
     border-radius: 10px;
-    font-family: 'Arial', sans-serif; /* Change font type */
+    font-family: Arial, sans-serif; /* Change font type */
     font-size: 1.1em;
     line-height: 1.5;
     resize: vertical;
