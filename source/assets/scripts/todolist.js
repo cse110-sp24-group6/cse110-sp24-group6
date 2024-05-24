@@ -91,15 +91,20 @@ function createTaskElement(description) {
   deleteButton.textContent = 'Delete';
   
   // Add an event listener to the checkbox to update its status when clicked
-  checkbox.addEventListener('change', () => {
+checkbox.addEventListener('change', () => {
     const taskDescription = li.textContent;
     const taskIndex = tasks.findIndex(task => task.description === taskDescription);
     if (taskIndex !== -1) {
-      const task = tasks[taskIndex];
-      task.completed = checkbox.checked;
-      updateProgress();
+      const task = tasks[taskIndex]; // Ensure taskIndex is within bounds
+      if (typeof task !== 'undefined') {
+         task.completed = checkbox.checked;
+         updateProgress();
+      } else {
+         // Handle invalid task index
+         console.error('Invalid task index. Task not found.');
+      }
     }
-  });
+});
   
   // Add an event listener to the delete button to delete the task when clicked
   deleteButton.addEventListener('click', () => {
