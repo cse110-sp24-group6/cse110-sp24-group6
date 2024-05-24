@@ -26,7 +26,7 @@ html, body {
 }
 
 /* if screen is smaller than 6 inches, switch to top/down view */
-@media screen and (width <= 576px) and (max-width: 576px) {
+@media screen and (width <= 576px) {
     .container {
         flex-direction: column; /* Switch to top and bottom layout */
     }
@@ -141,7 +141,7 @@ html, body {
 }
 
 /* Media query for smaller screens */
-@media screen and (width <= 576px) and (max-width: 576px) {
+@media screen and (width <= 576px)  {
     .container {
         flex-direction: column; /* Switch to top and bottom layout */
     }
@@ -322,7 +322,7 @@ button:hover {
 }
 
 /* Responsive Styles */
-@media (width >= 600px) and (min-width: 600px) {
+@media (width >= 600px) {
     .container {
         max-width: 800px;
     }
@@ -332,7 +332,7 @@ button:hover {
     }
 }
 
-@media (width >= 768px) and (min-width: 768px) {
+@media (width >= 768px)  {
     .container {
         max-width: 1000px;
     }
