@@ -60,7 +60,8 @@ function createTaskElement(description) {
     const taskDescription = li.textContent;
     const taskIndex = tasks.findIndex(task => task.description === taskDescription);
     if (taskIndex !== -1) {
-      tasks[taskIndex]['completed'] = checkbox.checked;
+      const task = tasks[taskIndex];
+      task.completed = checkbox.checked;
       updateProgress();
     }
   });
