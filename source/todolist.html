@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Advanced To Do List</title>
+  <style>
+    #progress-container {
+      width: 100%;
+      background-color: #f3f3f3;
+      border: 1px solid #ccc;
+      position: relative;
+      height: 70px;
+      margin-bottom: 20px;
+    }
+    #progress-bar {
+      height: 100%;
+      width: 0;
+      background-color: #4caf50;
+    }
+    #otter, #fish, #celebration {
+      position: absolute;
+      height: 70px;
+      top: 0;
+      transition: left 0.3s;
+    }
+    #fish {
+      right: 0;
+    }
+    #celebration {
+      display: none;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    #progress-text {
+      position: absolute;
+      width: 100%;
+      text-align: center;
+      top: 0;
+      font-size: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Advanced To Do List</h1>
+  
+  <div id="progress-container">
+    <div id="progress-text"></div>
+    <div id="progress-bar"></div>
+    <img src="assets/icons/otter.png" id="otter" alt="Otter">
+    <img src="assets/icons/fish.png" id="fish" alt="Fish">
+    <img src="assets/icons/celebration.png" id="celebration" alt="Celebrating Otter">
+  </div>
+  
+  <form id="task-form">
+    <input type="text" id="task-input" placeholder="Enter task">
+    <input type="date" id="due-date">
+    <input type="text" id="task-description" placeholder="Enter task description">
+    <input type="text" id="task-tags" placeholder="Enter task tags">
+    <input type="text" id="task-stickers" placeholder="Enter task stickers">
+    <input type="number" id="task-subtasks" placeholder="Number of subtasks">
+    <button type="submit">Add Task</button>
+  </form>
+  
+  <ul id="task-list"></ul>
+  
+  <button id="delete-all">Delete All Tasks</button>
+  
+  <script>
+    const taskForm = document.getElementById('task-form');
+    const taskInput = document.getElementById('task-input');
+    const dueDate = document.getElementById('due-date');
+    const taskDescription = document.getElementById('task-description');
+    const taskTags = document.getElementById('task-tags');
+    const taskStickers = document.getElementById('task-stickers');
+    const taskSubtasks = document.getElementById('task-subtasks');
+    const taskList = document.getElementById('task-list');
+    const deleteAllBtn = document.getElementById('delete-all');
+    const progressText = document.getElementById('progress-text');
+    const progressBar = document.getElementById('progress-bar');
+    const otter = document.getElementById('otter');
+    const fish = document.getElementById('fish');
+    const celebration = document.getElementById('celebration');
+
+    function updateProgress() {
+      const tasks = taskList.children;
+      const totalTasks = tasks.length;
+      let completedTasks = 0;
+
+      for (let task of tasks) {
+        if (task.querySelector('input[type="checkbox"]').checked) {
+          completedTasks++;
+        }
+      }
+
+      const progress = totalTasks ? (completedTasks / totalTasks) * 100 : 0;
+      progressText.textContent = `Progress: ${progress.toFixed(2)}% (${completedTasks}/${totalTasks})`;
+      progressBar.style.width = progress + '%';
+      otter.style.left = progress + '%';
+
+      if (progress === 100) {
+        otter.style.display = 'none';
+        fish.style.display = 'none';
+        celebration.style.display = 'block';
+      } else {
+        otter.style.display = 'block';
+        fish.style.display = 'block';
+        celebration.style.display = 'none';
+      }
+    }
+
+    function deleteTask(event) {
+      event.target.parentNode.remove();
+      updateProgress();
+    }
+
+    taskForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const task = taskInput.value;
+      const date = dueDate.value;
+      const description = taskDescription.value;
+      const tags = taskTags.value;
+      const stickers = taskStickers.value;
+      const subtasks = taskSubtasks.value;
+      
+      if (task) {
+        const li = document.createElement('li');
+        const checkbox = document.createElement('input');
+        const deleteButton = document.createElement('button');
+        
+        checkbox.type = 'checkbox';
+        deleteButton.textContent = 'Delete';
+        deleteButton.addEventListener('click', deleteTask);
+        checkbox.addEventListener('change', updateProgress);
+        
+        li.innerHTML = `
+          <b>Task:</b> ${task} <br>
+          <b>Due Date:</b> ${date} <br>
+          <b>Description:</b> ${description} <br>
+          <b>Tags:</b> ${tags} <br>
+          <b>Stickers:</b> ${stickers} <br>
+          <b>Subtasks:</b> ${subtasks} <br>
+        `;
+        
+        li.appendChild(checkbox);
+        li.appendChild(deleteButton);
+        taskList.appendChild(li);
+        
+        taskInput.value = '';
+        dueDate.value = '';
+        taskDescription.value = '';
+        taskTags.value = '';
+        taskStickers.value = '';
+        taskSubtasks.value = '';
+      }
+      updateProgress();
+    });
+    
+    deleteAllBtn.addEventListener('click', function() {
+      taskList.innerHTML = '';
+      updateProgress();
+    });
+  </script>
+</body>
+</html>

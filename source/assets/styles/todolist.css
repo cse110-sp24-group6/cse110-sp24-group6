@@ -1,0 +1,46 @@
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.daily-streak {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.text {
+  font-size: 18px;
+  font-weight: normal;
+  color: #666;
+}
+
+.button {
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #3e8e41;
+}
+
+.user-feed-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#upcoming-feed {
+  margin-bottom: 20px;
+}
+
+.upcoming-text {
+  font-size: 18px;
+}
