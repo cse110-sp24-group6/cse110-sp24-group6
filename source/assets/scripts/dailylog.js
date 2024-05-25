@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     let currentDate = new Date();
     let logs = getLogsFromStorage();
+    // let logs = {}
 
 
     function updateCalendar() {
@@ -87,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function () {
     updateCalendar();
 
     
-    /* CSS DISPLAY IS BUGGY, js code works fine 
+    /* CSS DISPLAY IS BUGGY, js code works fine */
     // Function to show/hide month dropdown and position it under the month text
     function toggleMonthDropdown() {
         const monthText = document.getElementById('month');
@@ -111,31 +112,31 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     
     // Function to populate month and year select options
-    function populateDropdowns() {
-        const monthSelect = document.getElementById('monthSelect');
-        const yearSelect = document.getElementById('yearSelect');
+    // function populateDropdowns() {
+    //     const monthSelect = document.getElementById('monthSelect');
+    //     const yearSelect = document.getElementById('yearSelect');
         
-        // Populate months
-        monthNames.forEach((month, index) => {
-            const option = document.createElement('option');
-            option.value = index;
-            option.textContent = month;
-            monthSelect.appendChild(option);
-        });
+    //     // Populate months
+    //     monthNames.forEach((month, index) => {
+    //         const option = document.createElement('option');
+    //         option.value = index;
+    //         option.textContent = month;
+    //         monthSelect.appendChild(option);
+    //     });
 
-        // Populate years from 2000 to current year
-        const currentYear = new Date().getFullYear();
-        for (let year = currentYear; year >= 2000; year--) {
-            const option = document.createElement('option');
-            option.value = year;
-            option.textContent = year;
-            yearSelect.appendChild(option);
-        }
+    //     // Populate years from 2000 to current year
+    //     const currentYear = new Date().getFullYear();
+    //     for (let year = currentYear; year >= 2000; year--) {
+    //         const option = document.createElement('option');
+    //         option.value = year;
+    //         option.textContent = year;
+    //         yearSelect.appendChild(option);
+    //     }
 
-        // Set initial selected values
-        monthSelect.value = currentDate.getMonth();
-        yearSelect.value = currentDate.getFullYear();
-    }
+    //     // Set initial selected values
+    //     monthSelect.value = currentDate.getMonth();
+    //     yearSelect.value = currentDate.getFullYear();
+    // }
 
     // Function to update calendar based on dropdown selection
     function updateCalendarFromDropdowns() {
@@ -152,13 +153,13 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Initialize calendar and dropdowns
-    populateDropdowns();
+    // populateDropdowns();
 
     document.getElementById('month').addEventListener('click', toggleMonthDropdown);
     document.getElementById('year').addEventListener('click', toggleYearDropdown);
-    document.getElementById('monthSelect').addEventListener('change', updateCalendarFromDropdowns);
-    document.getElementById('yearSelect').addEventListener('change', updateCalendarFromDropdowns);
-    */
+    // document.getElementById('monthSelect').addEventListener('change', updateCalendarFromDropdowns);
+    // document.getElementById('yearSelect').addEventListener('change', updateCalendarFromDropdowns);
+    
 
     // Attach event listeners
     document.getElementById('prev-month').addEventListener('click', prevMonth);
