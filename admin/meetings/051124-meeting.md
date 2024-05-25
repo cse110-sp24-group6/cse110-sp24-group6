@@ -1,4 +1,4 @@
-# Brainstorming Meeting 2- Entire Team
+# CI/CD Pipeline and ADR- Entire Team
 ## Attendance
 
 - Yashil
@@ -13,7 +13,7 @@
 - Henry
 - Michelle
 
-**Time:** 
+**Time:** 5-6:30 pm
 
 **Location:** Zoom
 
@@ -24,6 +24,7 @@
 
 ## Summary
 
+Finished delegating tasks and worked on designing, ci/cd pipeline, ADRs and building an HTML skeleton for the website together.
 
 ## Action Items
 
