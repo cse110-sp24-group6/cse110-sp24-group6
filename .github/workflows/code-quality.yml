@@ -16,7 +16,7 @@ jobs:
     - name: Use Node.js $0
       uses: actions/setup-node@v1
       with:
-        node-version: $0
+        node-version: '20'
     - name: npm coverage
       run: |
         set -e
