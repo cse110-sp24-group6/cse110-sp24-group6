@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function () {
     updateCalendar();
 
     
-    /* CSS DISPLAY IS BUGGY, js code works fine */
+    /* CSS DISPLAY IS BUGGY, js code works fine 
     // Function to show/hide month dropdown and position it under the month text
     function toggleMonthDropdown() {
         const monthText = document.getElementById('month');
@@ -159,7 +159,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('year').addEventListener('click', toggleYearDropdown);
     // document.getElementById('monthSelect').addEventListener('change', updateCalendarFromDropdowns);
     // document.getElementById('yearSelect').addEventListener('change', updateCalendarFromDropdowns);
-    
+    */
 
     // Attach event listeners
     document.getElementById('prev-month').addEventListener('click', prevMonth);
