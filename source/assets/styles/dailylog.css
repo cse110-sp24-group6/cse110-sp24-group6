@@ -1,0 +1,342 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+/* ---SPLITING SCREEN--- */
+.container {
+    display: flex;
+    height: 100%;
+}
+
+.left-side {
+    width: 65%;
+    background-color: #d1a689; 
+    padding: 20px;
+
+}
+
+.right-side {
+    width: 35%;
+    background-color: #FFF ; 
+    padding: 20px;
+}
+
+/* if screen is smaller than 6 inches, switch to top/down view */
+@media screen and (width <= 576px) {
+    .container {
+        flex-direction: column; /* Switch to top and bottom layout */
+    }
+
+    .left-side, .right-side {
+        width: 100%; 
+    }
+}
+
+/* ---CALENDAR--- */
+.calendar {
+    /* aspect-ratio: 4 / 3; */
+    background-color: #d1a689;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 5% auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #b78a6c;
+    width: 90%;
+    max-width: 800px;
+    box-shadow: 0 0 10px #b78a6c;
+}
+
+.header {
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    padding: 3% 5%;
+    background-color: #916f59;
+    color: #fff;
+    box-sizing: border-box;
+}
+
+.month,
+.year {
+    font-size: 3vw;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.header .nav {
+    cursor: pointer;
+}
+
+.days, .dates {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    flex-grow: 1;
+    text-align: center;
+    padding-bottom: 5px;
+}
+
+
+.days .day, .dates .date {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5% 0;
+    color: #fff;
+    box-sizing: border-box;
+}
+
+
+.days .day {
+    margin-top: 5%;
+    font-size: 2vw;
+    font-weight: bold;
+}
+
+.dates .date {
+    background-color: #d1a689;
+    border: 1px solid #d1a689;
+    transition: background-color 0.3s, color 0.3s;
+    font-size: 2.5vw;
+}
+
+.dates .date:hover {
+    background-color: #c08c66;
+    color: #fff;
+    cursor: pointer; 
+    border-radius: 10%;   
+}
+
+.dates .date.selected {
+    background-color: #674832;
+    border-radius: 50%;
+}
+
+.dates .date:active {
+    background-color: #674832;
+}
+
+.dates .date.today {    
+    background-color: #468c7a;
+    color: #F4EDE3;
+    border-radius: 50%;
+    font-weight: bold;
+}
+
+.date.log-entry {
+    /* background-color: #b78a6c; */
+    color: #468c7a;
+    border-radius: 10%;
+}
+
+/* LOG ENTRY BOX */
+.modal {
+    position: absolute; 
+}
+
+/* Media query for smaller screens */
+@media screen and (width <= 576px)  {
+    .container {
+        flex-direction: column; /* Switch to top and bottom layout */
+    }
+
+    .left-side, .right-side {
+        width: 100%; 
+        padding: 0; 
+    }
+
+    /* Adjust modal positioning for top-down layout */
+    .modal {
+        top: auto;
+        left: auto;
+        transform: none; 
+        width: 100%;
+    }
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #b78a6c;
+    width: 90%;
+    max-width: 800px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px #b78a6c;
+    align-items: center;
+}
+
+textarea {
+    width: 100%;
+    box-sizing: border-box; 
+    margin-bottom: 10px;
+    height: 120px;
+    padding: 10px;
+    border: 1px solid #b78a6c;
+    border-radius: 10px;
+    font-family: Arial, sans-serif; /* Change font type */
+    font-size: 1.1em;
+    line-height: 1.5;
+    resize: vertical;
+    background-color: #F4EDE3;
+    color: #674832;
+}
+
+textarea::placeholder {
+    color: #c08c66;
+    font-style: italic;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: #468c7a;
+    box-shadow: 0 0 5px rgba(0 0 0 / 50%);
+}
+
+button {
+    background-color: #468c7a; 
+    color: white;
+    padding: 15px 30px; /* Increase padding for larger button */
+    border: none;
+    border-radius: 8px; /* Slightly more rounded corners */
+    cursor: pointer;
+    margin: 10px 0; /* Center alignment: remove right margin, add top and bottom margin */
+    font-size: 1.2em; /* Larger font size */
+    font-family: Arial, sans-serif; /* Ensure consistent font family */
+    display: block; /* Make the button a block element */
+    width: fit-content; /* Ensure the button fits its content */
+    margin-left: auto; /* Center alignment */
+    margin-right: auto; /* Center alignment */
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transition for hover and focus effects */
+    box-shadow: 0 4px 8px rgba(0 0 0 / 20%); /* Add shadow for a nicer look */
+}
+
+button:hover {
+    background-color: #356d5b; /* Slightly darker background on hover */
+    transform: translateY(-2px); /* Lift the button slightly on hover */
+    box-shadow: 0 8px 16px rgba(0 0 0 / 30%); /* Stronger shadow on hover */
+}
+
+
+#modal-date {
+    color: #c08c66;
+    text-align: center;
+    font-size: 2em; /* Increase font size */
+    font-family: Arial, sans-serif; /* Use a nice, readable font */
+    font-weight: bold; /* Make the text bold */
+    margin-bottom: 20px; /* Add some space below the text */
+    padding: 10px; /* Add padding for better spacing */
+
+    /* border-bottom: 2px solid #b78a6c; Add a bottom border for a nice effect */
+    display: inline-block; /* Ensure the padding and border do not stretch the full width */
+}
+
+.close {
+    color: #fefefe;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#delete-all {
+    margin-top: 20px;
+    margin-left: 20px;
+    padding: 10px 20px; 
+}
+
+
+/* ---MONTH/YEAR DROPDOWN (buggy display)--- 
+
+
+.dropdown {
+    position: absolute;
+    background-color: transparent; 
+    border-radius: 5px;
+    z-index: 1; 
+}
+
+
+.dropdown select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent; 
+    background-repeat: no-repeat;
+    background-position: right center; 
+    padding-right: 20px; 
+    color: transparent;
+    border: none;
+    outline: none; 
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.dropdown select option {
+    color: #000; 
+    background-color: white; 
+}
+
+.dropdown select option:hover {
+    background-color: #f0f0f0;
+}
+*/
+
+/* FOOTER STUFF */
+.footer {
+    background-color: #468c7a;
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 15px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    box-sizing: border-box;
+    z-index: 1000; /* Ensure the footer is always on top */
+}
+
+.footer .nav-item img {
+    width: 28px;
+    height: 28px;
+}
+
+.footer p {
+    margin: 0;
+    font-size: 12px;
+}
+
+/* Responsive Styles */
+@media (width >= 600px) {
+    .container {
+        max-width: 800px;
+    }
+    
+    .footer {
+        max-width: 800px;
+    }
+}
+
+@media (width >= 768px)  {
+    .container {
+        max-width: 1000px;
+    }
+    
+    .footer {
+        max-width: 1000px;
+    }
+}
