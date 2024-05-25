@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Developer Journal Home Page</title>
+        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- link to favicon-->
+        <!-- TODO-->
+        <link rel="icon" type="image/png" sizes="16x16" href="#">
+
+        <!-- Future link to CSS section -->
+        <link rel="stylesheet" href="../CSS_Files/updated_homepage_CSS.css">
+
+    </head>
+
+
+
+    <body>
+        <header>
+            <!-- Navigation bar-->
+            <div class="nav-bar-left-container">
+                <nav class="nav-bar">
+                    <img class="databaes-icon" src="../HTML_homepage_pics/databaes_logo.png" alt="databaes logo"/>
+                    <a id="home-page-button" class="page-icons" href="#home">
+                        <img class="home-icon" src="../HTML_homepage_pics/homepage_nav.png" alt="Homepage button"/>
+                    </a>
+                    <a id="daily-log-button" class="page-icons" href="./dailylog.html">
+                        <img class="daily-log-icon" src="../HTML_homepage_pics/daily_log_journal_white.png" alt="Daily Log Button"/>
+                    </a>
+                    <a id="to-do-list-button" class="page-icons" href="./todolist.html">
+                        <img class="to-do-list-icon" src="../HTML_homepage_pics/to-do_list_nav.png" alt="To-Do List button"/>
+                    </a>
+                    <a id="projects-button" class="page-icons" href="./projects.html">
+                        <img class="projects-icon" src="../HTML_homepage_pics/projects_folder.png" alt="Projects button"/>
+                    </a>
+                </nav>
+            </div>
+            
+            <!-- <section class="nav-bar">
+                <a id="daily-log-button" href="./dailylog.html">Daily Log</a>
+                <a id="projects-button" href="./projects.html">My Projects</a>
+                <a id="to-do-list-button" href="./todolist.html">To-Do List</a>
+                <a id="home-page-button" class="active" href="#home">Home</a>
+            </section> -->
+
+            <div class="content">
+                <div>
+                    <h1 id="your-dashboard">Your Dashboard</h1>
+                </div>
+                <!-- Daily Streak-->
+                <div class="daily-log-container">
+
+                    <section class="daily-streak-counter-container">
+                        <picture id="log-in-streak-pic">
+                            <source height="45px" srcset="../HTML_homepage_pics/daily_log_fire.png">
+                            <img src="../HTML_homepage_pics/daily_log_fire.png" alt="Log In Streak Pic">
+                        </picture>
+        
+                        <section id="day-streak">
+                            <h1 id="daily-streak">0</h1>
+                            <h4 id="daily-streak-title">Day Streak</h4>
+                        </section>
+                    </section>
+
+                    <section class="daily-log-visual-title">
+                        <!-- Daily log visual's title-->
+                        <picture id="daily-journal-pic">
+                            <source height="45px" srcset="../HTML_homepage_pics/daily_log_journal_darkblue.png">
+                            <img src="../HTML_homepage_pics/daily_log_journal.png" alt="Daily Log Journal Pic">
+                        </picture>
+                        <h1 id="daily-logs-title">Daily Logs</h1>
+                    </section>
+
+                    <!-- Used for the Sunday, Monday,... daily counter-->
+                    <section class="daily-streak-visual-container">
+                        <!-- Days of the week initials-->
+                        <p id="sunday-abbr"><b>S</b></p>
+                        <p id="monday-abbr"><b>M</b></p>
+                        <p id="tuesday-abbr"><b>T</b></p>
+                        <p id="wednesday-abbr"><b>W</b></p>
+                        <p id="thursday-abbr"><b>Th</b></p>
+                        <p id="friday-abbr"><b>F</b></p>
+                        <p id="saturday-abbr"><b>Sa</b></p>
+
+                        <!-- Days of the week "logged in" checker-->
+                        <img class="daily-log-circle" id="sunday-circle" src="../HTML_homepage_pics/unchecked.png" alt="Sunday Visual Circle"/>
+                        <img class="daily-log-circle" id="monday-circle" src="../HTML_homepage_pics/unchecked.png" alt="Monday Visual Circle"/>
+                        <img class="daily-log-circle" id="tuesday-circle" src="../HTML_homepage_pics/unchecked.png" alt="Tuesday Visual Circle"/>
+                        <img class="daily-log-circle" id="wednesday-circle" src="../HTML_homepage_pics/unchecked.png" alt="Wednesday Visual Circle"/>
+                        <img class="daily-log-circle" id="thursday-circle" src="../HTML_homepage_pics/unchecked.png" alt="Thursday Visual Circle"/>
+                        <img class="daily-log-circle" id="friday-circle" src="../HTML_homepage_pics/unchecked.png" alt="Friday Visual Circle"/>
+                        <img class="daily-log-circle" id="saturday-circle" src="../HTML_homepage_pics/unchecked.png" alt="Saturday Visual Circle"/>
+
+                    </section>
+                </div>
+            </div>
+
+        </header>
+
+        <main>
+            <!-- For future use (i.e. welcome screen on entrance to site)-->
+            <!-- Welcome message -->
+            <!-- <div class="mainContainer">
+                <h1 class="welcomeText">Welcome!</h1>
+                <br>
+                <h3 class="welcomeText">Click anywhere to continue...</h3>
+            </div> -->
+
+            <!-- Dashboard content -->
+            <div class="content">
+                <div class="dashboard-container">
+
+                    <!-- Task Overview (to-do list)-->
+                    <section class="task-overview">
+                        <h2>Today's Tasks Overview</h2>
+                        <iframe src="./todolist.html" title="Task Overview"></iframe>
+                    </section>
+        
+                    <!-- Overall progress-->
+                    <section class="overall-progress">
+                        <h2>Tasks Progress</h2>
+                        <div class="progress-bar">
+                            <div class="outer">
+                                <div class="inner">
+                                    <div id="progress-number">
+                                        5/10
+                                    </div>
+                                </div>
+                            </div>
+
+                            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px">
+                                <circle id="stationary-progress" cx="80" cy="80" r="70" stroke-linecap="round"></circle>
+                                <circle id="moving-progress" cx="80" cy="80" r="70" transform="rotate(-270)" transform-origin="center" stroke-linecap="round"></circle>
+                            </svg>
+                            <!-- <svg xmlns="http://www.w3.org/TR/SVG2" width="160px" height="160px">
+                                <circle class="innerCircle" id="stationary-progress" cx="80" cy="80" r="70" stroke-linecap="round"></circle>
+                                <circle class="outerCircle" id="moving-progress" cx="80" cy="80" r="70" transform="rotate(-270)" transform-origin="center" stroke-linecap="round"></circle>
+                            </svg> -->
+                        </div>
+                    </section>
+
+                    <!-- Recently viewed projects-->
+                    <section class="project-cards-container">
+                        <h2 id="project-cards-title">Most Recently Viewed Projects</h2>
+
+                        <div id="brown-back-card" class="project-cards">
+                            <img class="cards-log-journal-pic" src="../HTML_homepage_pics/daily_log_journal_brown.png" alt="Brown Daily Log Journal"/>
+                            <div class="individual-project-card-container">
+                                <h4><b>Project One</b></h4> 
+                                <p>Project description</p> 
+                            </div>
+                            <!-- (insert project progress bar)-->
+                            <hr>
+                            <a class="page-icons" href="#">
+                                <img class="external-icon" src="../HTML_homepage_pics/external_link_brown.png" alt="Brown External Link"/>
+                                <img class="github-icon" src="../HTML_homepage_pics/github_icon_brown.png" alt="Brown Github Icon"/>
+                            </a>
+                        </div>
+
+                        
+                        <div id="blue-back-card" class="project-cards">
+                            <img class="cards-log-journal-pic" src="../HTML_homepage_pics/daily_log_journal_white.png" alt="White Daily Log Journal"/>
+                            <div class="individual-project-card-container">
+                                <h4><b>Project Two</b></h4> 
+                                <p>Project description</p> 
+                            </div>
+                            <!-- (insert project progress bar)-->
+                            <hr>
+                            <a class="page-icons" href="#">
+                                <img class="external-icon" src="../HTML_homepage_pics/external_link_white.png" alt="White External Link"/>
+                                <img class="github-icon" src="../HTML_homepage_pics/github_icon_white.png" alt="White Github Icon"/>
+                            </a>
+                        </div>
+
+                        <div id="off-white-back-card" class="project-cards">
+                            <img class="cards-log-journal-pic" src="../HTML_homepage_pics/daily_log_journal_darkblue.png" alt="Dark Blue Daily Log Journal"/>
+                            <div class="individual-project-card-container">
+                                <h4><b>Project Three</b></h4> 
+                                <p>Project description: Proj 3</p> 
+                            </div>
+                            <!-- (insert project progress bar)-->
+                            <hr>
+                            <a class="page-icons" href="#">
+                                <img class="external-icon" src="../HTML_homepage_pics/external_link_darkblue.png" alt="Proj Three Dark Blue External Link"/>
+                                <img class="github-icon" src="../HTML_homepage_pics/github_icon_darkblue.png" alt="Proj Three Dark Blue Github Icon"/>
+                            </a>
+                        </div>
+
+                        <div id="white-back-card" class="project-cards">
+                            <img class="cards-log-journal-pic" src="../HTML_homepage_pics/daily_log_journal_darkblue.png" alt="Dark Blue Daily Log Journal"/>
+                            <div class="individual-project-card-container">
+                                <h4><b>Project Four</b></h4> 
+                                <p>Project description: Proj 4</p> 
+                            </div>
+                            <!-- (insert project progress bar)-->
+                            <hr>
+                            <a class="page-icons" href="#">
+                                <img class="external-icon" src="../HTML_homepage_pics/external_link_darkblue.png" alt="Proj Four Dark Blue External Link"/>
+                                <img class="github-icon" src="../HTML_homepage_pics/github_icon_darkblue.png" alt="Proj Four Dark Blue Github Icon"/>
+                            </a>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+
+
+        <footer>
+            <!-- add copyright: databaes thing -->
+        </footer>
+
+        <!-- homepage js script-->
+        <script defer src="../Homepage JS/homepagescript.js"></script>
+    </body>
+
+
+
+</html>
