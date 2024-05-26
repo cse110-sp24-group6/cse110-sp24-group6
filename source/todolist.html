@@ -55,9 +55,13 @@
     <input type="text" id="task-input" placeholder="Enter task">
     <input type="date" id="due-date">
     <input type="text" id="task-description" placeholder="Enter task description">
-    <input type="text" id="task-tags" placeholder="Enter task tags">
-    <input type="text" id="task-stickers" placeholder="Enter task stickers">
-    <input type="number" id="task-subtasks" placeholder="Number of subtasks">
+    <select id="task-tags">
+      <option value="Project">Project</option>
+      <option value="Learning">Learning</option>
+      <option value="Misc">Misc</option>
+      <option value="Fun">Fun</option>
+      <option value="Debugging">Debugging</option>
+    </select>
     <button type="submit">Add Task</button>
   </form>
   
@@ -71,8 +75,6 @@
     const dueDate = document.getElementById('due-date');
     const taskDescription = document.getElementById('task-description');
     const taskTags = document.getElementById('task-tags');
-    const taskStickers = document.getElementById('task-stickers');
-    const taskSubtasks = document.getElementById('task-subtasks');
     const taskList = document.getElementById('task-list');
     const deleteAllBtn = document.getElementById('delete-all');
     const progressText = document.getElementById('progress-text');
@@ -119,9 +121,7 @@
       const task = taskInput.value;
       const date = dueDate.value;
       const description = taskDescription.value;
-      const tags = taskTags.value;
-      const stickers = taskStickers.value;
-      const subtasks = taskSubtasks.value;
+      const tag = taskTags.value;
       
       if (task) {
         const li = document.createElement('li');
@@ -137,9 +137,7 @@
           <b>Task:</b> ${task} <br>
           <b>Due Date:</b> ${date} <br>
           <b>Description:</b> ${description} <br>
-          <b>Tags:</b> ${tags} <br>
-          <b>Stickers:</b> ${stickers} <br>
-          <b>Subtasks:</b> ${subtasks} <br>
+          <b>Tag:</b> ${tag} <br>
         `;
         
         li.appendChild(checkbox);
@@ -150,16 +148,29 @@
         dueDate.value = '';
         taskDescription.value = '';
         taskTags.value = '';
-        taskStickers.value = '';
-        taskSubtasks.value = '';
-      }
-      updateProgress();
-    });
+        
+        updateProgress();
+        
+        // update the progress
+        updateProgress();
+        
+        // reset the form
+        taskInput.focus();
+        
+      
+}
     
     deleteAllBtn.addEventListener('click', function() {
       taskList.innerHTML = '';
-      updateProgress();
-    });
-  </script>
+      
+       updateProgress();
+      
+       // reset the form
+       taskInput.focus();
+      
+
+      
+});
+)</script>
 </body>
 </html>
