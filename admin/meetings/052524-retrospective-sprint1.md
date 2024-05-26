@@ -1,4 +1,4 @@
-# Agile Retrospective Meeting- Spring 1
+# Agile Retrospective Meeting- Sprint 1
 **Location:** Zoom
 
 **Time:** 6-6:30 pm

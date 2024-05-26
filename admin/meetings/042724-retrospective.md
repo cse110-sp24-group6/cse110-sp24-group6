@@ -1,7 +1,5 @@
 # Agile Retrospective Meeting 1 - 04/27/24 
 
-# Agile Retrospective Meeting 1 - 04/27/24 
-n
 **Location:** Zoom
 
 **Time:** 5-5:30 pm
