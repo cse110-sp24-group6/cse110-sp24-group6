@@ -1,5 +1,4 @@
-/*Defaulting the colors*/
-
+/* Defaulting the colors */
 * {
   margin: 0;
   padding: 0;
@@ -35,9 +34,6 @@ h2
 }
 
 #progress-container {
-  
-  margin-top: 30px;
-  margin-bottom: 30px;
   background-color: #fefefe;
   margin: 5% auto;
   padding: 20px;
@@ -59,20 +55,24 @@ h2
   width: 0;
   background-color: #4caf50;
 }
+
 #otter, #fish, #celebration {
   position: absolute;
   height: 70px;
   top: 0;
   transition: left 0.3s;
 }
+
 #fish {
   right: 0;
 }
+
 #celebration {
   display: none;
   left: 50%;
   transform: translateX(-50%);
 }
+
 #progress-text {
   position: absolute;
   width: 100%;
@@ -81,6 +81,7 @@ h2
   font-size: 20px;
   font-weight: bold;
 }
+
 .daily-streak {
   font-size: 24px;
   font-weight: bold;
@@ -113,9 +114,6 @@ h2
 
 #task-form
 {
-  margin-left: 8vw;
-  margin-top: 10px;
-  margin-bottom: 30px;
   background-color: #fefefe;
   margin: 5% auto;
   padding: 20px;
