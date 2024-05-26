@@ -1,47 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Advanced To Do List</title>
-  <style>
-    #progress-container {
-      width: 100%;
-      background-color: #f3f3f3;
-      border: 1px solid #ccc;
-      position: relative;
-      height: 70px;
-      margin-bottom: 20px;
-    }
-    #progress-bar {
-      height: 100%;
-      width: 0;
-      background-color: #4caf50;
-    }
-    #otter, #fish, #celebration {
-      position: absolute;
-      height: 70px;
-      top: 0;
-      transition: left 0.3s;
-    }
-    #fish {
-      right: 0;
-    }
-    #celebration {
-      display: none;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-    #progress-text {
-      position: absolute;
-      width: 100%;
-      text-align: center;
-      top: 0;
-      font-size: 20px;
-      font-weight: bold;
-    }
-  </style>
+  <title>To-Do List</title>
+  <link rel="stylesheet" href="assets/styles/todolist.css">
 </head>
 <body>
-  <h1>Advanced To Do List</h1>
+  <h1>To-Do List</h1>
   
   <div id="progress-container">
     <div id="progress-text"></div>
@@ -51,6 +15,7 @@
     <img src="assets/icons/celebration.png" id="celebration" alt="Celebrating Otter">
   </div>
   
+  <h2>Add a Task</h2>
   <form id="task-form">
     <input type="text" id="task-input" placeholder="Enter task">
     <input type="date" id="due-date">
@@ -171,6 +136,6 @@
 
       
 });
-)</script>
+}) </script>
 </body>
 </html>
