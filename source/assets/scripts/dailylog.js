@@ -25,7 +25,13 @@ document.addEventListener('DOMContentLoaded', function () {
     // const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     let currentDate = new Date();
     let logs = getLogsFromStorage();
-    // let logs = {}
+    
+    // Automatically select today's log 
+    const todayMonth = currentDate.getMonth(); 
+    const todayYear = currentDate.getFullYear();
+    const todayDay = currentDate.getDate(); 
+    const todayStr = `${todayYear}-${String(todayMonth + 1).padStart(2, '0')}-${String(todayDay).padStart(2, '0')}`;
+    selectDate(todayStr);
 
 
     function updateCalendar() {
