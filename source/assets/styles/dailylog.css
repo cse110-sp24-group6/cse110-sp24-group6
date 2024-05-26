@@ -250,10 +250,14 @@ button:hover {
     cursor: pointer;
 }
 
-#delete-all {
-    margin-top: 20px;
-    margin-left: 20px;
-    padding: 10px 20px; 
+.buttons { 
+    margin: 0 !important; 
+    display: flex;
+    justify-content: space-between;
+}
+
+#delete-all, #today, #save-entry, #delete-entry { 
+    margin: 0 !important;
 }
 
 
