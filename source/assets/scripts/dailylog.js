@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     
+
     function getLogsFromStorage() { 
         let logs = localStorage.getItem('logs');
         let returnLog;
@@ -93,6 +94,7 @@ document.addEventListener('DOMContentLoaded', function () {
         currentDate.setMonth(currentDate.getMonth() + 1);
         updateCalendar();
     }
+
     // Selects today's log and goes to corresponding month/year view 
     function today() { 
         currentDate = new Date();
@@ -188,6 +190,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const logEntry = logs[`${dateStr}`] || null;
         showLogEntryModal(dateStr, logEntry);
     }
+ 
 
     function showLogEntryModal(dateStr, logEntry) {
         //const modal = document.getElementById('log-entry-modal');
@@ -241,6 +244,17 @@ document.addEventListener('DOMContentLoaded', function () {
             saveLogsToStorage(logs); 
         };
     }
+
+    // TODO: Attempted code to try to fix the sudden stop of the background (not working)
+    var modal = document.getElementById("log-entry-modal");
+    var leftSide = document.getElementById("left-side");
+    modal.addEventListener("scroll", function() {
+        leftSide.scrollTop = modal.scrollTop;
+    });
+    leftSide.addEventListener("scroll", function() {
+        modal.scrollTop = leftSide.scrollTop;
+    });
+
 
     function deleteAllEntries() {
         logs = {};
