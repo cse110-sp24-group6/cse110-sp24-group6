@@ -10,6 +10,8 @@
 
         <!-- Future link to CSS section -->
         <link rel="stylesheet" href="assets/styles/updated_homepage_CSS.css">
+        <!-- Project Card Custom Element -->
+		<script src="assets/scripts/ProjectCard.js" type="module"></script>
 
     </head>
 
@@ -142,63 +144,7 @@
                     <!-- Recently viewed projects-->
                     <section class="project-cards-container">
                         <h2 id="project-cards-title">Most Recently Viewed Projects</h2>
-
-                        <div id="brown-back-card" class="project-cards">
-                            <img class="cards-log-journal-pic" src="assets/HTML_homepage_pics/daily_log_journal_brown.png" alt="Brown Daily Log Journal"/>
-                            <div class="individual-project-card-container">
-                                <h4><b>Project One</b></h4> 
-                                <p>Project description</p> 
-                            </div>
-                            <!-- (insert project progress bar)-->
-                            <hr>
-                            <a class="page-icons" href="#">
-                                <img class="external-icon" src="assets/HTML_homepage_pics/external_link_brown.png" alt="Brown External Link"/>
-                                <img class="github-icon" src="assets/HTML_homepage_pics/github_icon_brown.png" alt="Brown Github Icon"/>
-                            </a>
-                        </div>
-
-                        
-                        <div id="blue-back-card" class="project-cards">
-                            <img class="cards-log-journal-pic" src="assets/HTML_homepage_pics/daily_log_journal_white.png" alt="White Daily Log Journal"/>
-                            <div class="individual-project-card-container">
-                                <h4><b>Project Two</b></h4> 
-                                <p>Project description</p> 
-                            </div>
-                            <!-- (insert project progress bar)-->
-                            <hr>
-                            <a class="page-icons" href="#">
-                                <img class="external-icon" src="assets/HTML_homepage_pics/external_link_white.png" alt="White External Link"/>
-                                <img class="github-icon" src="assets/HTML_homepage_pics/github_icon_white.png" alt="White Github Icon"/>
-                            </a>
-                        </div>
-
-                        <div id="off-white-back-card" class="project-cards">
-                            <img class="cards-log-journal-pic" src="assets/HTML_homepage_pics/daily_log_journal_darkblue.png" alt="Dark Blue Daily Log Journal"/>
-                            <div class="individual-project-card-container">
-                                <h4><b>Project Three</b></h4> 
-                                <p>Project description: Proj 3</p> 
-                            </div>
-                            <!-- (insert project progress bar)-->
-                            <hr>
-                            <a class="page-icons" href="#">
-                                <img class="external-icon" src="assets/HTML_homepage_pics/external_link_darkblue.png" alt="Proj Three Dark Blue External Link"/>
-                                <img class="github-icon" src="assets/HTML_homepage_pics/github_icon_darkblue.png" alt="Proj Three Dark Blue Github Icon"/>
-                            </a>
-                        </div>
-
-                        <div id="white-back-card" class="project-cards">
-                            <img class="cards-log-journal-pic" src="assets/HTML_homepage_pics/daily_log_journal_darkblue.png" alt="Dark Blue Daily Log Journal"/>
-                            <div class="individual-project-card-container">
-                                <h4><b>Project Four</b></h4> 
-                                <p>Project description: Proj 4</p> 
-                            </div>
-                            <!-- (insert project progress bar)-->
-                            <hr>
-                            <a class="page-icons" href="#">
-                                <img class="external-icon" src="assets/HTML_homepage_pics/external_link_darkblue.png" alt="Proj Four Dark Blue External Link"/>
-                                <img class="github-icon" src="assets/HTML_homepage_pics/github_icon_darkblue.png" alt="Proj Four Dark Blue Github Icon"/>
-                            </a>
-                        </div>
+                        <div class="project-cards-grid"></div>
                     </section>
                 </div>
             </div>

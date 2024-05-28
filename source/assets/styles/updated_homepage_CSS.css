@@ -30,6 +30,7 @@ body {
 .content {
     width: auto;
     margin-left: 5%;
+    padding-bottom: 5%;
 }
 
 /* Make all page icons that are clickable not have underline */
@@ -58,6 +59,7 @@ body {
     flex-direction: column;
     align-items: center;
     padding-top: 20px;
+    position:fixed;
 }
 
 .nav-bar .databaes-icon {
@@ -378,7 +380,7 @@ iframe {
     background-color: #FFF;
     color: #2B3E55;
     grid-area: whiteBack;
-}
+}*/
 
 /* Card: github and external link icons */
 .external-icon  {
@@ -401,15 +403,18 @@ iframe {
 }
 
 .project-cards-container {
-    display: grid;
-    grid-template-columns: 20% 20% 20% 20%;
+    /*display: grid;
     grid-template-areas: 
         'cardsTitle cardsTitle .            .'
         'brownBack  blueBack   offWhiteBack whiteBack';
     gap: 3vw;
-    row-gap: 1vh;
-    justify-content: center;
+    row-gap: 1vh;*/
     grid-area: projCardsCont;
+}
+.project-cards-grid{
+    display:grid;
+    grid-template-columns: repeat(4, 20%);
+    margin-top: 15px;
 }
 
 /* Dashboard content section */
@@ -644,9 +649,9 @@ iframe {
     }
     
     /* Completely remove the project cards */
-    .project-cards-container {
+    /*.project-cards-container {
         display: none;
-    }
+    }*/
     
     /* Dashboard content section */
     .task-overview { grid-area: task-overview; }
