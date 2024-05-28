@@ -4,13 +4,14 @@ html, body {
     height: 100%;
     font-family: Arial, sans-serif;
     overflow-x: hidden;
+    background-color: #d1a689; 
 }
 
 /* ---SPLITING SCREEN--- */
 .container {
     display: flex;
     height: 100%;
-    background-color: #fff; 
+    
 }
 
 .left-side {
@@ -57,13 +58,13 @@ html, body {
 /* ---PAGE TITLE--- */
 h1 {
     text-align: center;
-    color: #d1a689;
+    color: #fff;
     font-size: 30px;
 }
 
 hr {
-    background-color: #d1a689;
-    border-color: #d1a689;
+    background-color: #fff;
+    border-color: #fff;
 }
 
 /* ---CALENDAR--- */

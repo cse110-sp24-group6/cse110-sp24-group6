@@ -245,26 +245,6 @@ document.addEventListener('DOMContentLoaded', function () {
         };
     }
 
-    const leftSide = document.querySelector('.left-side');
-    const rightSide = document.querySelector('.right-side');
-
-    let isScrolling = false;
-
-    function syncScroll(source, target) {
-        if (!isScrolling) {
-            isScrolling = true;
-            target.scrollLeft = source.scrollLeft;
-            setTimeout(() => isScrolling = false, 10); // small delay to prevent infinite loop
-        }
-    }
-
-    leftSide.addEventListener('scroll', () => syncScroll(leftSide, rightSide));
-    rightSide.addEventListener('scroll', () => syncScroll(rightSide, leftSide));
-    function deleteAllEntries() {
-        logs = {};
-        saveLogsToStorage(logs);
-        updateCalendar();
-    }
     
       // Event listener for the delete all button
       document.getElementById('delete-all').addEventListener('click', deleteAllEntries);
