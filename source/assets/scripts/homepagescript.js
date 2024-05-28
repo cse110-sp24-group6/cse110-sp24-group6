@@ -72,6 +72,8 @@ function init(){
   addProject(green_proj_data);
   addProject(cream_proj_data);
   addProject(white_proj_data);
+  addProject(green_proj_data);
+  addProject(cream_proj_data);
 }
 
 document.addEventListener('DOMContentLoaded', init);
