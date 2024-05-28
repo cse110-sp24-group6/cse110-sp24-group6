@@ -83,7 +83,7 @@ hr {
     box-shadow: 0 0 10px #b78a6c;
 }
 
-/* Stuff in the bar (month, year, prev & next arrows)*/
+/* Stuff in the bar (month, year, prev & next arrows) */
 .header {
     display: flex;
     justify-content:space-between;
@@ -114,7 +114,7 @@ hr {
     padding-bottom: 5px;
 }
 
-/* Display of space inbetween numbers*/
+/* Display of space inbetween numbers */
 .days .day, .dates .date {
     display: flex;
     justify-content: center;
@@ -235,10 +235,8 @@ button {
     font-size: 1.2em;
     font-family: Arial, sans-serif; 
     display: inline-block;
-    margin: 10px auto; 
     transition: background-color 0.3s, transform 0.3s; 
     box-shadow: 0 4px 8px rgba(0 0 0 / 20%); 
-    display: inline-block;
     align-items: center;
     justify-content: flex-start;
 }
