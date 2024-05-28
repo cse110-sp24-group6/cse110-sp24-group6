@@ -26,8 +26,10 @@ document.addEventListener('DOMContentLoaded', function () {
         } 
         // Resets background of today's date to its intended styling 
         let today = document.querySelector('.date.today'); 
-        today.setAttribute('style', 'background-color: #468c7a; color: #F4EDE3; border-radius: 50%;font-weight: bold;');
-
+        if (today) { 
+            today.setAttribute('style', 'background-color: #468c7a; color: #F4EDE3; border-radius: 50%;font-weight: bold;');
+        }
+        
     }
 
     //Actual Calendar
