@@ -245,17 +245,21 @@ document.addEventListener('DOMContentLoaded', function () {
         };
     }
 
-    // TODO: Attempted code to try to fix the sudden stop of the background (not working)
-    var modal = document.getElementById("log-entry-modal");
-    var leftSide = document.getElementById("left-side");
-    modal.addEventListener("scroll", function() {
-        leftSide.scrollTop = modal.scrollTop;
-    });
-    leftSide.addEventListener("scroll", function() {
-        modal.scrollTop = leftSide.scrollTop;
-    });
+    const leftSide = document.querySelector('.left-side');
+    const rightSide = document.querySelector('.right-side');
 
+    let isScrolling = false;
 
+    function syncScroll(source, target) {
+        if (!isScrolling) {
+            isScrolling = true;
+            target.scrollLeft = source.scrollLeft;
+            setTimeout(() => isScrolling = false, 10); // small delay to prevent infinite loop
+        }
+    }
+
+    leftSide.addEventListener('scroll', () => syncScroll(leftSide, rightSide));
+    rightSide.addEventListener('scroll', () => syncScroll(rightSide, leftSide));
     function deleteAllEntries() {
         logs = {};
         saveLogsToStorage(logs);

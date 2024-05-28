@@ -9,19 +9,17 @@ html, body {
 /* ---SPLITING SCREEN--- */
 .container {
     display: flex;
-    height: 150%;
+    height: 100%;
+    background-color: #fff; 
 }
 
 .left-side {
     width: 65%;
-    background-color: #d1a689; 
     padding: 20px;
-
 }
 
 .right-side {
     width: 35%;
-    background-color: #FFF ; 
     padding: 20px;
 }
 
@@ -59,13 +57,13 @@ html, body {
 /* ---PAGE TITLE--- */
 h1 {
     text-align: center;
-    color: white;
+    color: #d1a689;
     font-size: 30px;
 }
 
 hr {
-    background-color: #FFF;
-    border-color: #FFF;
+    background-color: #d1a689;
+    border-color: #d1a689;
 }
 
 /* ---CALENDAR--- */
@@ -170,8 +168,20 @@ hr {
 }
 
 /* LOG ENTRY BOX */
+
 .modal {
     position: absolute; 
+}
+
+#modal-date {
+    color: #c08c66;
+    text-align: center;
+    font-size: 2em; 
+    font-family: Arial, sans-serif; 
+    font-weight: bold; 
+    margin-bottom: 20px; 
+    padding: 10px; 
+    display: inline-block; 
 }
 
 .modal-content {
@@ -227,7 +237,9 @@ button {
     margin: 10px auto; 
     transition: background-color 0.3s, transform 0.3s; 
     box-shadow: 0 4px 8px rgba(0 0 0 / 20%); 
-
+    display: inline-block;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 button:hover {
@@ -236,17 +248,6 @@ button:hover {
     box-shadow: 0 8px 16px rgba(0 0 0 / 30%); 
 }
 
-
-#modal-date {
-    color: #c08c66;
-    text-align: center;
-    font-size: 2em; 
-    font-family: Arial, sans-serif; 
-    font-weight: bold; 
-    margin-bottom: 20px; 
-    padding: 10px; 
-    display: inline-block; 
-}
 
 .close {
     color: #fefefe;
