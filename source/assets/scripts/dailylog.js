@@ -17,6 +17,19 @@ document.addEventListener('DOMContentLoaded', function () {
         return localStorage.setItem('logs',JSON.stringify(logs));
     }
 
+    function resetBackground() { 
+        // Resets background of all dates to original styling
+        let dateDivs = document.querySelectorAll('.date'); 
+        for (let i = 0; i < dateDivs.length; i++) { 
+            let dateDiv = dateDivs[i]; 
+            dateDiv.setAttribute('style',' background-color: #d1a689;');
+        } 
+        // Resets background of today's date to its intended styling 
+        let today = document.querySelector('.date.today'); 
+        today.setAttribute('style', 'background-color: #468c7a; color: #F4EDE3; border-radius: 50%;font-weight: bold;');
+
+    }
+
     //Actual Calendar
     const monthNames = [
         "January", "February", "March", "April", "May", "June",
@@ -70,7 +83,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 dateDiv.classList.add('log-entry');
             }
 
-            dateDiv.addEventListener("click", function() { selectDate(dateStr); });
+            dateDiv.addEventListener("click", function() { 
+                // Reset the background so that any date clicked on before is back to its original styling 
+                resetBackground(); 
+                selectDate(dateStr); 
+                // Set the background and border radius of the date that has just been clicked 
+                dateDiv.setAttribute('style','background-color: #674832; border-radius: 10%;');
+            });
             datesContainer.appendChild(dateDiv);
         }
     }
