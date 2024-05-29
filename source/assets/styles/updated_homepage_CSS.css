@@ -435,7 +435,7 @@ iframe {
         'projCardsCont projCardsCont';
     gap: 20px;
     margin-top: 20px;
-    justify-content: center;
+    /*justify-content: center;*/
     
 }
 
@@ -485,6 +485,7 @@ iframe {
         justify-content: center;
         padding-top: 20px;
         overflow: hidden;
+        z-index: 2;
     }
 
     .nav-bar .databaes-icon {
@@ -618,7 +619,6 @@ iframe {
         margin-right: auto;
         width: 80vw;
         height: auto;
-    
     }
     
     
@@ -653,25 +653,23 @@ iframe {
         border-radius: 25px;
     }
     
-    /* Completely remove the project cards */
-    /*.project-cards-container {
-        display: none;
-    }*/
-    
     /* Dashboard content section */
-    .task-overview { grid-area: task-overview; }
+    .task-overview { 
+        grid-area: task-overview; 
+    }
     .overall-progress { grid-area: overallProg; }
     
     .dashboard-container {
-        display: grid;
-        grid-template-columns: auto;
+        /*display: grid;
         grid-template-areas: 
             'task-overview'
             'overallProg';
         gap: 1em;
-        column-gap: 0;
+        column-gap: 0;*/
+        display: flex;
+        flex-direction: column;
         margin-top: 1.5em;
-        
+        padding-bottom: 9vh;
     }
     
     .dashboard-container > .task-overview {
