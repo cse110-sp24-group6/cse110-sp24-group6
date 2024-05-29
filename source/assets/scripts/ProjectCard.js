@@ -109,7 +109,6 @@ class ProjectCard extends HTMLElement {
         let status = "current"; 
         let color = "cream"; 
 		
-        console.log(data.color);
         if(data.completed === true){
             status = "completed";
         }

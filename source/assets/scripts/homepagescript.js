@@ -110,10 +110,10 @@ function updateDailyStreak() {
     const currentDay = currentDate.getDay();
     const lastVisit = localStorage.getItem('lastVisit');
     const dayNames = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
-    const checkedImgSrc = "../HTML_homepage_pics/checked_in.png";
-    const uncheckedImgSrc = "../HTML_homepage_pics/unchecked.png";
+    const checkedImgSrc = "../source/assets/HTML_homepage_pics/checked_in.png";
+    const uncheckedImgSrc = "../source/assets/HTML_homepage_pics/unchecked.png";
     dayNames.forEach(day => {
-      document.getElementById(day + 'Circle').src = uncheckedImgSrc;
+      document.getElementById(day + '-circle').src = uncheckedImgSrc;
     });
     if (lastVisit) {
       const lastVisitDate = new Date(lastVisit);
@@ -122,7 +122,7 @@ function updateDailyStreak() {
       if (lastVisitDate.toLocaleDateString() === yesterday.toLocaleDateString() ||
         lastVisitDate.toLocaleDateString() === currentDate.toLocaleDateString()) {
         for (let i = 0; i <= currentDay; i++) {
-          document.getElementById(dayNames[i] + 'Circle').src = checkedImgSrc;
+          document.getElementById(dayNames[i] + '-circle').src = checkedImgSrc;
         }
       }
     }
