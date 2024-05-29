@@ -72,9 +72,14 @@ class ProjectCard extends HTMLElement {
             padding: 5px;
         }
         .menu-icons img:hover{
-            background-color: rgba(255, 255, 255, 0.3);
+            background-color: rgba(255, 255, 255, 0.2);
             border-radius: 5px;
             transition: 0.6s;
+            cursor: pointer;
+        }
+        .white .menu-icons img:hover,
+        .cream .menu-icons img:hover{
+            background-color: rgba(43, 62, 85, 0.1);
         }`
 		//Append the <style> and <article> elements to the Shadow DOM
 		this.shadowEl.append(styleEl);
@@ -83,6 +88,7 @@ class ProjectCard extends HTMLElement {
 
 	/**
 	 * Called when the data object is called on a ProjectCard object e.g. projectcard.data
+     * The color attribute has the following options: ["brown", "green", "white", "cream"]
 	 * @param {Object} data - The data for <project-card> is in the following format:
 	 *                        {
 	 *                          "title": "string",
@@ -91,26 +97,45 @@ class ProjectCard extends HTMLElement {
 	 *                          "completed": "boolean",
      *                          "color": "string"
 	 *                        }
+     * 
 	 */
 	set data(data) {
 		if (!data) return;
 		let articleEl = this.shadowEl.querySelector('article');
-		// Setting the contents of the <article> HTML to create the project card with the inputed data values
-        let status = "current";
+        // setting the data attributes to variables to solve some Linting issues and get the correct colored icons
+        // note that white's color is outputed as cream for retrieving the correct colored icons since both use dark blue colored icons
+        
+        // setting defaults
+        let status = "current"; 
+        let color = "cream"; 
+		
+        console.log(data.color);
         if(data.completed === true){
             status = "completed";
         }
+
+        if(data.color == "green"){
+            color = "green";
+        }
+        if(data.color == "brown"){
+            color = "brown";
+        }
+        if(data.color == "white"){
+            color = "cream";
+        }
+        
+        // Setting the contents of the <article> HTML to create the project card with the inputed data values
 		articleEl.innerHTML = 
         `<div class="project-cards ${data.color}">
-        <img class="journal-pic" src="assets/icons/homepage/daily_log/daily_log_${data.color}.png" alt="${data.color} daily log icon"/>
+        <img class="journal-pic" src="assets/icons/homepage/daily_log/daily_log_${color}.png" alt="daily log icon"/>
         <h4><b>${data.title}</b></h4> 
         <p>${data.description}</p> 
         <!-- (insert project progress bar)-->
         <hr>
         <div class="menu-icons" >
-            <img class="edit-icon" src="assets/icons/homepage/edit/edit_icon_${data.color}.svg" alt="edit icon"/>
-            <a href=${data.githubURL}><img class="github-icon" src="assets/icons/homepage/github/github_icon_${data.color}.svg" alt="github icon"/></a>
-            <img class="status-icon" src="assets/icons/homepage/${status}/${data.color}.svg" alt="status icon">
+            <img class="edit-icon" src="assets/icons/homepage/edit/edit_icon_${color}.svg" alt="edit icon"/>
+            <a href=${data.githubURL}><img class="github-icon" src="assets/icons/homepage/github/github_icon_${color}.svg" alt="github icon"/></a>
+            <img class="status-icon" src="assets/icons/homepage/${status}_project/${color}.svg" alt="status icon">
         </div>
         </div`;
 	}

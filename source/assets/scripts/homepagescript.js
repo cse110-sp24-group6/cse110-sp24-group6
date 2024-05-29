@@ -33,12 +33,13 @@
 
 /* Project Sectiom Javascript*/
 /* Temporary functions to load 4 project card elements onto the page, delete or modify after CRUD and local storage for projects has been implemented*/
+//CAN DELETE LATER
 function addProject(data){
   let newProject = document.createElement('project-card');
   newProject.data = data;
   document.querySelector('.project-cards-grid').append(newProject);
 }
-
+//DELETE inside of init() after CRUD is implemented for projects, inside code adds temporary project cards to page
 function init(){
   const brown_proj_data = {
     title: "Project Brown",
