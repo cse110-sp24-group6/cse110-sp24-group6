@@ -47,7 +47,6 @@ body {
 }
 
 .nav-bar {
-    position: absolute;
     width: 76px;
     height: 100%;
 
@@ -311,6 +310,7 @@ iframe {
 }
 
 /* Recently viewed projects section */
+
 /* Individual project card styling is moved to ProjectCard.js file */
 
 /* Positioning cards in a container */
@@ -324,6 +324,7 @@ iframe {
     grid-area: projCardsCont;
     margin-left: 4vw;
 }
+
 .project-cards-grid{
     display: flex;
     overflow-x:auto;
