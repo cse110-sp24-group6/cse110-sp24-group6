@@ -76,18 +76,6 @@ class ProjectCard extends HTMLElement {
             border-radius: 5px;
             transition: 0.6s;
         }`
-       /*elementRoot.innerHTML = 
-        `<div class="project-cards green">
-            <img class="journal-pic" src="assets/HTML_homepage_pics/daily_log_journal_white.png" alt="White Daily Log Journal"/>
-            <h4><b>Project Two</b></h4> 
-            <p>Project description</p> 
-            <!-- (insert project progress bar)-->
-            <hr>
-            <a class="page-icons" href="#">
-                <img class="external-icon" src="assets/HTML_homepage_pics/external_link_white.png" alt="White External Link"/>
-                <img class="github-icon" src="assets/HTML_homepage_pics/github_icon_white.png" alt="White Github Icon"/>
-            </a>
-        </div`;*/
 		//Append the <style> and <article> elements to the Shadow DOM
 		this.shadowEl.append(styleEl);
 		this.shadowEl.append(elementRoot);
@@ -109,7 +97,7 @@ class ProjectCard extends HTMLElement {
 		let articleEl = this.shadowEl.querySelector('article');
 		// Setting the contents of the <article> HTML to create the project card with the inputed data values
         let status = "current";
-        if(data.completed == true){
+        if(data.completed === true){
             status = "completed";
         }
 		articleEl.innerHTML = 
