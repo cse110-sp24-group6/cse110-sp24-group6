@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Function takes in a Date object and converts it to string compatible with other functions
     function dateToString(date) { 
         return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
-
+    }
     function resetBackground() { 
         // Resets background of all dates to original styling
         let dateDivs = document.querySelectorAll('.date'); 
