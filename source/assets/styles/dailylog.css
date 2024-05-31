@@ -62,7 +62,7 @@ html, body {
     box-shadow: 0 0 10px #b78a6c;
 }
 
-/* Stuff in the bar (month, year, prev & next arrows)*/
+/* Stuff in the bar (month, year, prev & next arrows) */
 .header {
     display: flex;
     justify-content:space-between;
@@ -93,7 +93,7 @@ html, body {
     padding-bottom: 5px;
 }
 
-/* Display of space inbetween numbers*/
+/* Display of space inbetween numbers */
 .days .day, .dates .date {
     display: flex;
     justify-content: center;
@@ -222,7 +222,6 @@ button {
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    margin: auto; 
     font-size: 1.2em;
     font-family: Arial, sans-serif; 
     display: inline-block;
