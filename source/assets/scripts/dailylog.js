@@ -16,7 +16,10 @@ document.addEventListener('DOMContentLoaded', function () {
     function saveLogsToStorage(logs) { 
         return localStorage.setItem('logs',JSON.stringify(logs));
     }
-
+    // Function takes in a Date object and converts it to string compatible with other functions
+    function dateToString(date) { 
+        return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+    }
     function resetBackground() { 
         // Resets background of all dates to original styling
         let dateDivs = document.querySelectorAll('.date'); 
@@ -40,10 +43,13 @@ document.addEventListener('DOMContentLoaded', function () {
     // const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     let currentDate = new Date();
     let logs = getLogsFromStorage();
-    // let logs = {}
+    
+    // Automatically select today's log 
+    selectDate(dateToString(currentDate));
 
 
     function updateCalendar() {
+        
         const monthText = document.getElementById('month');
         const yearText = document.getElementById('year');
         const datesContainer = document.getElementById('dates');
@@ -94,6 +100,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
             datesContainer.appendChild(dateDiv);
         }
+        
     }
 
 
@@ -104,6 +111,12 @@ document.addEventListener('DOMContentLoaded', function () {
     function nextMonth() {
         currentDate.setMonth(currentDate.getMonth() + 1);
         updateCalendar();
+    }
+    // Selects today's log and goes to corresponding month/year view 
+    function today() { 
+        currentDate = new Date();
+        updateCalendar(); 
+        selectDate(dateToString(currentDate));
     }
     // Initialize the calendar
     updateCalendar();
@@ -185,6 +198,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Attach event listeners
     document.getElementById('prev-month').addEventListener('click', prevMonth);
     document.getElementById('next-month').addEventListener('click', nextMonth);
+    document.getElementById('today').addEventListener('click', today);
 
 
 
