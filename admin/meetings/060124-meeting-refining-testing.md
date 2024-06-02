@@ -1,4 +1,4 @@
-# Agile Retrospective Meeting- Sprint 1
+# Team Meeting
 **Location:** Zoom
 
 **Time:** 5-6 pm
