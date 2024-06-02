@@ -112,7 +112,7 @@ function findStreak() {
   for (let i = 0; i < Object.keys(logs).length; i++) { 
     if (getLog(day)) { 
       streak += 1; 
-      day = new Date(Date.now()-((i+1)*864e5)); 
+      day = new Date(Date.now()-((i+1)*24*60*60*1000)); 
     } else { 
       break;
     }
@@ -125,7 +125,7 @@ function getStreakFromStorage() {
   let streak = localStorage.getItem('streak'); 
   let returnStreak; 
   if (streak) { 
-    returnStreak = parseInt(streak); 
+    returnStreak = parseInt(streak,10); 
   } else { 
     returnStreak = findStreak(); 
   }
@@ -156,9 +156,6 @@ function getCirclesFromStorage() {
   return returnCircles; 
 }
 
-function setCirclesToStorage(circles) { 
-  return localStorage.setItem('circles',JSON.stringify(circles));
-}
 // Function takes in a Date object and converts it to string compatible with other functions
 function dateToString(date) { 
   return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
@@ -170,8 +167,8 @@ function sundayReset() {
   const uncheckedImgSrc = "../source/assets/HTML_homepage_pics/unchecked.png"; 
   let circles = getCirclesFromStorage();
   for (let i = 0; i < 7; i++) { 
-    circles[i] = uncheckedImgSrc;
-    document.getElementById(i).src = circles[i]; 
+    circles[`${i}`]  = uncheckedImgSrc;
+    document.getElementById(i).src = circles[`${i}`] ; 
   }
 }
 
@@ -182,20 +179,20 @@ function weekFillIn() {
   let circles = getCirclesFromStorage();
   const checkedImgSrc = "../source/assets/HTML_homepage_pics/checked_in.png";
   // If today is Sunday (0), reset the circles 
-  if (today==0) { 
+  if (today===0) { 
     sundayReset();
   }
   // Integrate daily log data to circles 
   for (let i = 0; i < 7; i++) { 
     // Get all logs from Sunday to today
-    let day = new Date(Date.now()-(parseInt(today-i)*864e5));
+    let day = new Date(Date.now()-(parseInt(today-i,10)*24*60*60*1000));
     let log = getLog(day); 
     // if a log exists, fill in the circle and update local storage 
     if (log) { 
-      circles[i] = checkedImgSrc;
+      circles[`${i}`] = checkedImgSrc;
     }
     // Make sure homapage is up to date with localStorage 
-    document.getElementById(day.getDay()).src = circles[i];
+    document.getElementById(day.getDay()).src = circles[`${i}`] ;
   }
 }
 
