@@ -11,8 +11,8 @@ The homepage is the first page that a user lands own upon entry to the website. 
 
 ### Summary and Reasoning of Options
 
-
 #### Keep To-Do List Display
+
 **Advantages:**
 
 - Ease of access for user to add/delete some tasks
@@ -23,8 +23,8 @@ The homepage is the first page that a user lands own upon entry to the website. 
 - Difficult to implement as it relies on other web page
 - Homepage may be a little too cluttered
 
-
 #### Remove To-Do List Display
+
 **Advantages:**
 
 - Ensures better quality as scope of project is reduced
