@@ -5,6 +5,7 @@
 The homepage is the first page that a user lands own upon entry to the website. As such, it's important to showcase the main functions of the other sites (i.e. a visual summary of the other pages on the website). This allows users to quickly stay up to date and (limited) changes. However, we are unable to properly define a quick way to link the to-do list page to be displayed on the homepage as doing so at this point in time would likely lead to a decrease in quality (focusing on the iron triangle).
 
 ## Considered options
+
 - Keep the to-do list display on the homepage
 - Remove the to-do list display from the homepage
 
@@ -12,20 +13,24 @@ The homepage is the first page that a user lands own upon entry to the website. 
 
 #### Keep To-Do List Display
 **Advantages:**
+
 - Ease of access for user to add/delete some tasks
 - Quick preview on tasks to be done
 
 **Disadvantages:**
+
 - Difficult to implement as it relies on other web page
 - Homepage may be a little too cluttered
 
 #### Remove To-Do List Display
 **Advantages:**
+
 - Ensures better quality as scope of project is reduced
 - Easier to design homepage given time constraints
 - Less reliant on other web page
 
 **Disadvantages:**
+
 - Less 'ease of access' for user
 - User will need to go to To-Do list portion of site to check their tasks
 
