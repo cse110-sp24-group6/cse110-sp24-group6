@@ -106,13 +106,19 @@ function findStreak() {
   let streak = 0; 
   let logs = getLogsFromStorage(); 
   let day = new Date();
-  // Loop through logs starting from today's log
-  // If there is a log for current date, increment streak and go to day before current date
-  // If there is no log, stop for-loop
+  // Check if there is a log today, and add to streak 
+  if (getLog(day)) { 
+    streak += 1; 
+  }
+  // Set day to yesterday 
+  day = new Date(Date.now()-(24*60*60*1000)); 
+  // Find out if there was a previous streak 
   for (let i = 0; i < Object.keys(logs).length; i++) { 
+    // If there is a log for the day, add to streak 
     if (getLog(day)) { 
       streak += 1; 
-      day = new Date(Date.now()-((i+1)*24*60*60*1000)); 
+      day = new Date(Date.now()-((i+2)*24*60*60*1000)); 
+    // If a log was skipped, streak is broken - exit for loop 
     } else { 
       day = new Date(Date.now()-((i+1)*24*60*60*1000)); 
       if (getLog(day)) { 
@@ -133,9 +139,13 @@ function getStreakFromStorage() {
   if (streak) { 
     returnStreak = parseInt(streak,10); 
   } else { 
-    returnStreak = findStreak(); 
+    returnStreak = 0; 
   }
   return returnStreak;
+}
+
+function setStreakToStorage(streak) { 
+  return localStorage.setItem('streak', JSON.stringify(streak));
 }
 
 
@@ -162,11 +172,35 @@ function getCirclesFromStorage() {
   return returnCircles; 
 }
 
+function setCirclesToStorage(circles) { 
+  return localStorage.setItem('circles',JSON.stringify(circles));
+}
+
 // Function takes in a Date object and converts it to string compatible with other functions
 function dateToString(date) { 
   return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
 }
 
+// Converts 0-6 to appropriate IDs
+function convertID(num) { 
+  let id ='';
+  if (num===0) { 
+    id='sunday-circle';
+  } else if (num===1) { 
+    id='monday-circle';
+  } else if (num===2) { 
+    id='tuesday-circle';
+  } else if (num===3) { 
+    id='wednesday-circle';
+  } else if (num===4) { 
+    id='thursday-circle';
+  } else if (num===5) { 
+    id='friday-circle';
+  } else if (num===6) { 
+    id='saturday-circle';
+  }
+  return id; 
+}
 
 // Reset localStorage to blank and all images to blank as well on Sunday 
 function sundayReset() { 
@@ -174,8 +208,9 @@ function sundayReset() {
   let circles = getCirclesFromStorage();
   for (let i = 0; i < 7; i++) { 
     circles[`${i}`]  = uncheckedImgSrc;
-    document.getElementById(i).src = circles[`${i}`] ; 
+    document.getElementById(convertID(i)).src = circles[`${i}`] ; 
   }
+  setCirclesToStorage(circles);
 }
 
 function weekFillIn() {
@@ -198,9 +233,11 @@ function weekFillIn() {
       circles[`${i}`] = checkedImgSrc;
     }
     // Make sure homapage is up to date with localStorage 
-    document.getElementById(day.getDay()).src = circles[`${i}`] ;
+    document.getElementById(convertID(day.getDay())).src = circles[`${i}`] ;
   }
+  setCirclesToStorage(circles);
 }
 
 weekFillIn(); 
+setStreakToStorage(findStreak()); 
 document.getElementById('daily-streak').textContent = getStreakFromStorage();
