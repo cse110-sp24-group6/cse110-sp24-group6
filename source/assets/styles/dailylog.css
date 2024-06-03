@@ -12,7 +12,6 @@ html, body {
 h1 {
     text-align: center;
     color: #fff;
-    font-size: 30px;
     font-size: 40px;
   }
   
@@ -60,6 +59,7 @@ h1 {
     #save-entry, #delete-entry {
         width: 100%; 
     }
+    
     h1 {
         font-size: 28px; 
     }
