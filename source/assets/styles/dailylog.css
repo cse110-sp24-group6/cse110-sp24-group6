@@ -4,24 +4,26 @@ html, body {
     height: 100%;
     font-family: Arial, sans-serif;
     overflow-x: hidden;
+    background-color: #d1a689 !important; 
 }
 
 /* ---SPLITING SCREEN--- */
 .container {
     display: flex;
     height: 100%;
+    width: auto;
+    margin-left: 5%;
+    padding-bottom: 5%;
 }
 
 .left-side {
     width: 65%;
-    background-color: #d1a689; 
     padding: 20px;
 
 }
 
 .right-side {
     width: 35%;
-    background-color: #FFF ; 
     padding: 20px;
 }
 

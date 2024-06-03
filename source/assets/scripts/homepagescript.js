@@ -79,53 +79,128 @@ function init(){
 
 document.addEventListener('DOMContentLoaded', init);
 
-// Update daily streak
-function updateDailyStreak() {
-    const currentDate = new Date().toLocaleDateString();
-    const lastVisit = localStorage.getItem('lastVisit');
-    let streak = parseInt(localStorage.getItem('streak'), 10);
-    if (lastVisit === currentDate) {
-        document.getElementById('daily-streak').textContent = streak;
-        console.log("Current Streak:", streak);
-        return;
-    }
-    const lastVisitDate = new Date(lastVisit);
-    const yesterday = new Date();
-    yesterday.setDate(yesterday.getDate() - 1);
-    if (lastVisitDate.toLocaleDateString() === yesterday.toLocaleDateString()) {
-        streak += 1;
-    } else {
-        streak = 1;
-    }
-    //saves streak and date to browser
-    localStorage.setItem('streak', streak);
-    localStorage.setItem('lastVisit', currentDate);
-    document.getElementById('daily-streak').textContent = streak;
-    console.log("New Streak:", streak);
+/* Daily Log Streak implementation */ 
+function getLogsFromStorage() { 
+  let logs = localStorage.getItem('logs');
+  let returnLog;
+  if (logs) {
+      returnLog = JSON.parse(logs);
+      return returnLog;
   }
-  // Update daily streak visual
-  // Need to fix so that it only fills days visited if missed streak
-  function updateDailyStreakVisual() {
-    const currentDate = new Date();
-    const currentDay = currentDate.getDay();
-    const lastVisit = localStorage.getItem('lastVisit');
-    const dayNames = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
-    const checkedImgSrc = "../source/assets/HTML_homepage_pics/checked_in.png";
-    const uncheckedImgSrc = "../source/assets/HTML_homepage_pics/unchecked.png";
-    dayNames.forEach(day => {
-      document.getElementById(day + '-circle').src = uncheckedImgSrc;
-    });
-    if (lastVisit) {
-      const lastVisitDate = new Date(lastVisit);
-      const yesterday = new Date();
-      yesterday.setDate(currentDate.getDate() - 1);
-      if (lastVisitDate.toLocaleDateString() === yesterday.toLocaleDateString() ||
-        lastVisitDate.toLocaleDateString() === currentDate.toLocaleDateString()) {
-        for (let i = 0; i <= currentDay; i++) {
-          document.getElementById(dayNames[i] + '-circle').src = checkedImgSrc;
-        }
+  else {
+      returnLog = {};
+      return returnLog;
+  }
+}
+
+
+// Get the log for given date 
+function getLog(date) { 
+  let logs = getLogsFromStorage(); 
+  return logs[dateToString(date)];
+
+}
+
+// Loop through logs to count consecutive logs from today's date 
+function findStreak() { 
+  let streak = 0; 
+  let logs = getLogsFromStorage(); 
+  let day = new Date();
+  // Loop through logs starting from today's log
+  // If there is a log for current date, increment streak and go to day before current date
+  // If there is no log, stop for-loop
+  for (let i = 0; i < Object.keys(logs).length; i++) { 
+    if (getLog(day)) { 
+      streak += 1; 
+      day = new Date(Date.now()-((i+1)*24*60*60*1000)); 
+    } else { 
+      day = new Date(Date.now()-((i+1)*24*60*60*1000)); 
+      if (getLog(day)) { 
+        streak += 1; 
+        day = new Date(Date.now()-((i+1)*24*60*60*1000));
+      } else { 
+        break; 
       }
     }
   }
-  updateDailyStreak();
-  updateDailyStreakVisual();
+  return streak; 
+}
+
+// Local storage for streak 
+function getStreakFromStorage() { 
+  let streak = localStorage.getItem('streak'); 
+  let returnStreak; 
+  if (streak) { 
+    returnStreak = parseInt(streak,10); 
+  } else { 
+    returnStreak = findStreak(); 
+  }
+  return returnStreak;
+}
+
+
+// Get and set circles to local storage 
+function getCirclesFromStorage() { 
+  let circles = localStorage.getItem('circles');
+  let returnCircles; 
+  if (circles) { 
+    returnCircles = JSON.parse(circles);
+  } else { 
+    // If circles is not in local storage, create dictionary
+    // 0 = Sunday, 1 = Monday, 2 = Tuesday, ...
+    // All images are unchecked 
+    const uncheckedImgSrc = "../source/assets/HTML_homepage_pics/unchecked.png";
+    returnCircles = {};
+    returnCircles['0'] = uncheckedImgSrc;
+    returnCircles['1'] = uncheckedImgSrc;
+    returnCircles['2'] = uncheckedImgSrc;
+    returnCircles['3'] = uncheckedImgSrc;
+    returnCircles['4'] = uncheckedImgSrc;
+    returnCircles['5'] = uncheckedImgSrc;
+    returnCircles['6'] = uncheckedImgSrc;
+  }
+  return returnCircles; 
+}
+
+// Function takes in a Date object and converts it to string compatible with other functions
+function dateToString(date) { 
+  return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+}
+
+
+// Reset localStorage to blank and all images to blank as well on Sunday 
+function sundayReset() { 
+  const uncheckedImgSrc = "../source/assets/HTML_homepage_pics/unchecked.png"; 
+  let circles = getCirclesFromStorage();
+  for (let i = 0; i < 7; i++) { 
+    circles[`${i}`]  = uncheckedImgSrc;
+    document.getElementById(i).src = circles[`${i}`] ; 
+  }
+}
+
+function weekFillIn() {
+  // Set variables  
+  let todaysDate = new Date(); 
+  let today = todaysDate.getDay(); 
+  let circles = getCirclesFromStorage();
+  const checkedImgSrc = "../source/assets/HTML_homepage_pics/checked_in.png";
+  // If today is Sunday (0), reset the circles 
+  if (today===0) { 
+    sundayReset();
+  }
+  // Integrate daily log data to circles 
+  for (let i = 0; i < 7; i++) { 
+    // Get all logs from Sunday to today
+    let day = new Date(Date.now()-(parseInt(today-i,10)*24*60*60*1000));
+    let log = getLog(day); 
+    // if a log exists, fill in the circle and update local storage 
+    if (log) { 
+      circles[`${i}`] = checkedImgSrc;
+    }
+    // Make sure homapage is up to date with localStorage 
+    document.getElementById(day.getDay()).src = circles[`${i}`] ;
+  }
+}
+
+weekFillIn(); 
+document.getElementById('daily-streak').textContent = getStreakFromStorage();
