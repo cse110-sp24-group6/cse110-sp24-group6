@@ -106,21 +106,21 @@ function findStreak() {
   let streak = 0; 
   let logs = getLogsFromStorage(); 
   let day = new Date();
+  // Check if there is a log today, and add to streak 
+  if (getLog(day)) { 
+    streak += 1; 
+  }
+  // Set day to yesterday 
+  day = new Date(Date.now()-(24*60*60*1000)); 
+  // Find out if there was a previous streak 
   for (let i = 0; i < Object.keys(logs).length; i++) { 
+    // If there is a log for the day, add to streak 
     if (getLog(day)) { 
-      // If there is a log today, gets the most up-to-date streak
       streak += 1; 
-      day = new Date(Date.now()-((i+1)*24*60*60*1000)); 
+      day = new Date(Date.now()-((i+2)*24*60*60*1000)); 
+    // If a log was skipped, streak is broken - exit for loop 
     } else { 
-      // If no log today, dheck what the streak was as of the previous day 
-      day = new Date(Date.now()-(24*60*60*1000)); 
-      if (getLog(day)) { 
-        streak += 1; 
-        day = new Date(Date.now()-((i+1)*24*60*60*1000));
-      // If no log today or yesterday, streak is 0
-      } else { 
-        break; 
-      }
+      break;
     }
   }
   return streak; 
@@ -133,9 +133,13 @@ function getStreakFromStorage() {
   if (streak) { 
     returnStreak = parseInt(streak,10); 
   } else { 
-    returnStreak = findStreak(); 
+    returnStreak = 0; 
   }
   return returnStreak;
+}
+
+function setStreakToStorage(streak) { 
+  return localStorage.setItem('streak', JSON.stringify(streak));
 }
 
 
@@ -160,6 +164,10 @@ function getCirclesFromStorage() {
     returnCircles['6'] = uncheckedImgSrc;
   }
   return returnCircles; 
+}
+
+function setCirclesToStorage(circles) { 
+  return localStorage.setItem('circles',JSON.stringify(circles));
 }
 
 // Function takes in a Date object and converts it to string compatible with other functions
@@ -196,6 +204,7 @@ function sundayReset() {
     circles[`${i}`]  = uncheckedImgSrc;
     document.getElementById(convertID(i)).src = circles[`${i}`] ; 
   }
+  setCirclesToStorage(circles);
 }
 
 function weekFillIn() {
@@ -220,7 +229,9 @@ function weekFillIn() {
     // Make sure homapage is up to date with localStorage 
     document.getElementById(convertID(day.getDay())).src = circles[`${i}`] ;
   }
+  setCirclesToStorage(circles);
 }
 
 weekFillIn(); 
+setStreakToStorage(findStreak()); 
 document.getElementById('daily-streak').textContent = getStreakFromStorage();
