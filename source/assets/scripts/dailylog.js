@@ -184,6 +184,10 @@ document.addEventListener('DOMContentLoaded', function () {
             delete logs[`${dateStr}`];
             updateCalendar();
             saveLogsToStorage(logs); 
+            progressTextarea.value = '';
+            challengesTextarea.value = '';
+            learningsTextarea.value = '';
+            futurePlanTextarea.value = '';
         };
     }
 

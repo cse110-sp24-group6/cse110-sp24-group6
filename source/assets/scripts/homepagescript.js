@@ -114,7 +114,13 @@ function findStreak() {
       streak += 1; 
       day = new Date(Date.now()-((i+1)*24*60*60*1000)); 
     } else { 
-      break;
+      day = new Date(Date.now()-((i+1)*24*60*60*1000)); 
+      if (getLog(day)) { 
+        streak += 1; 
+        day = new Date(Date.now()-((i+1)*24*60*60*1000));
+      } else { 
+        break; 
+      }
     }
   }
   return streak; 
