@@ -1,7 +1,5 @@
 # Agile Retrospective Meeting 1 - 04/27/24 
 
-# Agile Retrospective Meeting 1 - 04/27/24 
-n
 **Location:** Zoom
 
 **Time:** 5-5:30 pm
@@ -68,5 +66,3 @@ Here are some other questions we discussed!
 Anything that you were mad/annoyed about?
 Anything that you were sad about?
 Anything that you were glad about
-
-Overall, everyone was satisfied with the work done so far, and while there is a lot of room for improvement, we have been functioning well as a team. No major issues so far!

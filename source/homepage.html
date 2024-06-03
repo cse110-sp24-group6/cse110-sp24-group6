@@ -1,150 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <title>Developer Journal Home Page</title>
-    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" sizes="16x16" href="#">
-    <link rel="stylesheet" href="assets/styles/updated_homepage_CSS.css">
-    <script src="assets/scripts/ProjectCard.js" type="module"></script>
-</head>
-<body>
-    <header>
-        <!-- Navigation bar-->
-        <div class="nav-bar-left-container">
-            <nav class="nav-bar">
-                <img class="databaes-icon" src="assets/HTML_homepage_pics/databaes_logo.png" alt="databaes logo"/>
-                <a id="home-page-button" class="page-icons" href="#home">
-                    <img class="home-icon" src="assets/HTML_homepage_pics/homepage_nav.png" alt="Homepage button"/>
-                </a>
-                <a id="daily-log-button" class="page-icons" href="./dailylog.html">
-                    <img class="daily-log-icon" src="assets/icons/homepage/daily_log/daily_log_green.png" alt="Daily Log Button"/>
-                </a>
-                <a id="to-do-list-button" class="page-icons" href="./todolist.html">
-                    <img class="to-do-list-icon" src="assets/HTML_homepage_pics/to-do_list_nav.png" alt="To-Do List button"/>
-                </a>
-                <a id="projects-button" class="page-icons" href="./projects.html">
-                    <img class="projects-icon" src="assets/HTML_homepage_pics/projects_folder.png" alt="Projects button"/>
-                </a>
-            </nav>
-        </div>
+    <head>
+        <title>Developer Journal Home Page</title>
+        <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <div class="content">
-            <div>
-                <h1 id="your-dashboard">Your Dashboard</h1>
+        <!-- link to favicon-->
+        <!-- TODO-->
+        <link rel="icon" type="image/png" sizes="16x16" href="#">
+
+        <!-- Future link to CSS section -->
+        <link rel="stylesheet" href="assets/styles/updated_homepage_CSS.css">
+        <!-- Project Card Custom Element -->
+        <script src="assets/scripts/ProjectCard.js" type="module"></script>
+
+    </head>
+
+
+
+    <body>
+        <header>
+            <!-- Navigation bar-->
+            <div class="nav-bar-left-container">
+                <nav class="nav-bar">
+                    <img class="databaes-icon" src="assets/HTML_homepage_pics/databaes_logo.png" alt="databaes logo"/>
+                    <a id="home-page-button" class="page-icons" href="#home">
+                        <img class="home-icon" src="assets/HTML_homepage_pics/homepage_nav.png" alt="Homepage button"/>
+                    </a>
+                    <a id="daily-log-button" class="page-icons" href="./dailylog.html">
+                        <img class="daily-log-icon" src="assets/icons/homepage/daily_log/daily_log_green.png" alt="Daily Log Button"/>
+                    </a>
+                    <a id="to-do-list-button" class="page-icons" href="./todolist.html">
+                        <img class="to-do-list-icon" src="assets/HTML_homepage_pics/to-do_list_nav.png" alt="To-Do List button"/>
+                    </a>
+                    <a id="projects-button" class="page-icons" href="./projects.html">
+                        <img class="projects-icon" src="assets/HTML_homepage_pics/projects_folder.png" alt="Projects button"/>
+                    </a>
+                </nav>
             </div>
-            <!-- Daily Streak-->
-            <div class="daily-log-container">
-                <section class="daily-streak-counter-container">
-                    <picture id="log-in-streak-pic">
-                        <source height="45px" srcset="assets/HTML_homepage_pics/daily_log_fire.png">
-                        <img src="assets/HTML_homepage_pics/daily_log_fire.png" alt="Log In Streak Pic">
-                    </picture>
-                    <section id="day-streak">
-                        <h1 id="daily-streak">0</h1>
-                        <h4 id="daily-streak-title">Day Streak</h4>
-                    </section>
-                </section>
+            
+            <!-- <section class="nav-bar">
+                <a id="daily-log-button" href="./dailylog.html">Daily Log</a>
+                <a id="projects-button" href="./projects.html">My Projects</a>
+                <a id="to-do-list-button" href="./todolist.html">To-Do List</a>
+                <a id="home-page-button" class="active" href="#home">Home</a>
+            </section> -->
 
-                <section class="daily-log-visual-title">
-                    <picture id="daily-journal-pic">
-                        <source height="45px" srcset="assets/icons/homepage/daily_log/daily_log_white.png">
-                        <img src="assets/icons/homepage/daily_log/daily_log_white.png" alt="Daily Log Journal Pic">
-                    </picture>
-                    <h1 id="daily-logs-title">Daily Logs</h1>
-                </section>
-
-                <section class="daily-streak-visual-container">
-                    <p id="sunday-abbr"><b>S</b></p>
-                    <p id="monday-abbr"><b>M</b></p>
-                    <p id="tuesday-abbr"><b>T</b></p>
-                    <p id="wednesday-abbr"><b>W</b></p>
-                    <p id="thursday-abbr"><b>Th</b></p>
-                    <p id="friday-abbr"><b>F</b></p>
-                    <p id="saturday-abbr"><b>Sa</b></p>
-                    <img class="daily-log-circle" id="sunday-circle" src="assets/HTML_homepage_pics/unchecked.png" alt="Sunday Visual Circle"/>
-                    <img class="daily-log-circle" id="monday-circle" src="assets/HTML_homepage_pics/unchecked.png" alt="Monday Visual Circle"/>
-                    <img class="daily-log-circle" id="tuesday-circle" src="assets/HTML_homepage_pics/unchecked.png" alt="Tuesday Visual Circle"/>
-                    <img class="daily-log-circle" id="wednesday-circle" src="assets/HTML_homepage_pics/unchecked.png" alt="Wednesday Visual Circle"/>
-                    <img class="daily-log-circle" id="thursday-circle" src="assets/HTML_homepage_pics/unchecked.png" alt="Thursday Visual Circle"/>
-                    <img class="daily-log-circle" id="friday-circle" src="assets/HTML_homepage_pics/unchecked.png" alt="Friday Visual Circle"/>
-                    <img class="daily-log-circle" id="saturday-circle" src="assets/HTML_homepage_pics/unchecked.png" alt="Saturday Visual Circle"/>
-                </section>
-            </div>
-        </div>
-    </header>
-
-    <main>
-        <!-- Dashboard content -->
-        <div class="content">
-            <div class="dashboard-container">
-                <!-- Task Overview (to-do list)-->
-                <section class="task-overview">
-                    <h2>Today's Tasks Overview</h2>
-                    <iframe src="./todolist.html" title="Task Overview"></iframe>
-                </section>
-        
-                <!-- Overall progress-->
-                <section class="overall-progress">
-                    <h2>Tasks Progress</h2>
-                    <div class="progress-bar">
-                        <div class="outer">
-                            <div class="inner">
-                                <div id="progress-number">5/10</div>
-                            </div>
-                        </div>
-                        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px">
-                            <circle id="stationary-progress" cx="80" cy="80" r="70" stroke-linecap="round"></circle>
-                            <circle id="moving-progress" cx="80" cy="80" r="70" transform="rotate(-270)" transform-origin="center" stroke-linecap="round"></circle>
-                        </svg>
-                    </div>
-                </section>
-
-                <!-- Recently viewed projects-->
-                <section class="project-cards-container">
-                    <h2 id="project-cards-title">Most Recently Viewed Projects</h2>
-                    <div class="project-cards-grid"></div>
-                </section>
-            </div>
-        </div>
-    </main>
-
-    <footer>
-        <!-- Footer content -->
-    </footer>
-
-    <!-- Project Edit Form Popup -->
-    <div id="project-edit-popup" class="popup">
-        <div class="popup-content">
-            <span id="close-popup" class="close-button">&times;</span>
-            <h2>Edit Project</h2>
-            <form id="project-edit-form">
-                <label for="project-title">Project Title:</label>
-                <input type="text" id="project-title" name="title" required>
-                
-                <label for="project-description">Project Description:</label>
-                <textarea id="project-description" name="description" required></textarea>
-                
-                <label for="project-github">Github Link:</label>
-                <input type="url" id="project-github" name="githubURL" required>
-                
-                <label for="project-status">Project Status:</label>
-                <select id="project-status" name="status" required>
-                    <option value="current">Current</option>
-                    <option value="completed">Completed</option>
-                </select>
-                
-                <div class="form-buttons">
-                    <button type="submit" id="save-project">
-                        <img src="source/assets/icons/edit/edit_icon_brown.svg" alt="Save Icon"> Save
-                    </button>
-                    <button type="button" id="delete-project">
-                        <img src="source/assets/icons/github/github_icon_brown.svg" alt="Delete Icon"> Delete
-                    </button>
+            <div class="content">
+                <div>
+                    <h1 id="your-dashboard">Your Dashboard</h1>
                 </div>
-            </form>
-        </div>
-    </div>
+                <!-- Daily Streak-->
+                <div class="daily-log-container">
 
-    <script defer src="assets/scripts/homepagescript.js"></script>
-</body>
+                    <section class="daily-streak-counter-container">
+                        <picture id="log-in-streak-pic">
+                            <source height="45px" srcset="assets/HTML_homepage_pics/daily_log_fire.png">
+                            <img src="assets/HTML_homepage_pics/daily_log_fire.png" alt="Log In Streak Pic">
+                        </picture>
+        
+                        <section id="day-streak">
+                            <h1 id="daily-streak">0</h1>
+                            <h4 id="daily-streak-title">Day Streak</h4>
+                        </section>
+                    </section>
+
+                    <section class="daily-log-visual-title">
+                        <!-- Daily log visual's title-->
+                        <picture id="daily-journal-pic">
+                            <source height="45px" srcset="assets/icons/homepage/daily_log/daily_log_white.png">
+                            <img src="assets/icons/homepage/daily_log/daily_log_white.png" alt="Daily Log Journal Pic">
+                        </picture>
+                        <h1 id="daily-logs-title">Daily Logs</h1>
+                    </section>
+
+                    <!-- Used for the Sunday, Monday,... daily counter-->
+                    <section class="daily-streak-visual-container">
+                        <!-- Days of the week initials-->
+                        <p id="sunday-abbr"><b>S</b></p>
+                        <p id="monday-abbr"><b>M</b></p>
+                        <p id="tuesday-abbr"><b>T</b></p>
+                        <p id="wednesday-abbr"><b>W</b></p>
+                        <p id="thursday-abbr"><b>Th</b></p>
+                        <p id="friday-abbr"><b>F</b></p>
+                        <p id="saturday-abbr"><b>Sa</b></p>
+
+                        <!-- Days of the week "logged in" checker-->
+                        <img class="daily-log-circle" id="0" src="assets/HTML_homepage_pics/unchecked.png" alt="Sunday Visual Circle"/>
+                        <img class="daily-log-circle" id="1" src="assets/HTML_homepage_pics/unchecked.png" alt="Monday Visual Circle"/>
+                        <img class="daily-log-circle" id="2" src="assets/HTML_homepage_pics/unchecked.png" alt="Tuesday Visual Circle"/>
+                        <img class="daily-log-circle" id="3" src="assets/HTML_homepage_pics/unchecked.png" alt="Wednesday Visual Circle"/>
+                        <img class="daily-log-circle" id="4" src="assets/HTML_homepage_pics/unchecked.png" alt="Thursday Visual Circle"/>
+                        <img class="daily-log-circle" id="5" src="assets/HTML_homepage_pics/unchecked.png" alt="Friday Visual Circle"/>
+                        <img class="daily-log-circle" id="6" src="assets/HTML_homepage_pics/unchecked.png" alt="Saturday Visual Circle"/>
+
+                    </section>
+                </div>
+            </div>
+
+        </header>
+
+        <main>
+            <!-- For future use (i.e. welcome screen on entrance to site)-->
+            <!-- Welcome message -->
+            <!-- <div class="mainContainer">
+                <h1 class="welcomeText">Welcome!</h1>
+                <br>
+                <h3 class="welcomeText">Click anywhere to continue...</h3>
+            </div> -->
+
+            <!-- Dashboard content -->
+            <div class="content">
+                <div class="dashboard-container">
+
+                    <!-- Task Overview (to-do list)-->
+                    <section class="task-overview">
+                        <h2>Today's Tasks Overview</h2>
+                        <iframe src="./todolist.html" title="Task Overview"></iframe>
+                    </section>
+        
+                    <!-- Overall progress-->
+                    <section class="overall-progress">
+                        <h2>Tasks Progress</h2>
+                        <div class="progress-bar">
+                            <div class="outer">
+                                <div class="inner">
+                                    <div id="progress-number">
+                                        5/10
+                                    </div>
+                                </div>
+                            </div>
+
+                            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px">
+                                <circle id="stationary-progress" cx="80" cy="80" r="70" stroke-linecap="round"></circle>
+                                <circle id="moving-progress" cx="80" cy="80" r="70" transform="rotate(-270)" transform-origin="center" stroke-linecap="round"></circle>
+                            </svg>
+                            <!-- <svg xmlns="http://www.w3.org/TR/SVG2" width="160px" height="160px">
+                                <circle class="innerCircle" id="stationary-progress" cx="80" cy="80" r="70" stroke-linecap="round"></circle>
+                                <circle class="outerCircle" id="moving-progress" cx="80" cy="80" r="70" transform="rotate(-270)" transform-origin="center" stroke-linecap="round"></circle>
+                            </svg> -->
+                        </div>
+                    </section>
+
+                    <!-- Recently viewed projects-->
+                    <section class="project-cards-container">
+                        <h2 id="project-cards-title">Most Recently Viewed Projects</h2>
+                        <div class="project-cards-grid"></div>
+                    </section>
+                </div>
+            </div>
+        </main>
+
+
+        <footer>
+            <!-- add copyright: databaes thing -->
+        </footer>
+
+        <!-- homepage js script-->
+        <script defer src="assets/scripts/homepagescript.js"></script>
+    </body>
+
+
+
 </html>

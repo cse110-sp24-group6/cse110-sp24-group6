@@ -1,167 +1,206 @@
 // Progress Bar
-const progressNumber = document.getElementById('progressNumber');
-let counter = 0;
+// const progressNumber = document.getElementById('progressNumber');
+// let counter = 0;
 
-const intervalId = setInterval(() => {
-    if (counter >= 100) {
-        clearInterval(intervalId);
-    } else {
-        counter += 1;
-        progressNumber.innerHTML = `${counter}%`;
-    }
-}, 100);
+// setInterval(() => {
+//     if( counter == 0 ){
+//         clearInterval;
+//     } else {
+//         counter += 1;
+//         progressNumber.innerHTML =`${counter}%`;
+//     }
+    
+// })
 
-// Navigation bar: Sticky
-window.onscroll = function() { myFunction() };
 
-const navBar = document.getElementsByClassName("nav-bar")[0];
-const sticky = navBar.offsetTop;
+// // Navigation bar: Sticky
+// window.onscroll = function() {myFunction()};
 
-function myFunction() {
-  if (window.pageYOffset >= sticky) {
-    navBar.classList.add("sticky");
-  } else {
-    navBar.classList.remove("sticky");
-  }
-}
+// // Get the navbar
+// let navBar = document.getElementsByClassName("navBar");
 
-/* Project Section Javascript */
-function addProject(data) {
-  const newProject = document.createElement('project-card');
+// // Get the offset position of the navbar
+// let sticky = navBar.offsetTop;
+
+// // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+// function myFunction() {
+//   if (window.pageYOffset >= sticky) {
+//     navBar.classList.add("sticky")
+//   } else {
+//     navBar.classList.remove("sticky");
+//   }
+// }
+
+/* Project Sectiom Javascript*/
+/* Temporary functions to load 4 project card elements onto the page, delete or modify after CRUD and local storage for projects has been implemented*/
+//CAN DELETE LATER
+function addProject(data){
+  let newProject = document.createElement('project-card');
   newProject.data = data;
   document.querySelector('.project-cards-grid').append(newProject);
 }
-
-function init() {
-  const projects = [
-    {
-      title: "Project Brown",
-      description: "This is the project description",
-      githubURL: "https://github.com/",
-      completed: false,
-      color: "brown"
-    },
-    {
-      title: "Project Green",
-      description: "This is the project description",
-      githubURL: "https://github.com/",
-      completed: false,
-      color: "green"
-    },
-    {
-      title: "Gaming App",
-      description: "This is the project description",
-      githubURL: "https://github.com/",
-      completed: false,
-      color: "white"
-    },
-    {
-      title: "Webtool App",
-      description: "This is the project description",
-      githubURL: "https://github.com/",
-      completed: true,
-      color: "cream"
-    }
-  ];
-
-  projects.forEach(addProject);
+//DELETE inside of init() after CRUD is implemented for projects, inside code adds temporary project cards to page
+function init(){
+  const brown_proj_data = {
+    title: "Project Brown",
+    description: "This is the project description",
+    githubURL: "https://github.com/",
+    completed: false,
+    color: "brown"
+  }
+  const green_proj_data = {
+    title: "Project Green",
+    description: "This is the project description",
+    githubURL: "https://github.com/",
+    completed: false,
+    color: "green"
+  }
+  const white_proj_data = {
+    title: "Gaming App",
+    description: "This is the project description",
+    githubURL: "https://github.com/",
+    completed: false,
+    color: "white"
+  }
+  const cream_proj_data = {
+    title: "Webtool App",
+    description: "This is the project description",
+    githubURL: "https://github.com/",
+    completed: true,
+    color: "cream"
+  }
+  addProject(brown_proj_data);
+  addProject(green_proj_data);
+  addProject(cream_proj_data);
+  addProject(white_proj_data);
+  addProject(green_proj_data);
+  addProject(cream_proj_data);
 }
 
 document.addEventListener('DOMContentLoaded', init);
 
-// Function to update daily streak
-function updateDailyStreak() {
-  const currentDate = new Date().toLocaleDateString();
-  const lastVisit = localStorage.getItem('lastVisit');
-  let streak = parseInt(localStorage.getItem('streak'), 10) || 0;
-
-  if (lastVisit === currentDate) {
-    document.getElementById('daily-streak').textContent = streak;
-    console.log("Current Streak:", streak);
-    return;
+/* Daily Log Streak implementation */ 
+function getLogsFromStorage() { 
+  let logs = localStorage.getItem('logs');
+  let returnLog;
+  if (logs) {
+      returnLog = JSON.parse(logs);
+      return returnLog;
   }
-
-  const lastVisitDate = new Date(lastVisit);
-  const yesterday = new Date();
-  yesterday.setDate(yesterday.getDate() - 1);
-
-  if (lastVisitDate.toLocaleDateString() === yesterday.toLocaleDateString()) {
-    streak += 1;
-  } else {
-    streak = 1;
+  else {
+      returnLog = {};
+      return returnLog;
   }
-
-  localStorage.setItem('streak', streak);
-  localStorage.setItem('lastVisit', currentDate);
-  document.getElementById('daily-streak').textContent = streak;
-  console.log("New Streak:", streak);
 }
 
-// Function to update daily streak visual
-function updateDailyStreakVisual() {
-  const currentDate = new Date();
-  const currentDay = currentDate.getDay();
-  const lastVisit = localStorage.getItem('lastVisit');
-  const dayNames = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
-  const checkedImgSrc = "assets/HTML_homepage_pics/checked_in.png";
-  const uncheckedImgSrc = "assets/HTML_homepage_pics/unchecked.png";
 
-  dayNames.forEach(day => {
-    const dayCircle = document.getElementById(`${day}-circle`);
-    if (dayCircle) {
-      dayCircle.src = uncheckedImgSrc;
-    }
-  });
+// Get the log for given date 
+function getLog(date) { 
+  let logs = getLogsFromStorage(); 
+  return logs[dateToString(date)];
 
-  if (lastVisit) {
-    const lastVisitDate = new Date(lastVisit);
-    const yesterday = new Date();
-    yesterday.setDate(currentDate.getDate() - 1);
+}
 
-    if (lastVisitDate.toLocaleDateString() === yesterday.toLocaleDateString() || lastVisitDate.toLocaleDateString() === currentDate.toLocaleDateString()) {
-      for (let i = 0; i <= currentDay; i++) {
-        const dayCircle = document.getElementById(`${dayNames[i]}-circle`);
-        if (dayCircle) {
-          dayCircle.src = checkedImgSrc;
-        }
+// Loop through logs to count consecutive logs from today's date 
+function findStreak() { 
+  let streak = 0; 
+  let logs = getLogsFromStorage(); 
+  let day = new Date();
+  // Loop through logs starting from today's log
+  // If there is a log for current date, increment streak and go to day before current date
+  // If there is no log, stop for-loop
+  for (let i = 0; i < Object.keys(logs).length; i++) { 
+    if (getLog(day)) { 
+      streak += 1; 
+      day = new Date(Date.now()-((i+1)*24*60*60*1000)); 
+    } else { 
+      day = new Date(Date.now()-((i+1)*24*60*60*1000)); 
+      if (getLog(day)) { 
+        streak += 1; 
+        day = new Date(Date.now()-((i+1)*24*60*60*1000));
+      } else { 
+        break; 
       }
     }
   }
+  return streak; 
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  updateDailyStreak();
-  updateDailyStreakVisual();
-});
-
-//  show edit project  popup form
-function showEditPopup() {
-    document.getElementById('project-edit-popup').style.display = 'block';
+// Local storage for streak 
+function getStreakFromStorage() { 
+  let streak = localStorage.getItem('streak'); 
+  let returnStreak; 
+  if (streak) { 
+    returnStreak = parseInt(streak,10); 
+  } else { 
+    returnStreak = findStreak(); 
+  }
+  return returnStreak;
 }
 
-//  close the popup form
-function closeEditPopup() {
-    document.getElementById('project-edit-popup').style.display = 'none';
+
+// Get and set circles to local storage 
+function getCirclesFromStorage() { 
+  let circles = localStorage.getItem('circles');
+  let returnCircles; 
+  if (circles) { 
+    returnCircles = JSON.parse(circles);
+  } else { 
+    // If circles is not in local storage, create dictionary
+    // 0 = Sunday, 1 = Monday, 2 = Tuesday, ...
+    // All images are unchecked 
+    const uncheckedImgSrc = "../source/assets/HTML_homepage_pics/unchecked.png";
+    returnCircles = {};
+    returnCircles['0'] = uncheckedImgSrc;
+    returnCircles['1'] = uncheckedImgSrc;
+    returnCircles['2'] = uncheckedImgSrc;
+    returnCircles['3'] = uncheckedImgSrc;
+    returnCircles['4'] = uncheckedImgSrc;
+    returnCircles['5'] = uncheckedImgSrc;
+    returnCircles['6'] = uncheckedImgSrc;
+  }
+  return returnCircles; 
 }
 
-// add event listener to close button
-document.getElementById('close-popup').addEventListener('click', closeEditPopup);
-
-// example function to open the popup form (call this function when edit button is clicked)
-function openEditForm() {
-    showEditPopup();
+// Function takes in a Date object and converts it to string compatible with other functions
+function dateToString(date) { 
+  return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
 }
 
-// end of existing init function or wherever appropriate
-document.getElementById('edit-button').addEventListener('click', openEditForm);
 
-// event listeners for form buttons 
-document.getElementById('save-project').addEventListener('click', function(event) {
-    event.preventDefault();
-    // Add save functionality here ?
-});
+// Reset localStorage to blank and all images to blank as well on Sunday 
+function sundayReset() { 
+  const uncheckedImgSrc = "../source/assets/HTML_homepage_pics/unchecked.png"; 
+  let circles = getCirclesFromStorage();
+  for (let i = 0; i < 7; i++) { 
+    circles[`${i}`]  = uncheckedImgSrc;
+    document.getElementById(i).src = circles[`${i}`] ; 
+  }
+}
 
-document.getElementById('delete-project').addEventListener('click', function(event) {
-    event.preventDefault();
-    // add delete functionality here ?
-});
+function weekFillIn() {
+  // Set variables  
+  let todaysDate = new Date(); 
+  let today = todaysDate.getDay(); 
+  let circles = getCirclesFromStorage();
+  const checkedImgSrc = "../source/assets/HTML_homepage_pics/checked_in.png";
+  // If today is Sunday (0), reset the circles 
+  if (today===0) { 
+    sundayReset();
+  }
+  // Integrate daily log data to circles 
+  for (let i = 0; i < 7; i++) { 
+    // Get all logs from Sunday to today
+    let day = new Date(Date.now()-(parseInt(today-i,10)*24*60*60*1000));
+    let log = getLog(day); 
+    // if a log exists, fill in the circle and update local storage 
+    if (log) { 
+      circles[`${i}`] = checkedImgSrc;
+    }
+    // Make sure homapage is up to date with localStorage 
+    document.getElementById(day.getDay()).src = circles[`${i}`] ;
+  }
+}
+
+weekFillIn(); 
+document.getElementById('daily-streak').textContent = getStreakFromStorage();
