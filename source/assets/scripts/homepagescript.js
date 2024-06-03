@@ -106,15 +106,21 @@ function findStreak() {
   let streak = 0; 
   let logs = getLogsFromStorage(); 
   let day = new Date();
-  // Loop through logs starting from today's log
-  // If there is a log for current date, increment streak and go to day before current date
-  // If there is no log, stop for-loop
   for (let i = 0; i < Object.keys(logs).length; i++) { 
     if (getLog(day)) { 
+      // If there is a log today, gets the most up-to-date streak
       streak += 1; 
       day = new Date(Date.now()-((i+1)*24*60*60*1000)); 
     } else { 
-      break;
+      // If no log today, dheck what the streak was as of the previous day 
+      day = new Date(Date.now()-(24*60*60*1000)); 
+      if (getLog(day)) { 
+        streak += 1; 
+        day = new Date(Date.now()-((i+1)*24*60*60*1000));
+      // If no log today or yesterday, streak is 0
+      } else { 
+        break; 
+      }
     }
   }
   return streak; 
@@ -161,6 +167,26 @@ function dateToString(date) {
   return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
 }
 
+// Converts 0-6 to appropriate IDs
+function convertID(num) { 
+  let id ='';
+  if (num===0) { 
+    id='sunday-circle';
+  } else if (num===1) { 
+    id='monday-circle';
+  } else if (num===2) { 
+    id='tuesday-circle';
+  } else if (num===3) { 
+    id='wednesday-circle';
+  } else if (num===4) { 
+    id='thursday-circle';
+  } else if (num===5) { 
+    id='friday-circle';
+  } else if (num===6) { 
+    id='saturday-circle';
+  }
+  return id; 
+}
 
 // Reset localStorage to blank and all images to blank as well on Sunday 
 function sundayReset() { 
@@ -168,7 +194,7 @@ function sundayReset() {
   let circles = getCirclesFromStorage();
   for (let i = 0; i < 7; i++) { 
     circles[`${i}`]  = uncheckedImgSrc;
-    document.getElementById(i).src = circles[`${i}`] ; 
+    document.getElementById(convertID(i)).src = circles[`${i}`] ; 
   }
 }
 
@@ -192,7 +218,7 @@ function weekFillIn() {
       circles[`${i}`] = checkedImgSrc;
     }
     // Make sure homapage is up to date with localStorage 
-    document.getElementById(day.getDay()).src = circles[`${i}`] ;
+    document.getElementById(convertID(day.getDay())).src = circles[`${i}`] ;
   }
 }
 
