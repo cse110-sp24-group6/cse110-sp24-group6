@@ -1,7 +1,9 @@
 # Reliabilty
 
 ## Context and Problem Statement
-How will we improve our website's reliability by providing offline access? 
+How will we improve our website's reliability by providing offline access? The goal of our project is to build a highly responsive web application that can benefit users. The application should work across various devices and platforms, ensuring a pleasant user experience even with intermittent or no internet connectivity. Given these requirements, we need to choose a technology that best supports these features while maintaining simplicity in deployment and maintenance.  
+
+We are making the decision of selecting the best technology to implement offline capabilities and other background functionalities in our web application. The two primary options under consideration are Service Workers and ElectronJS.
 
 ## Considered options:
 - Electron JS
@@ -11,10 +13,18 @@ How will we improve our website's reliability by providing offline access?
 
 #### Electron JS
 
-**Advantages:**
+**Advantages:**  
+- ElectronJS allows developers to create applications that run on Windows, macOS, and Linux using a single codebase, which simplifies development and maintenanc
+- Developers can use familiar web technologies like HTML, CSS, and JavaScript to build desktop applications, reducing the learning curve for web developers
+- Electron provides access to native operating system APIs, allowing developers to create more integrated and feature-rich desktop applications
+- There are a lot of resources to learn about ElectronJS
 
 
-**Disadvantages:**
+**Disadvantages:**  
+- Larger in size
+- More resource dependent leading to higher memory and CPU usage which can reduce speed and functionality
+- If not properly managed, there can be security risks and web content can be accidentally exploited
+- Distributing Electron applications can be more complex compared to web applications, as it involves packaging and signing the app for different operating systems
 
 #### Service Workers
 
