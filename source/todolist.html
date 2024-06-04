@@ -1,8 +1,10 @@
+
 <!DOCTYPE html>
 <html>
 <head>
   <title>To-Do List</title>
   <link rel="stylesheet" href="assets/styles/todolist.css">
+  <script src="assets/scripts/todolist.js"></script>
 </head>
 <body>
   <h1>To-Do List</h1>
@@ -35,107 +37,21 @@
   <button id="delete-all">Delete All Tasks</button>
   
   <script>
-    const taskForm = document.getElementById('task-form');
-    const taskInput = document.getElementById('task-input');
-    const dueDate = document.getElementById('due-date');
-    const taskDescription = document.getElementById('task-description');
-    const taskTags = document.getElementById('task-tags');
-    const taskList = document.getElementById('task-list');
-    const deleteAllBtn = document.getElementById('delete-all');
-    const progressText = document.getElementById('progress-text');
-    const progressBar = document.getElementById('progress-bar');
-    const otter = document.getElementById('otter');
-    const fish = document.getElementById('fish');
-    const celebration = document.getElementById('celebration');
-
-    function updateProgress() {
-      const tasks = taskList.children;
-      const totalTasks = tasks.length;
-      let completedTasks = 0;
-
-      for (let task of tasks) {
-        if (task.querySelector('input[type="checkbox"]').checked) {
-          completedTasks++;
-        }
-      }
-
-      const progress = totalTasks ? (completedTasks / totalTasks) * 100 : 0;
-      progressText.textContent = `Progress: ${progress.toFixed(2)}% (${completedTasks}/${totalTasks})`;
-      progressBar.style.width = progress + '%';
-      otter.style.left = progress + '%';
-
-      if (progress === 100) {
-        otter.style.display = 'none';
-        fish.style.display = 'none';
-        celebration.style.display = 'block';
-      } else {
-        otter.style.display = 'block';
-        fish.style.display = 'block';
-        celebration.style.display = 'none';
-      }
-    }
-
-    function deleteTask(event) {
-      event.target.parentNode.remove();
-      updateProgress();
-    }
-
-    taskForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      const task = taskInput.value;
-      const date = dueDate.value;
-      const description = taskDescription.value;
-      const tag = taskTags.value;
-      
-      if (task) {
-        const li = document.createElement('li');
-        const checkbox = document.createElement('input');
-        const deleteButton = document.createElement('button');
-        
-        checkbox.type = 'checkbox';
-        deleteButton.textContent = 'Delete';
-        deleteButton.addEventListener('click', deleteTask);
-        checkbox.addEventListener('change', updateProgress);
-        
-        li.innerHTML = `
-          <b>Task:</b> ${task} <br>
-          <b>Due Date:</b> ${date} <br>
-          <b>Description:</b> ${description} <br>
-          <b>Tag:</b> ${tag} <br>
-        `;
-        
-        li.appendChild(checkbox);
-        li.appendChild(deleteButton);
-        taskList.appendChild(li);
-        
-        taskInput.value = '';
-        dueDate.value = '';
-        taskDescription.value = '';
-        taskTags.value = '';
-        
-        updateProgress();
-        
-        // update the progress
-        updateProgress();
-        
-        // reset the form
-        taskInput.focus();
-        
-      
-}
-    
-    deleteAllBtn.addEventListener('click', function() {
-      taskList.innerHTML = '';
-      
-       updateProgress();
-      
-       // reset the form
-       taskInput.focus();
-      
-
-      
-});
-}) </script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const taskForm = document.getElementById('task-form');
+      const taskInput = document.getElementById('task-input');
+      const dueDate = document.getElementById('due-date');
+      const taskDescription = document.getElementById('task-description');
+      const taskTags = document.getElementById('task-tags');
+      const taskList = document.getElementById('task-list');
+      const deleteAllBtn = document.getElementById('delete-all');
+      const progressText = document.getElementById('progress-text');
+      const progressBar = document.getElementById('progress-bar');
+      const otter = document.getElementById('otter');
+      const fish = document.getElementById('fish');
+      const celebration = document.getElementById('celebration');
+     });
+  </script>
 </body>
 </html>
+
