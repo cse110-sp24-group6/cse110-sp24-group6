@@ -4,8 +4,8 @@
 How will we improve our website's reliability by providing offline access?
 
 ## Considered options:
--Electron JS
--Service Workers
+- Electron JS
+- Service Workers
 
 ## Decision Outcome:
 We decided to go with Service workers to improve our website's reliability. We chose service workers over Electron JS because we, as a group
