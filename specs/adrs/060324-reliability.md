@@ -1,7 +1,7 @@
 # Reliabilty
 
 ## Context and Problem Statement
-How will we improve our website's reliability by providing offline access?
+How will we improve our website's reliability by providing offline access? 
 
 ## Considered options:
 - Electron JS
