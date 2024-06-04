@@ -33,36 +33,56 @@
   <ul id="task-list"></ul>
   
   <button id="delete-all">Delete All Tasks</button>
+
+  <div id="editModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Edit Task</h2>
+      <form id="edit-task-form">
+        <input type="text" id="edit-task-input" placeholder="Enter task">
+        <input type="date" id="edit-due-date">
+        <input type="text" id="edit-task-description" placeholder="Enter task description">
+        <select id="edit-task-tags">
+          <option value="Project">Project</option>
+          <option value="Learning">Learning</option>
+          <option value="Misc">Misc</option>
+          <option value="Fun">Fun</option>
+          <option value="Debugging">Debugging</option>
+        </select>
+        <button type="submit">Update Task</button>
+      </form>
+    </div>
+  </div>
   
   <script>
-    const taskForm = document.getElementById('task-form');
+    const taskList = document.getElementById('task-list');
     const taskInput = document.getElementById('task-input');
     const dueDate = document.getElementById('due-date');
     const taskDescription = document.getElementById('task-description');
     const taskTags = document.getElementById('task-tags');
-    const taskList = document.getElementById('task-list');
+    const taskForm = document.getElementById('task-form');
     const deleteAllBtn = document.getElementById('delete-all');
-    const progressText = document.getElementById('progress-text');
-    const progressBar = document.getElementById('progress-bar');
     const otter = document.getElementById('otter');
     const fish = document.getElementById('fish');
     const celebration = document.getElementById('celebration');
+    const progressBar = document.getElementById('progress-bar');
+    const progressText = document.getElementById('progress-text');
+    const editModal = document.getElementById('editModal');
+    const editTaskForm = document.getElementById('edit-task-form');
+    const editTaskInput = document.getElementById('edit-task-input');
+    const editDueDate = document.getElementById('edit-due-date');
+    const editTaskDescription = document.getElementById('edit-task-description');
+    const editTaskTags = document.getElementById('edit-task-tags');
+    const closeModal = document.getElementsByClassName('close')[0];
+
+    let tasks = [];
+    let currentEditTaskIndex = null;
 
     function updateProgress() {
-      const tasks = taskList.children;
-      const totalTasks = tasks.length;
-      let completedTasks = 0;
-
-      for (let task of tasks) {
-        if (task.querySelector('input[type="checkbox"]').checked) {
-          completedTasks++;
-        }
-      }
-
-      const progress = totalTasks ? (completedTasks / totalTasks) * 100 : 0;
-      progressText.textContent = `Progress: ${progress.toFixed(2)}% (${completedTasks}/${totalTasks})`;
-      progressBar.style.width = progress + '%';
-      otter.style.left = progress + '%';
+      const completedTasks = tasks.filter(task => task.completed).length;
+      const progress = (completedTasks / tasks.length) * 100;
+      progressText.textContent = `Progress: ${progress.toFixed(2)}% (${completedTasks}/${tasks.length})`;
+      progressBar.style.width = `${progress}%`;
 
       if (progress === 100) {
         otter.style.display = 'none';
@@ -75,67 +95,154 @@
       }
     }
 
-    function deleteTask(event) {
-      event.target.parentNode.remove();
+    function addTask(event) {
+      event.preventDefault();
+      
+      const taskTitle = taskInput.value.trim();
+      const date = dueDate.value;
+      const description = taskDescription.value.trim();
+      const tag = taskTags.value;
+
+      if (currentEditTaskIndex !== null) {
+        tasks[currentEditTaskIndex] = {
+          title: taskTitle,
+          date: date,
+          description: description,
+          tag: tag,
+          completed: tasks[currentEditTaskIndex].completed
+        };
+        renderTasks();
+        currentEditTaskIndex = null;
+      } else {
+        tasks.push({
+          title: taskTitle,
+          date: date,
+          description: description,
+          tag: tag,
+          completed: false
+        });
+        const taskElement = createTaskElement(tasks.length - 1);
+        taskList.appendChild(taskElement);
+      }
+
       updateProgress();
+      taskInput.value = '';
+      dueDate.value = '';
+      taskDescription.value = '';
+      taskTags.value = '';
+      otter.style.display = 'block';
+      fish.style.display = 'block';
+      celebration.style.display = 'none';
     }
 
-    taskForm.addEventListener('submit', function(e) {
-      e.preventDefault();
+    function deleteTask(event) {
+      const taskElement = event.target.parentNode;
+      const taskIndex = taskElement.dataset.index;
       
-      const task = taskInput.value;
-      const date = dueDate.value;
-      const description = taskDescription.value;
-      const tag = taskTags.value;
+      tasks.splice(taskIndex, 1);
       
-      if (task) {
-        const li = document.createElement('li');
-        const checkbox = document.createElement('input');
-        const deleteButton = document.createElement('button');
-        
-        checkbox.type = 'checkbox';
-        deleteButton.textContent = 'Delete';
-        deleteButton.addEventListener('click', deleteTask);
-        checkbox.addEventListener('change', updateProgress);
-        
-        li.innerHTML = `
-          <b>Task:</b> ${task} <br>
-          <b>Due Date:</b> ${date} <br>
-          <b>Description:</b> ${description} <br>
-          <b>Tag:</b> ${tag} <br>
-        `;
-        
-        li.appendChild(checkbox);
-        li.appendChild(deleteButton);
-        taskList.appendChild(li);
-        
-        taskInput.value = '';
-        dueDate.value = '';
-        taskDescription.value = '';
-        taskTags.value = '';
-        
-        updateProgress();
-        
-        // update the progress
-        updateProgress();
-        
-        // reset the form
-        taskInput.focus();
-        
-      
-}
-    
-    deleteAllBtn.addEventListener('click', function() {
-      taskList.innerHTML = '';
-      
-       updateProgress();
-      
-       // reset the form
-       taskInput.focus();
-      
+      updateProgress();
+      renderTasks();
+    }
 
+    function editTask(event) {
+      const taskElement = event.target.parentNode;
+      const taskIndex = taskElement.dataset.index;
+      const task = tasks[taskIndex];
       
-});
-}) </script>
+      editTaskInput.value = task.title;
+      editDueDate.value = task.date;
+      editTaskDescription.value = task.description;
+      editTaskTags.value = task.tag;
+      currentEditTaskIndex = taskIndex;
+
+      editModal.style.display = 'block';
+    }
+
+    function updateTask(event) {
+      event.preventDefault();
+      
+      const taskTitle = editTaskInput.value.trim();
+      const date = editDueDate.value;
+      const description = editTaskDescription.value.trim();
+      const tag = editTaskTags.value;
+
+      if (currentEditTaskIndex !== null) {
+        tasks[currentEditTaskIndex] = {
+          title: taskTitle,
+          date: date,
+          description: description,
+          tag: tag,
+          completed: tasks[currentEditTaskIndex].completed
+        };
+        renderTasks();
+        currentEditTaskIndex = null;
+      }
+
+      updateProgress();
+      editModal.style.display = 'none';
+    }
+
+    function createTaskElement(index) {
+      const task = tasks[index];
+      const li = document.createElement('li');
+      li.dataset.index = index;
+
+      const checkbox = document.createElement('input');
+      checkbox.type = 'checkbox';
+      checkbox.checked = task.completed;
+      checkbox.addEventListener('change', () => {
+        task.completed = checkbox.checked;
+        updateProgress();
+      });
+
+      const deleteButton = document.createElement('button');
+      deleteButton.textContent = 'Delete';
+      deleteButton.addEventListener('click', deleteTask);
+
+      const editButton = document.createElement('button');
+      editButton.textContent = 'Edit';
+      editButton.addEventListener('click', editTask);
+      
+      li.innerHTML = `
+        <b>Task:</b> ${task.title} <br>
+        <b>Due Date:</b> ${task.date} <br>
+        <b>Description:</b> ${task.description} <br>
+        <b>Tag:</b> ${task.tag} <br>
+      `;
+      li.appendChild(checkbox);
+      li.appendChild(deleteButton);
+      li.appendChild(editButton);
+      
+      return li;
+    }
+
+    function renderTasks() {
+      taskList.innerHTML = '';
+      tasks.forEach((task, index) => {
+        const taskElement = createTaskElement(index);
+        taskList.appendChild(taskElement);
+      });
+    }
+
+    taskForm.addEventListener('submit', addTask);
+    editTaskForm.addEventListener('submit', updateTask);
+
+    deleteAllBtn.addEventListener('click', () => {
+      tasks.length = 0;
+      updateProgress();
+      renderTasks();
+    });
+
+    closeModal.onclick = function() {
+      editModal.style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+      if (event.target == editModal) {
+        editModal.style.display = 'none';
+      }
+    }
+  </script>
 </body>
 </html>
