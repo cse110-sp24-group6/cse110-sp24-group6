@@ -9,13 +9,24 @@ How will we improve our website's reliability by providing offline access?
 
 ### Summary and Reasoning of Options
 
-## Electron JS
+#### Electron JS
+
+**Advantages:**
 
 
-## Service Workers
+**Disadvantages:**
+
+#### Service Workers
+
+**Advantages:**
+
+**Disadvantages:**
+
 
 ## Decision Outcome:
-We decided to go with Service workers to improve our website's reliability. We chose service workers over Electron JS because we, as a group
-are more familiar with Service Worker as we used it in the lab. This way, we do not have to spend additional time getting used to Electron JS.
+**Chosen option:** Service Workers
+1. **Reliabilty:** We wanted our website to have an added layer of reliability, so we decided to provide online access.
+2. **Familiarity:** We as a group are more familiar with service workers as we used it during the lab.
+3. **Time:** By using Service Workers instead of Electron JS we save time on familiarizing ourselevs with Electron JS.
 
 
