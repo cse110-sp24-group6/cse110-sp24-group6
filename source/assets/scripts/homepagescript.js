@@ -241,3 +241,79 @@ function weekFillIn() {
 weekFillIn(); 
 setStreakToStorage(findStreak()); 
 document.getElementById('daily-streak').textContent = getStreakFromStorage();
+
+document.addEventListener('DOMContentLoaded', () => {
+  init(); // Initialize project cards
+  setupEditButtons(); // Setup edit buttons
+});
+
+function setupEditButtons() {
+  const editIcons = document.querySelectorAll('.edit-icon');
+  editIcons.forEach(icon => {
+      icon.addEventListener('click', openEditForm);
+  });
+}
+
+let currentProjectCard = null;
+
+// Function to open the edit form with the project data
+function openEditForm(event) {
+  currentProjectCard = event.target.closest('.project-cards');
+  document.querySelector("#input-project-name").value = currentProjectCard.querySelector('h4').innerText;
+  document.querySelector("#input-project-description").value = currentProjectCard.querySelector('p').innerText;
+  document.querySelector("#input-github-link").value = currentProjectCard.querySelector('.github-icon').parentElement.href;
+  document.querySelector("#completed-select-box").value = currentProjectCard.querySelector('.status-icon').src.includes('completed') ? 'completed' : 'current';
+
+  // Display the form
+  document.querySelector('.edit-overlay').style.display = "flex";
+}
+
+const saveButton = document.querySelector("#save-button");
+saveButton.addEventListener('click', saveProjectDetails);
+
+function saveProjectDetails() {
+  const projectName = document.querySelector("#input-project-name").value;
+  const projectDescription = document.querySelector("#input-project-description").value;
+  const githubLink = document.querySelector("#input-github-link").value;
+  const projectStatus = document.querySelector("#completed-select-box").value;
+
+  if (currentProjectCard) {
+      currentProjectCard.querySelector('h4').innerText = projectName;
+      currentProjectCard.querySelector('p').innerText = projectDescription;
+      currentProjectCard.querySelector('.github-icon').parentElement.href = githubLink;
+      currentProjectCard.querySelector('.status-icon').src = `assets/icons/homepage/${projectStatus}_project/${currentProjectCard.classList.contains('green') ? 'green' : 'blue'}.svg`;
+  }
+
+  // Hide the form after saving
+  document.querySelector('.edit-overlay').style.display = "none";
+}
+
+// Example function to add project cards dynamically
+function addProject(data) {
+  const articleEl = document.createElement('article');
+  articleEl.innerHTML = 
+      `<div class="project-cards ${data.color}">
+          <img class="journal-pic" src="assets/icons/homepage/daily_log/daily_log_${data.color}.png" alt="daily log icon"/>
+          <h4><b>${data.title}</b></h4> 
+          <p>${data.description}</p> 
+          <hr>
+          <div class="menu-icons">
+              <img class="edit-icon" src="assets/icons/homepage/edit/edit_icon_${data.color}.svg" alt="edit icon"/>
+              <a href="${data.githubURL}"><img class="github-icon" src="assets/icons/homepage/github/github_icon_${data.color}.svg" alt="github icon"/></a>
+              <img class="status-icon" src="assets/icons/homepage/${data.completed ? 'completed' : 'current'}_project/${data.color}.svg" alt="status icon">
+          </div>
+      </div>`;
+  document.querySelector('.project-cards-grid').append(articleEl);
+  setupEditButtons(); // Attach event listeners to the new edit icons
+}
+
+// Initialize project cards
+function init() {
+  // Sample data
+  const projects = [
+      { title: 'Project One', description: 'Description for project one', githubURL: 'https://github.com/projectone', color: 'green', completed: false },
+      { title: 'Project Two', description: 'Description for project two', githubURL: 'https://github.com/projecttwo', color: 'blue', completed: true }
+  ];
+
+  projects.forEach(project => addProject(project));
+}
