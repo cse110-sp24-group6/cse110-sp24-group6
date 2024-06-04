@@ -1,3 +1,5 @@
+[`${taskIndex}`]
+
 document.addEventListener('DOMContentLoaded', function () {
   function getTasksFromStorage() {
       let tasks = localStorage.getItem('tasks');
