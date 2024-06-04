@@ -326,6 +326,30 @@ iframe {
     row-gap: 1vh;
     margin-top: 15px;
 }
+/* Add Button for Projects */
+.project-add-button-container{
+    width: 220px;
+    height: auto;
+}
+.project-add-button{
+    width: 220px;
+    height: 100%;
+    font-size: 60px;
+    background-color: rgba(247, 250, 255, 0.15);
+    border-radius: 20px;
+    color: #2B3E55;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: background-color 0.2s ease-in;
+}
+.project-add-button:hover{
+    background-color: rgba(247, 250, 255, 0.8);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-out;
+}
 
 /* Dashboard content section */
 .task-overview { grid-area: task-overview; }
@@ -385,9 +409,10 @@ iframe {
         top: 92%;
         width: 100%;
         height: 8vh;
+        display: flex;
         flex-direction: row;
-        justify-content: center;
-        padding-top: 20px;
+        justify-content: space-around;
+        padding-bottom: 15px;
         overflow: hidden;
         z-index: 2;
     }
@@ -396,22 +421,13 @@ iframe {
         display: none;
     }
 
-    .nav-bar .home-icon {
-        width: 8vw;
-        height: 8vw;
-        margin: 25px;
-    }
-
-    .nav-bar .daily-log-icon {
-        width: 8vw;
-        height: 8vw;
-        margin: 25px;
-    }
-
+    .nav-bar .home-icon,
+    .nav-bar .daily-log-icon,
     .nav-bar .to-do-list-icon {
-        width: 8vw;
-        height: 8vw;
-        margin: 25px;
+        max-height: 100%;
+        width: auto;
+        margin-top: 0;
+        margin-bottom: 0;
     }
     
     /* Daily Log-in section */
