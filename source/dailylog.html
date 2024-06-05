@@ -5,91 +5,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calendar</title>
     <link rel="stylesheet" href="assets/styles/dailylog.css">
+    <link rel="stylesheet" href="assets/styles/updated_homepage_CSS.css">
 </head>
 <body>
-    <div class="container">
-        <div class="left-side">
-            <!-- Calendar Stuff -->
-            <div class="calendar">
-                <div class="header">
-                    <span class="nav" id="prev-month">&lt;</span>
-                    <span class="month" id="month"></span>
-                        <!--div class="dropdown" id="month-dropdown"> 
-                            <select id="month-select">
-                                <option value="1">January</option>
-                                <option value="2">February</option>
-                                <option value="3">March</option>
-                                <option value="4">April</option>
-                                <option value="5">May</option>
-                                <option value="6">June</option>
-                                <option value="7">July</option>
-                                <option value="8">August</option>
-                                <option value="9">September</option>
-                                <option value="10">October</option>
-                                <option value="11">November</option>
-                                <option value="12">December</option>
-                            </select>
-                        </div-->
-                    <span class="year" id="year"></span>
-                        <!--div class="dropdown" id="year-dropdown"> 
-                            <select id="year-select">
-                                <option value="2024">2024</option>
-                            </select>
-                        </div-->
-                    <span class="nav" id="next-month">&gt;</span>
-                </div>
-                <span class="days">
-                    <p class="day">Sun</p>
-                    <p class="day">Mon</p>
-                    <p class="day">Tue</p>
-                    <p class="day">Wed</p>
-                    <p class="day">Thu</p>
-                    <p class="day">Fri</p>
-                    <p class="day">Sat</p>
-                </span>
-                <div class="dates" id="dates"></div>
-            </div>
-
-            <div class="entries-container" id="entries-container"></div>
-
-            <button id="delete-all">Delete All Entries</button>
+    <div class="content">
+        <div class="nav-bar-left-container">
+            <nav class="nav-bar">
+                <img class="databaes-icon" src="assets/HTML_homepage_pics/databaes_logo.png" alt="databaes logo"/>
+                <a id="home-page-button" class="page-icons" href="./homepage.html">
+                    <img class="home-icon" src="assets/HTML_homepage_pics/homepage_nav.png" alt="Homepage button"/>
+                </a>
+                <a id="daily-log-button" class="page-icons" href="./dailylog.html">
+                    <img class="daily-log-icon" src="assets/icons/homepage/daily_log/daily_log_green.png" alt="Daily Log Button"/>
+                </a>
+                <a id="to-do-list-button" class="page-icons" href="./todolist.html">
+                    <img class="to-do-list-icon" src="assets/HTML_homepage_pics/to-do_list_nav.png" alt="To-Do List button"/>
+                </a>
+            </nav>
         </div>
-        <div class="right-side">
-            <!-- Log Entry Stuff -->
-            <div class="modal" id="log-entry-modal">
-                <div class="modal-content">
-                    <h2 id="modal-date"></h2>
-                    <span class="close" onclick="document.getElementById('log-entry-modal').style.display='none'">&times;</span>
-                    <textarea id="progress" rows="3" placeholder="What progress did you make today?"></textarea>
-                    <textarea id="challenges" rows="3" placeholder="What challenges did you face?"></textarea>
-                    <textarea id="learnings" rows="3" placeholder="New things learnt..."></textarea>
-                    <textarea id="future-plan" rows="3" placeholder="What's your plan for tomorrow?"></textarea>
-                    <button id="save-entry">Save Entry</button>
-                    <button id="delete-entry">Delete Entry</button>
+        <div class="container">
+            <div class="left-side">
+                <h1>Daily Log</h1>
+                <hr>
+                <!-- Calendar Stuff -->
+                <div class="calendar">
+                    <div class="header">
+                        <span class="nav" id="prev-month">&lt;</span>
+                        <span class="month" id="month"></span>
+                        <span class="year" id="year"></span>
+                        <span class="nav" id="next-month">&gt;</span>
+                    </div>
+                    <span class="days">
+                        <p class="day">Sun</p>
+                        <p class="day">Mon</p>
+                        <p class="day">Tue</p>
+                        <p class="day">Wed</p>
+                        <p class="day">Thu</p>
+                        <p class="day">Fri</p>
+                        <p class="day">Sat</p>
+                    </span>
+                    <div class="dates" id="dates"></div>
                 </div>
+
+                <div class="entries-container" id="entries-container"></div>
+
+                <div class="buttons">
+                    <button id="delete-all">Delete All Entries</button>
+                    <button id="today">Today</button>
+                </div>
+
             </div>
-        </div>
-     
-        <div class="footer">
-            <div class="nav-item">
-                <a href="homepage.html">
-                    <img src="assets/icons/home-icon.png" alt="Home">
-                </a>
-            </div>
-            <div class="nav-item">
-                <a href="dailylog.html">
-                    <img src="assets/icons/daily-log.png" alt="Daily Log">
-                </a>
-            </div>
-            <div class="nav-item">
-                <a href="todolist.html">
-                    <img src="assets/icons/todo-icon.png" alt="TODO list">
-                </a>
-            </div>
-            <div class="nav-item">
-                <a href="projects.html">
-                    <img src="assets/icons/projects-icon.png" alt="Projects">
-                </a>
+            <div class="right-side">
+                <!-- Log Entry Stuff -->
+                <div class="modal" id="log-entry-modal">
+                    <div class="modal-content">
+                        <h2 id="modal-date"></h2>
+                        <span class="close" onclick="document.getElementById('log-entry-modal').style.display='none'">&times;</span>
+                        <textarea id="progress" rows="3" placeholder="What progress did you make today?"></textarea>
+                        <textarea id="challenges" rows="3" placeholder="What challenges did you face?"></textarea>
+                        <textarea id="learnings" rows="3" placeholder="New things learnt..."></textarea>
+                        <textarea id="future-plan" rows="3" placeholder="What's your plan for tomorrow?"></textarea>
+                        <div class="buttons">
+                            <button id="save-entry">Save Entry</button>
+                            <button id="delete-entry">Delete Entry</button>
+                        </div>
+                        
+                    </div>
+                </div>
             </div>
         </div>
     </div>

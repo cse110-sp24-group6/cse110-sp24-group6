@@ -89,12 +89,6 @@ body {
     margin-top: 25%;
 }
 
-.nav-bar .projects-icon {
-    width: 45px;
-    height: 45px;
-    margin-bottom: 25%;
-    margin-top: 25%;
-}
 
 /* Daily Log-in section */
 
@@ -415,12 +409,6 @@ iframe {
     }
 
     .nav-bar .to-do-list-icon {
-        width: 8vw;
-        height: 8vw;
-        margin: 25px;
-    }
-
-    .nav-bar .projects-icon {
         width: 8vw;
         height: 8vw;
         margin: 25px;
