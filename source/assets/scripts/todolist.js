@@ -1,4 +1,3 @@
-[`${taskIndex}`]
 
 document.addEventListener('DOMContentLoaded', function () {
   function getTasksFromStorage() {
