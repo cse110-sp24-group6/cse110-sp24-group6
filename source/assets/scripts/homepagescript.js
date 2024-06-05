@@ -33,12 +33,7 @@
 
 /* Project Sectiom Javascript*/
 /* Temporary functions to load 4 project card elements onto the page, delete or modify after CRUD and local storage for projects has been implemented*/
-//CAN DELETE LATER
-function addProject(data){
-  let newProject = document.createElement('project-card');
-  newProject.data = data;
-  document.querySelector('.project-cards-grid').append(newProject);
-}
+
 /* For edit project form*/
 document.addEventListener('DOMContentLoaded', () => {
   console.log("DOM fully loaded and parsed");

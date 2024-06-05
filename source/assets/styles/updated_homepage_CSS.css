@@ -643,14 +643,17 @@ svg {
     background-color: #CAAF8E;
     color: #5B4B34;
 }
+
 .project-cards.green {
     background-color: #3F8984;
     color: #F6F1E2;
 }
+
 .project-cards.cream {
     background-color: #F6F1E2;
     color: #2B3E55;
 }
+
 .project-cards.white {
     background-color: #FFF;
     color: #2B3E55;
@@ -668,16 +671,19 @@ svg {
     margin: 30px 0 20px;
     padding: 5px;
 }
+
 .menu-icons img:hover {
     background-color: rgba(255, 255, 255, 0.2);
     border-radius: 5px;
     transition: 0.6s;
     cursor: pointer;
 }
+
 .white .menu-icons img:hover,
 .cream .menu-icons img:hover {
     background-color: rgba(43, 62, 85, 0.1);
 }
+
 /* Ensure the overlay is always on top */
 .edit-overlay {
     display: none;
