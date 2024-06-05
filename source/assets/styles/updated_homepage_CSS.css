@@ -626,3 +626,83 @@ svg {
     }
     
 }
+
+
+/* General Project Card Styles */
+.project-cards {
+    box-shadow: 0 4px 8px 0 rgba(238, 235, 235, 20%);
+    transition: 0.3s;
+    width: 200px;
+    height: auto;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+/* Specific Project Card Styles */
+.project-cards.brown {
+    background-color: #CAAF8E;
+    color: #5B4B34;
+}
+
+.project-cards.green {
+    background-color: #3F8984;
+    color: #F6F1E2;
+}
+
+.project-cards.cream {
+    background-color: #F6F1E2;
+    color: #2B3E55;
+}
+
+.project-cards.white {
+    background-color: #FFF;
+    color: #2B3E55;
+}
+
+/* Hover Effect */
+.project-cards:hover {
+    box-shadow: 0 8px 16px 0 rgba(230, 230, 230, 70%);
+}
+
+/* Icons within the project cards */
+.menu-icons img {
+    height: auto;
+    width: 20%;
+    margin: 30px 0 20px;
+    padding: 5px;
+}
+
+.menu-icons img:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    transition: 0.6s;
+    cursor: pointer;
+}
+
+.white .menu-icons img:hover,
+.cream .menu-icons img:hover {
+    background-color: rgba(43, 62, 85, 10%);
+}
+
+/* Ensure the overlay is always on top */
+.edit-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 50%);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it's on top */
+  }
+  
+  /* Ensure the form is styled to be visible */
+  .edit-form {
+    background: white;
+    padding: 20px;
+    border: 2px solid #000; /* Add a border to make it visible */
+    z-index: 1001; /* Ensure it's above the overlay */
+  }
+  
