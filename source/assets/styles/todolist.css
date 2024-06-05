@@ -71,14 +71,6 @@ h2
   transform: translateX(-50%);
 }
 
-#progress-text {
-  position: absolute;
-  width: 100%;
-  text-align: center;
-  top: 0;
-  font-size: 20px;
-  font-weight: bold;
-}
 
 .daily-streak {
   font-size: 24px;
