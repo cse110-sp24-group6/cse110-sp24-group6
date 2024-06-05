@@ -29,7 +29,7 @@ h2
   margin-left: 12vw;
   font-size: 30px;
   text-shadow: 1px 1px 2px #93b1af;
-  margin-top: 0px;
+  margin-top: 0;
   margin-bottom: 20px;
 }
 
@@ -212,7 +212,7 @@ input[type="checkbox"] {
   cursor: pointer;
   align-items: left;
   margin-top:10px;
-  margin-bottom:0px;
+  margin-bottom:0;
   transition: background-color 0.3s ease;
 }
 
