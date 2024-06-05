@@ -217,10 +217,7 @@
 
       const editButton = document.createElement('button');
       editButton.textContent = 'Edit';
-      editButton.addEventListener('click', () => {
-        // Show the edit task form
-        editTaskForm.style.display = 'block';
-      });
+      editButton.addEventListener('click', editTask);
       
       li.innerHTML = `
         <b>Task:</b> ${task.title} <br>
