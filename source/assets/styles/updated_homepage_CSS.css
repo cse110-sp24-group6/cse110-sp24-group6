@@ -637,6 +637,31 @@ svg {
     border-radius: 20px;
     padding: 20px;
 }
+h4 {
+    font-size: 110%;
+}
+
+hr {
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.project-element:hover {
+    box-shadow: 0 8px 16px 0 rgb(255 255 255);
+}
+
+.delete-project-pic:hover{
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    transition: 0.6s;
+    cursor: pointer;
+}
+
+.white .delete-project-pic:hover,
+.cream .delete-project-pic:hover{
+    background-color: rgba(43, 62, 85, 0.1);
+}
 
 /* Specific Project Card Styles */
 .project-cards.brown {

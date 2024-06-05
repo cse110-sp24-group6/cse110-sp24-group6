@@ -1,36 +1,3 @@
-// Progress Bar
-// const progressNumber = document.getElementById('progressNumber');
-// let counter = 0;
-
-// setInterval(() => {
-//     if( counter == 0 ){
-//         clearInterval;
-//     } else {
-//         counter += 1;
-//         progressNumber.innerHTML =`${counter}%`;
-//     }
-    
-// })
-
-
-// // Navigation bar: Sticky
-// window.onscroll = function() {myFunction()};
-
-// // Get the navbar
-// let navBar = document.getElementsByClassName("navBar");
-
-// // Get the offset position of the navbar
-// let sticky = navBar.offsetTop;
-
-// // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
-// function myFunction() {
-//   if (window.pageYOffset >= sticky) {
-//     navBar.classList.add("sticky")
-//   } else {
-//     navBar.classList.remove("sticky");
-//   }
-// }
-
 /* Project Sectiom Javascript*/
 /* Temporary functions to load 4 project card elements onto the page, delete or modify after CRUD and local storage for projects has been implemented*/
 
@@ -40,8 +7,46 @@ document.addEventListener('DOMContentLoaded', () => {
   init(); // Initialize project cards
   setupEditButtons(); // Setup edit buttons
   addButton();
+  setupDeleteButtons();
 });
 
+function setupDeleteButtons() {
+  const deleteButtons = document.querySelectorAll('.delete-project-pic');
+  console.log("Setting up delete buttons for", deleteButtons.length, "buttons");
+  deleteButtons.forEach(delbutton => {
+    delbutton.addEventListener('click', deleteProject);
+  });
+}
+// function deleteProject(event) {
+//   currentProjectCard = event.target.closest('.project-card');
+//   if (currentProjectCard) {
+//     let title = currentProjectCard.querySelector('.project-title').innerText;
+//     const projectsArray = getProjectsFromStorage();
+//     let index = projectsArray.findIndex(project => project.title === title);
+//     projectsArray.splice(index, 1);
+//     // console.log(projectsArray);
+//     document.querySelector('.project-cards-grid').remove(currentProjectCard);
+//     localStorage.setItem('projects', JSON.stringify(projectsArray));
+//   }
+// }
+function deleteProject(event) {
+  const projectCard = event.target.closest('.project-card');
+  if (projectCard) {
+    const projectTitle = projectCard.querySelector('.project-title').innerText;
+    const projectsArray = getProjectsFromStorage();
+    const projectIndex = projectsArray.findIndex(project => project.title === projectTitle);
+    if (projectIndex !== -1) {
+      projectsArray.splice(projectIndex, 1);
+      localStorage.setItem('projects', JSON.stringify(projectsArray));
+      projectCard.remove();
+      console.log("Project deleted successfully");
+    } else {
+      console.log("Project not found");
+    }
+  } else {
+    console.log("No project card found");
+  }
+}
 
 function setupEditButtons() {
   const editIcons = document.querySelectorAll('.edit-icon');
@@ -105,7 +110,7 @@ function saveProjectDetails() {
     currentProjectCard.querySelector('.project-title').innerText = projectName;
     currentProjectCard.querySelector('.project-description').innerText = projectDescription;
     currentProjectCard.querySelector('.github-link').href = githubLink;
-    currentProjectCard.querySelector('.status-icon').src = `assets/icons/homepage/${projectStatus}_project/${currentProjectCard.dataset.color}.svg`;
+    currentProjectCard.querySelector('.status-icon').src = `assets/icons/homepage/${projectStatus}_project/brown.svg`;
     currentProjectCard.querySelector('.status-icon').alt = projectStatus;
 
     // Hide the form after saving
@@ -124,8 +129,7 @@ function saveProjectDetails() {
 function addProject(data) {
   const projectCard = document.createElement('div');
   projectCard.classList.add('project-card');
-  projectCard.dataset.color = data.color;
-
+  // projectCard.dataset.color = data.color;
   projectCard.innerHTML = `
     <div class="project-cards ${data.color}">
         <img class="journal-pic" src="assets/icons/homepage/daily_log/daily_log_${data.color}.png" alt="daily log icon"/>
@@ -136,6 +140,7 @@ function addProject(data) {
             <img class="edit-icon" src="assets/icons/homepage/edit/edit_icon_${data.color}.svg" alt="edit icon"/>
             <a class="github-link" href="${data.githubURL}"><img class="github-icon" src="assets/icons/homepage/github/github_icon_${data.color}.svg" alt="github icon"/></a>
             <img class="status-icon" src="assets/icons/homepage/${data.completed ? 'completed' : 'current'}_project/${data.color}.svg" alt="${data.completed ? 'completed' : 'current'}">
+            <img class="delete-project-pic" id="delete-button" src="assets/icons/homepage/project_card_delete/delete_icon.png" alt="Delete proj icon"/>
         </div>
     </div>`;
   document.querySelector('.project-cards-grid').append(projectCard);
