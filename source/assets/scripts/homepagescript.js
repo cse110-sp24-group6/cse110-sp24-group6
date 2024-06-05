@@ -155,41 +155,6 @@ function init() {
 document.addEventListener('DOMContentLoaded', init);
 
 //DELETE inside of init() after CRUD is implemented for projects, inside code adds temporary project cards to page
-function init(){
-  const brown_proj_data = {
-    title: "Project Brown",
-    description: "This is the project description",
-    githubURL: "https://github.com/",
-    completed: false,
-    color: "brown"
-  }
-  const green_proj_data = {
-    title: "Project Green",
-    description: "This is the project description",
-    githubURL: "https://github.com/",
-    completed: false,
-    color: "green"
-  }
-  const brown_proj_data2 = {
-    title: "Gaming App",
-    description: "This is the project description",
-    githubURL: "https://github.com/",
-    completed: false,
-    color: "brown"
-  }
-  const cream_proj_data = {
-    title: "Webtool App",
-    description: "This is the project description",
-    githubURL: "https://github.com/",
-    completed: true,
-    color: "cream"
-  }
-  addProject(brown_proj_data);
-  addProject(green_proj_data);
-  addProject(cream_proj_data);
-}
-
-document.addEventListener('DOMContentLoaded', init);
 
 /* Daily Log Streak implementation */ 
 function getLogsFromStorage() { 
