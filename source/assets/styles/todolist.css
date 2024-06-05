@@ -193,10 +193,9 @@ li {
   animation: fade-in 0.5s ease;
 }
 
-li > b
-{
-  font-size: large;
-  color: black;
+.task-text {
+  font-weight: normal;
+  margin-left: 0;
 }
 
 
