@@ -169,7 +169,9 @@ li {
 
 li > b
 {
+  flex-shrink: 0;
   font-size: large;
+  margin-right: 10px;
   color: #0047a2;
 }
 
