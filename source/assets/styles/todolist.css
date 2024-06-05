@@ -29,7 +29,8 @@ h2
   margin-left: 12vw;
   font-size: 30px;
   text-shadow: 1px 1px 2px #93b1af;
-  margin-top: 20px;
+  margin-top: 0px;
+  margin-bottom: 20px;
 }
 
 #progress-container {
@@ -96,9 +97,10 @@ h2
   color: white; 
   border-radius: 4px; 
   cursor: pointer;
-  margin: 10px 0; 
+  margin-top:30px;
+  /* margin-bottom:0px;  */
   transition: background-color 0.3s, transform 0.3s;
-  padding: 15px 30px;
+  padding: 18px;
   font-size: 1.2em; 
   border: none;
   font-family: Arial, sans-serif;
@@ -142,14 +144,46 @@ h2
   color: #2B3E55;
 } 
 
+#edit-task-form
+{
+  background-color: #fefefe;
+  margin: 5% auto;
+  margin-bottom: 30px;
+  margin-top: 18px;
+  padding: 20px;
+  border: 1px solid #aad4c9;
+  width: 90%;
+  max-width: 800px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #aad4c9;
+  align-items: center;
+}
+
+#edit-task-form > input
+{
+  background-color: #fefefe;
+  margin-bottom: 10px;
+  width: 80%; 
+  box-sizing: border-box; 
+  height: 10px;
+  padding: 10px;
+  border: 1px solid #aad4c9;
+  border-radius: 10px;
+  font-family: Arial, sans-serif; /* Change font type */
+  font-size: 1.1em;
+  line-height: 1.5;
+  resize: vertical;
+  color: #2B3E55;
+}
+
 li {
   background-color: #ffffff;
   padding: 20px;
   width: 90%;
   max-width: 1100px;
   margin: 5% auto;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  box-shadow: 0 0 10px #aad4c9;
   transition: 0.3s;
   margin-bottom: 15px;
   display: flex;
@@ -157,6 +191,12 @@ li {
   align-items: center;
   color: #2B3E55;
   animation: fade-in 0.5s ease;
+}
+
+li > b
+{
+  font-size: large;
+  color: black;
 }
 
 
@@ -192,6 +232,8 @@ input[type="checkbox"] {
   padding: 10px;
   cursor: pointer;
   align-items: left;
+  margin-top:10px;
+  margin-bottom:0px;
   transition: background-color 0.3s ease;
 }
 
