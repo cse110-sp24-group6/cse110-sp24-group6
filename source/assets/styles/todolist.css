@@ -193,11 +193,11 @@ li {
   animation: fade-in 0.5s ease;
 }
 
-.task-text {
-  font-weight: normal;
-  margin-left: 0;
+li > b
+{
+  font-size: large;
+  color: black;
 }
-
 
 @keyframes fade-in {
   from {
@@ -215,8 +215,8 @@ li:hover {
 }
 
 .task-text {
-  flex: 1;
-  margin-left: 15px;
+  font-weight: normal;
+  margin-left: 0;
 }
 
 input[type="checkbox"] {
