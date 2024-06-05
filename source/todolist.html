@@ -22,7 +22,6 @@
   <h1>To-Do List</h1>
   
   <div id="progress-container">
-    <div id="progress-text"></div>
     <div id="progress-bar"></div>
     <img src="assets/icons/otter.png" id="otter" alt="Otter">
     <img src="assets/icons/fish.png" id="fish" alt="Fish">
@@ -80,7 +79,6 @@
     const fish = document.getElementById('fish');
     const celebration = document.getElementById('celebration');
     const progressBar = document.getElementById('progress-bar');
-    const progressText = document.getElementById('progress-text');
     const editModal = document.getElementById('edit-modal');
     const editTaskForm = document.getElementById('edit-task-form');
     const editTaskInput = document.getElementById('edit-task-input');
@@ -95,7 +93,6 @@
     function updateProgress() {
       const completedTasks = tasks.filter(task => task.completed).length;
       const progress = (completedTasks / tasks.length) * 100;
-      progressText.textContent = `Progress: ${progress.toFixed(2)}% (${completedTasks}/${tasks.length})`;
       progressBar.style.width = `${progress}%`;
 
       if (progress === 100) {
