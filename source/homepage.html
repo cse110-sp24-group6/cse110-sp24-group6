@@ -125,7 +125,7 @@
                             <div class="outer">
                                 <div class="inner">
                                     <div id="progress-number">
-                                        5/10
+                                        0/0
                                     </div>
                                 </div>
                             </div>
@@ -157,6 +157,25 @@
 
         <!-- homepage js script-->
         <script defer src="assets/scripts/homepagescript.js"></script>
+        <!-- Task Progress -->
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const progressNumber = document.getElementById('progress-number');
+                const movingProgress = document.getElementById('moving-progress');
+                const taskProgress = JSON.parse(localStorage.getItem('taskProgress')) || { completedTasks: 0, totalTasks: 0 };
+                const completedTasks = taskProgress.completedTasks;
+                const totalTasks = taskProgress.totalTasks;
+    
+                if (totalTasks > 0) {
+                    const progress = (completedTasks / totalTasks) * 100;
+                    progressNumber.textContent = `${completedTasks}/${totalTasks}`;
+                    movingProgress.style.strokeDasharray = `${progress}, 100`;
+                } else {
+                    progressNumber.textContent = "0/0";
+                    movingProgress.style.strokeDasharray = "0, 100";
+                }
+            });
+        </script>
     </body>
 
 

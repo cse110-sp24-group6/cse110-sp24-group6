@@ -93,6 +93,7 @@
         fish.style.display = 'block';
         celebration.style.display = 'none';
       }
+      localStorage.setItem('taskProgress', JSON.stringify({completedTasks, totalTasks: tasks.length}));
     }
 
     function addTask(event) {
@@ -242,6 +243,17 @@
       if (event.target == editModal) {
         editModal.style.display = 'none';
       }
+    }
+    window.onload = function() {
+      const savedTasks = localStorage.getItem('tasks');
+      if (savedTasks) {
+        tasks = JSON.parse(savedTasks);
+        renderTasks();
+        updateProgress();
+      }
+    }
+    window.onbeforeunload = function() {
+      localStorage.setItem('tasks', JSON.stringify(tasks));
     }
   </script>
 </body>
