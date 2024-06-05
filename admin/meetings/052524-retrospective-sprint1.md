@@ -1,4 +1,4 @@
-# Agile Retrospective Meeting- Spring 1
+# Agile Retrospective Meeting- Sprint 1
 **Location:** Zoom
 
 **Time:** 6-6:30 pm
@@ -61,7 +61,7 @@ Here are some other questions we discussed!
 **How are you feeling right now?**
 
 Anything that you were mad/annoyed about?
-Anything that you were sad about?
-Anything that you were glad about
 
-Overall, everyone was satisfied with the work done so far, and while there is a lot of room for improvement, we have been functioning well as a team. No major issues so far!
+Anything that you were sad about?
+
+Anything that you were glad about
