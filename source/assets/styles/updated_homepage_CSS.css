@@ -298,8 +298,6 @@ svg {
 
 .project-cards-container {
     grid-area: projCardsCont;
-
-    /* margin-left: 4vw; */
 }
 
 .project-cards-grid{
@@ -309,16 +307,18 @@ svg {
     row-gap: 1vh;
     margin-top: 15px;
 }
+
 /* Add Button for Projects */
 .project-add-button-container{
     width: 220px;
     height: auto;
 }
+
 .project-add-button{
     width: 220px;
     height: 100%;
     font-size: 60px;
-    background-color: rgba(247, 250, 255, 0.15);
+    background-color: rgba(247 250 255 / 15%);
     border-radius: 20px;
     color: #2B3E55;
     display: flex;
@@ -327,8 +327,9 @@ svg {
     text-align: center;
     transition: background-color 0.2s ease-in;
 }
+
 .project-add-button:hover{
-    background-color: rgba(247, 250, 255, 0.8);
+    background-color: rgb(247 250 255 / 80%);
     border-radius: 20px;
     cursor: pointer;
     transition: background-color 0.2s ease-out;
@@ -336,7 +337,6 @@ svg {
 
 /* Dashboard content section */
 .overall-progress { grid-area: overallProg; }
-
 
 .dashboard-container {
     display: grid;
