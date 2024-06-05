@@ -20,8 +20,7 @@ body {
 
 /* Dashboard title spacing */
 #your-dashboard {
-    margin-top: 20px;
-    margin-left: 8vw;
+    margin-top: 2.5vh;
     font-size: 40px;
     text-shadow: 1px 1px 2px #93b1af;
 }
@@ -29,7 +28,10 @@ body {
 /* Separate content from navigation bar */
 .content {
     width: auto;
-    margin-left: 5%;
+    margin-left: 10%;
+}
+
+#dashboard-content {
     padding-bottom: 5%;
 }
 
@@ -37,7 +39,6 @@ body {
 .page-icons {
     text-decoration: none;
 }
-
 
 /* Navigation bar section */
 .nav-bar-left-container {
@@ -49,8 +50,6 @@ body {
 .nav-bar {
     width: 76px;
     height: 100%;
-
-    /* min-height: 100vh; */
     left: 0;
     top: 0;
     background-color: #3F8984;
@@ -149,7 +148,6 @@ body {
 
 /* Section: Daily log visual title */
 #daily-journal-pic { grid-area: daily-journal-pic;}
-
 #daily-logs-title { grid-area: dailyLogTitle; }
 
 .daily-log-visual-title {
@@ -158,8 +156,6 @@ body {
     grid-template-areas: 
         'daily-journal-pic dailyLogTitle';
     gap: 1em;
-
-    /* width: 20%; */
     align-items: center;
     margin-left: 1.25em;
     grid-area: streakVisualTitle;
@@ -188,10 +184,6 @@ body {
     grid-template-areas: 
         'sundAbbr mondAbbr tuesAbbr wedAbbr thurAbbr friAbbr satAbbr'
         'sundCirc mondCirc tuesCirc wedCirc thurCirc friCirc satCirc';
-
-    /* gap: 10px; */
-
-    /* padding-top: 1em; */
     height: 100%;
     width: 20%;
     gap: 1em;
@@ -215,13 +207,12 @@ body {
     border: 1px solid black;
     border-radius: 25px;
     padding: 20px;
-    margin-top: 20px;
-    margin-left: 8vw;
+    margin-top: 3em;
     width: 570px;
-    height: 200.5px;
-    box-shadow: 5px 5px rgba(0 0 0 50%);
+    box-shadow: 5px 5px #000;
     background-color: whitesmoke;
     color: #2B3E55;
+    grid-area: dailyLogContainer;
 }
 
 
@@ -233,7 +224,7 @@ body {
     background-color: rgb(63 137 132);
     position: relative;
     border-radius: 25px;
-    box-shadow: 5px 5px rgba(0 0 0 50%);
+    box-shadow: 5px 5px #000;
 }
 
 .outer {
@@ -294,15 +285,6 @@ svg {
     left: 0;
 }
 
-/* Tasks Overview */
-iframe {
-    background-color: whitesmoke;
-    height: 30vh;
-    width: 90%;
-    border-radius: 25px;
-    box-shadow: 5px 5px rgba(0 0 0 50%);
-}
-
 /* Recently viewed projects section */
 
 /* Individual project card styling is moved to ProjectCard.js file */
@@ -316,7 +298,8 @@ iframe {
 
 .project-cards-container {
     grid-area: projCardsCont;
-    margin-left: 4vw;
+
+    /* margin-left: 4vw; */
 }
 
 .project-cards-grid{
@@ -352,8 +335,6 @@ iframe {
 }
 
 /* Dashboard content section */
-.task-overview { grid-area: task-overview; }
-
 .overall-progress { grid-area: overallProg; }
 
 
@@ -361,21 +342,12 @@ iframe {
     display: grid;
     grid-template-columns: 50% 40%;
     grid-template-areas: 
-        'task-overview  overallProg'
-        'projCardsCont projCardsCont';
-    gap: 20px;
+        'dailyLogContainer  overallProg'
+        'projCardsCont      projCardsCont';
+    gap: 40px;
     margin-top: 20px;
-}
-
-.dashboard-container > .task-overview {
-    margin-left: 4vw;
-}
-
-/* Title of task overview section */
-.task-overview h2 {
-    font-size: 35px;
-    margin-bottom: 1vh;
-    text-shadow: 1px 1px 2px #93b1af;
+    justify-content: left;
+    position: relative;
 }
 
 /* Title of progress section */
@@ -384,6 +356,7 @@ iframe {
     margin-bottom: 1vh;
     text-shadow: 1px 1px 2px #93b1af;
 }
+
 
 
 @media (width <= 1050px) {
