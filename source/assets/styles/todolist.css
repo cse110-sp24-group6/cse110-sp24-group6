@@ -149,32 +149,6 @@ h2
   resize: vertical;
 }
 
-.task-title-input {
-  color: #2B3E55; /* Dark blue */
-}
-
-#task-form > .task-title-input,
-#edit-task-form > .task-title-input {
-  color: #2B3E55; /* Dark blue */
-}
-
-.task-description-input {
-  color: #666666; /* Dark gray */
-}
-
-#task-form > .task-description-input,
-#edit-task-form > .task-description-input {
-  color: #666666; /* Dark gray */
-}
-
-.task-tag-input {
-  color: #4CAF50; /* Green */
-}
-
-#task-form > .task-tag-input,
-#edit-task-form > .task-tag-input {
-  color: #4CAF50; /* Green */
-}
 
 li {
   background-color: #ffffff;
