@@ -64,19 +64,38 @@ Our team followed the agile development process in order to iteratively create o
 * In order to implement offline functionality for our web application, we decided to use Service Workers.
 * Considering our options for this, we chose to utilize the method that we had some experience with through the Labs.
 
-TODO: Elaborate and add evidence for each of these points
-- making it offline
-- testing
-- documentation
-- daily standups
-- weekly team meetings
-- Issues
-- Branching strategies
-- PRs
-- CI/CD Pipeline
+**Retrospectives**
+Retrospectives are essential for teams following an agile development process as they provide an opportunity to reflect on what went well, what didn't, and how to improve. Our team conducted retrospectives at the end of each sprint. We used a structured format where each team member shared their thoughts on what worked, what didn't, and any suggestions for improvement. We documented these discussions in our repository and revisited them in subsequent retrospectives to track progress. We used Jamboard to conduct our retrospectives and allow everyone to reflect upon the sprint and give suggestions/feedback.
+
+**Sprint and Sprint Reviews**
+Sprints are time-boxed periods during which specific work has to be completed. Our team typically had one/two-week sprints. At the beginning of each sprint, we held a sprint planning meeting to decide which tasks to prioritize and assign them to team members. Throughout the sprint, we tracked our progress and addressed any blockers. At the end of each sprint, we conducted a sprint review meeting to demo the completed work to stakeholders and gather feedback for future iterations.
+
+**Testing**
+Testing was a crucial aspect of our development process to ensure the quality and reliability of our product. We adopted a test-driven development (TDD) approach, where tests were written before the implementation of features. Our testing strategy included unit tests and end-to-end tests. We used automated testing frameworks such as Jest for unit testing and Puppeteer for end-to-end testing. Additionally, we performed manual testing to validate the user experience across different devices and browsers.
+
+**Documentation**
+Documentation played a vital role in ensuring the maintainability and scalability of our project. We maintained comprehensive documentation covering various aspects of our application, including installation instructions, architecture overview, and API documentation. We used tools like JS Docs for documenting our JavaScript and made extensive use of comments and README files. Documentation was continuously updated throughout the development process to reflect changes and additions to the codebase.
+
+**Issues**
+We utilized an issue tracking system to manage and prioritize tasks, bugs, and feature requests. Whenever a new task or issue was identifie it was logged into our issue tracker (GitHub project integrated into our repo). Each issue was assigned to a team member, categorized (e.g., bug, feature, enhancement), and given a priority level. We regularly reviewed and updated the status of issues, ensuring transparency and accountability within the team.
+
+#### Branching Strategies
+Our branching strategy aimed to strike a balance between minimizing complexity and facilitating collaboration. We followed a Git branching model based on feature branches. Each new feature or user story was developed in its own branch, allowing team members to work independently without interfering with each other's code. Once a feature was complete, it underwent code review before being merged into the main development branch.
+
+**PRs**
+Pull requests (PRs) served as the primary mechanism for code review and collaboration within our team. Before merging any code changes into the main branch, a team member would create a pull request and request reviews from other team members. Code reviews were conducted to ensure adherence to coding standards, identify potential bugs or optimizations, and promote knowledge sharing. We used pull request templates to provide context and checklist for reviewers, streamlining the review process and maintaining code quality. We also created a [PR template](TODO.md) and made sure that every PR has at least 2 reviewers and is linked to its corresponding issue. 
+
+**CI/CD Pipeline**
+We made use of a CI/CD pipeline to automate certain tasks. Our pipeline includes:
+* Linting (using a tool called super-linter which is a collection of linters)
+* Code quality check using Codacy
+* Unit tests
+* JS Docs generation
+
+The main branch was protected and PRs can only be merged with main **after** completing all checks in our CI/CD pipeline.
 
 ### Our Product
 
 TODO: Images of application, its features
 
-Contributors: team.md file
+Contributors: [Team 6](admin/team.md)!
