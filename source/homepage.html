@@ -112,7 +112,9 @@
                     <section class="project-cards-container">
                         <h2 id="project-cards-title">Your Projects</h2>
                         <div class="project-cards-grid">
-                            <div class="project-add-button-container"><div class ="project-add-button">+</div></div>
+                            <div class="project-add-button-container">
+                                <button class ="project-add-button" id="addButton">+</button>
+                            </div>
                         </div>
                     </section>
                 </div>
@@ -129,11 +131,11 @@
         <div class="edit-overlay" style="display: none;">
             <div class="edit-form">
                 <label for="input-project-name">Project Name</label><br>
-                <textarea id="input-project-name"></textarea><br>
+                <textarea id="input-project-name" placeholder="Enter your project name"></textarea><br>
                 <label for="input-project-description">Project Description</label><br>
-                <textarea id="input-project-description"></textarea><br>
+                <textarea id="input-project-description" placeholder="Describe your project"></textarea><br>
                 <label for="input-github-link">Github Link</label><br>
-                <textarea id="input-github-link"></textarea><br>
+                <textarea id="input-github-link" placeholder="Github Link"></textarea><br>
                 <label for="completed-select-box">This project is:</label>
                 <select name="completed-select" id="completed-select-box">
                     <option value="current">Current</option>

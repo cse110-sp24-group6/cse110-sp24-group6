@@ -39,7 +39,9 @@ document.addEventListener('DOMContentLoaded', () => {
   console.log("DOM fully loaded and parsed");
   init(); // Initialize project cards
   setupEditButtons(); // Setup edit buttons
+  addButton();
 });
+
 
 function setupEditButtons() {
   const editIcons = document.querySelectorAll('.edit-icon');
@@ -49,10 +51,19 @@ function setupEditButtons() {
   });
 }
 
+function addButton() {
+  let add = document.getElementById("addButton");
+  add.addEventListener('click', openAddForm);
+}
+
+function openAddForm() {
+    // Display the form
+    document.querySelector('.edit-overlay').style.display = "flex";
+}
+
 let currentProjectCard = null;
 
 function openEditForm(event) {
-  console.log("Edit icon clicked");
   currentProjectCard = event.target.closest('.project-card');
   if (currentProjectCard) {
     document.querySelector("#input-project-name").value = currentProjectCard.querySelector('.project-title').innerText;
@@ -77,8 +88,20 @@ function saveProjectDetails() {
   const projectDescription = document.querySelector("#input-project-description").value;
   const githubLink = document.querySelector("#input-github-link").value;
   const projectStatus = document.querySelector("#completed-select-box").value;
-
+  data = {
+    title: projectName,
+    description: projectDescription,
+    githubURL: githubLink,
+    completed: projectStatus === 'current' ? false : true,
+    color: "brown"
+  };
   if (currentProjectCard) {
+    const projectsArray = getProjectsFromStorage();
+    const currTitle = currentProjectCard.querySelector('.project-title').innerText
+    currData = projectsArray.find(project => project.title === currTitle);
+    let index = projectsArray.findIndex(project => project.title === currTitle);
+    projectsArray[index] = data;
+    localStorage.setItem('projects', JSON.stringify(projectsArray));
     currentProjectCard.querySelector('.project-title').innerText = projectName;
     currentProjectCard.querySelector('.project-description').innerText = projectDescription;
     currentProjectCard.querySelector('.github-link').href = githubLink;
@@ -89,7 +112,11 @@ function saveProjectDetails() {
     document.querySelector('.edit-overlay').style.display = "none";
     console.log("Project details saved and edit form hidden");
   } else {
-    console.log("No current project card to save details");
+    const projects = getProjectsFromStorage();
+    projects.push(data);
+    localStorage.setItem('projects', JSON.stringify(projects));
+    addProject(data);
+    document.querySelector('.edit-overlay').style.display = "none";
   }
 }
 
@@ -117,43 +144,36 @@ function addProject(data) {
 
 // Initializing the projects
 function init() {
-  const projects = [
-    {
-      title: "Project Brown",
-      description: "This is the project description",
-      githubURL: "https://github.com/",
-      completed: false,
-      color: "brown"
-    },
-    {
-      title: "Project Green",
-      description: "This is the project description",
-      githubURL: "https://github.com/",
-      completed: false,
-      color: "green"
-    },
-    {
-      title: "Gaming App",
-      description: "This is the project description",
-      githubURL: "https://github.com/",
-      completed: false,
-      color: "brown"
-    },
-    {
-      title: "Webtool App",
-      description: "This is the project description",
-      githubURL: "https://github.com/",
-      completed: true,
-      color: "cream"
-    }
-  ];
-
+  const projects = getProjectsFromStorage();
+  // [
+  //   {
+  //     title: "Project Brown",
+  //     description: "This is the project description",
+  //     githubURL: "https://github.com/",
+  //     completed: false,
+  //     color: "brown"
+  //   },
+  //   {
+  //     title: "Project Green",
+  //     description: "This is the project description",
+  //     githubURL: "https://github.com/",
+  //     completed: false,
+  //     color: "green"
+  //   }
+  // ]
   projects.forEach(addProject);
   console.log("Projects initialized");
 }
-
-document.addEventListener('DOMContentLoaded', init);
-
+// LOCAL STORAGE FUNCTIONALITY FOR PROJECTS
+function getProjectsFromStorage() {
+  let projects = localStorage.getItem('projects');
+  if (projects) {
+    return JSON.parse(projects);
+  }
+  else {
+    return [];
+  }
+}
 //DELETE inside of init() after CRUD is implemented for projects, inside code adds temporary project cards to page
 
 /* Daily Log Streak implementation */ 
