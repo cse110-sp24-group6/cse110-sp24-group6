@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -269,6 +270,22 @@
     window.onbeforeunload = function() {
       localStorage.setItem('tasks', JSON.stringify(tasks));
     }
+    document.addEventListener('DOMContentLoaded', function () {
+      const taskForm = document.getElementById('task-form');
+      const taskInput = document.getElementById('task-input');
+      const dueDate = document.getElementById('due-date');
+      const taskDescription = document.getElementById('task-description');
+      const taskTags = document.getElementById('task-tags');
+      const taskList = document.getElementById('task-list');
+      const deleteAllBtn = document.getElementById('delete-all');
+      const progressText = document.getElementById('progress-text');
+      const progressBar = document.getElementById('progress-bar');
+      const otter = document.getElementById('otter');
+      const fish = document.getElementById('fish');
+      const celebration = document.getElementById('celebration');
+     });
   </script>
+ <script src="assets/scripts/todolist.js"></script>
 </body>
 </html>
+
