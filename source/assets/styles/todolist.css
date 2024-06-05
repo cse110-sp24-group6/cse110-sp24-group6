@@ -118,24 +118,6 @@ h2
   align-items: center;
 }
 
- #task-form > input
-{
-  
-  background-color: #fefefe;
-  margin-bottom: 10px;
-  width: 80%; 
-  box-sizing: border-box; 
-  height: 10px;
-  padding: 10px;
-  border: 1px solid #aad4c9;
-  border-radius: 10px;
-  font-family: Arial, sans-serif; /* Change font type */
-  font-size: 1.1em;
-  line-height: 1.5;
-  resize: vertical;
-  color: #2B3E55;
-} 
-
 #edit-task-form
 {
   background-color: #fefefe;
@@ -151,21 +133,47 @@ h2
   align-items: center;
 }
 
-#edit-task-form > input
-{
+#task-form > input[type="text"],
+#edit-task-form > input[type="text"] {
   background-color: #fefefe;
   margin-bottom: 10px;
-  width: 80%; 
-  box-sizing: border-box; 
+  width: 80%;
+  box-sizing: border-box;
   height: 10px;
   padding: 10px;
   border: 1px solid #aad4c9;
   border-radius: 10px;
-  font-family: Arial, sans-serif; /* Change font type */
+  font-family: Arial, sans-serif;
   font-size: 1.1em;
   line-height: 1.5;
   resize: vertical;
-  color: #2B3E55;
+}
+
+.task-title-input {
+  color: #2B3E55; /* Dark blue */
+}
+
+#task-form > .task-title-input,
+#edit-task-form > .task-title-input {
+  color: #2B3E55; /* Dark blue */
+}
+
+.task-description-input {
+  color: #666666; /* Dark gray */
+}
+
+#task-form > .task-description-input,
+#edit-task-form > .task-description-input {
+  color: #666666; /* Dark gray */
+}
+
+.task-tag-input {
+  color: #4CAF50; /* Green */
+}
+
+#task-form > .task-tag-input,
+#edit-task-form > .task-tag-input {
+  color: #4CAF50; /* Green */
 }
 
 li {
