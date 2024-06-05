@@ -111,12 +111,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
       checkbox.type = 'checkbox';
       checkbox.checked = completed;
+
       deleteButton.textContent = 'Delete';
 
       checkbox.addEventListener('change', () => {
           const taskIndex = Array.from(taskList.children).indexOf(li);
           if (taskIndex !== -1) {
-              tasks[taskIndex].completed = checkbox.checked;
+              tasks[`${taskIndex}`].completed = checkbox.checked;
               saveTasksToStorage(tasks);
               updateProgress();
           }
@@ -126,8 +127,8 @@ document.addEventListener('DOMContentLoaded', function () {
           deleteTask(event);
       });
 
-      li.innerHTML = `
-          <b>Task:</b> ${description} <br>
+      li.innerHTML =
+          `<b>Task:</b> ${description} <br>
           <b>Due Date:</b> ${dueDate} <br>
           <b>Description:</b> ${taskDescription} <br>
           <b>Tag:</b> ${tag} <br>
