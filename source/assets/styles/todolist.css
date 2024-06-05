@@ -170,7 +170,7 @@ li {
 li > b
 {
   font-size: large;
-  color: black;
+  color: #0047a2;
 }
 
 @keyframes fade-in {
@@ -191,6 +191,7 @@ li:hover {
 .task-text {
   font-weight: normal;
   margin-left: 0;
+  
 }
 
 input[type="checkbox"] {
