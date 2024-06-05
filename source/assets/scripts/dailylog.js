@@ -16,6 +16,24 @@ document.addEventListener('DOMContentLoaded', function () {
     function saveLogsToStorage(logs) { 
         return localStorage.setItem('logs',JSON.stringify(logs));
     }
+    // Function takes in a Date object and converts it to string compatible with other functions
+    function dateToString(date) { 
+        return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+    }
+    function resetBackground() { 
+        // Resets background of all dates to original styling
+        let dateDivs = document.querySelectorAll('.date'); 
+        for (let i = 0; i < dateDivs.length; i++) { 
+            let dateDiv = dateDivs[i]; 
+            dateDiv.setAttribute('style',' background-color: #d1a689;');
+        } 
+        // Resets background of today's date to its intended styling 
+        let today = document.querySelector('.date.today'); 
+        if (today) { 
+            today.setAttribute('style', 'background-color: #468c7a; color: #F4EDE3; border-radius: 50%;font-weight: bold;');
+        }
+        
+    }
 
     //Actual Calendar
     const monthNames = [
@@ -25,10 +43,13 @@ document.addEventListener('DOMContentLoaded', function () {
     // const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     let currentDate = new Date();
     let logs = getLogsFromStorage();
-    // let logs = {}
+    
+    // Automatically select today's log 
+    selectDate(dateToString(currentDate));
 
 
     function updateCalendar() {
+        
         const monthText = document.getElementById('month');
         const yearText = document.getElementById('year');
         const datesContainer = document.getElementById('dates');
@@ -70,9 +91,16 @@ document.addEventListener('DOMContentLoaded', function () {
                 dateDiv.classList.add('log-entry');
             }
 
-            dateDiv.addEventListener("click", function() { selectDate(dateStr); });
+            dateDiv.addEventListener("click", function() { 
+                // Reset the background so that any date clicked on before is back to its original styling 
+                resetBackground(); 
+                selectDate(dateStr); 
+                // Set the background and border radius of the date that has just been clicked 
+                dateDiv.setAttribute('style','background-color: #674832; border-radius: 10%;');
+            });
             datesContainer.appendChild(dateDiv);
         }
+        
     }
 
 
@@ -84,86 +112,19 @@ document.addEventListener('DOMContentLoaded', function () {
         currentDate.setMonth(currentDate.getMonth() + 1);
         updateCalendar();
     }
+    // Selects today's log and goes to corresponding month/year view 
+    function today() { 
+        currentDate = new Date();
+        updateCalendar(); 
+        selectDate(dateToString(currentDate));
+    }
     // Initialize the calendar
     updateCalendar();
-
-    
-    /* CSS DISPLAY IS BUGGY, js code works fine 
-    // Function to show/hide month dropdown and position it under the month text
-    function toggleMonthDropdown() {
-        const monthText = document.getElementById('month');
-        const monthDropdown = document.getElementById('month-dropdown');
-
-        // Position month dropdown under the month text
-        const rect = monthText.getBoundingClientRect();
-        monthDropdown.style.left = rect.left + 'px';
-        monthDropdown.style.top = rect.bottom;
-    }
-
-    // Function to show/hide year dropdown and position it under the year text
-    function toggleYearDropdown() {
-        const yearText = document.getElementById('year');
-        const yearDropdown = document.getElementById('yearDropdown');
-
-        // Position year dropdown under the year text
-        const rect = yearText.getBoundingClientRect();
-        yearDropdown.style.left = rect.left + 'px';
-        yearDropdown.style.top = rect.bottom;
-    }
-    
-    // Function to populate month and year select options
-    // function populateDropdowns() {
-    //     const monthSelect = document.getElementById('monthSelect');
-    //     const yearSelect = document.getElementById('yearSelect');
-        
-    //     // Populate months
-    //     monthNames.forEach((month, index) => {
-    //         const option = document.createElement('option');
-    //         option.value = index;
-    //         option.textContent = month;
-    //         monthSelect.appendChild(option);
-    //     });
-
-    //     // Populate years from 2000 to current year
-    //     const currentYear = new Date().getFullYear();
-    //     for (let year = currentYear; year >= 2000; year--) {
-    //         const option = document.createElement('option');
-    //         option.value = year;
-    //         option.textContent = year;
-    //         yearSelect.appendChild(option);
-    //     }
-
-    //     // Set initial selected values
-    //     monthSelect.value = currentDate.getMonth();
-    //     yearSelect.value = currentDate.getFullYear();
-    // }
-
-    // Function to update calendar based on dropdown selection
-    function updateCalendarFromDropdowns() {
-        const monthSelect = document.getElementById('monthSelect');
-        const yearSelect = document.getElementById('yearSelect');
-
-        const selectedMonth = parseInt(monthSelect.value);
-        const selectedYear = parseInt(yearSelect.value);
-
-        currentDate = new Date(selectedYear, selectedMonth);
-        updateCalendar();
-        toggleMonthDropdown();
-        toggleYearDropdown();
-    }
-
-    // Initialize calendar and dropdowns
-    // populateDropdowns();
-
-    document.getElementById('month').addEventListener('click', toggleMonthDropdown);
-    document.getElementById('year').addEventListener('click', toggleYearDropdown);
-    // document.getElementById('monthSelect').addEventListener('change', updateCalendarFromDropdowns);
-    // document.getElementById('yearSelect').addEventListener('change', updateCalendarFromDropdowns);
-    */
 
     // Attach event listeners
     document.getElementById('prev-month').addEventListener('click', prevMonth);
     document.getElementById('next-month').addEventListener('click', nextMonth);
+    document.getElementById('today').addEventListener('click', today);
 
 
 
@@ -223,6 +184,10 @@ document.addEventListener('DOMContentLoaded', function () {
             delete logs[`${dateStr}`];
             updateCalendar();
             saveLogsToStorage(logs); 
+            progressTextarea.value = '';
+            challengesTextarea.value = '';
+            learningsTextarea.value = '';
+            futurePlanTextarea.value = '';
         };
     }
 

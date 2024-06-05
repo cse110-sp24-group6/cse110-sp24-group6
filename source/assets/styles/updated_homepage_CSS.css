@@ -30,6 +30,7 @@ body {
 .content {
     width: auto;
     margin-left: 5%;
+    padding-bottom: 5%;
 }
 
 /* Make all page icons that are clickable not have underline */
@@ -46,7 +47,6 @@ body {
 }
 
 .nav-bar {
-    position: absolute;
     width: 76px;
     height: 100%;
 
@@ -58,6 +58,7 @@ body {
     flex-direction: column;
     align-items: center;
     padding-top: 20px;
+    position:fixed;
 }
 
 .nav-bar .databaes-icon {
@@ -88,12 +89,6 @@ body {
     margin-top: 25%;
 }
 
-.nav-bar .projects-icon {
-    width: 45px;
-    height: 45px;
-    margin-bottom: 25%;
-    margin-top: 25%;
-}
 
 /* Daily Log-in section */
 
@@ -153,7 +148,8 @@ body {
 
 
 /* Section: Daily log visual title */
-#daily-journal-pic { grid-area: daily-journal-pic; }
+#daily-journal-pic { grid-area: daily-journal-pic;}
+
 #daily-logs-title { grid-area: dailyLogTitle; }
 
 .daily-log-visual-title {
@@ -309,89 +305,7 @@ iframe {
 
 /* Recently viewed projects section */
 
-/* Making the cards */
-
-/* Card: Card Size, text size, formatting */
-.project-cards {
-    box-shadow: 0 4px 8px 0 rgba(238 235 235 20%);
-    transition: 0.3s;
-    width: 240px;
-    height: auto;
-    border-radius: 25px;
-
-    /* margin: 20px 20px 0px 20px; */
-}
-
-.project-cards div h4 {
-    font-size: 110%;
-    margin-top: 10px;
-    margin-left: 5px;
-}
-
-.project-cards div p {
-    font-size: 105%;
-    margin-top: 10px;
-    margin-left: 5px;
-}
-
-.project-cards hr {
-    width: 85%;
-    margin: auto;
-    margin-top: 30px;
-    margin-bottom: 10px;
-}
-
-.project-cards:hover {
-    box-shadow: 0 8px 16px 0 rgba(230 230 230 70%);
-}
-
-.individual-project-card-container {
-    padding: 2px 16px;
-}
-
-.cards-log-journal-pic {
-    height: auto;
-    width: 35%;
-    margin: 10px 0 0 20px;
-}
-
-/* Card: background and text color */
-#brown-back-card {
-    background-color: #CAAF8E;
-    color: #5B4B34;
-    grid-area: brownBack;
-}
-
-#blue-back-card {
-    background-color: #3F8984;
-    color: #F6F1E2;
-    grid-area: blueBack;
-}
-
-#off-white-back-card {
-    background-color: #F6F1E2;
-    color: #2B3E55;
-    grid-area: offWhiteBack;
-}
-
-#white-back-card {
-    background-color: #FFF;
-    color: #2B3E55;
-    grid-area: whiteBack;
-}
-
-/* Card: github and external link icons */
-.external-icon  {
-    height: auto;
-    width: 10%;
-    margin: 40px 0 20px 20px;
-}
-
-.github-icon {
-    height: auto;
-    width: 10%;
-    margin: 40px 0 20px;
-}
+/* Individual project card styling is moved to ProjectCard.js file */
 
 /* Positioning cards in a container */
 #project-cards-title { 
@@ -401,19 +315,21 @@ iframe {
 }
 
 .project-cards-container {
-    display: grid;
-    grid-template-columns: 20% 20% 20% 20%;
-    grid-template-areas: 
-        'cardsTitle cardsTitle .            .'
-        'brownBack  blueBack   offWhiteBack whiteBack';
+    grid-area: projCardsCont;
+    margin-left: 4vw;
+}
+
+.project-cards-grid{
+    display: flex;
+    overflow-x:auto;
     gap: 3vw;
     row-gap: 1vh;
-    justify-content: center;
-    grid-area: projCardsCont;
+    margin-top: 15px;
 }
 
 /* Dashboard content section */
 .task-overview { grid-area: task-overview; }
+
 .overall-progress { grid-area: overallProg; }
 
 
@@ -425,8 +341,6 @@ iframe {
         'projCardsCont projCardsCont';
     gap: 20px;
     margin-top: 20px;
-    justify-content: center;
-    
 }
 
 .dashboard-container > .task-overview {
@@ -475,6 +389,7 @@ iframe {
         justify-content: center;
         padding-top: 20px;
         overflow: hidden;
+        z-index: 2;
     }
 
     .nav-bar .databaes-icon {
@@ -494,12 +409,6 @@ iframe {
     }
 
     .nav-bar .to-do-list-icon {
-        width: 8vw;
-        height: 8vw;
-        margin: 25px;
-    }
-
-    .nav-bar .projects-icon {
         width: 8vw;
         height: 8vw;
         margin: 25px;
@@ -608,7 +517,6 @@ iframe {
         margin-right: auto;
         width: 80vw;
         height: auto;
-    
     }
     
     
@@ -643,25 +551,13 @@ iframe {
         border-radius: 25px;
     }
     
-    /* Completely remove the project cards */
-    .project-cards-container {
-        display: none;
-    }
-    
     /* Dashboard content section */
-    .task-overview { grid-area: task-overview; }
-    .overall-progress { grid-area: overallProg; }
     
     .dashboard-container {
-        display: grid;
-        grid-template-columns: auto;
-        grid-template-areas: 
-            'task-overview'
-            'overallProg';
-        gap: 1em;
-        column-gap: 0;
+        display: flex;
+        flex-direction: column;
         margin-top: 1.5em;
-        
+        padding-bottom: 9vh;
     }
     
     .dashboard-container > .task-overview {
