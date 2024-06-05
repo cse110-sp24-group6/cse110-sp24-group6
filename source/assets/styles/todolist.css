@@ -164,6 +164,9 @@ li {
   gap: 10px;
   align-items: center;
   color: #2B3E55;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   animation: fade-in 0.5s ease;
 }
 
