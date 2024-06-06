@@ -40,11 +40,6 @@ Our brand and team mascot is an otter, and a lot of our values are similar to th
 - **Email:** ackovi@ucsd.edu
 - My name is Avnish Kovi, and I am a third year Computer Science major at UCSD.
 
-### Karon Luo
-- [ **GitHub Page**](https://karonlan.github.io/CSE110/)
-- **Email:** k1luo@ucsd.edu
-- I’m Karon Luo, a Computer Engineering student at UCSD, class of 2025. I am interested in computer architecture and software engineering.
-
 ### Catherine Zhang
 - [**GitHub Page**](https://caz002.github.io/CSE110-LabWeek1/)
 - **Email:** caz002@ucsd.edu
