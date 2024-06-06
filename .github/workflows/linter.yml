@@ -39,4 +39,5 @@
             VALIDATE_CHECKOV: false
             VALIDATE_YAML: false
             VALIDATE_JSCPD: false
+            VALIDATE_CS: false
 ...

@@ -57,7 +57,7 @@ function setupEditButtons() {
 }
 
 function addButton() {
-  let add = document.getElementById("addButton");
+  let add = document.getElementById("add-button");
   add.addEventListener('click', openAddForm);
 }
 
