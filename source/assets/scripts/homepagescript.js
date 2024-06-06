@@ -33,51 +33,128 @@
 
 /* Project Sectiom Javascript*/
 /* Temporary functions to load 4 project card elements onto the page, delete or modify after CRUD and local storage for projects has been implemented*/
-//CAN DELETE LATER
-function addProject(data){
-  let newProject = document.createElement('project-card');
-  newProject.data = data;
-  document.querySelector('.project-cards-grid').append(newProject);
+
+/* For edit project form*/
+document.addEventListener('DOMContentLoaded', () => {
+  console.log("DOM fully loaded and parsed");
+  init(); // Initialize project cards
+  setupEditButtons(); // Setup edit buttons
+});
+
+function setupEditButtons() {
+  const editIcons = document.querySelectorAll('.edit-icon');
+  console.log("Setting up edit buttons for", editIcons.length, "icons");
+  editIcons.forEach(icon => {
+    icon.addEventListener('click', openEditForm);
+  });
 }
-//DELETE inside of init() after CRUD is implemented for projects, inside code adds temporary project cards to page
-function init(){
-  const brown_proj_data = {
-    title: "Project Brown",
-    description: "This is the project description",
-    githubURL: "https://github.com/",
-    completed: false,
-    color: "brown"
+
+let currentProjectCard = null;
+
+function openEditForm(event) {
+  console.log("Edit icon clicked");
+  currentProjectCard = event.target.closest('.project-card');
+  if (currentProjectCard) {
+    document.querySelector("#input-project-name").value = currentProjectCard.querySelector('.project-title').innerText;
+    document.querySelector("#input-project-description").value = currentProjectCard.querySelector('.project-description').innerText;
+    document.querySelector("#input-github-link").value = currentProjectCard.querySelector('.github-link').href;
+    document.querySelector("#completed-select-box").value = currentProjectCard.querySelector('.status-icon').alt.includes('completed') ? 'completed' : 'current';
+
+    // Display the form
+    document.querySelector('.edit-overlay').style.display = "flex";
+    console.log("Edit form displayed");
+  } else {
+    console.log("No project card found");
   }
-  const green_proj_data = {
-    title: "Project Green",
-    description: "This is the project description",
-    githubURL: "https://github.com/",
-    completed: false,
-    color: "green"
+}
+
+const saveButton = document.querySelector("#save-button");
+saveButton.addEventListener('click', saveProjectDetails);
+
+function saveProjectDetails() {
+  console.log("Save button clicked");
+  const projectName = document.querySelector("#input-project-name").value;
+  const projectDescription = document.querySelector("#input-project-description").value;
+  const githubLink = document.querySelector("#input-github-link").value;
+  const projectStatus = document.querySelector("#completed-select-box").value;
+
+  if (currentProjectCard) {
+    currentProjectCard.querySelector('.project-title').innerText = projectName;
+    currentProjectCard.querySelector('.project-description').innerText = projectDescription;
+    currentProjectCard.querySelector('.github-link').href = githubLink;
+    currentProjectCard.querySelector('.status-icon').src = `assets/icons/homepage/${projectStatus}_project/${currentProjectCard.dataset.color}.svg`;
+    currentProjectCard.querySelector('.status-icon').alt = projectStatus;
+
+    // Hide the form after saving
+    document.querySelector('.edit-overlay').style.display = "none";
+    console.log("Project details saved and edit form hidden");
+  } else {
+    console.log("No current project card to save details");
   }
-  const white_proj_data = {
-    title: "Gaming App",
-    description: "This is the project description",
-    githubURL: "https://github.com/",
-    completed: false,
-    color: "white"
-  }
-  const cream_proj_data = {
-    title: "Webtool App",
-    description: "This is the project description",
-    githubURL: "https://github.com/",
-    completed: true,
-    color: "cream"
-  }
-  addProject(brown_proj_data);
-  addProject(green_proj_data);
-  addProject(cream_proj_data);
-  addProject(white_proj_data);
-  addProject(green_proj_data);
-  addProject(cream_proj_data);
+}
+
+// Example function to add project cards dynamically
+function addProject(data) {
+  const projectCard = document.createElement('div');
+  projectCard.classList.add('project-card');
+  projectCard.dataset.color = data.color;
+
+  projectCard.innerHTML = `
+    <div class="project-cards ${data.color}">
+        <img class="journal-pic" src="assets/icons/homepage/daily_log/daily_log_${data.color}.png" alt="daily log icon"/>
+        <h4 class="project-title"><b>${data.title}</b></h4>
+        <p class="project-description">${data.description}</p>
+        <hr>
+        <div class="menu-icons">
+            <img class="edit-icon" src="assets/icons/homepage/edit/edit_icon_${data.color}.svg" alt="edit icon"/>
+            <a class="github-link" href="${data.githubURL}"><img class="github-icon" src="assets/icons/homepage/github/github_icon_${data.color}.svg" alt="github icon"/></a>
+            <img class="status-icon" src="assets/icons/homepage/${data.completed ? 'completed' : 'current'}_project/${data.color}.svg" alt="${data.completed ? 'completed' : 'current'}">
+        </div>
+    </div>`;
+  document.querySelector('.project-cards-grid').append(projectCard);
+  setupEditButtons(); // Attach event listeners to the new edit icons
+}
+
+// Initializing the projects
+function init() {
+  const projects = [
+    {
+      title: "Project Brown",
+      description: "This is the project description",
+      githubURL: "https://github.com/",
+      completed: false,
+      color: "brown"
+    },
+    {
+      title: "Project Green",
+      description: "This is the project description",
+      githubURL: "https://github.com/",
+      completed: false,
+      color: "green"
+    },
+    {
+      title: "Gaming App",
+      description: "This is the project description",
+      githubURL: "https://github.com/",
+      completed: false,
+      color: "brown"
+    },
+    {
+      title: "Webtool App",
+      description: "This is the project description",
+      githubURL: "https://github.com/",
+      completed: true,
+      color: "cream"
+    }
+  ];
+
+  projects.forEach(addProject);
+  console.log("Projects initialized");
 }
 
 document.addEventListener('DOMContentLoaded', init);
+
+//DELETE inside of init() after CRUD is implemented for projects, inside code adds temporary project cards to page
 
 /* Daily Log Streak implementation */ 
 function getLogsFromStorage() { 
@@ -92,7 +169,6 @@ function getLogsFromStorage() {
       return returnLog;
   }
 }
-
 
 // Get the log for given date 
 function getLog(date) { 
@@ -241,3 +317,5 @@ function weekFillIn() {
 weekFillIn(); 
 setStreakToStorage(findStreak()); 
 document.getElementById('daily-streak').textContent = getStreakFromStorage();
+
+
