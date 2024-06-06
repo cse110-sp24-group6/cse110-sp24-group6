@@ -2,7 +2,7 @@
 
 Here is the link to our [team page](admin/team.md)!
 
-Link to our Figma [TODO](TODO).
+Our teams Figma design can also be found [here](https://www.figma.com/design/VZMvKaZP4uVpx44r2jPuqO/CSE-110-Team-6-DevTool-App?node-id=2314-2&t=9r0lQ6axiaQZtOdT-1)!
 
 ### Our Brainstorming Process
 
