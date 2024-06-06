@@ -1,7 +1,5 @@
 /* Defaulting the colors */
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
 }
 
@@ -16,14 +14,14 @@ body, header, footer
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
 }
 
 h1
 {
-  margin-left: 12vw;
+  margin-left: 7vw;
   font-size: 40px;
   text-shadow: 1px 1px 2px #93b1af;
+  margin-top: 20px;
 }
 
 h2
@@ -31,12 +29,15 @@ h2
   margin-left: 12vw;
   font-size: 30px;
   text-shadow: 1px 1px 2px #93b1af;
+  margin-top: 0;
+  margin-bottom: 20px;
 }
 
 #progress-container {
   background-color: #fefefe;
   margin: 5% auto;
-  padding: 20px;
+  margin-bottom: 18px;
+  margin-top: 18px;
   border: 1px solid #aad4c9;
   width: 90%;
   max-width: 1100px;
@@ -44,11 +45,7 @@ h2
   box-shadow: 0 0 10px #aad4c9;
   align-items: center;
   position: relative;
-  height: 90px;
- 
- 
-  
-
+  height: 90px;  
 }
 
 #progress-bar {
@@ -74,14 +71,6 @@ h2
   transform: translateX(-50%);
 }
 
-#progress-text {
-  position: absolute;
-  width: 100%;
-  text-align: center;
-  top: 0;
-  font-size: 20px;
-  font-weight: bold;
-}
 
 .daily-streak {
   font-size: 24px;
@@ -92,7 +81,7 @@ h2
 .text {
   font-size: 18px;
   font-weight: normal;
-  color: #2B3E55;
+  color: #000;
 }
 
 #delete-all {
@@ -100,9 +89,9 @@ h2
   color: white; 
   border-radius: 4px; 
   cursor: pointer;
-  margin: 10px 0; 
+  margin-top:30px;
   transition: background-color 0.3s, transform 0.3s;
-  padding: 15px 30px;
+  padding: 18px;
   font-size: 1.2em; 
   border: none;
   font-family: Arial, sans-serif;
@@ -117,6 +106,8 @@ h2
 {
   background-color: #fefefe;
   margin: 5% auto;
+  margin-bottom: 30px;
+  margin-top: 18px;
   padding: 20px;
   border: 1px solid #aad4c9;
   width: 90%;
@@ -126,26 +117,135 @@ h2
   align-items: center;
 }
 
- #task-form > input
+#edit-task-form
 {
-  width: 100%;
-  box-sizing: border-box; 
+  background-color: #fefefe;
+  margin: 5% auto;
+  margin-bottom: 30px;
+  margin-top: 18px;
+  padding: 20px;
+  border: 1px solid #aad4c9;
+  width: 90%;
+  max-width: 800px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #aad4c9;
+  align-items: center;
+}
+
+#task-form > input[type="text"],
+#edit-task-form > input[type="text"] {
+  background-color: #fefefe;
   margin-bottom: 10px;
+  width: 80%;
+  box-sizing: border-box;
   height: 10px;
   padding: 10px;
   border: 1px solid #aad4c9;
   border-radius: 10px;
-  font-family: Arial, sans-serif; /* Change font type */
+  font-family: Arial, sans-serif;
   font-size: 1.1em;
   line-height: 1.5;
   resize: vertical;
-  background-color: #d7eae5;
-  color: #2B3E55;
-} 
+}
 
+
+li {
+  background-color: #fff;
+  padding: 20px;
+  width: 90%;
+  max-width: 1100px;
+  margin: 5% auto;
+  border-radius: 5px;
+  box-shadow: 0 0 10px #aad4c9;
+  transition: 0.3s;
+  margin-bottom: 15px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  color: #2B3E55;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  animation: fade-in 0.5s ease;
+}
+
+li > b
+{
+  flex-shrink: 0;
+  font-size: large;
+  margin-right: 10px;
+  color: #0047a2;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+ 
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+li:hover {
+  background-color: #F9F6EE;
+}
+
+.task-text {
+  font-weight: normal;
+  margin-left: 0;
+  
+}
+
+input[type="checkbox"] {
+  margin-right: 15px;
+  transform: scale(1.5);
+}
+
+.delete-btn {
+  background-color: #f00;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  align-items: left;
+  margin-top:10px;
+  margin-bottom:0;
+  transition: background-color 0.3s ease;
+}
+
+.delete-btn:hover {
+  background-color: #f00;
+  animation: fade-out 0.5s ease;
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  
+  to {
+    opacity: 0;
+  }
+}
+
+.task-done {
+  text-decoration: line-through;
+}
 
 .button:hover {
   background-color: #3e8e41;
+}
+
+.buttons {
+  flex-basis: 30%;
+  text-align: right;
+}
+
+button {
+  margin-right: 10px;
 }
 
 .user-feed-container {
@@ -161,40 +261,6 @@ h2
 
 .upcoming-text {
   font-size: 18px;
-}
-
-.modal {
-  display: none; 
-  position: fixed; 
-  z-index: 1; 
-  left: 0;
-  top: 0;
-  width: 100%; 
-  height: 100%; 
-  overflow: auto; 
-  background-color: black; 
-  background-color: #0006
-}
-
-.modal-content {
-  background-color: #fefefe;
-  margin: 15% auto; 
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%; 
-}
-
-.close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover, .close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
 }
 
 /* Navigation bar section */
@@ -246,6 +312,7 @@ h2
   margin-bottom: 25%;
   margin-top: 25%;
 }
+
 
 @media (width <= 1050px) {
   .content {
