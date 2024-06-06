@@ -89,7 +89,7 @@ Pull requests (PRs) served as the primary mechanism for code review and collabor
 We made use of a CI/CD pipeline to automate certain tasks. Our pipeline includes:
 * Linting (using a tool called super-linter which is a collection of linters)
 * Code quality check using Codacy
-* Unit tests
+* Unit tests through Jest
 * JS Docs generation
 
 The main branch was protected and PRs can only be merged with main **after** completing all checks in our CI/CD pipeline.
