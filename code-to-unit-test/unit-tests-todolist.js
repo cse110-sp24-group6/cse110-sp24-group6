@@ -29,6 +29,7 @@ export function verifyAddTask() {
     let taskStickers = document.getElementById('task-stickers');
     let taskSubtasks = document.getElementById('task-subtasks');
 
+    console.log(taskField);
     taskField.value = "Project 1";
     taskDate.value = "06/04/2024";
     taskDesc.value = "Testing the project field";
