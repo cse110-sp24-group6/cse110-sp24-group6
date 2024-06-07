@@ -14,10 +14,11 @@ async function addTextInputToElement(inputArea, text){
   await page.keyboard.type(text);
 }
 
+// link to website: https://cse110-sp24-group6.github.io/cse110-sp24-group6/source/homepage.html
 
 describe("Basic Navigation Bar Interactions", () => {
     beforeAll(async () => {
-      browser = await puppeteer.launch({headless: false, slowMo: 2});
+      browser = await puppeteer.launch({headless: false});
       page = await browser.newPage();
       await page.goto("http://127.0.0.1:5500/source/homepage.html");
     });
@@ -105,8 +106,20 @@ describe("Projects CRUD functionality", () => {
           expect(projStatusIcon).toBe("http://127.0.0.1:5500/source/assets/icons/homepage/completed_project/brown.svg");
         }
     }, 20000);
+    it("Checking if projects were added to local storage", async() => {
+      const projectItems = await page.evaluate(()=>{
+        return localStorage.getItem('projects');
+      });
+      let parsedProj = JSON.parse(projectItems);
+      for(let i = 0; i < 10; i++){
+        expect(parsedProj[i].title).toBe("DevTools Project");
+        expect(parsedProj[i].description).toBe("CSE 110 Spring 2024 Project");
+        expect(parsedProj[i].githubURL).toBe("https://github.com/cse110-sp24-group6/cse110-sp24-group6");
+        expect(parsedProj[i].completed).toBe(true);
+      }
+    });
 
-    it("Checking if the values on the project cards change after editing the projects with the edit icon", async () => {
+    it("Checking if the values on the project cards changed after editing", async () => {
       let projectCards = await page.$$('.project-card');
       for(let i = 0; i < 10; i++){
         console.log(`Editing project ${i+1}/10`);
@@ -114,7 +127,7 @@ describe("Projects CRUD functionality", () => {
 
         // Clicking Edit Button
         await projectEl.$eval(('.edit-icon'), el => el.click());
-        await page.$('.edit-form')
+        await page.$('.edit-form');
 
         // Editing Project Name, Description, and Github Link
         await addTextInputToElement('#input-project-name', 'Lorem ipsum dolor sit amet, adhuc liber quando eu eos, sed ut case urbanitas.');
@@ -141,6 +154,19 @@ describe("Projects CRUD functionality", () => {
         expect(projStatusIcon).toBe("http://127.0.0.1:5500/source/assets/icons/homepage/current_project/brown.svg");
       }
     }, 20000);
+
+    it("Check if local storage was updated after editing", async () => {
+      const projectItems = await page.evaluate(()=>{
+        return localStorage.getItem('projects');
+      });
+      let parsedProj = JSON.parse(projectItems);
+      for(let i = 0; i < 10; i++){
+        expect(parsedProj[i].title).toBe("Lorem ipsum dolor sit amet, adhuc liber quando eu eos, sed ut case urbanitas.");
+        expect(parsedProj[i].description).toBe("Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.");
+        expect(parsedProj[i].githubURL).toBe("https://github.com/elaine-ch/CSE110-SP24-Lab6-Template");
+        expect(parsedProj[i].completed).toBe(false);
+      }
+    });
 
     it("Refresh page, and check if the number of project cards remains the same", async () => {
       await page.reload();
@@ -184,8 +210,13 @@ describe("Projects CRUD functionality", () => {
         expect(numProjects).toBe(10-i-1);
       }
    });
+    it("Check if projects were removed from local storage after delete", async () => {
+      const projectItems = await page.evaluate(()=>{
+        return localStorage.getItem('projects');
+      });
+      expect(projectItems).toBe("[]");
+    })
   });
   afterAll(async () => {
     await browser.close();
-    await page.close();
   });
