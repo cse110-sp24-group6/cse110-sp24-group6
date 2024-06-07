@@ -4,10 +4,27 @@ let browser;
 let page;
 
 // Helper Functions
+/**
+	* Verifies whether the text content of a selector matches a given string
+  * 
+  * @param {Object} project - parent project/element of the selector
+  * @param {String} selector - identifier of the selector(class, id)
+  * @param {String} expected - we are testing whether the selector's text matches this string
+  * 
+*/
+
 async function checkElementTextContent(project, selector, expected){
   let text = await project.$eval(selector, element => element.textContent);
   expect(text).toBe(expected);
 }
+
+/**
+	* Adds text to an input element, replaces previous text
+  * 
+  * @param {String} inputArea - class/id of element to add text to
+  * @param {String} text - text to input
+  * 
+*/
 async function addTextInputToElement(inputArea, text){
   let inputEl = await page.$(inputArea);
   await inputEl.click({ clickCount: 3});
@@ -16,6 +33,7 @@ async function addTextInputToElement(inputArea, text){
 
 // link to website: https://cse110-sp24-group6.github.io/cse110-sp24-group6/source/homepage.html
 
+// Navigation Bar Tests
 describe("Basic Navigation Bar Interactions", () => {
     beforeAll(async () => {
       browser = await puppeteer.launch({headless: false});
@@ -39,7 +57,6 @@ describe("Basic Navigation Bar Interactions", () => {
       const url = page.url();
       expect(url).toBe('http://127.0.0.1:5500/source/homepage.html');
     });
-    // this test fails, but I think its because there are some bugs on this page
     it('Testing if to-do list icon sends you to the to-do list page', async () => {
       await page.waitForSelector('#to-do-list-button', { visible: true });
       const toDoIcon = await page.$('#to-do-list-button');
@@ -51,6 +68,7 @@ describe("Basic Navigation Bar Interactions", () => {
     });
 });
 
+// Projects Tests
 describe("Projects CRUD functionality", () => {
     it('Checking if a new project can be created through the add button and editing form', async () => {
       for(let i = 0; i < 10; i++){
@@ -112,10 +130,10 @@ describe("Projects CRUD functionality", () => {
       });
       let parsedProj = JSON.parse(projectItems);
       for(let i = 0; i < 10; i++){
-        expect(parsedProj[i].title).toBe("DevTools Project");
-        expect(parsedProj[i].description).toBe("CSE 110 Spring 2024 Project");
-        expect(parsedProj[i].githubURL).toBe("https://github.com/cse110-sp24-group6/cse110-sp24-group6");
-        expect(parsedProj[i].completed).toBe(true);
+        expect(parsedProj[`${i}`].title).toBe("DevTools Project");
+        expect(parsedProj[`${i}`].description).toBe("CSE 110 Spring 2024 Project");
+        expect(parsedProj[`${i}`].githubURL).toBe("https://github.com/cse110-sp24-group6/cse110-sp24-group6");
+        expect(parsedProj[`${i}`].completed).toBe(true);
       }
     });
 
@@ -161,10 +179,10 @@ describe("Projects CRUD functionality", () => {
       });
       let parsedProj = JSON.parse(projectItems);
       for(let i = 0; i < 10; i++){
-        expect(parsedProj[i].title).toBe("Lorem ipsum dolor sit amet, adhuc liber quando eu eos, sed ut case urbanitas.");
-        expect(parsedProj[i].description).toBe("Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.");
-        expect(parsedProj[i].githubURL).toBe("https://github.com/elaine-ch/CSE110-SP24-Lab6-Template");
-        expect(parsedProj[i].completed).toBe(false);
+        expect(parsedProj[`${i}`].title).toBe("Lorem ipsum dolor sit amet, adhuc liber quando eu eos, sed ut case urbanitas.");
+        expect(parsedProj[`${i}`].description).toBe("Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.");
+        expect(parsedProj[`${i}`].githubURL).toBe("https://github.com/elaine-ch/CSE110-SP24-Lab6-Template");
+        expect(parsedProj[`${i}`].completed).toBe(false);
       }
     });
 
