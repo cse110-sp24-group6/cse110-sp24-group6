@@ -6,6 +6,6 @@
     "excludePattern": "(^|\\/|\\\\)_"
   },
   "opts": {
-    "destination": "./.github/workflows"
+    "destination": "../out/"
   }
 }
