@@ -1,10 +1,23 @@
-// TODO: remember to change all the urls to the github page
+// TODO: remember to change all the urls to the github page if we are using that for deployment
 import puppeteer from 'puppeteer';
-let browser;
+let browser; 
 let page;
+
+// Helper Functions
+async function checkElementTextContent(project, selector, expected){
+  let text = await project.$eval(selector, element => element.textContent);
+  expect(text).toBe(expected);
+}
+async function addTextInputToElement(inputArea, text){
+  let inputEl = await page.$(inputArea);
+  await inputEl.click({ clickCount: 3});
+  await page.keyboard.type(text);
+}
+
+
 describe("Basic Navigation Bar Interactions", () => {
     beforeAll(async () => {
-      browser = await puppeteer.launch({headless: false, slowMo: 25});
+      browser = await puppeteer.launch({headless: false, slowMo: 2});
       page = await browser.newPage();
       await page.goto("http://127.0.0.1:5500/source/homepage.html");
     });
@@ -13,7 +26,6 @@ describe("Basic Navigation Bar Interactions", () => {
       const dailyLogIcon = await page.$('#daily-log-button');
       await dailyLogIcon.click();
       await page.waitForNavigation();
-      //await page.waitForSelector('#daily-log-button', { visible: true });
       const url = page.url();
       expect(url).toBe('http://127.0.0.1:5500/source/dailylog.html');
     });
@@ -23,7 +35,6 @@ describe("Basic Navigation Bar Interactions", () => {
       const homepageIcon = await page.$('#home-page-button');
       await homepageIcon.click();
       await page.waitForNavigation();
-      //await page.waitForSelector('#daily-log-button', { visible: true });
       const url = page.url();
       expect(url).toBe('http://127.0.0.1:5500/source/homepage.html');
     });
@@ -40,152 +51,141 @@ describe("Basic Navigation Bar Interactions", () => {
 });
 
 describe("Projects CRUD functionality", () => {
-    it('Test if pressing add button opens editing overlay', async () => {
-      await page.waitForSelector('#home-page-button', { visible: true });
-      const homepageIcon = await page.$('#home-page-button');
-      await homepageIcon.click();
-      await page.waitForNavigation();
-      console.log("Pressing project add button...");
-      let addButton = await page.$eval(('#add-button'), el => el.click());
-      const editOverlayExists = await page.$('.edit-form') !== null;
-      expect(editOverlayExists).toBe(true);
-    });
+    it('Checking if a new project can be created through the add button and editing form', async () => {
+      for(let i = 0; i < 10; i++){
+        console.log(`Adding project ${i+1}/10`);
 
-    it('Input items into edit form, click save, and check if a new project was added', async () => {
-      // add Project Name
-      const projectNameInput = await page.$('#input-project-name');
-      await projectNameInput.click();
-      await page.keyboard.type('DevTools Project');
+        // Pressing add button
+        console.log('Testing if pressing add button opens editing overlay');
+        await page.waitForSelector('#home-page-button', { visible: true });
+        const homepageIcon = await page.$('#home-page-button');
+        await homepageIcon.click();
+        await page.waitForNavigation();
+        await page.$eval(('#add-button'), el => el.click());
+        const editOverlayExists = await page.$('.edit-form') !== null;
+        expect(editOverlayExists).toBe(true);
 
-      // add Project Description
-      const projectDescription = await page.$('#input-project-description');
-      await projectDescription.click();
-      await page.keyboard.type('CSE 110 Spring 2024 Project');
+        // add Project Name, Description, and Github Link
+        await addTextInputToElement('#input-project-name', 'DevTools Project');
+        await addTextInputToElement('#input-project-description', 'CSE 110 Spring 2024 Project');
+        await addTextInputToElement('#input-github-link', 'https://github.com/cse110-sp24-group6/cse110-sp24-group6');
 
-      // add Github Link
-      const gitHubLink = await page.$('#input-github-link');
-      await gitHubLink.click();
-      await page.keyboard.type('https://github.com/cse110-sp24-group6/cse110-sp24-group6');
+        // Set "This project is" to complete
+        await page.select('#completed-select-box', 'completed');
 
-      // Set "This project is" to complete
-      await page.select('#completed-select-box', 'completed');
+        // pressing save
+        const saveButton = await page.$('#save-button');
+        await saveButton.click();
 
+        console.log(`Checking that ${i+1} project card exists`);
+        let numProjects = await page.$$eval('.project-card', (projItems) => {
+          return projItems.length;
+        });
 
-      // press save
-      const saveButton = await page.$('#save-button');
-      await saveButton.click();
+        expect(numProjects).toBe(i+1);
+      }
+    }, 20000);
+    it("Checking if project cards are created with the correct inputed values", async () => {
+        let projectCards = await page.$$('.project-card');
+        for(let i = 0; i < 10; i++){
+          // Checking if each new project created has correct attributes
+          console.log(`Checking project ${i+1}/10`);
+          const projectEl = projectCards[i];
 
-      console.log("Checking for 1 project card...");
-      let numProjects = await page.$$eval('.project-card', (projItems) => {
-        return projItems.length;
-      });
+          // Checking Project Title and Description
+          await checkElementTextContent(projectEl, '.project-title', "DevTools Project");
+          await checkElementTextContent(projectEl, '.project-description', "CSE 110 Spring 2024 Project");
 
-      expect(numProjects).toBe(1);
-      
-      // Checking if new project created has correct attributes
-      console.log("Checking if Project Name, Project Description, Github link, and completeness status are as inputed...");
-      const projectEl = await page.$('.project-card');
+          // Checking Github Link
+          const projGithubLink = await projectEl.$eval('a.github-link', element => element.href);
+          expect(projGithubLink).toBe("https://github.com/cse110-sp24-group6/cse110-sp24-group6");
 
-      // Project Title
-      const projTitle = await projectEl.$eval('.project-title', element => element.textContent);
-      expect(projTitle).toBe("DevTools Project");
-
-      // Project Description
-      const projDescription = await projectEl.$eval('.project-description', element => element.textContent);
-      expect(projDescription).toBe("CSE 110 Spring 2024 Project");
-
-      // Github Link
-      const projGithubLink = await projectEl.$eval('a.github-link', element => element.href);
-      expect(projGithubLink).toBe("https://github.com/cse110-sp24-group6/cse110-sp24-group6");
-
-      // Check if right completeness status icon showed up
-      const projStatusIcon = await projectEl.$eval('.status-icon', element => element.src);
-      expect(projStatusIcon).toBe("http://127.0.0.1:5500/source/assets/icons/homepage/completed_project/brown.svg");
+          // Checking Completeness status icon
+          const projStatusIcon = await projectEl.$eval('.status-icon', element => element.src);
+          expect(projStatusIcon).toBe("http://127.0.0.1:5500/source/assets/icons/homepage/completed_project/brown.svg");
+        }
     }, 20000);
 
-    it("Edit values on project card, and check if values are changed", async () => {
-      // Clicking Edit Button
-      console.log("Clicking edit button on project 1");
-      const projectEl = await page.$('.project-card');
-      await projectEl.$eval(('.edit-icon'), el => el.click());
-      await page.$('.edit-form')
+    it("Checking if the values on the project cards change after editing the projects with the edit icon", async () => {
+      let projectCards = await page.$$('.project-card');
+      for(let i = 0; i < 10; i++){
+        console.log(`Editing project ${i+1}/10`);
+        const projectEl = projectCards[i];
 
-      // Editing Project Name
-      const projTitleInput = await page.$('#input-project-name');
-      const currProjTitle = await page.$eval('#input-project-name', element => element.value);
-      await projTitleInput.click();
-      // remove current text
-      for(let k = 0; k < currProjTitle.length; k++){
-        await page.keyboard.press('Backspace');
+        // Clicking Edit Button
+        await projectEl.$eval(('.edit-icon'), el => el.click());
+        await page.$('.edit-form')
+
+        // Editing Project Name, Description, and Github Link
+        await addTextInputToElement('#input-project-name', 'Lorem ipsum dolor sit amet, adhuc liber quando eu eos, sed ut case urbanitas.');
+        await addTextInputToElement('#input-project-description', 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.');
+        await addTextInputToElement('#input-github-link', 'https://github.com/elaine-ch/CSE110-SP24-Lab6-Template');
+       
+        // Editing project completeness status
+        await page.select('#completed-select-box', 'current');
+
+        // press save
+        const saveButton = await page.$('#save-button');
+        await saveButton.click();
+        // Checking if Project Title was updated
+        await checkElementTextContent(projectEl, ".project-title", "Lorem ipsum dolor sit amet, adhuc liber quando eu eos, sed ut case urbanitas.");
+        //Checking if Project Description was updated
+        await checkElementTextContent(projectEl, ".project-description", "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.");
+
+        // Checking if Github link was updated
+        const projGithubLink = await projectEl.$eval('a.github-link', element => element.href);
+        expect(projGithubLink).toBe("https://github.com/elaine-ch/CSE110-SP24-Lab6-Template");
+
+        // Check if right completeness status icon showed up
+        const projStatusIcon = await projectEl.$eval('.status-icon', element => element.src);
+        expect(projStatusIcon).toBe("http://127.0.0.1:5500/source/assets/icons/homepage/current_project/brown.svg");
       }
-      await page.keyboard.type('Lorem ipsum dolor sit amet, adhuc liber quando eu eos, sed ut case urbanitas.');
-
-      // Editing Project Description
-      const projDescInput = await page.$('#input-project-description');
-      const currProjDesc = await page.$eval('#input-project-description', element => element.value);
-      await projDescInput.click();
-      // remove current text
-      for(let k = 0; k < currProjDesc.length; k++){
-        await page.keyboard.press('Backspace');
-      }
-      await page.keyboard.type('Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.');
-      // Editing Github Link
-      const gitHubLink = await page.$('#input-github-link');
-      const currLink = await page.$eval('#input-github-link', element => element.value);
-      console.log(currLink);
-      
-      //remove current text
-      // for(let k = 0; k < currLink.length; k++){
-      //   await page.keyboard.press('Backspace');
-      // }
-      await page.evaluate( () => gitHubLink.value = "");
-      await gitHubLink.click();
-      await page.keyboard.type('https://github.com/elaine-ch/CSE110-SP24-Lab6-Template');
-      // Editing This Project is...
-      await page.select('#completed-select-box', 'current');
-
-      // press save
-      const saveButton = await page.$('#save-button');
-      await saveButton.click();
-
-      // Checking if Project Title was updated
-      const projTitle = await projectEl.$eval('.project-title', element => element.textContent);
-      expect(projTitle).toBe("Lorem ipsum dolor sit amet, adhuc liber quando eu eos, sed ut case urbanitas.");
-
-      // Checking if Project Description was updated
-      const projDescription = await projectEl.$eval('.project-description', element => element.textContent);
-      expect(projDescription).toBe("Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.");
-
-      // Checking if Github link was updated
-      const projGithubLink = await projectEl.$eval('a.github-link', element => element.href);
-      expect(projGithubLink).toBe("https://github.com/elaine-ch/CSE110-SP24-Lab6-Template");
-
-      // Check if right completeness status icon showed up
-       const projStatusIcon = await projectEl.$eval('.status-icon', element => element.src);
-       expect(projStatusIcon).toBe("http://127.0.0.1:5500/source/assets/icons/homepage/current_project/brown.svg");
-
     }, 20000);
 
-    it("Refresh page, and check if project cards remain the same", async () => {
+    it("Refresh page, and check if the number of project cards remains the same", async () => {
       await page.reload();
-      console.log("Checking if the amount of project cards remain the same...");
+
+      console.log("Checking if there are still 10 projects...");
       let numProjects = await page.$$eval('.project-card', (projItems) => {
         return projItems.length;
       });
+      expect(numProjects).toBe(10);
 
-      expect(numProjects).toBe(1);
     });
+    it("Check if the values on the project cards remain the same after page refresh", async () => {
+      let projectCards = await page.$$('.project-card');
+      for(let i = 0; i < 10; i++){
+        const projectEl = projectCards[i];
+        // Checking if Project Title was updated
+        await checkElementTextContent(projectEl, ".project-title", "Lorem ipsum dolor sit amet, adhuc liber quando eu eos, sed ut case urbanitas.");
+        //Checking if Project Description was updated
+        await checkElementTextContent(projectEl, ".project-description", "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.");
 
-    it("Press delete button on project, and check if that project was deleted", async () => {
-      const projectEl = await page.$('.project-card');
-      console.log("Deleting 1 project...");
-      await projectEl.$eval(('#delete-button'), el => el.click());
-      // Checking if the number of project cards went back down to 0
-      let numProjects = await page.$$eval('.project-card', (projItems) => {
-        return projItems.length;
-      });
-      expect(numProjects).toBe(0);
-      await browser.close();
-    });
-    
+        // Checking if Github link was updated
+        const projGithubLink = await projectEl.$eval('a.github-link', element => element.href);
+        expect(projGithubLink).toBe("https://github.com/elaine-ch/CSE110-SP24-Lab6-Template");
+
+        // Check if right completeness status icon showed up
+        const projStatusIcon = await projectEl.$eval('.status-icon', element => element.src);
+        expect(projStatusIcon).toBe("http://127.0.0.1:5500/source/assets/icons/homepage/current_project/brown.svg");
+      }
+    })
+
+    it("Press delete button on each project, and check if that project was deleted", async () => {
+      let projectCards = await page.$$('.project-card');
+      for(let i = 0; i < 10; i++){
+        console.log(`Deleting project ${i}/10..`);
+        const projectEl = projectCards[i];
+        await projectEl.$eval(('#delete-button'), el => el.click());
+        // Checking if the number of project cards went back down to 0
+        let numProjects = await page.$$eval('.project-card', (projItems) => {
+          return projItems.length;
+        });
+        expect(numProjects).toBe(10-i-1);
+      }
+   });
+  });
+  afterAll(async () => {
+    await browser.close();
+    await page.close();
   });
