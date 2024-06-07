@@ -41,7 +41,7 @@
       <option value="Fun">Fun</option>
       <option value="Debugging">Debugging</option>
     </select>
-    <button type="submit">Add Task</button>
+    <button id = "submit" type="submit">Add Task</button>
   </form>
   
   <ul id="task-list"></ul>
@@ -63,7 +63,7 @@
           <option value="Fun">Fun</option>
           <option value="Debugging">Debugging</option>
         </select>
-        <button type="submit">Update Task</button>
+        <button id= "update" type="submit">Update Task</button>
       </form>
     </div>
   </div>
@@ -212,10 +212,12 @@
       });
 
       const deleteButton = document.createElement('button');
+      deleteButton.className = 'delete-button';
       deleteButton.textContent = 'Delete';
       deleteButton.addEventListener('click', deleteTask);
 
       const editButton = document.createElement('button');
+      editButton.className = 'edit-button';
       editButton.textContent = 'Edit';
       editButton.addEventListener('click', editTask);
       

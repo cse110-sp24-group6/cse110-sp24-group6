@@ -142,3 +142,5 @@ deleteAllBtn.addEventListener('click', () => {
   updateProgress();
   renderTasks();
 });
+
+
