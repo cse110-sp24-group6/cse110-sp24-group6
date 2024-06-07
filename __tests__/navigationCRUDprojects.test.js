@@ -90,7 +90,7 @@ describe("Projects CRUD functionality", () => {
         for(let i = 0; i < 10; i++){
           // Checking if each new project created has correct attributes
           console.log(`Checking project ${i+1}/10`);
-          const projectEl = projectCards[i];
+          const projectEl = projectCards[`${i}`];
 
           // Checking Project Title and Description
           await checkElementTextContent(projectEl, '.project-title', "DevTools Project");
@@ -110,7 +110,7 @@ describe("Projects CRUD functionality", () => {
       let projectCards = await page.$$('.project-card');
       for(let i = 0; i < 10; i++){
         console.log(`Editing project ${i+1}/10`);
-        const projectEl = projectCards[i];
+        const projectEl = projectCards[`${i}`];
 
         // Clicking Edit Button
         await projectEl.$eval(('.edit-icon'), el => el.click());
@@ -155,7 +155,7 @@ describe("Projects CRUD functionality", () => {
     it("Check if the values on the project cards remain the same after page refresh", async () => {
       let projectCards = await page.$$('.project-card');
       for(let i = 0; i < 10; i++){
-        const projectEl = projectCards[i];
+        const projectEl = projectCards[`${i}`];
         // Checking if Project Title was updated
         await checkElementTextContent(projectEl, ".project-title", "Lorem ipsum dolor sit amet, adhuc liber quando eu eos, sed ut case urbanitas.");
         //Checking if Project Description was updated
@@ -175,7 +175,7 @@ describe("Projects CRUD functionality", () => {
       let projectCards = await page.$$('.project-card');
       for(let i = 0; i < 10; i++){
         console.log(`Deleting project ${i}/10..`);
-        const projectEl = projectCards[i];
+        const projectEl = projectCards[`${i}`];
         await projectEl.$eval(('#delete-button'), el => el.click());
         // Checking if the number of project cards went back down to 0
         let numProjects = await page.$$eval('.project-card', (projItems) => {
