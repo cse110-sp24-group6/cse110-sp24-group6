@@ -211,8 +211,8 @@ describe('To-do list functions', () => {
     */
    test('that the create task element function works', () => {
         let listDescBtnAndChkBox = false;
-        let progressBarImages = false;
-        let progTextChecker = false;
+        // let progressBarImages = false;
+        // let progTextChecker = false;
 
         // Create the item
         const newListItem = createTaskElement('Project 1', '06/01/2024', 'Trial run: Testing', 'Fun', false);

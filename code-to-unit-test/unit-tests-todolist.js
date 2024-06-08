@@ -34,22 +34,6 @@ export function updateProgress() {
     }
 }
 
-export function loadTasks() {
-  tasks = []; // Clear existing tasks array
-
-  taskList.innerHTML = ''; // Clear existing tasks from the task list
-
-  tasks = getTasksFromStorage(); // Load tasks from localStorage
-
-  tasks.forEach(task => {
-      const taskElement = createTaskElement(task.description, task.dueDate, task.taskDescription, task.tag, task.completed);
-      taskList.appendChild(taskElement);
-  });
-  updateProgress();
-  
-}
-
-
 export function addTask(event) {
     const taskList = document.getElementById('task-list');
     const taskInput = document.getElementById('task-input');
@@ -153,6 +137,3 @@ export function taskFormSubmitAndDeleteAll() {
         }
     });
 }
-
-
-// loadTasks(); 
