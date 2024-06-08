@@ -43,7 +43,7 @@ describe('Homepage Unit Tests', () => {
         expect(document.getElementById('daily-streak').textContent).toBe('3');
     });
 
-    // Tests to make sure taht the progress bar is set
+    // Tests to make sure that the progress bar is set
     it('Progress circle tests', () => {
         const progressCircle = document.getElementById('moving-progress');
         progressCircle.style.strokeDasharray = '50, 100';
