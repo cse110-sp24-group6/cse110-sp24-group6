@@ -57,7 +57,29 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function addTask(event) {
-    
+      event.preventDefault();
+
+      const description = taskInput.value.trim();
+      const date = dueDate.value;
+      const desc = taskDescription.value.trim();
+      const tag = taskTags.value;
+
+      if (!description) return;
+
+      console.log("Adding task...");
+
+      const taskElement = createTaskElement(description, date, desc, tag);
+      taskList.appendChild(taskElement);
+
+      tasks.push({ description, dueDate: date, taskDescription: desc, tag, completed: false });
+      saveTasksToStorage(tasks);
+
+      updateProgress();
+
+      taskInput.value = '';
+      dueDate.value = '';
+      taskDescription.value = '';
+      taskTags.value = '';
   }
 
   function deleteTask(event) {
