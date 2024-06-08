@@ -96,9 +96,10 @@ Our finished product utilizes a total of 3 pages to provide all the functionalit
 
 <p align="center">
     <img src="admin/misc/devJournalHomepage.png" alt="Dev Journal Homepage" height="300" width="675">
+    <img src="admin/misc/devJournalAddproject.png" alt="Dev Journal Add Project Menu" height="300" width="675">
 </p>
 
-> Homepage of our application
+> Homepage of our application on the top, add project menu on the bottom
 
 The first page we have of our application is the homepage. From here, and any page in general, you can access the other pages with the navigation bar on the left. On the homepage, we provide an overview for the user regarding any projects and tasks they may have to work on. Through this page the user is able to add more projects they hope to work on, each with their own card that provides a description of the project and a link to the Github repository they link to it. Regarding the visuals, the page displays their current task progress as well as a daily log streak (explained more later) in hopes of encouraging consistent work.
 
@@ -117,5 +118,12 @@ The next page we created was the Daily Log page. On this page, the user is able 
 > Todo List page
 
 The final page of our application is the Todo List page. This page allows the user to create tasks that they plan to work on. The different parameters of what can be included in a task can be seen in the middle. On the bottom, the option to edit any tasks can be seen in case a change has to be made. Similar to Github issues, we aimed to have this page be a similar indicator of any tasks that have to be done by the user. Relating it back to the homepage, the number of tasks can be viewed in the top-right wheel, and any tasks marked as completed will increase the total number of tasks finished on the wheel. The final aspect of this page that may cause confusion is at the very top, where an otter can be seen far from some fish. Gaining inspiration from other apps similar to ours in the sense of daily check-ins, we decided to incorporate a feature that would incentivize the user to complete their tasks. When the user finishes their created tasks, the otter (chosen as our mascot) will be able to get a nice treat!
+
+<p align="center">
+    <img src="admin/misc/devJournalHomeTaskdone.png" alt="Dev Journal Homepage Task Done" height="300" width="675">
+    <img src="admin/misc/devJournalTodoDone.png" alt="Dev Journal Tasklist Task Done" height="300" width="675">
+</p>
+
+> Updated homepage on the top, otter getting its treat on the bottom
 
 Contributors: [Team 6](admin/team.md)!
