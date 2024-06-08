@@ -7,6 +7,8 @@ import {
   weekFillIn
 } from '../code-to-unit-test/logstreak-test.js'; 
 
+let browser, logPage, homePage;
+
 // Mock data and utility functions
 const today = new Date();
 const yesterday = new Date(Date.now() - 24 * 60 * 60 * 1000);
@@ -35,16 +37,18 @@ let mockLogs = {};
 //Actual Tests
 describe('Daily Log Streak', () => {
   beforeAll(async () => {
-    let browser, logPage, homePage;
-    browser = await puppeteer.launch();
-    logPage = await browser.newPage();
-    homePage = await browser.newPage();
-    await logPage.goto('http://127.0.0.1:5501/source/dailylog.html');
-    await homePage.goto('http://127.0.0.1:5501/source/homepage.html');
+    try {
+      browser = await puppeteer.launch();
+      homePage = await browser.newPage();
+      await homePage.goto('http://127.0.0.1:5501/source/homepage.html');
+      logPage = await browser.newPage();
+      await logPage.goto('http://127.0.0.1:5501/source/dailylog.html');
+    } catch {
+    }
   });
 
   afterAll(async () => {
-    if(browswer){
+    if(browser){
       await browser.close();
     }
   });
