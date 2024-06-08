@@ -97,7 +97,8 @@ describe('Basic user flow for Website', () => {
         await page.click('.date.today'); // Click today's date
 
         // Delete the entry
-        await page.click('#delete-entry');
+        await page.waitForSelector('button[id="delete-entry"]'); 
+        await page.click('button[id="delete-entry"]');
 
         // Verify the log is removed from localStorage
         const logs = await page.evaluate(() => localStorage.getItem('logs'));
