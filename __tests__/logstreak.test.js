@@ -99,7 +99,7 @@ describe('Daily Log Streak', () => {
 
   test('streak remains unchanged when log on future date is deleted', async () => {
     mockLogs[dateToString(tomorrow)] = { progress: 'Progress' };
-    delete mockLogs[fourDaysAgoDate];
+    delete mockLogs[dateToString(tomorrow)];
     localStorage.setItem('logs', JSON.stringify(mockLogs));
     localStorage.setItem('streak', findStreak());
 
@@ -107,7 +107,7 @@ describe('Daily Log Streak', () => {
   });
 
   test('streak only decreases by 1 when todays log is deleted', async () => {
-    delete mockLogs[todayDate];
+    delete mockLogs[dateToString(today)];
     localStorage.setItem('logs', JSON.stringify(mockLogs));
     localStorage.setItem('streak', findStreak());
 
