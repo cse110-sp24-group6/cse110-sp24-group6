@@ -1,9 +1,6 @@
 {
   "devDependencies": {
-    "@babel/core": "^7.24.7",
-    "@babel/preset-env": "^7.24.7",
     "@eslint/js": "^9.3.0",
-    "babel-jest": "^29.7.0",
     "cypress": "^13.9.0",
     "eslint": "^9.3.0",
     "globals": "^15.3.0",
@@ -15,11 +12,12 @@
     "stylelint-config-standard": "^36.0.0"
   },
   "scripts": {
-    "test": "jest"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --maxWorkers=1"
   },
   "type": "module",
   "jest": {
-    "preset": "jest-puppeteer",
-    "verbose": true
+    "transform": {},
+    "verbose": true,
+    "testTimeout": 30000
   }
 }

@@ -1,5 +1,5 @@
-const puppeteer = require('puppeteer');
-
+// const puppeteer = require('puppeteer');
+import puppeteer from "puppeteer";
 describe('Basic user flow for Website', () => {
     let browser;
     let page;
