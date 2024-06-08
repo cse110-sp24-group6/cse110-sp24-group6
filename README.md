@@ -15,7 +15,7 @@ Here is our pitch- TODO, add link
 TODO: Elaborate and add evidence for each of these points
 - making it offline
 - testing
-- documentation
+- documentation[documentation.zip](https://github.com/user-attachments/files/15705866/documentation.zip)
 - daily standups
 - weekly team meetings
 - Issues
