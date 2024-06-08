@@ -6,6 +6,7 @@ import {
   getCirclesFromStorage,
   weekFillIn
 } from '../code-to-unit-test/logstreak-test.js'; 
+let browser, logPage, homePage;
 
 // Mock data and utility functions
 const today = new Date();
@@ -19,13 +20,7 @@ const todayCircle = today.getDay();
 const yesCircle = yesterday.getDay();
 const twoCircle = twoDaysAgo.getDay();
 
-const todayDate = dateToString(today);
-const yesterdayDate = dateToString(yesterday);
-const twoDaysAgoDate = dateToString(twoDaysAgo)
-const fourDaysAgoDate = dateToString(fourDaysAgo);
-
 const uncheckedImgSrc = "../source/assets/HTML_homepage_pics/unchecked.png";
-
 const mockCircles = {
   '0': uncheckedImgSrc,
   '1': uncheckedImgSrc,
@@ -40,16 +35,12 @@ let mockLogs = {};
 
 //Actual Tests
 describe('Daily Log Streak', () => {
-  let browser, logPage, homePage;
   beforeAll(async () => {
-    try {
-      browser = await puppeteer.launch();
-      logPage = await browser.newPage();
-      homePage = await browser.newPage();
-      await logPage.goto('http://127.0.0.1:5501/source/dailylog.html');
-      await homePage.goto('http://127.0.0.1:5501/source/homepage.html');
-    } catch (error) {
-    } 
+    browser = await puppeteer.launch();
+    logPage = await browser.newPage();
+    homePage = await browser.newPage();
+    await logPage.goto('http://127.0.0.1:5501/source/dailylog.html');
+    await homePage.goto('http://127.0.0.1:5501/source/homepage.html');
   });
 
   afterAll(async () => {
@@ -58,9 +49,9 @@ describe('Daily Log Streak', () => {
 
   beforeEach(() => {
     mockLogs = {};
-    mockLogs[todayDate] = { progress: 'Progress' };
-    mockLogs[yesterdayDate] = { progress: 'Progress' };
-    mockLogs[twoDaysAgoDate] = { progress: 'Progress' };
+    mockLogs[dateToString(today)] = { progress: 'Progress' };
+    mockLogs[dateToString(yesterday)] = { progress: 'Progress' };
+    mockLogs[dateToString(twoDaysAgo)] = { progress: 'Progress' };
   });
 
   test('increases streak count when log is added within the cluster', async () => {
@@ -74,7 +65,7 @@ describe('Daily Log Streak', () => {
   });
 
   test('decreases and reallocates streak when a log within the cluster is deleted', async () => {
-    delete mockLogs[yesterdayDate];
+    delete mockLogs[dateToString(yesterday)];
     localStorage.setItem('logs', JSON.stringify(mockLogs));
     localStorage.setItem('streak', findStreak());
 
@@ -128,9 +119,9 @@ describe('Daily Log Streak', () => {
     localStorage.setItem('streak', findStreak());
 
     // Get the current day of the week
-    mockCircles[todayCircle] = "../source/assets/HTML_homepage_pics/checked_in.png";
-    mockCircles[yesCircle] = "../source/assets/HTML_homepage_pics/checked_in.png";
-    mockCircles[twoCircle] = "../source/assets/HTML_homepage_pics/checked_in.png";
+    mockCircles[todayCircle] = '../source/assets/HTML_homepage_pics/checked_in.png';
+    mockCircles[yesCircle] = '../source/assets/HTML_homepage_pics/checked_in.png';
+    mockCircles[twoCircle] = '../source/assets/HTML_homepage_pics/checked_in.png';
     localStorage.setItem('circles', JSON.stringify(mockCircles));
 
     let circles = getCirclesFromStorage();
@@ -151,7 +142,6 @@ describe('Daily Log Streak', () => {
     for (let i = 0; i < 7; i++) {
       expect(circles[i]).toBe(mockCircles[i]);
     }
-
   });
 
   test('streak checkboxes are the same when page is refreshed', async () => {
@@ -177,7 +167,7 @@ describe('Daily Log Streak', () => {
     circleIds.forEach(id => {
       const imgElement = document.getElementById(id);
       if (imgElement) {
-        expect(srcValues[i]).toBe(refreshedValues[id]);
+        expect(srcValues[id]).toBe(refreshedValues[id]);
       }
     });
   });
