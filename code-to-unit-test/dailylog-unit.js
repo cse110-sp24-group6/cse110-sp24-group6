@@ -8,7 +8,7 @@ export function resetBackground() {
     // Resets background of all dates to original styling
     let dateDivs = document.querySelectorAll('.date'); 
     for (let i = 0; i < dateDivs.length; i++) { 
-        let dateDiv = dateDivs[i]; 
+        let dateDiv = dateDivs[`${i}`]; 
         dateDiv.setAttribute('style',' background-color: #d1a689;');
     } 
     // Resets background of today's date to its intended styling 

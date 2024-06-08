@@ -1,6 +1,4 @@
-import { updateCalendar, selectDate,
-    showLogEntryModal, deleteAllEntries, prevMonth, nextMonth, today } 
-    from '../code-to-unit-test/dailylog-unit.js';
+import { showLogEntryModal, deleteAllEntries} from '../code-to-unit-test/dailylog-unit.js';
 
 import { fireEvent } from '@testing-library/dom';
 
@@ -121,7 +119,6 @@ describe('Daily Log Unit Testing', () => {
         let saveLog = document.getElementById('save-entry');
         let deleteLog = document.getElementById('delete-entry');
         // Add log 
-        let log = {'2024-06-06':{'progress':'hi','challenges':'hi','learnings':'hi','futurePlan':'hi'}};
         let logs = showLogEntryModal('2024-06-06',{'progress':'hi','challenges':'hi','learnings':'hi','futurePlan':'hi'},{});
         fireEvent.click(saveLog);
         // Delete log 
@@ -152,7 +149,6 @@ describe('Daily Log Unit Testing', () => {
 
     test('deleting all entries', () =>{ 
         let saveLog = document.getElementById('save-entry');
-        let deleteAll = document.getElementById('delete-all');
         // Log 1
         let logs = showLogEntryModal('2024-06-06',{'progress':'hi','challenges':'hi','learnings':'hi','futurePlan':'hi'},{});
         fireEvent.click(saveLog);
