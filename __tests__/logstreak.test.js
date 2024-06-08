@@ -44,7 +44,9 @@ describe('Daily Log Streak', () => {
   });
 
   afterAll(async () => {
-    await browser.close();
+    if(browswer){
+      await browser.close();
+    }
   });
 
   beforeEach(() => {
