@@ -1,8 +1,45 @@
 # CSE 110- Group 6: Databaes
 
-Here is the link to our [team page](admin/team.md)!
+Welcome to the group project by Team 6 in CSE 110 Spring Quarter '24. This is a documentation of our entire process as a team, how we worked together, and how we integrated SWE principals in order to build our final project. Before we get started, here is the link to our [final project](https://cse110-sp24-group6.github.io/cse110-sp24-group6/source/homepage.html). Our project is a Dev Journal, i.e. a tool that allows developers to journal their journey and grow while using our tool and documenting their work and progress. 
 
-Our teams Figma design can also be found [here](https://www.figma.com/design/VZMvKaZP4uVpx44r2jPuqO/CSE-110-Team-6-DevTool-App?node-id=2314-2&t=9r0lQ6axiaQZtOdT-1)!
+Here are the features within our Dev Journal:
+
+### Our Product
+
+Our finished product utilizes a total of 3 pages to provide all the functionality we hoped to bring, but more importantly the features we think the user would want in a developer journal. 
+
+<p align="center">
+    <img src="admin/misc/devJournalHomepage.png" alt="Dev Journal Homepage" height="300" width="675">
+    <img src="admin/misc/devJournalAddproject.png" alt="Dev Journal Add Project Menu" height="300" width="675">
+</p>
+
+> Homepage of our application on the top, add project menu on the bottom
+
+The first page we have of our application is the homepage. From here, and any page in general, you can access the other pages with the navigation bar on the left. On the homepage, we provide an overview for the user regarding any projects and tasks they may have to work on. Through this page the user is able to add more projects they hope to work on, each with their own card that provides a description of the project and a link to the Github repository they link to it. Regarding the visuals, the page displays their current task progress as well as a daily log streak (explained more later) in hopes of encouraging consistent work.
+
+<p align="center">
+    <img src="admin/misc/devJournalDailylog.png" alt="Dev Journal Daily log" height="300" width="675">
+</p>
+
+> Daily Log page
+
+The next page we created was the Daily Log page. On this page, the user is able to log anything they hoped to note down for each day. More specifically, the questions we chose can be seen on the right side. The screenshot was taken on June 6, so the grey square on the 6th indicates the current date. To its left, the green 5 indicates that a log was made on June 5. The user is able to freely access their past logs as well as add more for any days they may have missed. Going back to the home page, the daily log streak that was mentioned is a way of displaying to the user how many days in a row they have made a log. We hope the user feels more inclined to work on their tasks/write down any progress they have made with the inclusion of this feature, similar to an agile daily stand-up.
+
+<p align="center">
+    <img src="admin/misc/devJournalTodolist.png" alt="Dev Journal Daily log" height="300" width="675">
+</p>
+
+> Todo List page
+
+The final page of our application is the Todo List page. This page allows the user to create tasks that they plan to work on. The different parameters of what can be included in a task can be seen in the middle. On the bottom, the option to edit any tasks can be seen in case a change has to be made. Similar to Github issues, we aimed to have this page be a similar indicator of any tasks that have to be done by the user. Relating it back to the homepage, the number of tasks can be viewed in the top-right wheel, and any tasks marked as completed will increase the total number of tasks finished on the wheel. The final aspect of this page that may cause confusion is at the very top, where an otter can be seen far from some fish. Gaining inspiration from other apps similar to ours in the sense of daily check-ins, we decided to incorporate a feature that would incentivize the user to complete their tasks. When the user finishes their created tasks, the otter (chosen as our mascot) will be able to get a nice treat!
+
+<p align="center">
+    <img src="admin/misc/devJournalHomeTaskdone.png" alt="Dev Journal Homepage Task Done" height="300" width="675">
+    <img src="admin/misc/devJournalTodoDone.png" alt="Dev Journal Tasklist Task Done" height="300" width="675">
+</p>
+
+> Updated homepage on the top, otter getting its treat on the bottom
+
 
 ### Our Brainstorming Process
 
@@ -55,9 +92,6 @@ Enforcing consistent team meetings is essential in ensuring progress can be made
 **Daily Standups:**
 Daily Stand-ups are a key part in teams that follow agile development, as they allow for rapid conversation among team members to make sure everyone is on track. During these stand-ups, teams would very briefly describe the work they have done as well as their plans for the next day. While our team did not actually have daily stand-up meetings, we did implement a daily check-in system on our Slack workspace. Through this, we would make daily posts about our progress in order to make sure everyone was aware of the current status of the project. 
 
-**Making it Offline:**
-Focusing on the accessibility of our page, we wanted to create offline functionality for our application in order to ensure it would still maintain functionality when the user does not have access to the internet. We decided to use service workers for this, as we had utilized them previously in one of our Labs. Compared to other options, this ultimately accomodated for the short time we had, as learning new technologies could take time and put risk on the quality of our product.
-
 **Retrospectives:**
 Retrospectives are essential for teams following an agile development process as they provide an opportunity to reflect on what went well, what didn't, and how to improve. Our team conducted retrospectives at the end of each sprint. We used a structured format where each team member shared their thoughts on what worked, what didn't, and any suggestions for improvement. We documented these discussions in our repository and revisited them in subsequent retrospectives to track progress. We used Jamboard to conduct our retrospectives and allow everyone to reflect upon the sprint and give suggestions/feedback.
 
@@ -70,10 +104,10 @@ Testing was a crucial aspect of our development process to ensure the quality an
 **Documentation:**
 Documentation played a vital role in ensuring the maintainability and scalability of our project. We maintained comprehensive documentation covering various aspects of our application, including installation instructions, architecture overview, and API documentation. We used tools like JS Docs for documenting our JavaScript and made extensive use of comments and README files. Documentation was continuously updated throughout the development process to reflect changes and additions to the codebase.
 
+#### Github Integration
+
 **Issues:**
 We utilized an issue tracking system to manage and prioritize tasks, bugs, and feature requests. Whenever a new task or issue was identifie it was logged into our issue tracker (GitHub project integrated into our repo). Each issue was assigned to a team member, categorized (e.g., bug, feature, enhancement), and given a priority level. We regularly reviewed and updated the status of issues, ensuring transparency and accountability within the team.
-
-#### Github Integration
 
 **Branching Strategies:**
 Our branching strategy aimed to strike a balance between minimizing complexity and facilitating collaboration. We followed a Git branching model based on feature branches. Each new feature or user story was developed in its own branch, allowing team members to work independently without interfering with each other's code. Once a feature was complete, it underwent code review before being merged into the main development branch.
@@ -88,43 +122,14 @@ We made use of a CI/CD pipeline to automate certain tasks. Our pipeline includes
 * Unit tests through Jest
 * JS Docs generation (all of our JS Docs documentation can be accessed here in [documentation.zip](https://github.com/user-attachments/files/15705866/documentation.zip)
 
-
 The main branch was protected and PRs can only be merged with main **after** completing all checks in our CI/CD pipeline.
 
-### Our Product
+**Making it Offline:**
+Focusing on the accessibility of our page, we wanted to create offline functionality for our application in order to ensure it would still maintain functionality when the user does not have access to the internet. We decided to use service workers for this, as we had utilized them previously in one of our Labs. Compared to other options, this ultimately accomodated for the short time we had, as learning new technologies could take time and put risk on the quality of our product.
 
-Our finished product utilizes a total of 3 pages to provide all the functionality we hoped to bring, but more importantly the features we think the user would want in a developer journal. 
+## Important Links
 
-<p align="center">
-    <img src="admin/misc/devJournalHomepage.png" alt="Dev Journal Homepage" height="300" width="675">
-    <img src="admin/misc/devJournalAddproject.png" alt="Dev Journal Add Project Menu" height="300" width="675">
-</p>
+- Contributors: [Team 6](admin/team.md)
+- Design: [Figma](https://www.figma.com/design/VZMvKaZP4uVpx44r2jPuqO/CSE-110-Team-6-DevTool-App?node-id=2314-2&t=9r0lQ6axiaQZtOdT-1)
 
-> Homepage of our application on the top, add project menu on the bottom
 
-The first page we have of our application is the homepage. From here, and any page in general, you can access the other pages with the navigation bar on the left. On the homepage, we provide an overview for the user regarding any projects and tasks they may have to work on. Through this page the user is able to add more projects they hope to work on, each with their own card that provides a description of the project and a link to the Github repository they link to it. Regarding the visuals, the page displays their current task progress as well as a daily log streak (explained more later) in hopes of encouraging consistent work.
-
-<p align="center">
-    <img src="admin/misc/devJournalDailylog.png" alt="Dev Journal Daily log" height="300" width="675">
-</p>
-
-> Daily Log page
-
-The next page we created was the Daily Log page. On this page, the user is able to log anything they hoped to note down for each day. More specifically, the questions we chose can be seen on the right side. The screenshot was taken on June 6, so the grey square on the 6th indicates the current date. To its left, the green 5 indicates that a log was made on June 5. The user is able to freely access their past logs as well as add more for any days they may have missed. Going back to the home page, the daily log streak that was mentioned is a way of displaying to the user how many days in a row they have made a log. We hope the user feels more inclined to work on their tasks/write down any progress they have made with the inclusion of this feature, similar to an agile daily stand-up.
-
-<p align="center">
-    <img src="admin/misc/devJournalTodolist.png" alt="Dev Journal Daily log" height="300" width="675">
-</p>
-
-> Todo List page
-
-The final page of our application is the Todo List page. This page allows the user to create tasks that they plan to work on. The different parameters of what can be included in a task can be seen in the middle. On the bottom, the option to edit any tasks can be seen in case a change has to be made. Similar to Github issues, we aimed to have this page be a similar indicator of any tasks that have to be done by the user. Relating it back to the homepage, the number of tasks can be viewed in the top-right wheel, and any tasks marked as completed will increase the total number of tasks finished on the wheel. The final aspect of this page that may cause confusion is at the very top, where an otter can be seen far from some fish. Gaining inspiration from other apps similar to ours in the sense of daily check-ins, we decided to incorporate a feature that would incentivize the user to complete their tasks. When the user finishes their created tasks, the otter (chosen as our mascot) will be able to get a nice treat!
-
-<p align="center">
-    <img src="admin/misc/devJournalHomeTaskdone.png" alt="Dev Journal Homepage Task Done" height="300" width="675">
-    <img src="admin/misc/devJournalTodoDone.png" alt="Dev Journal Tasklist Task Done" height="300" width="675">
-</p>
-
-> Updated homepage on the top, otter getting its treat on the bottom
-
-Contributors: [Team 6](admin/team.md)!
