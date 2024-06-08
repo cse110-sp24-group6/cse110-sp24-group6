@@ -28,15 +28,6 @@ describe('Basic user flow for Website', () => {
         await page.type('#future-plan', data.futurePlan);
     }
 
-    async function clearLogEntry() {
-        await page.evaluate(() => {
-            document.querySelector('#progress').value = '';
-            document.querySelector('#challenges').value = '';
-            document.querySelector('#learnings').value = '';
-            document.querySelector('#future-plan').value = '';
-        });
-    }
-
     it('Add a NEW log', async () => {
         console.log('Adding a log...');
         
@@ -54,10 +45,10 @@ describe('Basic user flow for Website', () => {
         const todayStr = new Date().toISOString().split('T')[0];
         // await new Promise(resolve => setTimeout(resolve, 5000));
         console.log(todayStr);
-        expect(parsedLogs['2024-06-07'].progress).toBe(logData.progress);
-        expect(parsedLogs['2024-06-07'].challenges).toBe(logData.challenges);
-        expect(parsedLogs['2024-06-07'].learnings).toBe(logData.learnings);
-        expect(parsedLogs['2024-06-07'].futurePlan).toBe(logData.futurePlan);
+        expect(parsedLogs[todayStr].progress).toBe(logData.progress);
+        expect(parsedLogs[todayStr].challenges).toBe(logData.challenges);
+        expect(parsedLogs[todayStr].learnings).toBe(logData.learnings);
+        expect(parsedLogs[todayStr].futurePlan).toBe(logData.futurePlan);
     }, 20000);
 
     it('Refreshing page', async () => {
@@ -74,10 +65,10 @@ describe('Basic user flow for Website', () => {
         const todayStr = new Date().toISOString().split('T')[0];
         // await new Promise(resolve => setTimeout(resolve, 5000));
         console.log(todayStr);
-        expect(parsedLogs['2024-06-07'].progress).toBe(logData.progress);
-        expect(parsedLogs['2024-06-07'].challenges).toBe(logData.challenges);
-        expect(parsedLogs['2024-06-07'].learnings).toBe(logData.learnings);
-        expect(parsedLogs['2024-06-07'].futurePlan).toBe(logData.futurePlan);
+        expect(parsedLogs[todayStr].progress).toBe(logData.progress);
+        expect(parsedLogs[todayStr].challenges).toBe(logData.challenges);
+        expect(parsedLogs[todayStr].learnings).toBe(logData.learnings);
+        expect(parsedLogs[todayStr].futurePlan).toBe(logData.futurePlan);
     }, 20000);
 
     it('Editing today log', async () => {
@@ -92,10 +83,11 @@ describe('Basic user flow for Website', () => {
         // Verify the log is saved in localStorage
         const logs = await page.evaluate(() => localStorage.getItem('logs'));
         const parsedLogs = JSON.parse(logs);
-        expect(parsedLogs['2024-06-07'].progress).toBe("Completed unit testing and end to end testing");
-        expect(parsedLogs['2024-06-07'].challenges).toBe(logData.challenges);
-        expect(parsedLogs['2024-06-07'].learnings).toBe(logData.learnings);
-        expect(parsedLogs['2024-06-07'].futurePlan).toBe(logData.futurePlan);
+        const todayStr = new Date().toISOString().split('T')[0];
+        expect(parsedLogs[todayStr].progress).toBe("Completed unit testing and end to end testing");
+        expect(parsedLogs[todayStr].challenges).toBe(logData.challenges);
+        expect(parsedLogs[todayStr].learnings).toBe(logData.learnings);
+        expect(parsedLogs[todayStr].futurePlan).toBe(logData.futurePlan);
     }, 20000);
 
     it('Delete one', async () => {
