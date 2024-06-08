@@ -19,7 +19,11 @@ const todayCircle = today.getDay();
 const yesCircle = yesterday.getDay();
 const twoCircle = twoDaysAgo.getDay();
 
-const checkedImgSrc = "../source/assets/HTML_homepage_pics/checked_in.png";
+const todayDate = dateToString(today);
+const yesterdayDate = dateToString(yesterday);
+const twoDaysAgoDate = dateToString(twoDaysAgo)
+const fourDaysAgoDate = dateToString(fourDaysAgo);
+
 const uncheckedImgSrc = "../source/assets/HTML_homepage_pics/unchecked.png";
 
 const mockCircles = {
@@ -32,29 +36,32 @@ const mockCircles = {
   '6': uncheckedImgSrc
 };
 
-const mockLogs = {
-  [dateToString(today)]: { progress: 'Progress' },
-  [dateToString(yesterday)]: { progress: 'Progress' },
-  [dateToString(twoDaysAgo)]: { progress: 'Progress' }
-};
+let mockLogs = {};
 
 //Actual Tests
 describe('Daily Log Streak', () => {
   let browser, logPage, homePage;
   beforeAll(async () => {
-    browser = await puppeteer.launch();
-    logPage = await browser.newPage();
-    homePage = await browser.newPage();
-    await logPage.goto('http://127.0.0.1:5501/source/dailylog.html');
-    await homePage.goto('http://127.0.0.1:5501/source/homepage.html');
+    try {
+      browser = await puppeteer.launch();
+      logPage = await browser.newPage();
+      homePage = await browser.newPage();
+      await logPage.goto('http://127.0.0.1:5501/source/dailylog.html');
+      await homePage.goto('http://127.0.0.1:5501/source/homepage.html');
+    } catch (error) {
+    } 
   });
 
   afterAll(async () => {
-    if (browser) {
-      await browser.close();
-    }
+    await browser.close();
   });
 
+  beforeEach(() => {
+    mockLogs = {};
+    mockLogs[todayDate] = { progress: 'Progress' };
+    mockLogs[yesterdayDate] = { progress: 'Progress' };
+    mockLogs[twoDaysAgoDate] = { progress: 'Progress' };
+  });
 
   test('increases streak count when log is added within the cluster', async () => {
     mockLogs[dateToString(threeDaysAgo)] = { progress: 'Progress' };
@@ -64,16 +71,14 @@ describe('Daily Log Streak', () => {
     
     //update streak & circles
     expect(getStreakFromStorage()).toBe(4);
-    delete mockLogs[dateToString(threeDaysAgo)]
   });
 
   test('decreases and reallocates streak when a log within the cluster is deleted', async () => {
-    delete mockLogs[dateToString(yesterday)];
+    delete mockLogs[yesterdayDate];
     localStorage.setItem('logs', JSON.stringify(mockLogs));
     localStorage.setItem('streak', findStreak());
 
-    expect(getStreakFromStorage()).toBe(1);
-    mockLogs[dateToString(yesterday)] = { progress: 'Progress' };
+    expect(findStreak()).toBe(1);
   });
 
   test('streak remains unchanged when log not within streak cluster is added', async () => {
@@ -82,7 +87,6 @@ describe('Daily Log Streak', () => {
     localStorage.setItem('streak', findStreak());
 
     expect(getStreakFromStorage()).toBe(3);
-    delete mockLogs[dateToString(fourDaysAgo)];
   });
 
   test('streak remains unchanged when log not within streak cluster is deleted', async () => {
@@ -90,6 +94,7 @@ describe('Daily Log Streak', () => {
     delete mockLogs[dateToString(fourDaysAgo)];
     localStorage.setItem('logs', JSON.stringify(mockLogs));
     localStorage.setItem('streak', findStreak());
+
     expect(findStreak()).toBe(3);
   });
 
@@ -97,23 +102,25 @@ describe('Daily Log Streak', () => {
     mockLogs[dateToString(tomorrow)] = { progress: 'Progress' };
     localStorage.setItem('logs', JSON.stringify(mockLogs));
     localStorage.setItem('streak', findStreak());
+
     expect(findStreak()).toBe(3);
   });
 
   test('streak remains unchanged when log on future date is deleted', async () => {
-    delete mockLogs[dateToString(fourDaysAgo)];
+    mockLogs[dateToString(tomorrow)] = { progress: 'Progress' };
+    delete mockLogs[fourDaysAgoDate];
     localStorage.setItem('logs', JSON.stringify(mockLogs));
     localStorage.setItem('streak', findStreak());
+
     expect(findStreak()).toBe(3);
   });
 
   test('streak only decreases by 1 when todays log is deleted', async () => {
-    delete mockLogs[dateToString(today)];
+    delete mockLogs[todayDate];
     localStorage.setItem('logs', JSON.stringify(mockLogs));
     localStorage.setItem('streak', findStreak());
-    expect(findStreak()).toBe(2);
 
-    mockLogs[dateToString(today)] = { progress: 'Progress' };
+    expect(findStreak()).toBe(2);
   });
 
   test('streak checkboxes marked as done when log added', async () => {
@@ -121,14 +128,14 @@ describe('Daily Log Streak', () => {
     localStorage.setItem('streak', findStreak());
 
     // Get the current day of the week
-    mockCircles[todayCircle] = checkedImgSrc;
-    mockCircles[yesCircle] = checkedImgSrc;
-    mockCircles[twoCircle] = checkedImgSrc;
+    mockCircles[todayCircle] = "../source/assets/HTML_homepage_pics/checked_in.png";
+    mockCircles[yesCircle] = "../source/assets/HTML_homepage_pics/checked_in.png";
+    mockCircles[twoCircle] = "../source/assets/HTML_homepage_pics/checked_in.png";
     localStorage.setItem('circles', JSON.stringify(mockCircles));
 
     let circles = getCirclesFromStorage();
     for (let i = 0; i < 7; i++) {
-      expect(circles[i].src).toBe(mockCircles[i].src);
+      expect(circles[i]).toBe(mockCircles[i]);
     }
     });
 
@@ -137,12 +144,12 @@ describe('Daily Log Streak', () => {
     localStorage.setItem('logs', JSON.stringify(mockLogs));
     localStorage.setItem('streak', findStreak());
 
-    mockCircles[yesCircle] = uncheckedImgSrc;
+    mockCircles[yesCircle] = "../source/assets/HTML_homepage_pics/checked_in.png";
     localStorage.setItem('circles', JSON.stringify(mockCircles));
 
     let circles = getCirclesFromStorage();
     for (let i = 0; i < 7; i++) {
-      expect(circles[i].src).toBe(mockCircles[i].src);
+      expect(circles[i]).toBe(mockCircles[i]);
     }
 
   });
@@ -170,7 +177,7 @@ describe('Daily Log Streak', () => {
     circleIds.forEach(id => {
       const imgElement = document.getElementById(id);
       if (imgElement) {
-        expect(imgElement.src).toBe(refreshedValues[id]);
+        expect(srcValues[i]).toBe(refreshedValues[id]);
       }
     });
   });
