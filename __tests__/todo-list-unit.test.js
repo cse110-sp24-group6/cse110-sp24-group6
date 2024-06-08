@@ -197,10 +197,7 @@ describe('To-do list functions', () => {
 
         expect(taskListLength).toBe(1);
         expect(taskListLengthAfter).toBe(0);
-
-        // FIX THIS (Basically, the updateProgress seems to work fine, i.e. the text is 'Progress: 0.00% (0/0)', but the visual is not the same)
         expect(progressText.textContent).toBe('Progress: 0.00% (0/0)')
-        //^ The above's to be shuold swap 0.00% with Nan%
     })
 
     // createTaskElement function test
