@@ -90,31 +90,82 @@ describe('Daily Log Unit Testing', () => {
 
 
     test('add log entry', () => { 
-        let log = {'2024-06-06':{'progress':'hi','challenges':'hi','learnings':'hi','futurePlan':'hi'}};
+        // Buttons 
         let saveLog = document.getElementById('save-entry');
-        let logs = showLogEntryModal('2024-06-06',{'progress':'hi','challenges':'hi','learnings':'hi','futurePlan':'hi'});
+        // Save log 
+        let log = {'2024-06-06':{'progress':'hi','challenges':'hi','learnings':'hi','futurePlan':'hi'}};
+        let logs = showLogEntryModal('2024-06-06',{'progress':'hi','challenges':'hi','learnings':'hi','futurePlan':'hi'},{});
         fireEvent.click(saveLog);
+        // logs should contain one entry 
         expect(JSON.stringify(logs)).toBe(JSON.stringify(log));
     });
+    
+
 
     test('update log entry', () => { 
+        // Buttons  
         let saveLog = document.getElementById('save-entry');
-        let logs = showLogEntryModal('2024-06-06',{'progress':'hi','challenges':'hi','learnings':'hi','futurePlan':'hi'});
+        // Add log for June 6 and save it 
+        let logs = showLogEntryModal('2024-06-06',{'progress':'hi','challenges':'hi','learnings':'hi','futurePlan':'hi'},{});
         fireEvent.click(saveLog);
-        logs =  showLogEntryModal('2024-06-06',{'progress':'hi','challenges':'hi','learnings':'hello','futurePlan':'hi'});
+        // Update log and save 
+        logs =  showLogEntryModal('2024-06-06',{'progress':'hi','challenges':'hi','learnings':'hello','futurePlan':'hi'},logs);
         fireEvent.click(saveLog)
+        // Check if log is updated 
         let logV2 = {'2024-06-06':{'progress':'hi','challenges':'hi','learnings':'hello','futurePlan':'hi'}};
         expect(JSON.stringify(logs)).toBe(JSON.stringify(logV2));
     });
 
     test('delete log entry', () => { 
-        let log = {'2024-06-06':{'progress':'hi','challenges':'hi','learnings':'hi','futurePlan':'hi'}};
+        // Buttons 
+        let saveLog = document.getElementById('save-entry');
         let deleteLog = document.getElementById('delete-entry');
-        let logs = showLogEntryModal('2024-06-06',{'progress':'hi','challenges':'hi','learnings':'hi','futurePlan':'hi'});
+        // Add log 
+        let log = {'2024-06-06':{'progress':'hi','challenges':'hi','learnings':'hi','futurePlan':'hi'}};
+        let logs = showLogEntryModal('2024-06-06',{'progress':'hi','challenges':'hi','learnings':'hi','futurePlan':'hi'},{});
+        fireEvent.click(saveLog);
+        // Delete log 
+        logs = showLogEntryModal('2024-06-06',{'progress':'hi','challenges':'hi','learnings':'hi','futurePlan':'hi'},logs);
         fireEvent.click(deleteLog);
+        // logs should be empty 
         expect(JSON.stringify(logs)).toBe(JSON.stringify({}));
     });
 
+    test('saving multiple entries', () => { 
+        // Buttons 
+        let saveLog = document.getElementById('save-entry');
+        // Log 1
+        let logs = showLogEntryModal('2024-06-06',{'progress':'hi','challenges':'hi','learnings':'hi','futurePlan':'hi'},{});
+        fireEvent.click(saveLog);
+        // Log 2
+        logs = showLogEntryModal('2024-06-05',{'progress':'hey','challenges':'hello','learnings':'hi','futurePlan':'hi'},logs);
+        fireEvent.click(saveLog);
+        // Log 3
+        logs = showLogEntryModal('2024-06-04',{'progress':'hi','challenges':'hey','learnings':'hello','futurePlan':'hi'},logs);
+        fireEvent.click(saveLog);
+        // Log Dict 
+        let log = {'2024-06-06':{'progress':'hi','challenges':'hi','learnings':'hi','futurePlan':'hi'},
+        '2024-06-05':{'progress':'hey','challenges':'hello','learnings':'hi','futurePlan':'hi'},
+        '2024-06-04':{'progress':'hi','challenges':'hey','learnings':'hello','futurePlan':'hi'}};
+        expect(JSON.stringify(logs)).toBe(JSON.stringify(log));
+    });
+
+    test('deleting all entries', () =>{ 
+        let saveLog = document.getElementById('save-entry');
+        let deleteAll = document.getElementById('delete-all');
+        // Log 1
+        let logs = showLogEntryModal('2024-06-06',{'progress':'hi','challenges':'hi','learnings':'hi','futurePlan':'hi'},{});
+        fireEvent.click(saveLog);
+        // Log 2
+        logs = showLogEntryModal('2024-06-05',{'progress':'hey','challenges':'hello','learnings':'hi','futurePlan':'hi'},logs);
+        fireEvent.click(saveLog);
+        // Log 3
+        logs = showLogEntryModal('2024-06-04',{'progress':'hi','challenges':'hey','learnings':'hello','futurePlan':'hi'},logs);
+        fireEvent.click(saveLog);
+        // Delete all
+        logs = deleteAllEntries(logs);
+        expect(JSON.stringify(logs)).toBe(JSON.stringify({}));
+    });
 
 
 

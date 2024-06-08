@@ -96,6 +96,7 @@ export function nextMonth() {
     currentDate.setMonth(currentDate.getMonth() + 1);
     updateCalendar();
 }
+
 // Selects today's log and goes to corresponding month/year view 
 export function today() { 
     currentDate = new Date();
@@ -116,8 +117,8 @@ export function selectDate(dateStr) {
 }
 
 
-export function showLogEntryModal(dateStr, logEntry) {
-    let logs = {}; 
+export function showLogEntryModal(dateStr, logEntry, logs) {
+    //let logs = {}; 
     //const modal = document.getElementById('log-entry-modal');
     const modalDate = document.getElementById('modal-date');
     const progressTextarea = document.getElementById('progress');
@@ -174,8 +175,9 @@ export function showLogEntryModal(dateStr, logEntry) {
     return logs; 
 }
 
-export function deleteAllEntries() {
+export function deleteAllEntries(logs) {
     logs = {};
     updateCalendar();
+    return logs;
 }
 
