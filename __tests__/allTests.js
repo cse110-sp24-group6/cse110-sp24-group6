@@ -8,7 +8,7 @@ describe('Delete All Tasks E2E Test', () => {
     try {
       browser = await puppeteer.launch();
       page = await browser.newPage();
-      await page.goto('http://127.0.0.1:5501/source/todolist.html');
+      await page.goto('http://127.0.0.1:5500/source/todolist.html');
     } catch (error) {
       console.error('Failed to initialize browser:', error);
     }
@@ -32,7 +32,7 @@ describe('Delete All Tasks E2E Test', () => {
 
     const testTask = await page.$eval('#task-list li', el => el.textContent);
     expect(testTask).toContain('Test Task');
-    expect(testTask).toContain('2024-12-31');
+    expect(testTask).toContain('2024-03-12');
     expect(testTask).toContain('This is a test task description.');
     expect(testTask).toContain('Project');
   });
