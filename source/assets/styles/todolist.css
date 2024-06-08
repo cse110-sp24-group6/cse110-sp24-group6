@@ -29,7 +29,7 @@ h2
   margin-left: 12vw;
   font-size: 30px;
   text-shadow: 1px 1px 2px #93b1af;
-  margin-top: 0px;
+  margin-top: 0;
   margin-bottom: 20px;
 }
 
@@ -71,14 +71,6 @@ h2
   transform: translateX(-50%);
 }
 
-#progress-text {
-  position: absolute;
-  width: 100%;
-  text-align: center;
-  top: 0;
-  font-size: 20px;
-  font-weight: bold;
-}
 
 .daily-streak {
   font-size: 24px;
@@ -89,7 +81,7 @@ h2
 .text {
   font-size: 18px;
   font-weight: normal;
-  color: #000000;
+  color: #000;
 }
 
 #delete-all {
@@ -98,7 +90,6 @@ h2
   border-radius: 4px; 
   cursor: pointer;
   margin-top:30px;
-  /* margin-bottom:0px;  */
   transition: background-color 0.3s, transform 0.3s;
   padding: 18px;
   font-size: 1.2em; 
@@ -126,24 +117,6 @@ h2
   align-items: center;
 }
 
- #task-form > input
-{
-  
-  background-color: #fefefe;
-  margin-bottom: 10px;
-  width: 80%; 
-  box-sizing: border-box; 
-  height: 10px;
-  padding: 10px;
-  border: 1px solid #aad4c9;
-  border-radius: 10px;
-  font-family: Arial, sans-serif; /* Change font type */
-  font-size: 1.1em;
-  line-height: 1.5;
-  resize: vertical;
-  color: #2B3E55;
-} 
-
 #edit-task-form
 {
   background-color: #fefefe;
@@ -159,25 +132,25 @@ h2
   align-items: center;
 }
 
-#edit-task-form > input
-{
+#task-form > input[type="text"],
+#edit-task-form > input[type="text"] {
   background-color: #fefefe;
   margin-bottom: 10px;
-  width: 80%; 
-  box-sizing: border-box; 
+  width: 80%;
+  box-sizing: border-box;
   height: 10px;
   padding: 10px;
   border: 1px solid #aad4c9;
   border-radius: 10px;
-  font-family: Arial, sans-serif; /* Change font type */
+  font-family: Arial, sans-serif;
   font-size: 1.1em;
   line-height: 1.5;
   resize: vertical;
-  color: #2B3E55;
 }
 
+
 li {
-  background-color: #ffffff;
+  background-color: #fff;
   padding: 20px;
   width: 90%;
   max-width: 1100px;
@@ -190,21 +163,26 @@ li {
   gap: 10px;
   align-items: center;
   color: #2B3E55;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   animation: fade-in 0.5s ease;
 }
 
 li > b
 {
+  flex-shrink: 0;
   font-size: large;
-  color: black;
+  margin-right: 10px;
+  color: #0047a2;
 }
-
 
 @keyframes fade-in {
   from {
     opacity: 0;
     transform: scale(0.5);
   }
+ 
   to {
     opacity: 1;
     transform: scale(1);
@@ -216,8 +194,9 @@ li:hover {
 }
 
 .task-text {
-  flex: 1;
-  margin-left: 15px;
+  font-weight: normal;
+  margin-left: 0;
+  
 }
 
 input[type="checkbox"] {
@@ -233,7 +212,7 @@ input[type="checkbox"] {
   cursor: pointer;
   align-items: left;
   margin-top:10px;
-  margin-bottom:0px;
+  margin-bottom:0;
   transition: background-color 0.3s ease;
 }
 
@@ -246,6 +225,7 @@ input[type="checkbox"] {
   from {
     opacity: 1;
   }
+  
   to {
     opacity: 0;
   }
@@ -257,6 +237,15 @@ input[type="checkbox"] {
 
 .button:hover {
   background-color: #3e8e41;
+}
+
+.buttons {
+  flex-basis: 30%;
+  text-align: right;
+}
+
+button {
+  margin-right: 10px;
 }
 
 .user-feed-container {

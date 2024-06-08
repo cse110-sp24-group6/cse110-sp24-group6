@@ -1,146 +1,148 @@
-const taskList = document.getElementById('task-list');
-const taskInput = document.getElementById('task-input');
-const dueDate = document.getElementById('due-date');
-const taskDescription = document.getElementById('task-description');
-const taskTags = document.getElementById('task-tags');
-const taskForm = document.getElementById('task-form');
-const deleteAllBtn = document.getElementById('delete-all');
-const otter = document.getElementById('otter');
-const fish = document.getElementById('fish');
-const celebration = document.getElementById('celebration');
-const progressBar = document.getElementById('progress-bar');
-const progressText = document.getElementById('progress-text');
 
-let tasks = [];
-let currentEditTaskIndex = null;
-
-function updateProgress() {
-  const completedTasks = tasks.filter(task => task.completed).length;
-  const progress = (completedTasks / tasks.length) * 100;
-  progressText.textContent = `Progress: ${progress.toFixed(2)}% (${completedTasks}/${tasks.length})`;
-  progressBar.style.width = `${progress}%`;
-
-  if (progress === 100) {
-    otter.style.display = 'none';
-    fish.style.display = 'none';
-    celebration.style.display = 'block';
-  } else {
-    otter.style.display = 'block';
-    fish.style.display = 'block';
-    celebration.style.display = 'none';
+document.addEventListener('DOMContentLoaded', function () {
+  function getTasksFromStorage() {
+      let tasks = localStorage.getItem('tasks');
+      return tasks ? JSON.parse(tasks) : [];
   }
-}
 
-function addTask(event) {
-  event.preventDefault();
-  
-  const taskTitle = taskInput.value.trim();
-  const date = dueDate.value;
-  const description = taskDescription.value.trim();
-  const tag = taskTags.value;
+  function saveTasksToStorage(tasks) {
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+  }
 
-  if (currentEditTaskIndex !== null) {
-    tasks[currentEditTaskIndex] = {
-      title: taskTitle,
-      date: date,
-      description: description,
-      tag: tag,
-      completed: tasks[currentEditTaskIndex].completed
-    };
-    renderTasks();
-    currentEditTaskIndex = null;
-  } else {
-    tasks.push({
-      title: taskTitle,
-      date: date,
-      description: description,
-      tag: tag,
-      completed: false
+  const taskList = document.getElementById('task-list');
+  const taskInput = document.getElementById('task-input');
+  const dueDate = document.getElementById('due-date');
+  const taskDescription = document.getElementById('task-description');
+  const taskTags = document.getElementById('task-tags');
+  const taskForm = document.getElementById('task-form');
+  const deleteAllBtn = document.getElementById('delete-all');
+  const otter = document.getElementById('otter');
+  const fish = document.getElementById('fish');
+  const celebration = document.getElementById('celebration');
+  const progressBar = document.getElementById('progress-bar');
+  const progressText = document.getElementById('progress-text');
+
+  let tasks = getTasksFromStorage();
+
+  function updateProgress() {
+      const completedTasks = tasks.filter(task => task.completed).length;
+      const progress = tasks.length ? (completedTasks / tasks.length) * 100 : 0;
+      progressText.textContent = `Progress: ${progress.toFixed(2)}% (${completedTasks}/${tasks.length})`;
+      progressBar.style.width = `${progress}%`;
+
+      if (progress === 100) {
+          otter.style.display = 'none';
+          fish.style.display = 'none';
+          celebration.style.display = 'block';
+      } else {
+          otter.style.display = 'block';
+          fish.style.display = 'block';
+          celebration.style.display = 'none';
+      }
+  }
+
+  function loadTasks() {
+    tasks = []; // Clear existing tasks array
+
+    taskList.innerHTML = ''; // Clear existing tasks from the task list
+
+    tasks = getTasksFromStorage(); // Load tasks from localStorage
+
+    tasks.forEach(task => {
+        const taskElement = createTaskElement(task.description, task.dueDate, task.taskDescription, task.tag, task.completed);
+        taskList.appendChild(taskElement);
     });
-    const taskElement = createTaskElement(tasks.length - 1);
-    taskList.appendChild(taskElement);
+    updateProgress();
+    
   }
 
-  updateProgress();
-  taskInput.value = '';
-  dueDate.value = '';
-  taskDescription.value = '';
-  taskTags.value = '';
-  otter.style.display = 'block';
-  fish.style.display = 'block';
-  celebration.style.display = 'none';
-}
+  function addTask(event) {
+      event.preventDefault();
 
-function deleteTask(event) {
-  const taskElement = event.target.parentNode;
-  const taskIndex = taskElement.dataset.index;
-  
-  tasks.splice(taskIndex, 1);
-  
-  updateProgress();
-  renderTasks();
-}
+      const description = taskInput.value.trim();
+      const date = dueDate.value;
+      const desc = taskDescription.value.trim();
+      const tag = taskTags.value;
 
-function editTask(event) {
-  const taskElement = event.target.parentNode;
-  const taskIndex = taskElement.dataset.index;
-  const task = tasks[taskIndex];
-  
-  taskInput.value = task.title;
-  dueDate.value = task.date;
-  taskDescription.value = task.description;
-  taskTags.value = task.tag;
-  currentEditTaskIndex = taskIndex;
-}
+      if (!description) return;
 
-function createTaskElement(index) {
-  const task = tasks[index];
-  const li = document.createElement('li');
-  li.dataset.index = index;
+      console.log("Adding task...");
 
-  const checkbox = document.createElement('input');
-  checkbox.type = 'checkbox';
-  checkbox.checked = task.completed;
-  checkbox.addEventListener('change', () => {
-    task.completed = checkbox.checked;
-    updateProgress();
+      const taskElement = createTaskElement(description, date, desc, tag);
+      taskList.appendChild(taskElement);
+
+      tasks.push({ description, dueDate: date, taskDescription: desc, tag, completed: false });
+      saveTasksToStorage(tasks);
+
+      updateProgress();
+
+      taskInput.value = '';
+      dueDate.value = '';
+      taskDescription.value = '';
+      taskTags.value = '';
+  }
+
+  function deleteTask(event) {
+      const taskElement = event.target.parentNode;
+      const taskIndex = Array.from(taskList.children).indexOf(taskElement);
+
+      if (taskIndex !== -1) {
+          tasks.splice(taskIndex, 1);
+          saveTasksToStorage(tasks);
+
+          updateProgress();
+          taskList.removeChild(taskElement);
+      }
+  }
+
+  function createTaskElement(description, dueDate, taskDescription, tag, completed = false) {
+      const li = document.createElement('li');
+      const checkbox = document.createElement('input');
+      const deleteButton = document.createElement('button');
+
+      checkbox.type = 'checkbox';
+      checkbox.checked = completed;
+
+      deleteButton.textContent = 'Delete';
+
+      checkbox.addEventListener('change', () => {
+          const taskIndex = Array.from(taskList.children).indexOf(li);
+          if (taskIndex !== -1) {
+              tasks[`${taskIndex}`].completed = checkbox.checked;
+              saveTasksToStorage(tasks);
+              updateProgress();
+          }
+      });
+
+      deleteButton.addEventListener('click', (event) => {
+          deleteTask(event);
+      });
+
+      li.innerHTML =
+          `<b>Task:</b> ${description} <br>
+          <b>Due Date:</b> ${dueDate} <br>
+          <b>Description:</b> ${taskDescription} <br>
+          <b>Tag:</b> ${tag} <br>
+      `;
+
+      li.appendChild(checkbox);
+      li.appendChild(deleteButton);
+
+      return li;
+  }
+
+  taskForm.addEventListener('submit', addTask);
+
+  deleteAllBtn.addEventListener('click', () => {
+      tasks = [];
+      saveTasksToStorage(tasks);
+
+      updateProgress();
+
+      while (taskList.firstChild) {
+          taskList.removeChild(taskList.firstChild);
+      }
   });
 
-  const deleteButton = document.createElement('button');
-  deleteButton.textContent = 'Delete';
-  deleteButton.addEventListener('click', deleteTask);
-
-  const editButton = document.createElement('button');
-  editButton.textContent = 'Edit';
-  editButton.addEventListener('click', editTask);
-  
-  li.innerHTML = `
-    <b>Task:</b> ${task.title} <br>
-    <b>Due Date:</b> ${task.date} <br>
-    <b>Description:</b> ${task.description} <br>
-    <b>Tag:</b> ${task.tag} <br>
-  `;
-  li.appendChild(checkbox);
-  li.appendChild(deleteButton);
-  li.appendChild(editButton);
-  
-  return li;
-}
-
-function renderTasks() {
-  taskList.innerHTML = '';
-  tasks.forEach((task, index) => {
-    const taskElement = createTaskElement(index);
-    taskList.appendChild(taskElement);
-  });
-}
-
-taskForm.addEventListener('submit', addTask);
-
-deleteAllBtn.addEventListener('click', () => {
-  tasks.length = 0;
-  updateProgress();
-  renderTasks();
+  loadTasks(); 
 });
-
-

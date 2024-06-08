@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,7 +23,6 @@
   <h1>To-Do List</h1>
   
   <div id="progress-container">
-    <div id="progress-text"></div>
     <div id="progress-bar"></div>
     <img src="assets/icons/otter.png" id="otter" alt="Otter">
     <img src="assets/icons/fish.png" id="fish" alt="Fish">
@@ -48,7 +48,7 @@
   
   <button id="delete-all">Delete All Tasks</button>
 
-  <div id="edit-modal" class="modal">
+  <div id="edit-modal" class="modal hidden">
     <div class="modal-content">
       <span class="close">&times;</span>
       <h2>Edit Task</h2>
@@ -80,7 +80,6 @@
     const fish = document.getElementById('fish');
     const celebration = document.getElementById('celebration');
     const progressBar = document.getElementById('progress-bar');
-    const progressText = document.getElementById('progress-text');
     const editModal = document.getElementById('edit-modal');
     const editTaskForm = document.getElementById('edit-task-form');
     const editTaskInput = document.getElementById('edit-task-input');
@@ -95,7 +94,6 @@
     function updateProgress() {
       const completedTasks = tasks.filter(task => task.completed).length;
       const progress = (completedTasks / tasks.length) * 100;
-      progressText.textContent = `Progress: ${progress.toFixed(2)}% (${completedTasks}/${tasks.length})`;
       progressBar.style.width = `${progress}%`;
 
       if (progress === 100) {
@@ -271,6 +269,22 @@
     window.onbeforeunload = function() {
       localStorage.setItem('tasks', JSON.stringify(tasks));
     }
+    document.addEventListener('DOMContentLoaded', function () {
+      const taskForm = document.getElementById('task-form');
+      const taskInput = document.getElementById('task-input');
+      const dueDate = document.getElementById('due-date');
+      const taskDescription = document.getElementById('task-description');
+      const taskTags = document.getElementById('task-tags');
+      const taskList = document.getElementById('task-list');
+      const deleteAllBtn = document.getElementById('delete-all');
+      const progressText = document.getElementById('progress-text');
+      const progressBar = document.getElementById('progress-bar');
+      const otter = document.getElementById('otter');
+      const fish = document.getElementById('fish');
+      const celebration = document.getElementById('celebration');
+     });
   </script>
+ <script src="assets/scripts/todolist.js"></script>
 </body>
 </html>
+
