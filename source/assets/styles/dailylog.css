@@ -87,7 +87,7 @@ h1 {
     justify-content:space-between;
     align-items: center;
     padding: 3% 5%;
-    background-color: #916f59;
+    background-color: #2B3E55;
     color: #fff;
     box-sizing: border-box;
     margin-bottom: 10px;
@@ -131,8 +131,8 @@ h1 {
 
 /* For the numbers of the day */
 .dates .date {
-    background-color: #d1a689;
-    border: 1px solid #d1a689;
+    background-color: #2B3E55;
+    border: 1px solid #2B3E55;
     transition: background-color 0.3s, color 0.3s;
     font-size: 2.5vw;
 }
