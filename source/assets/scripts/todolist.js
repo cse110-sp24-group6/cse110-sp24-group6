@@ -1,14 +1,16 @@
-
 document.addEventListener('DOMContentLoaded', function () {
+  // Function to retrieve tasks from localStorage
   function getTasksFromStorage() {
       let tasks = localStorage.getItem('tasks');
       return tasks ? JSON.parse(tasks) : [];
   }
 
+  // Function to save tasks to localStorage
   function saveTasksToStorage(tasks) {
       localStorage.setItem('tasks', JSON.stringify(tasks));
   }
 
+  // DOM elements
   const taskList = document.getElementById('task-list');
   const taskInput = document.getElementById('task-input');
   const dueDate = document.getElementById('due-date');
@@ -22,8 +24,10 @@ document.addEventListener('DOMContentLoaded', function () {
   const progressBar = document.getElementById('progress-bar');
   const progressText = document.getElementById('progress-text');
 
+  // Retrieve tasks from localStorage
   let tasks = getTasksFromStorage();
 
+  // Function to update progress bar and text
   function updateProgress() {
       const completedTasks = tasks.filter(task => task.completed).length;
       const progress = tasks.length ? (completedTasks / tasks.length) * 100 : 0;
@@ -41,9 +45,9 @@ document.addEventListener('DOMContentLoaded', function () {
       }
   }
 
+  // Function to load tasks from localStorage
   function loadTasks() {
     tasks = []; // Clear existing tasks array
-
     taskList.innerHTML = ''; // Clear existing tasks from the task list
 
     tasks = getTasksFromStorage(); // Load tasks from localStorage
@@ -53,9 +57,9 @@ document.addEventListener('DOMContentLoaded', function () {
         taskList.appendChild(taskElement);
     });
     updateProgress();
-    
   }
 
+  // Function to add a task
   function addTask(event) {
       event.preventDefault();
 
@@ -82,6 +86,7 @@ document.addEventListener('DOMContentLoaded', function () {
       taskTags.value = '';
   }
 
+  // Function to delete a task
   function deleteTask(event) {
       const taskElement = event.target.parentNode;
       const taskIndex = Array.from(taskList.children).indexOf(taskElement);
@@ -95,6 +100,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
   }
 
+  // Function to create task element
   function createTaskElement(description, dueDate, taskDescription, tag, completed = false) {
       const li = document.createElement('li');
       const checkbox = document.createElement('input');
@@ -131,8 +137,10 @@ document.addEventListener('DOMContentLoaded', function () {
       return li;
   }
 
+  // Event listener for task form submission
   taskForm.addEventListener('submit', addTask);
 
+  // Event listener for deleting all tasks
   deleteAllBtn.addEventListener('click', () => {
       tasks = [];
       saveTasksToStorage(tasks);
@@ -144,5 +152,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
   });
 
+  // Load tasks when DOM content is loaded
   loadTasks(); 
 });
+```
