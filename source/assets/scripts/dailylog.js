@@ -1,57 +1,20 @@
 document.addEventListener('DOMContentLoaded', function () {
-    
-    function getLogsFromStorage() { 
-        let logs = localStorage.getItem('logs');
-        let returnLog;
-        if (logs) {
-            returnLog = JSON.parse(logs);
-            return returnLog;
-        }
-        else {
-            returnLog = {};
-            return returnLog;
-        }
-    }
-
-    function saveLogsToStorage(logs) { 
-        return localStorage.setItem('logs',JSON.stringify(logs));
-    }
-
-    // Function takes in a Date object and converts it to string compatible with other functions
-    function dateToString(date) { 
-        return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
-    }
-
-    function resetBackground() { 
-        // Resets background of all dates to original styling
-        let dateDivs = document.querySelectorAll('.date'); 
-        for (let i = 0; i < dateDivs.length; i++) { 
-            let dateDiv = dateDivs[i]; 
-            dateDiv.setAttribute('style',' background-color: #d1a689;');
-        } 
-        // Resets background of today's date to its intended styling 
-        let today = document.querySelector('.date.today'); 
-        if (today) { 
-            today.setAttribute('style', 'background-color: #468c7a; color: #F4EDE3; border-radius: 50%;font-weight: bold;');
-        }
-        
-    }
-
-    //Actual Calendar
+    // FUNCTIONS PERTAINING TO CALENDAR
     const monthNames = [
         "January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December"
     ];
-    // const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     let currentDate = new Date();
     let logs = getLogsFromStorage();
     
     // Automatically select today's log 
     selectDate(dateToString(currentDate));
 
-
+    /**
+     * Makes the calendar
+     * @returns Functionality of calendar view
+     */
     function updateCalendar() {
-        
         const monthText = document.getElementById('month');
         const yearText = document.getElementById('year');
         const datesContainer = document.getElementById('dates');
@@ -94,8 +57,6 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             dateDiv.addEventListener("click", function() { 
-                // Reset the background so that any date clicked on before is back to its original styling 
-                resetBackground(); 
                 selectDate(dateStr); 
                 // Set the background and border radius of the date that has just been clicked 
                 dateDiv.setAttribute('style','background-color: #674832; border-radius: 10%;');
@@ -105,37 +66,92 @@ document.addEventListener('DOMContentLoaded', function () {
         
     }
 
-
+    /**
+     * Generates the previous month and updates calendar to display that month
+     */
     function prevMonth() {
         currentDate.setMonth(currentDate.getMonth() - 1);
         updateCalendar();
     }
+
+    /**
+     * Generates the next month and updates calendar to display that month
+     */
     function nextMonth() {
         currentDate.setMonth(currentDate.getMonth() + 1);
         updateCalendar();
     }
-    // Selects today's log and goes to corresponding month/year view 
+
+    /**
+     * Opens the corresponding log for the current date 
+     */
     function today() { 
         currentDate = new Date();
         updateCalendar(); 
         selectDate(dateToString(currentDate));
     }
+
     // Initialize the calendar
     updateCalendar();
 
-    // Attach event listeners
+    // Attach event listeners to prev/next buttons
     document.getElementById('prev-month').addEventListener('click', prevMonth);
     document.getElementById('next-month').addEventListener('click', nextMonth);
     document.getElementById('today').addEventListener('click', today);
 
 
+    // FUNCTIONS REGARDING LOGS
 
-    // Adds log based on day selected
+    /**
+     * Retrieves log entries stored in local storage
+     * @returns all log entries 
+     */
+    function getLogsFromStorage() { 
+        let logs = localStorage.getItem('logs');
+        let returnLog;
+        if (logs) {
+            returnLog = JSON.parse(logs);
+            return returnLog;
+        }
+        else {
+            returnLog = {};
+            return returnLog;
+        }
+    }
+
+
+    /**
+     * Sends log entries to localStorage 
+     * @param {*} logs - an array of all the logs
+     * @returns updated log entries
+     */
+    function saveLogsToStorage(logs) { 
+        return localStorage.setItem('logs',JSON.stringify(logs));
+    }
+
+    /**
+     * Converts a date from its current type to a string to be compatible with other functions
+     * @param {*} date - day generated from date method
+     * @returns date as a string in the format "year-month-day"
+     */
+    function dateToString(date) { 
+        return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+    }
+
+    /**
+     * Adds log based on day selected
+     * @param {*} dateStr - day you want to select
+     */
     function selectDate(dateStr) {
         const logEntry = logs[`${dateStr}`] || null;
         showLogEntryModal(dateStr, logEntry);
     }
 
+    /**
+     * Displays the form to make/edit an entry log
+     * @param {*} dateStr day of log
+     * @param {*} logEntry contents of the log if log exists
+     */
     function showLogEntryModal(dateStr, logEntry) {
         //const modal = document.getElementById('log-entry-modal');
         const modalDate = document.getElementById('modal-date');
@@ -165,6 +181,7 @@ document.addEventListener('DOMContentLoaded', function () {
             futurePlanTextarea.value = '';
         }
 
+        // saves the entry when save button is pressed
         saveButton.onclick = function() {
             const logInput = {
                 progress: progressTextarea.value.trim(),
@@ -182,6 +199,7 @@ document.addEventListener('DOMContentLoaded', function () {
             saveLogsToStorage(logs); 
         };
 
+        // Deletes the entry
         deleteButton.onclick = function() {
             delete logs[`${dateStr}`];
             updateCalendar();
@@ -193,10 +211,13 @@ document.addEventListener('DOMContentLoaded', function () {
         };
     }
 
+    /**
+     * Deletes every single inputted entry
+     */
     function deleteAllEntries() {
         logs = {};
         saveLogsToStorage(logs);
-        updateCalendar();
+        today();
     }
     
       // Event listener for the delete all button
