@@ -103,7 +103,7 @@
 
                             <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px">
                                 <circle id="stationary-progress" cx="80" cy="80" r="70" stroke-linecap="round"></circle>
-                                <circle id="moving-progress" cx="80" cy="80" r="70" transform="rotate(-270)" transform-origin="center" stroke-linecap="round"></circle>
+                                <circle id="moving-progress" cx="80" cy="80" r="70" transform = "rotate(-81)" transform-origin="center"></circle>
                             </svg>
                         </div>
                     </section>
@@ -152,14 +152,16 @@
                 const taskProgress = JSON.parse(localStorage.getItem('taskProgress')) || { completedTasks: 0, totalTasks: 0 };
                 const completedTasks = taskProgress.completedTasks;
                 const totalTasks = taskProgress.totalTasks;
-    
+                const circum = (70)*Math.PI*2;
                 if (totalTasks > 0) {
-                    const progress = (completedTasks / totalTasks) * 100;
+                    
+                    const progress = (completedTasks / totalTasks) * circum;
+                    const leftover = circum - progress;
                     progressNumber.textContent = `${completedTasks}/${totalTasks}`;
-                    movingProgress.style.strokeDasharray = `${progress}, 100`;
+                    movingProgress.style.strokeDasharray = `${progress}, ${leftover}`;
                 } else {
                     progressNumber.textContent = "0/0";
-                    movingProgress.style.strokeDasharray = "0, 100";
+                    movingProgress.style.strokeDasharray = `0, ${circum}`;
                 }
             });
         </script>
