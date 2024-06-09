@@ -39,13 +39,13 @@ h2
   margin-bottom: 18px;
   margin-top: 18px;
   border: 1px solid #aad4c9;
-  width: 90%;
+  width: 84%;
   max-width: 1100px;
   border-radius: 5px;
   box-shadow: 0 0 10px #aad4c9;
   align-items: center;
   position: relative;
-  height: 90px;  
+  height: 80px;  
 }
 
 #progress-bar {
