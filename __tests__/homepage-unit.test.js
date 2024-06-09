@@ -1,4 +1,5 @@
-import { calculateProgress, findStreak } from '../code-to-unit-test/unit-tests-homepage';
+
+const { calculateProgress, findStreak } = require('../code-to-unit-test/unit-tests-homepage');
 
 // Create test suite for homepage tests
 describe('Homepage Unit Tests', () => {

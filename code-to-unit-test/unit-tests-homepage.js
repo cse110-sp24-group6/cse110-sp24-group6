@@ -1,11 +1,11 @@
 // Calculates task progress percentage
-export function calculateProgress(completedTasks, totalTasks) {
+ function calculateProgress(completedTasks, totalTasks) {
     if (totalTasks === 0) return 0;
     return (completedTasks / totalTasks) * 100;
 }
 
 // Finds the streak of consecutive days with logs
-export function findStreak(logs, today = new Date()) {
+ function findStreak(logs, today = new Date()) {
     let streak = 0;
     let day = today;
 
@@ -15,3 +15,8 @@ export function findStreak(logs, today = new Date()) {
     }
     return streak;
 }
+
+module.exports = {
+    findStreak,
+    calculateProgress,
+  };
