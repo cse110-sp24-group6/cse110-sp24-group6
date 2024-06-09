@@ -26,7 +26,7 @@ body {
     text-shadow: 1px 1px 2px #93b1af;
 }
 
-/* Separate content from navigation bar, and add spacing from bottom of page*/
+/* Separate content from navigation bar, and add spacing from bottom of page */
 .content {
     width: auto;
     margin-left: 10%;
