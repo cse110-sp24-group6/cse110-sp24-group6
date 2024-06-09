@@ -1,4 +1,4 @@
-//class of project elements that appear on the homepage
+// class of project cards that appear on the homepage
 
 class ProjectCard extends HTMLElement {
 	constructor() {
