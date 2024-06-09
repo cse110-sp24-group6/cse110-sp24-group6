@@ -18,8 +18,8 @@ body, header, footer
 
 h1
 {
-  margin-left: 7vw;
-  font-size: 40px;
+  margin-left: 9vw;
+  font-size: 50px;
   text-shadow: 1px 1px 2px #93b1af;
   margin-top: 20px;
 }
@@ -39,13 +39,13 @@ h2
   margin-bottom: 18px;
   margin-top: 18px;
   border: 1px solid #aad4c9;
-  width: 90%;
+  width: 84%;
   max-width: 1100px;
   border-radius: 5px;
   box-shadow: 0 0 10px #aad4c9;
   align-items: center;
   position: relative;
-  height: 90px;  
+  height: 80px;  
 }
 
 #progress-bar {
@@ -265,100 +265,97 @@ button {
 
 /* Navigation bar section */
 .nav-bar-left-container {
-  width: 20%;
-  float: left;
-  overflow: hidden;
+    width: 20%;
+    float: left;
+    overflow: hidden;
 }
 
 .nav-bar {
-  width: 76px;
-  height: 100%;
-
-  /* min-height: 100vh; */
-  left: 0;
-  top: 0;
-  background-color: #3F8984;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 20px;
-  position:fixed;
+    width: 76px;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-color: #3F8984;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    position:fixed;
 }
 
 .nav-bar .databaes-icon {
-  width: 45px;
-  height: 45px;
-  margin-bottom: 25%;
-  margin-top: 5%;
+    width: 45px;
+    height: 45px;
+    margin-bottom: 25%;
+    margin-top: 5%;
 }
 
 .nav-bar .home-icon {
-  width: 45px;
-  height: 45px;
-  margin-bottom: 35%;
-  margin-top: 25%;
+    width: 45px;
+    height: 45px;
+    margin-bottom: 35%;
+    margin-top: 25%;
 }
 
 .nav-bar .daily-log-icon {
-  width: 45px;
-  height: 45px;
-  margin-bottom: 25%;
-  margin-top: 25%;
+    width: 45px;
+    height: 45px;
+    margin-bottom: 25%;
+    margin-top: 25%;
 }
 
 .nav-bar .to-do-list-icon {
-  width: 45px;
-  height: 45px;
-  margin-bottom: 25%;
-  margin-top: 25%;
+    width: 45px;
+    height: 45px;
+    margin-bottom: 25%;
+    margin-top: 25%;
 }
 
 
-@media (width <= 1050px) {
-  .content {
-      margin-left: 0;
-  }
-  
-  /* Navigation bar section */
-  .nav-bar-left-container {
-      position: relative;
-      float: none;
-  }
-  
-  .nav-bar {
-      position: fixed;
-      left: auto;
-      top: 92%;
-      width: 100%;
-      height: 8vh;
-      flex-direction: row;
-      justify-content: center;
-      padding-top: 20px;
-      overflow: hidden;
-      z-index: 2;
-  }
+@media (width <= 1000px) {
+    .content {
+        margin-left: 0;
+    }
 
-  .nav-bar .databaes-icon {
-      display: none;
-  }
+    /* Dashboard title spacing */
+    #your-dashboard {
+        text-align: center;
+        margin-left: auto;
+    }
+    
+    /* Navigation bar section */
+    .nav-bar-left-container {
+        position: relative;
+        float: none;
+    }
+    
+    .nav-bar {
+        position: fixed;
+        left: auto;
+        top: 92%;
+        width: 100%;
+        height: 8vh;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        padding-bottom: 15px;
+        overflow: hidden;
+        z-index: 2;
+    }
 
-  .nav-bar .home-icon {
-      width: 8vw;
-      height: 8vw;
-      margin: 25px;
-  }
+    .nav-bar .databaes-icon {
+        display: none;
+    }
 
-  .nav-bar .daily-log-icon {
-      width: 8vw;
-      height: 8vw;
-      margin: 25px;
-  }
-
-  .nav-bar .to-do-list-icon {
-      width: 8vw;
-      height: 8vw;
-      margin: 25px;
-  }
+    .nav-bar .home-icon,
+    .nav-bar .daily-log-icon,
+    .nav-bar .to-do-list-icon {
+        max-height: 100%;
+        width: auto;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    
 
   /* TODO: Responsiveness for the rest of the elements */
 }
