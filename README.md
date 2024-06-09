@@ -92,13 +92,18 @@ Enforcing consistent team meetings is essential in ensuring progress can be made
 **Daily Standups:**
 Daily Stand-ups are a key part in teams that follow agile development, as they allow for rapid conversation among team members to make sure everyone is on track. During these stand-ups, teams would very briefly describe the work they have done as well as their plans for the next day. While our team did not actually have daily stand-up meetings, we did implement a daily check-in system on our Slack workspace. Through this, we would make daily posts about our progress in order to make sure everyone was aware of the current status of the project. 
 
-![daily check in](https://github.com/cse110-sp24-group6/cse110-sp24-group6/assets/146862114/5b450d9f-78e7-4d31-b170-70718d040711)
+<p align="center">
+    <img src="https://github.com/cse110-sp24-group6/cse110-sp24-group6/assets/146862114/5b450d9f-78e7-4d31-b170-70718d040711" alt="Daily Standups" height="300" width="600">
+</p>
 
 
 **Retrospectives:**
 Retrospectives are essential for teams following an agile development process as they provide an opportunity to reflect on what went well, what didn't, and how to improve. Our team conducted retrospectives at the end of each sprint. We used a structured format where each team member shared their thoughts on what worked, what didn't, and any suggestions for improvement. We documented these discussions in our repository and revisited them in subsequent retrospectives to track progress. We used Jamboard to conduct our retrospectives and allow everyone to reflect upon the sprint and give suggestions/feedback.
 
-![image](https://github.com/cse110-sp24-group6/cse110-sp24-group6/assets/68180000/6ba6050d-49b1-477c-80b9-51002d47d6c8)
+<p align="center">
+    <img src="https://github.com/cse110-sp24-group6/cse110-sp24-group6/assets/68180000/6ba6050d-49b1-477c-80b9-51002d47d6c8" alt="Retrospectives" height="300" width="600">
+</p>
+
 
 **Sprint and Sprint Reviews:**
 Sprints are time-boxed periods during which specific work has to be completed. Our team typically had one/two-week sprints. At the beginning of each sprint, we held a sprint planning meeting to decide which tasks to prioritize and assign them to team members. Throughout the sprint, we tracked our progress and addressed any blockers. At the end of each sprint, we conducted a sprint review meeting (notes can be found [here](admin/meetings)) to demo the completed work to stakeholders and gather feedback for future iterations.
