@@ -67,7 +67,7 @@ h1 {
 
 /* ---CALENDAR--- */
 .calendar {
-    background-color: #d1a689;
+    background-color: #D1A689;
     border-radius: 10px;
     overflow: hidden;
     margin: 5% auto;
@@ -92,7 +92,7 @@ h1 {
     margin-bottom: 10px;
 }
 
-/* Styling for month and year text*/
+/* Styling for month and year text */
 .month,
 .year {
     font-size: 3vw;
@@ -214,6 +214,7 @@ textarea:focus {
     box-shadow: 0 0 5px rgba(0 0 0 / 50%);
 }
 
+/* Date on top of entry form */
 #modal-date {
     color: #c08c66;
     text-align: center;
