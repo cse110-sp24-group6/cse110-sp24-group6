@@ -149,7 +149,17 @@
             document.addEventListener("DOMContentLoaded", function() {
                 const progressNumber = document.getElementById('progress-number');
                 const movingProgress = document.getElementById('moving-progress');
-                const taskProgress = JSON.parse(localStorage.getItem('taskProgress')) || { completedTasks: 0, totalTasks: 0 };
+                // Retrieve tasks from localStorage and parse them
+                const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+
+                // Use reduce to count completed and total tasks
+                const taskProgress = tasks.reduce((counts, task) => {
+                if (task.completed) {
+                    counts.completedTasks++;
+                }
+                counts.totalTasks++;
+                return counts;
+                }, { completedTasks: 0, totalTasks: 0 });
                 const completedTasks = taskProgress.completedTasks;
                 const totalTasks = taskProgress.totalTasks;
                 const circum = (70)*Math.PI*2;

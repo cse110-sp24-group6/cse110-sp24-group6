@@ -12,8 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function setupDeleteButtons() {
   const deleteButtons = document.querySelectorAll('.delete-project-pic');
-  console.log("Setting up delete buttons for", deleteButtons.length, "buttons");
-  deleteButtons.forEach(delbutton => {
+    deleteButtons.forEach(delbutton => {
     delbutton.addEventListener('click', deleteProject);
   });
 }
@@ -39,7 +38,6 @@ function deleteProject(event) {
       projectsArray.splice(projectIndex, 1);
       localStorage.setItem('projects', JSON.stringify(projectsArray));
       projectCard.remove();
-      console.log("Project deleted successfully");
     } else {
       console.log("Project not found");
     }
@@ -50,8 +48,7 @@ function deleteProject(event) {
 
 function setupEditButtons() {
   const editIcons = document.querySelectorAll('.edit-icon');
-  console.log("Setting up edit buttons for", editIcons.length, "icons");
-  editIcons.forEach(icon => {
+    editIcons.forEach(icon => {
     icon.addEventListener('click', openEditForm);
   });
 }
@@ -88,7 +85,6 @@ const saveButton = document.querySelector("#save-button");
 saveButton.addEventListener('click', saveProjectDetails);
 
 function saveProjectDetails() {
-  console.log("Save button clicked");
   const projectName = document.querySelector("#input-project-name").value;
   const projectDescription = document.querySelector("#input-project-description").value;
   const githubLink = document.querySelector("#input-github-link").value;
@@ -115,7 +111,6 @@ function saveProjectDetails() {
 
     // Hide the form after saving
     document.querySelector('.edit-overlay').style.display = "none";
-    console.log("Project details saved and edit form hidden");
   } else {
     const projects = getProjectsFromStorage();
     projects.push(data);
@@ -167,7 +162,6 @@ function init() {
   //   }
   // ]
   projects.forEach(addProject);
-  console.log("Projects initialized");
 }
 // LOCAL STORAGE FUNCTIONALITY FOR PROJECTS
 function getProjectsFromStorage() {
