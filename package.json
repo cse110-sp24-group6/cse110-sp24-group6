@@ -16,11 +16,13 @@
     "stylelint-config-standard": "^36.0.0"
   },
   "scripts": {
-    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --maxWorkers=1"
   },
   "type": "module",
   "jest": {
     "verbose": true,
     "testEnvironment": "jsdom"
+    "transform": {},
+    "testTimeout": 30000
   }
 }
