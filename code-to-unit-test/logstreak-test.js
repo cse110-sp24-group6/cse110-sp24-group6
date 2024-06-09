@@ -3,7 +3,7 @@
   const checkedImgSrc = "../source/assets/HTML_homepage_pics/checked_in.png";
   const uncheckedImgSrc = "../source/assets/HTML_homepage_pics/unchecked.png";
   
-  export function getLogsFromStorage() { 
+  function getLogsFromStorage() { 
     let logs = localStorage.getItem('logs');
     let returnLog;
     if (logs) {
@@ -18,14 +18,14 @@
   
   
   // Get the log for given date 
-  export function getLog(date) { 
+  function getLog(date) { 
     let logs = getLogsFromStorage(); 
     return logs[dateToString(date)];
   
   }
   
   // Loop through logs to count consecutive logs from today's date 
-  export function findStreak() { 
+  function findStreak() { 
     let streak = 0; 
     let logs = getLogsFromStorage(); 
     let day = new Date();
@@ -56,7 +56,7 @@
   }
   
   // Local storage for streak 
-  export function getStreakFromStorage() { 
+   function getStreakFromStorage() { 
     let streak = localStorage.getItem('streak'); 
     let returnStreak; 
     if (streak) { 
@@ -67,13 +67,13 @@
     return returnStreak;
   }
   
-  export function setStreakToStorage(streak) { 
+   function setStreakToStorage(streak) { 
     return localStorage.setItem('streak', JSON.stringify(streak));
   }
   
   
   // Get and set circles to local storage 
-  export function getCirclesFromStorage() { 
+   function getCirclesFromStorage() { 
     let circles = localStorage.getItem('circles');
     let returnCircles; 
     if (circles) { 
@@ -94,17 +94,17 @@
     return returnCircles; 
   }
   
-  export function setCirclesToStorage(circles) { 
+   function setCirclesToStorage(circles) { 
     return localStorage.setItem('circles',JSON.stringify(circles));
   }
   
   // Function takes in a Date object and converts it to string compatible with other functions
-  export function dateToString(date) { 
+   function dateToString(date) { 
     return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
   }
   
   // Converts 0-6 to appropriate IDs
-  export function convertID(num) { 
+   function convertID(num) { 
     let id ='';
     if (num===0) { 
       id='sunday-circle';
@@ -125,7 +125,7 @@
   }
   
   // Reset localStorage to blank and all images to blank as well on Sunday 
-  export function sundayReset() { 
+   function sundayReset() { 
     let circles = getCirclesFromStorage();
     for (let i = 0; i < 7; i++) { 
       circles[`${i}`]  = uncheckedImgSrc;
@@ -134,7 +134,7 @@
     setCirclesToStorage(circles);
   }
   
-  export function weekFillIn() {
+   function weekFillIn() {
     // Set variables  
     let todaysDate = new Date(); 
     let today = todaysDate.getDay(); 
@@ -172,3 +172,16 @@
   }
   
   
+  module.exports = {
+    getLogsFromStorage,
+    getLog,
+    findStreak,
+    getStreakFromStorage,
+    setStreakToStorage,
+    getCirclesFromStorage,
+    setCirclesToStorage,
+    dateToString,
+    convertID,
+    sundayReset,
+    weekFillIn,
+  };

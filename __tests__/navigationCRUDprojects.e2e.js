@@ -1,6 +1,6 @@
 // TODO: remember to change all the urls to the github page if we are using that for deployment
 const puppeteer = require('puppeteer');
-// import puppeteer from 'puppeteer';
+
 let browser; 
 let page;
 
