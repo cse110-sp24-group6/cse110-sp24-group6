@@ -1,11 +1,16 @@
 document.addEventListener('DOMContentLoaded', function () {
-  // Function to retrieve tasks from localStorage
+/**
+ * Function to retrieve tasks from localStorage
+ * @returns {array} An array of tasks from localStorage
+ */
   function getTasksFromStorage() {
       let tasks = localStorage.getItem('tasks');
       return tasks ? JSON.parse(tasks) : [];
   }
-
-  // Function to save tasks to localStorage
+/**
+ * Function to save tasks to localStorage
+ * @param {array} tasks - The array of tasks to save
+ */
   function saveTasksToStorage(tasks) {
       localStorage.setItem('tasks', JSON.stringify(tasks));
   }
@@ -27,7 +32,10 @@ document.addEventListener('DOMContentLoaded', function () {
   // Retrieve tasks from localStorage
   let tasks = getTasksFromStorage();
 
-  // Function to update progress bar and text
+/**
+ * Function to update progress bar and text
+ * @param {array} tasks - The array of tasks
+ */
   function updateProgress() {
       const completedTasks = tasks.filter(task => task.completed).length;
       const progress = tasks.length ? (completedTasks / tasks.length) * 100 : 0;
@@ -44,8 +52,10 @@ document.addEventListener('DOMContentLoaded', function () {
           celebration.style.display = 'none';
       }
   }
-
-  // Function to load tasks from localStorage
+/**
+ * Function to load tasks from localStorage
+ * @param {array} tasks - The array of tasks
+ */
   function loadTasks() {
     tasks = []; // Clear existing tasks array
     taskList.innerHTML = ''; // Clear existing tasks from the task list
@@ -58,8 +68,10 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     updateProgress();
   }
-
-  // Function to add a task
+/**
+ * Function to add a task
+ * @param {event} event - The event object for the form submission
+ */
   function addTask(event) {
       event.preventDefault();
 
@@ -85,8 +97,10 @@ document.addEventListener('DOMContentLoaded', function () {
       taskDescription.value = '';
       taskTags.value = '';
   }
-
-  // Function to delete a task
+/**
+ * Function to delete a task
+ * @param {event} event - The event object for the delete button click
+ */
   function deleteTask(event) {
       const taskElement = event.target.parentNode;
       const taskIndex = Array.from(taskList.children).indexOf(taskElement);
@@ -99,8 +113,14 @@ document.addEventListener('DOMContentLoaded', function () {
           taskList.removeChild(taskElement);
       }
   }
-
-  // Function to create task element
+/**
+ * Function to create a task element
+ * @param {string} description - The description of the task
+ * @param {string} dueDate - The due date of the task
+ * @param {string} desc - The description of the task
+ * @param {string} tag - The tag of the task
+ * @param {boolean} completed - Whether the task is completed or not
+ */
   function createTaskElement(description, dueDate, taskDescription, tag, completed = false) {
       const li = document.createElement('li');
       const checkbox = document.createElement('input');
