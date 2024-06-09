@@ -21,7 +21,7 @@
   "type": "module",
   "jest": {
     "verbose": true,
-    "testEnvironment": "jsdom"
+    "testEnvironment": "jsdom",
     "transform": {},
     "testTimeout": 30000
   }
