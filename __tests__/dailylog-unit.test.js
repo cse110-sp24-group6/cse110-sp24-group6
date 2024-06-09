@@ -1,6 +1,7 @@
-import { showLogEntryModal, deleteAllEntries} from '../code-to-unit-test/dailylog-unit.js';
+// import { showLogEntryModal, deleteAllEntries} from '../code-to-unit-test/dailylog-unit.js';
 
-import { fireEvent } from '@testing-library/dom';
+const { fireEvent } = require('@testing-library/dom');
+const { showLogEntryModal, deleteAllEntries } = require('../code-to-unit-test/dailylog-unit.js');
 
 describe('Daily Log Unit Testing', () => { 
     beforeEach(async () => { 

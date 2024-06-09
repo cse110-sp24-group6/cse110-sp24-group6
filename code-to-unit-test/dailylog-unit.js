@@ -1,10 +1,10 @@
 
 // Function takes in a Date object and converts it to string compatible with other functions
-export function dateToString(date) { 
+ function dateToString(date) { 
     return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
 }
 
-export function resetBackground() { 
+ function resetBackground() { 
     // Resets background of all dates to original styling
     let dateDivs = document.querySelectorAll('.date'); 
     for (let i = 0; i < dateDivs.length; i++) { 
@@ -31,7 +31,7 @@ let currentDate = new Date();
 //selectDate(dateToString(currentDate));
 
 
-export function updateCalendar() {
+ function updateCalendar() {
     let logs = {}; 
     const monthText = document.getElementById('month');
     const yearText = document.getElementById('year');
@@ -87,18 +87,18 @@ export function updateCalendar() {
 }
 
 
-export function prevMonth() {
+ function prevMonth() {
     currentDate.setMonth(currentDate.getMonth() - 1);
     updateCalendar();
 }
 
-export function nextMonth() {
+ function nextMonth() {
     currentDate.setMonth(currentDate.getMonth() + 1);
     updateCalendar();
 }
 
 // Selects today's log and goes to corresponding month/year view 
-export function today() { 
+ function today() { 
     currentDate = new Date();
     updateCalendar(); 
     selectDate(dateToString(currentDate));
@@ -110,14 +110,14 @@ export function today() {
 
 
 // Adds log based on day selected
-export function selectDate(dateStr) {
+ function selectDate(dateStr) {
     let logs = {}; 
     const logEntry = logs[`${dateStr}`] || null;
     showLogEntryModal(dateStr, logEntry);
 }
 
 
-export function showLogEntryModal(dateStr, logEntry, logs) {
+ function showLogEntryModal(dateStr, logEntry, logs) {
     //let logs = {}; 
     //const modal = document.getElementById('log-entry-modal');
     const modalDate = document.getElementById('modal-date');
@@ -175,9 +175,20 @@ export function showLogEntryModal(dateStr, logEntry, logs) {
     return logs; 
 }
 
-export function deleteAllEntries(logs) {
+ function deleteAllEntries(logs) {
     logs = {};
     updateCalendar();
     return logs;
 }
 
+module.exports = {
+    dateToString,
+    resetBackground,
+    updateCalendar,
+    prevMonth,
+    nextMonth,
+    today,
+    selectDate,
+    showLogEntryModal,
+    deleteAllEntries
+};
