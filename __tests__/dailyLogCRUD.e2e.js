@@ -1,17 +1,23 @@
-// const puppeteer = require('puppeteer');
-import puppeteer from "puppeteer";
+const puppeteer = require('puppeteer');
 describe('Basic user flow for Website', () => {
     let browser;
     let page;
 
     beforeAll(async () => {
-        browser = await puppeteer.launch({ headless: false });
-        page = await browser.newPage();
-        await page.goto('https://cse110-sp24-group6.github.io/cse110-sp24-group6/source/dailylog.html');
+        try {
+            browser = await puppeteer.launch({ headless: false });
+            page = await browser.newPage();
+            await page.goto('https://cse110-sp24-group6.github.io/cse110-sp24-group6/source/dailylog.html');
+        }
+        catch (err) {
+            console.log("error caught")
+        }
     });
 
     afterAll(async () => {
-        await browser.close();
+        if (browser) {
+            await browser.close();
+        }
     });
 
     const logData = {

@@ -1,4 +1,4 @@
-import puppeteer from 'puppeteer';
+const puppeteer = require('puppeteer');
 
 describe('Homepage Task Progress Tests', () => {
   let browser;
