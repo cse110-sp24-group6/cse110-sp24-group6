@@ -1,5 +1,6 @@
 // TODO: remember to change all the urls to the github page if we are using that for deployment
-import puppeteer from 'puppeteer';
+const puppeteer = require('puppeteer');
+// import puppeteer from 'puppeteer';
 let browser; 
 let page;
 
@@ -36,9 +37,15 @@ async function addTextInputToElement(inputArea, text){
 // Navigation Bar Tests
 describe("Basic Navigation Bar Interactions", () => {
     beforeAll(async () => {
-      browser = await puppeteer.launch({headless: false});
-      page = await browser.newPage();
-      await page.goto("http://127.0.0.1:5500/source/homepage.html");
+      try {
+        browser = await puppeteer.launch({headless: false});
+        page = await browser.newPage();
+        await page.goto("http://127.0.0.1:5500/source/homepage.html");
+      }
+      catch (err) {
+        console.log("caught an error");
+      }
+      
     });
     it('Testing if daily log icon sends you to daily log page', async () => {
       await page.waitForSelector('#daily-log-button', { visible: true });
@@ -236,5 +243,7 @@ describe("Projects CRUD functionality", () => {
     })
   });
   afterAll(async () => {
-    await browser.close();
+    if (browser) {
+      await browser.close();
+    }
   });
