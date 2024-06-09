@@ -1,4 +1,4 @@
-
+```html
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,30 +6,40 @@
   <link rel="stylesheet" href="assets/styles/todolist.css">
 </head>
 <body>
+  <!-- Navigation bar container -->
   <div class="nav-bar-left-container">
     <nav class="nav-bar">
+        <!-- Databaes logo with link to homepage -->
         <img class="databaes-icon" src="assets/HTML_homepage_pics/databaes_logo.png" alt="databaes logo"/>
+        <!-- Homepage button -->
         <a id="home-page-button" class="page-icons" href="./homepage.html">
             <img class="home-icon" src="assets/HTML_homepage_pics/homepage_nav.png" alt="Homepage button"/>
         </a>
+        <!-- Daily log button -->
         <a id="daily-log-button" class="page-icons" href="./dailylog.html">
             <img class="daily-log-icon" src="assets/icons/homepage/daily_log/daily_log_green.png" alt="Daily Log Button"/>
         </a>
+        <!-- To-Do list button -->
         <a id="to-do-list-button" class="page-icons" href="./todolist.html">
             <img class="to-do-list-icon" src="assets/HTML_homepage_pics/to-do_list_nav.png" alt="To-Do List button"/>
         </a>
     </nav>
   </div>
+  <!-- Main heading -->
   <h1>To-Do List</h1>
   
+  <!-- Progress container -->
   <div id="progress-container">
+    <!-- Progress bar -->
     <div id="progress-bar"></div>
     <img src="assets/icons/otter.png" id="otter" alt="Otter">
     <img src="assets/icons/fish.png" id="fish" alt="Fish">
     <img src="assets/icons/celebration.png" id="celebration" alt="Celebrating Otter">
   </div>
   
+  <!-- Section for adding a task -->
   <h2>Add a Task</h2>
+  <!-- Task form -->
   <form id="task-form">
     <input type="text" id="task-input" placeholder="Enter task">
     <input type="date" id="due-date">
@@ -41,17 +51,22 @@
       <option value="Fun">Fun</option>
       <option value="Debugging">Debugging</option>
     </select>
-    <button id = "submit" type="submit">Add Task</button>
+    <!-- Button to add task -->
+    <button id="submit" type="submit">Add Task</button>
   </form>
   
+  <!-- Task list -->
   <ul id="task-list"></ul>
   
+  <!-- Button to delete all tasks -->
   <button id="delete-all">Delete All Tasks</button>
 
+  <!-- Edit modal for editing tasks -->
   <div id="edit-modal" class="modal hidden">
     <div class="modal-content">
       <span class="close">&times;</span>
       <h2>Edit Task</h2>
+      <!-- Form for editing task -->
       <form id="edit-task-form">
         <input type="text" id="edit-task-input" placeholder="Enter task">
         <input type="date" id="edit-due-date">
@@ -63,228 +78,17 @@
           <option value="Fun">Fun</option>
           <option value="Debugging">Debugging</option>
         </select>
-        <button id= "update" type="submit">Update Task</button>
+        <!-- Button to update task -->
+        <button id="update" type="submit">Update Task</button>
       </form>
     </div>
   </div>
   
+  <!-- JavaScript for dynamic functionality -->
   <script>
-    const taskList = document.getElementById('task-list');
-    const taskInput = document.getElementById('task-input');
-    const dueDate = document.getElementById('due-date');
-    const taskDescription = document.getElementById('task-description');
-    const taskTags = document.getElementById('task-tags');
-    const taskForm = document.getElementById('task-form');
-    const deleteAllBtn = document.getElementById('delete-all');
-    const otter = document.getElementById('otter');
-    const fish = document.getElementById('fish');
-    const celebration = document.getElementById('celebration');
-    const progressBar = document.getElementById('progress-bar');
-    const editModal = document.getElementById('edit-modal');
-    const editTaskForm = document.getElementById('edit-task-form');
-    const editTaskInput = document.getElementById('edit-task-input');
-    const editDueDate = document.getElementById('edit-due-date');
-    const editTaskDescription = document.getElementById('edit-task-description');
-    const editTaskTags = document.getElementById('edit-task-tags');
-    const closeModal = document.getElementsByClassName('close')[0];
-
-    let tasks = [];
-    let currentEditTaskIndex = null;
-
-    function updateProgress() {
-      const completedTasks = tasks.filter(task => task.completed).length;
-      const progress = (completedTasks / tasks.length) * 100;
-      progressBar.style.width = `${progress}%`;
-
-      if (progress === 100) {
-        otter.style.display = 'none';
-        fish.style.display = 'none';
-        celebration.style.display = 'block';
-      } else {
-        otter.style.display = 'block';
-        fish.style.display = 'block';
-        celebration.style.display = 'none';
-      }
-      localStorage.setItem('taskProgress', JSON.stringify({completedTasks, totalTasks: tasks.length}));
-    }
-
-    function addTask(event) {
-      event.preventDefault();
-      
-      const taskTitle = taskInput.value.trim();
-      const date = dueDate.value;
-      const description = taskDescription.value.trim();
-      const tag = taskTags.value;
-
-      if (currentEditTaskIndex !== null) {
-        tasks[currentEditTaskIndex] = {
-          title: taskTitle,
-          date: date,
-          description: description,
-          tag: tag,
-          completed: tasks[currentEditTaskIndex].completed
-        };
-        renderTasks();
-        currentEditTaskIndex = null;
-      } else {
-        tasks.push({
-          title: taskTitle,
-          date: date,
-          description: description,
-          tag: tag,
-          completed: false
-        });
-        const taskElement = createTaskElement(tasks.length - 1);
-        taskList.appendChild(taskElement);
-      }
-
-      updateProgress();
-      taskInput.value = '';
-      dueDate.value = '';
-      taskDescription.value = '';
-      taskTags.value = '';
-      otter.style.display = 'block';
-      fish.style.display = 'block';
-      celebration.style.display = 'none';
-    }
-
-    function deleteTask(event) {
-      const taskElement = event.target.parentNode;
-      const taskIndex = taskElement.dataset.index;
-      
-      tasks.splice(taskIndex, 1);
-      
-      updateProgress();
-      renderTasks();
-    }
-
-    function editTask(event) {
-      const taskElement = event.target.parentNode;
-      const taskIndex = taskElement.dataset.index;
-      const task = tasks[taskIndex];
-      
-      editTaskInput.value = task.title;
-      editDueDate.value = task.date;
-      editTaskDescription.value = task.description;
-      editTaskTags.value = task.tag;
-      currentEditTaskIndex = taskIndex;
-
-      editModal.style.display = 'block';
-    }
-
-    function updateTask(event) {
-      event.preventDefault();
-      
-      const taskTitle = editTaskInput.value.trim();
-      const date = editDueDate.value;
-      const description = editTaskDescription.value.trim();
-      const tag = editTaskTags.value;
-
-      if (currentEditTaskIndex !== null) {
-        tasks[currentEditTaskIndex] = {
-          title: taskTitle,
-          date: date,
-          description: description,
-          tag: tag,
-          completed: tasks[currentEditTaskIndex].completed
-        };
-        renderTasks();
-        currentEditTaskIndex = null;
-      }
-
-      updateProgress();
-      editModal.style.display = 'none';
-    }
-
-    function createTaskElement(index) {
-      const task = tasks[index];
-      const li = document.createElement('li');
-      li.dataset.index = index;
-
-      const checkbox = document.createElement('input');
-      checkbox.type = 'checkbox';
-      checkbox.checked = task.completed;
-      checkbox.addEventListener('change', () => {
-        task.completed = checkbox.checked;
-        updateProgress();
-      });
-
-      const deleteButton = document.createElement('button');
-      deleteButton.className = 'delete-button';
-      deleteButton.textContent = 'Delete';
-      deleteButton.addEventListener('click', deleteTask);
-
-      const editButton = document.createElement('button');
-      editButton.className = 'edit-button';
-      editButton.textContent = 'Edit';
-      editButton.addEventListener('click', editTask);
-      
-      li.innerHTML = `
-        <b>Task:</b> ${task.title} <br>
-        <b>Due Date:</b> ${task.date} <br>
-        <b>Description:</b> ${task.description} <br>
-        <b>Tag:</b> ${task.tag} <br>
-      `;
-      li.appendChild(checkbox);
-      li.appendChild(deleteButton);
-      li.appendChild(editButton);
-      
-      return li;
-    }
-
-    function renderTasks() {
-      taskList.innerHTML = '';
-      tasks.forEach((task, index) => {
-        const taskElement = createTaskElement(index);
-        taskList.appendChild(taskElement);
-      });
-    }
-
-    taskForm.addEventListener('submit', addTask);
-    editTaskForm.addEventListener('submit', updateTask);
-
-    deleteAllBtn.addEventListener('click', () => {
-      tasks.length = 0;
-      updateProgress();
-      renderTasks();
-    });
-
-    closeModal.onclick = function() {
-      editModal.style.display = 'none';
-    }
-
-    window.onclick = function(event) {
-      if (event.target == editModal) {
-        editModal.style.display = 'none';
-      }
-    }
-    window.onload = function() {
-      const savedTasks = localStorage.getItem('tasks');
-      if (savedTasks) {
-        tasks = JSON.parse(savedTasks);
-        renderTasks();
-        updateProgress();
-      }
-    }
-    window.onbeforeunload = function() {
-      localStorage.setItem('tasks', JSON.stringify(tasks));
-    }
-    document.addEventListener('DOMContentLoaded', function () {
-      const taskForm = document.getElementById('task-form');
-      const taskInput = document.getElementById('task-input');
-      const dueDate = document.getElementById('due-date');
-      const taskDescription = document.getElementById('task-description');
-      const taskTags = document.getElementById('task-tags');
-      const taskList = document.getElementById('task-list');
-      const deleteAllBtn = document.getElementById('delete-all');
-      const progressText = document.getElementById('progress-text');
-      const progressBar = document.getElementById('progress-bar');
-      const otter = document.getElementById('otter');
-      const fish = document.getElementById('fish');
-      const celebration = document.getElementById('celebration');
-     });
   </script>
- <script src="assets/scripts/todolist.js"></script>
+  <!-- External JavaScript file -->
+  <script src="assets/scripts/todolist.js"></script>
 </body>
 </html>
-
+```
