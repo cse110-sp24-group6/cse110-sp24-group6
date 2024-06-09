@@ -265,52 +265,50 @@ button {
 
 /* Navigation bar section */
 .nav-bar-left-container {
-  width: 20%;
-  float: left;
-  overflow: hidden;
+    width: 20%;
+    float: left;
+    overflow: hidden;
 }
 
 .nav-bar {
-  width: 76px;
-  height: 100%;
-
-  /* min-height: 100vh; */
-  left: 0;
-  top: 0;
-  background-color: #3F8984;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 20px;
-  position:fixed;
+    width: 76px;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-color: #3F8984;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    position:fixed;
 }
 
 .nav-bar .databaes-icon {
-  width: 45px;
-  height: 45px;
-  margin-bottom: 25%;
-  margin-top: 5%;
+    width: 45px;
+    height: 45px;
+    margin-bottom: 25%;
+    margin-top: 5%;
 }
 
 .nav-bar .home-icon {
-  width: 45px;
-  height: 45px;
-  margin-bottom: 35%;
-  margin-top: 25%;
+    width: 45px;
+    height: 45px;
+    margin-bottom: 35%;
+    margin-top: 25%;
 }
 
 .nav-bar .daily-log-icon {
-  width: 45px;
-  height: 45px;
-  margin-bottom: 25%;
-  margin-top: 25%;
+    width: 45px;
+    height: 45px;
+    margin-bottom: 25%;
+    margin-top: 25%;
 }
 
 .nav-bar .to-do-list-icon {
-  width: 45px;
-  height: 45px;
-  margin-bottom: 25%;
-  margin-top: 25%;
+    width: 45px;
+    height: 45px;
+    margin-bottom: 25%;
+    margin-top: 25%;
 }
 
 
@@ -322,7 +320,7 @@ button {
   /* Navigation bar section */
   .nav-bar-left-container {
       position: relative;
-      float: none;
+      float: left;
   }
   
   .nav-bar {
