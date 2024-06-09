@@ -131,7 +131,7 @@ h1 {
 /* For the numbers of the day */
 .dates .date {
     background-color: #2B3E55;
-    border: 1px solid #2B3E55;
+    border: 1px solid #C08C66;
     transition: background-color 0.3s, color 0.3s;
     font-size: 2.5vw;
 }
