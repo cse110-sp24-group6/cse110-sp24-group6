@@ -264,7 +264,7 @@ body {
     stroke-width: 20px;
     stroke-dasharray: 450;
     stroke-dashoffset: 450;
-    animation: anim 2s linear forwards;
+    transition: stroke-dasharray 0.3s linear 0s;
 }
 
 #stationary-progress {

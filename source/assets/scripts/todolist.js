@@ -36,10 +36,10 @@ document.addEventListener('DOMContentLoaded', function () {
  * Function to update progress bar and text
  * @param {array} tasks - The array of tasks
  */
-  function updateProgress() {
+  function updateProgress(tasks) {
+      console.log("updating progress");
       const completedTasks = tasks.filter(task => task.completed).length;
       const progress = tasks.length ? (completedTasks / tasks.length) * 100 : 0;
-      progressText.textContent = `Progress: ${progress.toFixed(2)}% (${completedTasks}/${tasks.length})`;
       progressBar.style.width = `${progress}%`;
 
       if (progress === 100) {
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const taskElement = createTaskElement(task.description, task.dueDate, task.taskDescription, task.tag, task.completed);
         taskList.appendChild(taskElement);
     });
-    updateProgress();
+    updateProgress(tasks);
   }
 /**
  * Function to add a task
@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function () {
       tasks.push({ description, dueDate: date, taskDescription: desc, tag, completed: false });
       saveTasksToStorage(tasks);
 
-      updateProgress();
+      updateProgress(tasks);
 
       taskInput.value = '';
       dueDate.value = '';
@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', function () {
           tasks.splice(taskIndex, 1);
           saveTasksToStorage(tasks);
 
-          updateProgress();
+          updateProgress(tasks);
           taskList.removeChild(taskElement);
       }
   }
@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', function () {
           if (taskIndex !== -1) {
               tasks[`${taskIndex}`].completed = checkbox.checked;
               saveTasksToStorage(tasks);
-              updateProgress();
+              updateProgress(tasks);
           }
       });
 
@@ -165,7 +165,7 @@ document.addEventListener('DOMContentLoaded', function () {
       tasks = [];
       saveTasksToStorage(tasks);
 
-      updateProgress();
+      updateProgress(tasks);
 
       while (taskList.firstChild) {
           taskList.removeChild(taskList.firstChild);
