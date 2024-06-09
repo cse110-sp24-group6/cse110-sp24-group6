@@ -1,59 +1,63 @@
+```css
 /* Defaulting the colors */
 * {
   box-sizing: border-box;
 }
 
-body, header, footer
-{
-  background-color: #2B3E55;
-  color: whitesmoke;
+/* Styling for body, header, and footer */
+body, header, footer {
+  background-color: #2B3E55; /* Dark blue background */
+  color: whitesmoke; /* White text */
 }
 
-
+/* Styling for the main container */
 .main-container {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-h1
-{
-  margin-left: 7vw;
-  font-size: 40px;
-  text-shadow: 1px 1px 2px #93b1af;
+/* Styling for main heading */
+h1 {
+  margin-left: 9vw;
+  font-size: 50px;
+  text-shadow: 1px 1px 2px #93b1af; /* Text shadow */
   margin-top: 20px;
 }
 
-h2
-{
+/* Styling for secondary headings */
+h2 {
   margin-left: 12vw;
   font-size: 30px;
-  text-shadow: 1px 1px 2px #93b1af;
+  text-shadow: 1px 1px 2px #93b1af; /* Text shadow */
   margin-top: 0;
   margin-bottom: 20px;
 }
 
+/* Styling for progress container */
 #progress-container {
-  background-color: #fefefe;
+  background-color: #fefefe; /* Light gray background */
   margin: 5% auto;
   margin-bottom: 18px;
   margin-top: 18px;
-  border: 1px solid #aad4c9;
-  width: 90%;
+  border: 1px solid #aad4c9; /* Light blue border */
+  width: 84%;
   max-width: 1100px;
   border-radius: 5px;
-  box-shadow: 0 0 10px #aad4c9;
+  box-shadow: 0 0 10px #aad4c9; /* Light blue box shadow */
   align-items: center;
   position: relative;
-  height: 90px;  
+  height: 80px;
 }
 
+/* Styling for progress bar */
 #progress-bar {
   height: 100%;
   width: 0;
-  background-color: #4caf50;
+  background-color: #4caf50; /* Green progress bar */
 }
 
+/* Styling for images within progress container */
 #otter, #fish, #celebration {
   position: absolute;
   height: 70px;
@@ -61,86 +65,91 @@ h2
   transition: left 0.3s;
 }
 
+/* Styling for fish image */
 #fish {
   right: 0;
 }
 
+/* Styling for celebration image */
 #celebration {
   display: none;
   left: 50%;
   transform: translateX(-50%);
 }
 
-
+/* Styling for daily streak */
 .daily-streak {
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 20px;
 }
 
+/* Styling for normal text */
 .text {
   font-size: 18px;
   font-weight: normal;
-  color: #000;
+  color: #000; /* Black text */
 }
 
+/* Styling for delete all button */
 #delete-all {
-  background-color: #468c7a; 
-  color: white; 
-  border-radius: 4px; 
+  background-color: #468c7a; /* Dark green background */
+  color: white; /* White text */
+  border-radius: 4px;
   cursor: pointer;
-  margin-top:30px;
+  margin-top: 30px;
   transition: background-color 0.3s, transform 0.3s;
   padding: 18px;
-  font-size: 1.2em; 
+  font-size: 1.2em;
   border: none;
   font-family: Arial, sans-serif;
-  display: block; 
-  width: fit-content; 
-  box-shadow: 0 4px 8px rgba(0 0 0 / 20%); 
-  margin-left: auto; 
-  margin-right: auto;  
+  display: block;
+  width: fit-content;
+  box-shadow: 0 4px 8px rgba(0 0 0 / 20%); /* Box shadow */
+  margin-left: auto;
+  margin-right: auto;
 }
 
-#task-form
-{
-  background-color: #fefefe;
+/* Styling for task form */
+#task-form {
+  background-color: #fefefe; /* Light gray background */
   margin: 5% auto;
   margin-bottom: 30px;
   margin-top: 18px;
   padding: 20px;
-  border: 1px solid #aad4c9;
+  border: 1px solid #aad4c9; /* Light blue border */
   width: 90%;
   max-width: 800px;
   border-radius: 5px;
-  box-shadow: 0 0 10px #aad4c9;
+  box-shadow: 0 0 10px #aad4c9; /* Light blue box shadow */
   align-items: center;
 }
 
-#edit-task-form
-{
-  background-color: #fefefe;
+/* Styling for edit task form */
+#edit-task-form {
+  background-color: #fefefe; /* Light gray background */
   margin: 5% auto;
   margin-bottom: 30px;
   margin-top: 18px;
   padding: 20px;
-  border: 1px solid #aad4c9;
+  border: 1px solid #aad4c9; /* Light blue border */
   width: 90%;
   max-width: 800px;
   border-radius: 5px;
-  box-shadow: 0 0 10px #aad4c9;
+  box-shadow: 0 0 10px #aad4c9; /* Light blue box shadow */
   align-items: center;
 }
 
+/* Styling for input fields in task form */
 #task-form > input[type="text"],
 #edit-task-form > input[type="text"] {
-  background-color: #fefefe;
+  background-color: #fefefe; /* Light gray background */
   margin-bottom: 10px;
   width: 80%;
   box-sizing: border-box;
   height: 10px;
   padding: 10px;
-  border: 1px solid #aad4c9;
+  border: 1px solid #aad4c9; /* Light blue border */
   border-radius: 10px;
   font-family: Arial, sans-serif;
   font-size: 1.1em;
@@ -148,74 +157,78 @@ h2
   resize: vertical;
 }
 
-
+/* Styling for list items */
 li {
-  background-color: #fff;
+  background-color: #fff; /* White background */
   padding: 20px;
   width: 90%;
   max-width: 1100px;
   margin: 5% auto;
   border-radius: 5px;
-  box-shadow: 0 0 10px #aad4c9;
+  box-shadow: 0 0 10px #aad4c9; /* Light blue box shadow */
   transition: 0.3s;
   margin-bottom: 15px;
   display: flex;
   gap: 10px;
   align-items: center;
-  color: #2B3E55;
+  color: #2B3E55; /* Dark blue text */
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   animation: fade-in 0.5s ease;
 }
 
-li > b
-{
+/* Styling for list item bold elements */
+li > b {
   flex-shrink: 0;
   font-size: large;
   margin-right: 10px;
-  color: #0047a2;
+  color: #0047a2; /* Dark blue text */
 }
 
+/* Animation for fading in list items */
 @keyframes fade-in {
   from {
     opacity: 0;
     transform: scale(0.5);
   }
- 
   to {
     opacity: 1;
     transform: scale(1);
   }
 }
 
+/* Hover effect for list items */
 li:hover {
-  background-color: #F9F6EE;
+  background-color: #F9F6EE; /* Light gray background */
 }
 
+/* Styling for task text */
 .task-text {
   font-weight: normal;
   margin-left: 0;
-  
 }
 
+/* Styling for checkboxes */
 input[type="checkbox"] {
   margin-right: 15px;
   transform: scale(1.5);
 }
 
+/* Styling for delete button */
 .delete-btn {
-  background-color: #f00;
-  color: #fff;
+  background-color: #f00; /* Red background */
+  color: #fff; /* White text */
   border: none;
   padding: 10px;
   cursor: pointer;
   align-items: left;
-  margin-top:10px;
-  margin-bottom:0;
+  margin-top: 10px;
+  margin-bottom: 0;
   transition: background-color 0.3s ease;
 }
 
+/* Hover effect for delete */
 .delete-btn:hover {
   background-color: #f00;
   animation: fade-out 0.5s ease;
@@ -265,100 +278,101 @@ button {
 
 /* Navigation bar section */
 .nav-bar-left-container {
-  width: 20%;
-  float: left;
-  overflow: hidden;
+    width: 20%;
+    float: left;
+    overflow: hidden;
 }
 
 .nav-bar {
-  width: 76px;
-  height: 100%;
-
-  /* min-height: 100vh; */
-  left: 0;
-  top: 0;
-  background-color: #3F8984;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 20px;
-  position:fixed;
+    width: 76px;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-color: #3F8984;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    position:fixed;
 }
 
+/* Styling for databaes icon */
 .nav-bar .databaes-icon {
-  width: 45px;
-  height: 45px;
-  margin-bottom: 25%;
-  margin-top: 5%;
+    width: 45px;
+    height: 45px;
+    margin-bottom: 25%;
+    margin-top: 5%;
 }
 
+/* Styling for home icon */
 .nav-bar .home-icon {
-  width: 45px;
-  height: 45px;
-  margin-bottom: 35%;
-  margin-top: 25%;
+    width: 45px;
+    height: 45px;
+    margin-bottom: 35%;
+    margin-top: 25%;
 }
 
+/* Styling for daily log icon */
 .nav-bar .daily-log-icon {
-  width: 45px;
-  height: 45px;
-  margin-bottom: 25%;
-  margin-top: 25%;
+    width: 45px;
+    height: 45px;
+    margin-bottom: 25%;
+    margin-top: 25%;
 }
 
+/* Styling for to-do list icon */
 .nav-bar .to-do-list-icon {
-  width: 45px;
-  height: 45px;
-  margin-bottom: 25%;
-  margin-top: 25%;
+    width: 45px;
+    height: 45px;
+    margin-bottom: 25%;
+    margin-top: 25%;
 }
 
 
-@media (width <= 1050px) {
-  .content {
-      margin-left: 0;
-  }
-  
-  /* Navigation bar section */
-  .nav-bar-left-container {
-      position: relative;
-      float: none;
-  }
-  
-  .nav-bar {
-      position: fixed;
-      left: auto;
-      top: 92%;
-      width: 100%;
-      height: 8vh;
-      flex-direction: row;
-      justify-content: center;
-      padding-top: 20px;
-      overflow: hidden;
-      z-index: 2;
-  }
+@media (width <= 1000px) {
+    .content {
+        margin-left: 0;
+    }
 
-  .nav-bar .databaes-icon {
-      display: none;
-  }
+    /* Dashboard title spacing */
+    #your-dashboard {
+        text-align: center;
+        margin-left: auto;
+    }
+    
+    /* Navigation bar section */
+    .nav-bar-left-container {
+        position: relative;
+        float: none;
+    }
+    
+    .nav-bar {
+        position: fixed;
+        left: auto;
+        top: 92%;
+        width: 100%;
+        height: 8vh;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        padding-bottom: 15px;
+        overflow: hidden;
+        z-index: 2;
+    }
 
-  .nav-bar .home-icon {
-      width: 8vw;
-      height: 8vw;
-      margin: 25px;
-  }
+    .nav-bar .databaes-icon {
+        display: none;
+    }
 
-  .nav-bar .daily-log-icon {
-      width: 8vw;
-      height: 8vw;
-      margin: 25px;
-  }
-
-  .nav-bar .to-do-list-icon {
-      width: 8vw;
-      height: 8vw;
-      margin: 25px;
-  }
+    .nav-bar .home-icon,
+    .nav-bar .daily-log-icon,
+    .nav-bar .to-do-list-icon {
+        max-height: 100%;
+        width: auto;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    
 
   /* TODO: Responsiveness for the rest of the elements */
 }
