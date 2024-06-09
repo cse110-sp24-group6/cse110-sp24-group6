@@ -112,13 +112,18 @@ Sprints are time-boxed periods during which specific work has to be completed. O
 **Testing:**
 Testing was a crucial aspect of our development process to ensure the quality and reliability of our product. We adopted a test-driven development (TDD) approach, where tests were written before the implementation of features. Our testing strategy included unit tests and end-to-end tests. We used automated testing frameworks such as Jest for unit testing and Puppeteer for end-to-end testing. Additionally, we performed manual testing to validate the user experience across different devices and browsers.
 
-![testing](https://github.com/cse110-sp24-group6/cse110-sp24-group6/assets/146862114/4ac4a9c4-9393-4421-9938-03e7e61b0c3e)
+<p align="center">
+    <img src="https://github.com/cse110-sp24-group6/cse110-sp24-group6/assets/146862114/4ac4a9c4-9393-4421-9938-03e7e61b0c3e" alt="Testing" height="300" width="600">
+</p>
 
 
 **Documentation:**
 Documentation played a vital role in ensuring the maintainability and scalability of our project. We maintained comprehensive documentation covering various aspects of our application, including installation instructions, architecture overview, and API documentation. We used tools like JS Docs for documenting our JavaScript and made extensive use of comments and README files. Documentation was continuously updated throughout the development process to reflect changes and additions to the codebase.
 
-![documentation](https://github.com/cse110-sp24-group6/cse110-sp24-group6/assets/146862114/dab6121b-751b-4bb4-8939-8184b7d592c3)
+<p align="center">
+    <img src="https://github.com/cse110-sp24-group6/cse110-sp24-group6/assets/146862114/dab6121b-751b-4bb4-8939-8184b7d592c3" alt="Documentation" height="300" width="600">
+</p>
+
 
 
 #### Github Integration
