@@ -1,8 +1,5 @@
 // unit.test.js
-import { sum } from '../code-to-unit-test/unit-tests';
-import { difference } from '../code-to-unit-test/unit-tests';
-import { product } from '../code-to-unit-test/unit-tests';
-import { quotient } from '../code-to-unit-test/unit-tests';
+const { sum, difference, product, quotient } = require('../code-to-unit-test/unit-tests');
 
 // ADDITION TEST
 test('adds 1 + 2 to equal 3', () => {

@@ -10,7 +10,6 @@ class ProjectCard extends HTMLElement {
 		let styleEl = document.createElement('style');
 		styleEl.innerHTML = `
         .project-cards {
-            box-shadow: 0 4px 8px 0 rgba(238 235 235 20%);
             transition: 0.3s;
             width: 200px;
             height: auto;
@@ -33,12 +32,34 @@ class ProjectCard extends HTMLElement {
         }
 
         .project-element:hover {
-            box-shadow: 0 8px 16px 0 rgba(230 230 230 70%);
+            box-shadow: 0 8px 16px 0 rgb(255 255 255);
         }
+
         .journal-pic {
             height: auto;
             width: 35%;
         }
+
+        .delete-project-pic {
+            height: auto;
+            width: 10%;
+            margin-left: 48%;
+            margin-bottom: 23%;
+            padding: 5px;
+        }
+
+        .delete-project-pic:hover{
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            transition: 0.6s;
+            cursor: pointer;
+        }
+
+        .white .delete-project-pic:hover,
+        .cream .delete-project-pic:hover{
+            background-color: rgba(43, 62, 85, 0.1);
+        }
+
         /* Background and text colors */
         .project-cards.brown {
             background-color: #CAAF8E;
@@ -127,9 +148,9 @@ class ProjectCard extends HTMLElement {
 		articleEl.innerHTML = 
         `<div class="project-cards ${data.color}">
         <img class="journal-pic" src="assets/icons/homepage/daily_log/daily_log_${color}.png" alt="daily log icon"/>
+        <img class="delete-project-pic" src="assets/icons/homepage/project_card_delete/delete_icon.png" alt="Delete proj icon"/>
         <h4><b>${data.title}</b></h4> 
         <p>${data.description}</p> 
-        <!-- (insert project progress bar)-->
         <hr>
         <div class="menu-icons" >
             <img class="edit-icon" src="assets/icons/homepage/edit/edit_icon_${color}.svg" alt="edit icon"/>

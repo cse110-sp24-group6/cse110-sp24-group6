@@ -1,11 +1,11 @@
-import puppeteer from 'puppeteer';
-import {
+const puppeteer = require('puppeteer');
+const {
   findStreak,
   getStreakFromStorage,
   dateToString,
   getCirclesFromStorage,
   weekFillIn
-} from '../code-to-unit-test/logstreak-test.js'; 
+} = require('../code-to-unit-test/logstreak-test.js');
 
 let browser, logPage, homePage;
 

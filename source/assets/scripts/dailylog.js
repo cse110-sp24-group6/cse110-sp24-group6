@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function () {
-
     // FUNCTIONS PERTAINING TO CALENDAR
     const monthNames = [
         "January", "February", "March", "April", "May", "June",
