@@ -1,17 +1,16 @@
 // Functions copied over from '../source/assets/scripts/todolist.js'
-
-export function getTasksFromStorage() {
+function getTasksFromStorage() {
     let tasks = localStorage.getItem('tasks');
     return tasks ? JSON.parse(tasks) : [];
 }
 
-export function saveTasksToStorage(tasks) {
+function saveTasksToStorage(tasks) {
     localStorage.setItem('tasks', JSON.stringify(tasks));
 }
 
 let tasks = getTasksFromStorage();
 
-export function updateProgress() {
+function updateProgress() {
     const progressBar = document.getElementById('progress-bar');
     const progressText = document.getElementById('progress-text');
     const otter = document.getElementById('otter');
@@ -34,7 +33,7 @@ export function updateProgress() {
     }
 }
 
-export function addTask(event) {
+  function addTask(event) {
     const taskList = document.getElementById('task-list');
     const taskInput = document.getElementById('task-input');
     const dueDate = document.getElementById('due-date');
@@ -65,7 +64,7 @@ export function addTask(event) {
     taskTags.value = '';
 }
 
-export function deleteTask(event) {
+  function deleteTask(event) {
     const taskList = document.getElementById('task-list');
 
     const taskElement = event.target.parentNode;
@@ -80,7 +79,7 @@ export function deleteTask(event) {
     }
 }
 
-export function createTaskElement(description, dueDate, taskDescription, tag, completed = false) {
+function createTaskElement(description, dueDate, taskDescription, tag, completed = false) {
     const taskList = document.getElementById('task-list');
 
     const li = document.createElement('li');
@@ -118,7 +117,7 @@ export function createTaskElement(description, dueDate, taskDescription, tag, co
     return li;
 }
 
-export function taskFormSubmitAndDeleteAll() {
+function taskFormSubmitAndDeleteAll() {
     const taskForm = document.getElementById('task-form');
     const deleteAllBtn = document.getElementById('delete-all');
     const taskList = document.getElementById('task-list');
@@ -137,3 +136,12 @@ export function taskFormSubmitAndDeleteAll() {
         }
     });
 }
+module.exports = {
+    getTasksFromStorage,
+    saveTasksToStorage,
+    updateProgress,
+    addTask,
+    deleteTask,
+    createTaskElement,
+    taskFormSubmitAndDeleteAll,
+  };

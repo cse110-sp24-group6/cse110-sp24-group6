@@ -151,7 +151,6 @@ class ProjectCard extends HTMLElement {
         <img class="delete-project-pic" src="assets/icons/homepage/project_card_delete/delete_icon.png" alt="Delete proj icon"/>
         <h4><b>${data.title}</b></h4> 
         <p>${data.description}</p> 
-        <!-- (insert project progress bar)-->
         <hr>
         <div class="menu-icons" >
             <img class="edit-icon" src="assets/icons/homepage/edit/edit_icon_${color}.svg" alt="edit icon"/>

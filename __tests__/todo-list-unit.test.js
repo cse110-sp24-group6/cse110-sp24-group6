@@ -1,9 +1,10 @@
 // todo-list-unit.test.js
 
 /* IMPORTS */
-import { fireEvent } from '@testing-library/dom';
-import { addTask, deleteTask, createTaskElement, taskFormSubmitAndDeleteAll } from '../code-to-unit-test/unit-tests-todolist';
-
+// import { fireEvent } from '@testing-library/dom';
+// import { addTask, deleteTask, createTaskElement, taskFormSubmitAndDeleteAll } from '../code-to-unit-test/unit-tests-todolist';
+const { fireEvent } = require('@testing-library/dom');
+const { addTask, deleteTask, createTaskElement, taskFormSubmitAndDeleteAll } = require('../code-to-unit-test/unit-tests-todolist');
 describe('To-do list functions', () => {
 
     // Simulating the DOM environment in JSDOM
