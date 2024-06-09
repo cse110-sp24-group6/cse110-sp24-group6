@@ -15,27 +15,31 @@ const urlsToCache = [
     '/source/assets/styles/todolist.css',
 ];
 
+// Installs the service worker. Feed it some initial URLs to cache
 self.addEventListener('install', (event) => {
     event.waitUntil(
-        caches.open(CACHE_NAME)
-            .then((cache) => {
+        caches.open(CACHE_NAME).then((cache) => {
                 console.log('Opened cache');
                 return cache.addAll(urlsToCache);
-            })
+        })
     );
        
 });
 
+// Activates the service worker 
+self.addEventListener('activate', (event) => { 
+    event.waitUntil(self.clients.claim());
+});
+
+// Intercept fetch requests and cache them 
 self.addEventListener('fetch', (event) => {
-    event.respondWith(
-        caches.match(event.request)
-            .then((response) => {
-                if (response) {
-                    return response;
-                }
-                return fetch(event.request);
-            }
-        )
-    );
+    event.respondWith(caches.open(CACHE_NAME).then((cache) => {
+        return cache.match(event.request).then((cachedResponse) => {
+          return cachedResponse || fetch(event.request).then((fetchedResponse) => {
+            cache.put(event.request, fetchedResponse.clone());
+            return fetchedResponse;
+          });
+        });
+    }));
 });
 
