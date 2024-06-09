@@ -1,4 +1,4 @@
-import puppeteer from 'puppeteer';
+const puppeteer = require('puppeteer');
 
 describe('Delete All Tasks E2E Test', () => {
   let browser;
