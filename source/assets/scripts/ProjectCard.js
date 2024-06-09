@@ -1,6 +1,14 @@
 // class of project cards that appear on the homepage
-
+/**
+ * @class ProjectCard
+ * @extends HTMLElement
+ * @description Custom HTML element for representing a project card.
+ */
 class ProjectCard extends HTMLElement {
+    /**
+     * @constructor
+     * @description Initializes the ProjectCard element, attaches a shadow DOM, and sets up the structure and styles.
+     */
 	constructor() {
 		super();
 		this.shadowEl = this.attachShadow({mode:'open'});
