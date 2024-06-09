@@ -95,8 +95,8 @@ body {
 
 /* --- Gives shape to the circles --- */
 .daily-log-circle {
-    height: 240px;
-    width: 40px;
+    height: 30px;
+    width: 30px;
     background: #949494;
     border-radius: 50%;
     
