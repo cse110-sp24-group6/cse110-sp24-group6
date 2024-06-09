@@ -1,4 +1,3 @@
-```css
 /* Defaulting the colors */
 * {
   box-sizing: border-box;
@@ -372,7 +371,3 @@ button {
         margin-top: 0;
         margin-bottom: 0;
     }
-    
-
-  /* TODO: Responsiveness for the rest of the elements */
-}
