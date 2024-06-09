@@ -20,8 +20,7 @@ body {
 
 /* Dashboard title spacing */
 #your-dashboard {
-    margin-top: 20px;
-    margin-left: 8vw;
+    margin-top: 2.5vh;
     font-size: 40px;
     text-shadow: 1px 1px 2px #93b1af;
 }
@@ -29,7 +28,10 @@ body {
 /* Separate content from navigation bar */
 .content {
     width: auto;
-    margin-left: 5%;
+    margin-left: 10%;
+}
+
+#dashboard-content {
     padding-bottom: 5%;
 }
 
@@ -37,7 +39,6 @@ body {
 .page-icons {
     text-decoration: none;
 }
-
 
 /* Navigation bar section */
 .nav-bar-left-container {
@@ -49,8 +50,6 @@ body {
 .nav-bar {
     width: 76px;
     height: 100%;
-
-    /* min-height: 100vh; */
     left: 0;
     top: 0;
     background-color: #3F8984;
@@ -149,7 +148,6 @@ body {
 
 /* Section: Daily log visual title */
 #daily-journal-pic { grid-area: daily-journal-pic;}
-
 #daily-logs-title { grid-area: dailyLogTitle; }
 
 .daily-log-visual-title {
@@ -158,8 +156,6 @@ body {
     grid-template-areas: 
         'daily-journal-pic dailyLogTitle';
     gap: 1em;
-
-    /* width: 20%; */
     align-items: center;
     margin-left: 1.25em;
     grid-area: streakVisualTitle;
@@ -188,10 +184,6 @@ body {
     grid-template-areas: 
         'sundAbbr mondAbbr tuesAbbr wedAbbr thurAbbr friAbbr satAbbr'
         'sundCirc mondCirc tuesCirc wedCirc thurCirc friCirc satCirc';
-
-    /* gap: 10px; */
-
-    /* padding-top: 1em; */
     height: 100%;
     width: 20%;
     gap: 1em;
@@ -215,13 +207,12 @@ body {
     border: 1px solid black;
     border-radius: 25px;
     padding: 20px;
-    margin-top: 20px;
-    margin-left: 8vw;
+    margin-top: 3em;
     width: 570px;
-    height: 200.5px;
-    box-shadow: 5px 5px rgba(0 0 0 50%);
+    box-shadow: 5px 5px #000;
     background-color: whitesmoke;
     color: #2B3E55;
+    grid-area: dailyLogContainer;
 }
 
 
@@ -233,7 +224,7 @@ body {
     background-color: rgb(63 137 132);
     position: relative;
     border-radius: 25px;
-    box-shadow: 5px 5px rgba(0 0 0 50%);
+    box-shadow: 5px 5px #000;
 }
 
 .outer {
@@ -294,15 +285,6 @@ svg {
     left: 0;
 }
 
-/* Tasks Overview */
-iframe {
-    background-color: whitesmoke;
-    height: 30vh;
-    width: 90%;
-    border-radius: 25px;
-    box-shadow: 5px 5px rgba(0 0 0 50%);
-}
-
 /* Recently viewed projects section */
 
 /* Individual project card styling is moved to ProjectCard.js file */
@@ -316,7 +298,6 @@ iframe {
 
 .project-cards-container {
     grid-area: projCardsCont;
-    margin-left: 4vw;
 }
 
 .project-cards-grid{
@@ -327,31 +308,46 @@ iframe {
     margin-top: 15px;
 }
 
+/* Add Button for Projects */
+.project-add-button-container{
+    width: 220px;
+    height: auto;
+}
+
+.project-add-button{
+    width: 220px;
+    height: 100%;
+    font-size: 60px;
+    background-color: rgba(247 250 255 / 15%);
+    border-radius: 20px;
+    color: #2B3E55;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: background-color 0.2s ease-in;
+}
+
+.project-add-button:hover{
+    background-color: rgb(247 250 255 / 80%);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-out;
+}
+
 /* Dashboard content section */
-.task-overview { grid-area: task-overview; }
-
 .overall-progress { grid-area: overallProg; }
-
 
 .dashboard-container {
     display: grid;
     grid-template-columns: 50% 40%;
     grid-template-areas: 
-        'task-overview  overallProg'
-        'projCardsCont projCardsCont';
-    gap: 20px;
+        'dailyLogContainer  overallProg'
+        'projCardsCont      projCardsCont';
+    gap: 40px;
     margin-top: 20px;
-}
-
-.dashboard-container > .task-overview {
-    margin-left: 4vw;
-}
-
-/* Title of task overview section */
-.task-overview h2 {
-    font-size: 35px;
-    margin-bottom: 1vh;
-    text-shadow: 1px 1px 2px #93b1af;
+    justify-content: left;
+    position: relative;
 }
 
 /* Title of progress section */
@@ -361,8 +357,86 @@ iframe {
     text-shadow: 1px 1px 2px #93b1af;
 }
 
+/* For resizing the dashboard content */
+@media (width <= 1490px) {
+    /* Resizing the Daily Logs section per media */
+    .daily-streak-counter-container {
+        grid-template-columns: 40% 45%;
+        gap: 0.5em;
+        align-content: center;
+        align-items: center;
+    }
 
-@media (width <= 1050px) {
+    .daily-streak-counter-container #day-streak {
+        width: 78.15px;
+        height: 70.5px;
+    }
+
+    #log-in-streak-pic img{
+        height: 67px;
+        width: 50px;
+    }
+
+    #daily-streak {
+        font-size: 400%;
+        line-height: 50px;
+    }
+
+    /* Section: Daily log visual title */
+    .daily-log-visual-title {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr);
+        grid-template-areas: 
+            'daily-journal-pic dailyLogTitle';
+        gap: 1em;
+        align-items: center;
+        margin-left: 1.25em;
+        grid-area: streakVisualTitle;
+    }
+
+    /* Section: Daily streak days of the week icons */
+    .daily-streak-visual-container {
+        gap: 0.75em;
+        row-gap: 0.75em;
+    }
+
+    /* Section: Combine previous 3 sections to a single "Daily Log in" view */
+    .daily-log-container {
+        gap: 3%;
+        width: 450px;
+        box-shadow: 5px 5px #000;
+        background-color: whitesmoke;
+        color: #2B3E55;
+        grid-area: dailyLogContainer;
+    }
+
+    /* Title of progress section */
+    .overall-progress h2 {
+        font-size: 28px;
+        margin-bottom: 3vh;
+        text-shadow: 1px 1px 2px #93b1af;
+    }
+
+    /* Dashboard Container */
+    .dashboard-container {
+        gap: 20px;
+    }
+
+    /* Overall Progress/Tasks Progress */
+    .overall-progress {
+        margin-left: 5%;
+    }
+
+    /* Recently viewed projects section */
+
+    /* Positioning cards in a container */
+    #project-cards-title { 
+        font-size: 28px;
+    }
+
+}
+
+@media (width <= 1000px) {
     .content {
         margin-left: 0;
     }
@@ -385,9 +459,10 @@ iframe {
         top: 92%;
         width: 100%;
         height: 8vh;
+        display: flex;
         flex-direction: row;
-        justify-content: center;
-        padding-top: 20px;
+        justify-content: space-around;
+        padding-bottom: 15px;
         overflow: hidden;
         z-index: 2;
     }
@@ -396,22 +471,13 @@ iframe {
         display: none;
     }
 
-    .nav-bar .home-icon {
-        width: 8vw;
-        height: 8vw;
-        margin: 25px;
-    }
-
-    .nav-bar .daily-log-icon {
-        width: 8vw;
-        height: 8vw;
-        margin: 25px;
-    }
-
+    .nav-bar .home-icon,
+    .nav-bar .daily-log-icon,
     .nav-bar .to-do-list-icon {
-        width: 8vw;
-        height: 8vw;
-        margin: 25px;
+        max-height: 100%;
+        width: auto;
+        margin-top: 0;
+        margin-bottom: 0;
     }
     
     /* Daily Log-in section */
@@ -423,8 +489,7 @@ iframe {
         height: 10px;
         width: 10px;
         background: #949494;
-        border-radius: 50%;
-        
+        border-radius: 50%; 
     }
     
     /* --- Setting up grid variables: 4 Sections --- */
@@ -435,8 +500,7 @@ iframe {
     
     
     .daily-streak-counter-container {
-        display: grid;
-        grid-template-columns: 30% 40%;
+        grid-template-columns: 30% 50%;
         grid-template-areas: 
             'log-in-streak-pic day-streak';
         gap: 2em;
@@ -445,22 +509,20 @@ iframe {
     }
     
     .daily-streak-counter-container #day-streak {
-        width: 78.15px;
-        height: 118.5px;
+        margin-top: 15%;
     }
     
     #log-in-streak-pic img{
         height: 60px;
         width: 45px;
         margin-left: 1vw;
-        margin-top: 50%;
+        margin-top: 10%;
     }
     
     #daily-streak {
         font-size: 350%;
         text-align: center;
         line-height: 80%;
-        margin-top: 30%;
     }
     
     #daily-streak-title {
@@ -470,19 +532,12 @@ iframe {
     
     
     /* Section: Daily log visual title */
-    #daily-journal-pic { grid-area: daily-journal-pic; }
-
     #daily-logs-title { 
-        grid-area: dailyLogTitle;
         font-size: 95%;
         padding-bottom: 5px;
     }
     
     .daily-log-visual-title {
-        display: grid;
-        grid-template-columns: auto minmax(0, 1fr);
-        grid-template-areas: 
-            'daily-journal-pic dailyLogTitle';
         column-gap: 0.5em;
         align-items: center;
         margin-left: 0.5em;
@@ -496,26 +551,22 @@ iframe {
     /* Section: Daily streak days of the week icons */
     .daily-streak-visual-container {
         height: 100%;
-        width: 20%;
+        width: 30%;
         column-gap: 1em;
-
-        /* gap: 0.75em; */
         text-align: center;
         align-content: center;
         margin-left: 1em;
         font-size: 70%;
     }
     
-    
     .daily-log-container {
-        row-gap: 5px;
-
-        /* gap: 0; */
+        gap: 0.5em;
+        row-gap: 3px;
         padding: 20px;
         margin-top: 20px;
         margin-left: auto;
         margin-right: auto;
-        width: 80vw;
+        width: 350px;
         height: auto;
     }
     
@@ -544,13 +595,6 @@ iframe {
         border-radius: 50%;
     }
     
-    
-    /* Tasks Overview */
-    iframe {
-        width: 90%;
-        border-radius: 25px;
-    }
-    
     /* Dashboard content section */
     
     .dashboard-container {
@@ -564,14 +608,6 @@ iframe {
         text-align: center;
     }
     
-    /* Title of task overview section */
-    .task-overview h2 {
-        font-size: 200%;
-        margin-bottom: 1vh;
-        text-shadow: 1px 1px 2px #93b1af;
-        text-align: center;
-    }
-    
     /* Title of task progress section */
     .overall-progress h2 {
         font-size: 200%;
@@ -579,5 +615,195 @@ iframe {
         text-shadow: 1px 1px 2px #93b1af;
         text-align: center;
     }
+
+    .overall-progress {
+        margin-left: 0%;
+    }
+
+    /* Recently Viewed Projects */
+    #project-cards-title {
+        text-align: center;
+    }
     
 }
+
+
+/* General Project Card Styles */
+.project-cards {
+    box-shadow: 0 4px 8px 0 rgba(238, 235, 235, 20%);
+    transition: 0.3s;
+    width: 200px;
+    height: auto;
+    border-radius: 20px;
+    padding: 20px;
+}
+h4 {
+    font-size: 110%;
+}
+
+hr {
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.project-element:hover {
+    box-shadow: 0 8px 16px 0 rgb(255 255 255);
+}
+
+.delete-project-pic:hover{
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    transition: 0.6s;
+    cursor: pointer;
+}
+
+.white .delete-project-pic:hover,
+.cream .delete-project-pic:hover{
+    background-color: rgba(43, 62, 85, 0.1);
+}
+
+/* Specific Project Card Styles */
+.project-cards.brown {
+    background-color: #CAAF8E;
+    color: #5B4B34;
+}
+
+.project-cards.green {
+    background-color: #3F8984;
+    color: #F6F1E2;
+}
+
+.project-cards.cream {
+    background-color: #F6F1E2;
+    color: #2B3E55;
+}
+
+.project-cards.white {
+    background-color: #FFF;
+    color: #2B3E55;
+}
+
+/* Hover Effect */
+.project-cards:hover {
+    box-shadow: 0 8px 16px 0 rgba(230, 230, 230, 70%);
+}
+
+/* Icons within the project cards */
+.menu-icons img {
+    height: auto;
+    width: 20%;
+    margin: 30px 0 20px;
+    padding: 5px;
+}
+
+.menu-icons img:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    transition: 0.6s;
+    cursor: pointer;
+}
+
+.white .menu-icons img:hover,
+.cream .menu-icons img:hover {
+    background-color: rgba(43, 62, 85, 10%);
+}
+
+/* Ensure the overlay is always on top */
+.edit-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 50%);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it's on top */
+  }
+  
+/* General styling for the form container */
+.edit-form {
+    background-color: #CAAF8E; /* Darker background to match the theme */
+    /* background: white; */
+    padding: 20px;
+    border: 2px solid #000;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: #ffffff; /* Light text color for contrast */
+    max-width: 400px;
+    margin: 20px auto; /* Center the form horizontally */
+    z-index: 1001;
+}
+
+/* Label styling */
+.edit-form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    font-family:'Courier New', Courier, monospace;
+    font-size: larger;
+    color: #ffffff; /* Light text color for contrast */
+}
+
+/* Textarea styling */
+.edit-form textarea {
+    width: 100%;
+    height: 60px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    border: 1px solid #ced4da;
+    background-color: #354a5f; /* Darker background for input */
+    color: #ffffff; /* Light text color for input */
+    resize: vertical;
+    box-sizing: border-box;
+}
+
+/* Select box styling */
+.edit-form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    border: 1px solid #ced4da;
+    background-color: #354a5f; /* Darker background for select */
+    color: #ffffff; /* Light text color for select */
+    box-sizing: border-box;
+}
+
+/* Button styling */
+.edit-form button {
+    background-color: #47a3da; /* Button color to match the theme */
+    color: #ffffff; /* Light text color for button */
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.edit-form button:hover {
+    background-color: #3990bb; /* Darker shade on hover */
+}
+
+/* Adjust the layout of the form to be responsive */
+@media (max-width: 600px) {
+    .edit-form {
+        padding: 15px;
+    }
+
+    .edit-form textarea, 
+    .edit-form select {
+        height: 50px;
+    }
+
+    .edit-form button {
+        padding: 10px;
+        font-size: 14px;
+    }
+}
+
+   

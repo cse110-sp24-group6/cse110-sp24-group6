@@ -1,83 +1,185 @@
-// Progress Bar
-// const progressNumber = document.getElementById('progressNumber');
-// let counter = 0;
-
-// setInterval(() => {
-//     if( counter == 0 ){
-//         clearInterval;
-//     } else {
-//         counter += 1;
-//         progressNumber.innerHTML =`${counter}%`;
-//     }
-    
-// })
-
-
-// // Navigation bar: Sticky
-// window.onscroll = function() {myFunction()};
-
-// // Get the navbar
-// let navBar = document.getElementsByClassName("navBar");
-
-// // Get the offset position of the navbar
-// let sticky = navBar.offsetTop;
-
-// // Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
-// function myFunction() {
-//   if (window.pageYOffset >= sticky) {
-//     navBar.classList.add("sticky")
-//   } else {
-//     navBar.classList.remove("sticky");
-//   }
-// }
-
 /* Project Sectiom Javascript*/
 /* Temporary functions to load 4 project card elements onto the page, delete or modify after CRUD and local storage for projects has been implemented*/
-//CAN DELETE LATER
-function addProject(data){
-  let newProject = document.createElement('project-card');
-  newProject.data = data;
-  document.querySelector('.project-cards-grid').append(newProject);
+
+/* For edit project form*/
+document.addEventListener('DOMContentLoaded', () => {
+  console.log("DOM fully loaded and parsed");
+  init(); // Initialize project cards
+  setupEditButtons(); // Setup edit buttons
+  addButton();
+  setupDeleteButtons();
+});
+
+function setupDeleteButtons() {
+  const deleteButtons = document.querySelectorAll('.delete-project-pic');
+  console.log("Setting up delete buttons for", deleteButtons.length, "buttons");
+  deleteButtons.forEach(delbutton => {
+    delbutton.addEventListener('click', deleteProject);
+  });
 }
-//DELETE inside of init() after CRUD is implemented for projects, inside code adds temporary project cards to page
-function init(){
-  const brown_proj_data = {
-    title: "Project Brown",
-    description: "This is the project description",
-    githubURL: "https://github.com/",
-    completed: false,
-    color: "brown"
+// function deleteProject(event) {
+//   currentProjectCard = event.target.closest('.project-card');
+//   if (currentProjectCard) {
+//     let title = currentProjectCard.querySelector('.project-title').innerText;
+//     const projectsArray = getProjectsFromStorage();
+//     let index = projectsArray.findIndex(project => project.title === title);
+//     projectsArray.splice(index, 1);
+//     // console.log(projectsArray);
+//     document.querySelector('.project-cards-grid').remove(currentProjectCard);
+//     localStorage.setItem('projects', JSON.stringify(projectsArray));
+//   }
+// }
+function deleteProject(event) {
+  const projectCard = event.target.closest('.project-card');
+  if (projectCard) {
+    const projectTitle = projectCard.querySelector('.project-title').innerText;
+    const projectsArray = getProjectsFromStorage();
+    const projectIndex = projectsArray.findIndex(project => project.title === projectTitle);
+    if (projectIndex !== -1) {
+      projectsArray.splice(projectIndex, 1);
+      localStorage.setItem('projects', JSON.stringify(projectsArray));
+      projectCard.remove();
+      console.log("Project deleted successfully");
+    } else {
+      console.log("Project not found");
+    }
+  } else {
+    console.log("No project card found");
   }
-  const green_proj_data = {
-    title: "Project Green",
-    description: "This is the project description",
-    githubURL: "https://github.com/",
-    completed: false,
-    color: "green"
-  }
-  const white_proj_data = {
-    title: "Gaming App",
-    description: "This is the project description",
-    githubURL: "https://github.com/",
-    completed: false,
-    color: "white"
-  }
-  const cream_proj_data = {
-    title: "Webtool App",
-    description: "This is the project description",
-    githubURL: "https://github.com/",
-    completed: true,
-    color: "cream"
-  }
-  addProject(brown_proj_data);
-  addProject(green_proj_data);
-  addProject(cream_proj_data);
-  addProject(white_proj_data);
-  addProject(green_proj_data);
-  addProject(cream_proj_data);
 }
 
-document.addEventListener('DOMContentLoaded', init);
+function setupEditButtons() {
+  const editIcons = document.querySelectorAll('.edit-icon');
+  console.log("Setting up edit buttons for", editIcons.length, "icons");
+  editIcons.forEach(icon => {
+    icon.addEventListener('click', openEditForm);
+  });
+}
+
+function addButton() {
+  let add = document.getElementById("add-button");
+  add.addEventListener('click', openAddForm);
+}
+
+function openAddForm() {
+    // Display the form
+    document.querySelector('.edit-overlay').style.display = "flex";
+}
+
+let currentProjectCard = null;
+
+function openEditForm(event) {
+  currentProjectCard = event.target.closest('.project-card');
+  if (currentProjectCard) {
+    document.querySelector("#input-project-name").value = currentProjectCard.querySelector('.project-title').innerText;
+    document.querySelector("#input-project-description").value = currentProjectCard.querySelector('.project-description').innerText;
+    document.querySelector("#input-github-link").value = currentProjectCard.querySelector('.github-link').href;
+    document.querySelector("#completed-select-box").value = currentProjectCard.querySelector('.status-icon').alt.includes('completed') ? 'completed' : 'current';
+
+    // Display the form
+    document.querySelector('.edit-overlay').style.display = "flex";
+    console.log("Edit form displayed");
+  } else {
+    console.log("No project card found");
+  }
+}
+
+const saveButton = document.querySelector("#save-button");
+saveButton.addEventListener('click', saveProjectDetails);
+
+function saveProjectDetails() {
+  console.log("Save button clicked");
+  const projectName = document.querySelector("#input-project-name").value;
+  const projectDescription = document.querySelector("#input-project-description").value;
+  const githubLink = document.querySelector("#input-github-link").value;
+  const projectStatus = document.querySelector("#completed-select-box").value;
+  data = {
+    title: projectName,
+    description: projectDescription,
+    githubURL: githubLink,
+    completed: projectStatus === 'current' ? false : true,
+    color: "brown"
+  };
+  if (currentProjectCard) {
+    const projectsArray = getProjectsFromStorage();
+    const currTitle = currentProjectCard.querySelector('.project-title').innerText
+    currData = projectsArray.find(project => project.title === currTitle);
+    let index = projectsArray.findIndex(project => project.title === currTitle);
+    projectsArray[index] = data;
+    localStorage.setItem('projects', JSON.stringify(projectsArray));
+    currentProjectCard.querySelector('.project-title').innerText = projectName;
+    currentProjectCard.querySelector('.project-description').innerText = projectDescription;
+    currentProjectCard.querySelector('.github-link').href = githubLink;
+    currentProjectCard.querySelector('.status-icon').src = `assets/icons/homepage/${projectStatus}_project/brown.svg`;
+    currentProjectCard.querySelector('.status-icon').alt = projectStatus;
+
+    // Hide the form after saving
+    document.querySelector('.edit-overlay').style.display = "none";
+    console.log("Project details saved and edit form hidden");
+  } else {
+    const projects = getProjectsFromStorage();
+    projects.push(data);
+    localStorage.setItem('projects', JSON.stringify(projects));
+    addProject(data);
+    document.querySelector('.edit-overlay').style.display = "none";
+  }
+}
+
+// Example function to add project cards dynamically
+function addProject(data) {
+  const projectCard = document.createElement('div');
+  projectCard.classList.add('project-card');
+  // projectCard.dataset.color = data.color;
+  projectCard.innerHTML = `
+    <div class="project-cards ${data.color}">
+        <img class="journal-pic" src="assets/icons/homepage/daily_log/daily_log_${data.color}.png" alt="daily log icon"/>
+        <h4 class="project-title"><b>${data.title}</b></h4>
+        <p class="project-description">${data.description}</p>
+        <hr>
+        <div class="menu-icons">
+            <img class="edit-icon" src="assets/icons/homepage/edit/edit_icon_${data.color}.svg" alt="edit icon"/>
+            <a class="github-link" href="${data.githubURL}"><img class="github-icon" src="assets/icons/homepage/github/github_icon_${data.color}.svg" alt="github icon"/></a>
+            <img class="status-icon" src="assets/icons/homepage/${data.completed ? 'completed' : 'current'}_project/${data.color}.svg" alt="${data.completed ? 'completed' : 'current'}">
+            <img class="delete-project-pic" id="delete-button" src="assets/icons/homepage/project_card_delete/delete_icon.png" alt="Delete proj icon"/>
+        </div>
+    </div>`;
+  document.querySelector('.project-cards-grid').append(projectCard);
+  setupEditButtons(); // Attach event listeners to the new edit icons
+}
+
+// Initializing the projects
+function init() {
+  const projects = getProjectsFromStorage();
+  // [
+  //   {
+  //     title: "Project Brown",
+  //     description: "This is the project description",
+  //     githubURL: "https://github.com/",
+  //     completed: false,
+  //     color: "brown"
+  //   },
+  //   {
+  //     title: "Project Green",
+  //     description: "This is the project description",
+  //     githubURL: "https://github.com/",
+  //     completed: false,
+  //     color: "green"
+  //   }
+  // ]
+  projects.forEach(addProject);
+  console.log("Projects initialized");
+}
+// LOCAL STORAGE FUNCTIONALITY FOR PROJECTS
+function getProjectsFromStorage() {
+  let projects = localStorage.getItem('projects');
+  if (projects) {
+    return JSON.parse(projects);
+  }
+  else {
+    return [];
+  }
+}
+//DELETE inside of init() after CRUD is implemented for projects, inside code adds temporary project cards to page
 
 /* Daily Log Streak implementation */ 
 const checkedImgSrc = "../source/assets/HTML_homepage_pics/checked_in.png";
@@ -95,7 +197,6 @@ function getLogsFromStorage() {
       return returnLog;
   }
 }
-
 
 // Get the log for given date 
 function getLog(date) { 
