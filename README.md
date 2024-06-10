@@ -126,6 +126,8 @@ We made use of a CI/CD pipeline to automate certain tasks. Our pipeline includes
 
 The main branch was protected and PRs can only be merged with main **after** completing all checks in our CI/CD pipeline.
 
+![CI CD Pipeline](./admin/misc/CICDPipeline.png)
+
 ### Making It Offline 
 Focusing on the accessibility of our page, we wanted to create offline functionality for our application in order to ensure it would still maintain functionality when the user does not have access to the internet. We decided to use service workers for this, as we had utilized them previously in one of our Labs. Compared to other options, this ultimately accomodated for the short time we had, as learning new technologies could take time and put risk on the quality of our product.
 
