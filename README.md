@@ -11,8 +11,8 @@ Our finished product utilizes a total of 3 pages to provide all the functionalit
 ### Homepage
 The first page we have of our application is the homepage. From here, and any page in general, you can access the other pages with the navigation bar on the left. On the homepage, we provide an overview for the user regarding any projects and tasks they may have to work on. Through this page the user is able to add more projects they hope to work on, each with their own card that provides a description of the project and a link to the Github repository they link to it. Regarding the visuals, the page displays their current task progress as well as a daily log streak (explained more later) in hopes of encouraging consistent work.
 
-![Homepage](./admin/misc/devJournalHomepage.png)
-![Add project](./admin/misc/devJournalAddproject.png)
+![Homepage](./admin/misc/homepage.png)
+![Add project](./admin/misc/addProject.png)
 > Homepage of our application on the top, add project menu on the bottom
 
 ### Daily Log
@@ -31,10 +31,9 @@ The final page of our application is the Todo List page. This page allows the us
 > Initial to do list page on top, finished task on bottom 
 
 ### Updated Homepage 
-The below images show the homepage after adding a daily log and finishing a task. 
-![Daily Log Streak](./admin/misc/dailylogstreak.png)
-![Task Done](./admin/misc/taskdone%20.png)
-> Daily log streak on top, progress bar on bottom 
+
+![Streak and Progress Bar](./admin/misc/updatedHomepage.png)
+> Daily log streak is now 1 and progress bar shows how many tasks are done 
 
 
 ## Our Brainstorming Process
@@ -131,9 +130,12 @@ The main branch was protected and PRs can only be merged with main **after** com
 ### Making It Offline 
 Focusing on the accessibility of our page, we wanted to create offline functionality for our application in order to ensure it would still maintain functionality when the user does not have access to the internet. We decided to use service workers for this, as we had utilized them previously in one of our Labs. Compared to other options, this ultimately accomodated for the short time we had, as learning new technologies could take time and put risk on the quality of our product.
 
+![Offline](./admin/misc/offlineFunctionality.png)
+
 ## Important Links
 
 - Contributors: [Team 6](admin/team.md)
 - Design: [Figma](https://www.figma.com/design/VZMvKaZP4uVpx44r2jPuqO/CSE-110-Team-6-DevTool-App?node-id=2314-2&t=9r0lQ6axiaQZtOdT-1)
+- Project: [Dev Journal](https://cse110-sp24-group6.github.io/cse110-sp24-group6/source/homepage.html)
 
 
