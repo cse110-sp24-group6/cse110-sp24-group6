@@ -1,10 +1,11 @@
+/* Universal selector */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Default background stuff */
+/* Default background and text items for the entire page */
 head, body, footer {
     background-color: #2B3E55;
     color: whitesmoke;
@@ -25,7 +26,7 @@ body {
     text-shadow: 1px 1px 2px #93b1af;
 }
 
-/* Separate content from navigation bar */
+/* Separate content from navigation bar, and add spacing from bottom of page */
 .content {
     width: auto;
     margin-left: 10%;
@@ -35,7 +36,7 @@ body {
     padding-bottom: 5%;
 }
 
-/* Make all page icons that are clickable not have underline */
+/* Remove underline from page icon links */
 .page-icons {
     text-decoration: none;
 }
@@ -93,7 +94,7 @@ body {
 
 /* Daily log visual (within the daily log section) */
 
-/* --- Gives shape to the circles --- */
+/* --- Gives shape to the circles in the daily streak --- */
 .daily-log-circle {
     height: 20px;
     width: 20px;
@@ -101,8 +102,6 @@ body {
     border-radius: 50%;
     
 }
-
-/* --- Setting up grid variables: 4 Sections --- */
 
 /* Section: Log in streak "fire" pic and counter */
 #log-in-streak-pic { grid-area: logInStreakPic; }
@@ -146,7 +145,7 @@ body {
 }
 
 
-/* Section: Daily log visual title */
+/* Section: Daily log visual's title */
 #daily-journal-pic { grid-area: daily-journal-pic;}
 #daily-logs-title { grid-area: dailyLogTitle; }
 
@@ -216,8 +215,7 @@ body {
 }
 
 
-
-/* Overall Progress Bar */
+/* Overall Progress Bar (Tasks progress visualizer) */
 .progress-bar {
     width: 160px;
     height: 160px;
@@ -231,21 +229,12 @@ body {
     height: 160px;
     width: 160px;
     padding: 20px;
-
-    /* box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.1),
-                -6px -6px 10px -1px rgba(255, 255, 255, 0.7); */
     border-radius: 50%;
 }
 
 .inner {
     height: 120px;
     width: 120px;
-
-    /* box-shadow: inset 4px 4px 6px -1px rgba(0, 0, 0, 0.2),
-                inset -4px -4px 6px -1px rgba(255, 255, 255, 0.7),
-                -0.5px -0.5px 0px rgba(255, 255, 255, 1),
-                0.5px 0.5px 0px rgba(0, 0, 0, 0.15),
-                0px 12px 10px -10px rgba(0, 0, 0, 0.05); */
     border-radius: 50%;
     justify-content: center;
     display: flex;
@@ -287,7 +276,7 @@ svg {
 
 /* Recently viewed projects section */
 
-/* Individual project card styling is moved to ProjectCard.js file */
+/* Individual project card styling is in ProjectCard.js file */
 
 /* Positioning cards in a container */
 #project-cards-title { 
@@ -491,8 +480,6 @@ svg {
         background: #949494;
         border-radius: 50%; 
     }
-    
-    /* --- Setting up grid variables: 4 Sections --- */
 
     /* Section: Log in streak "fire" pic and counter */
     #log-in-streak-pic { grid-area: log-in-streak-pic; }
@@ -529,7 +516,6 @@ svg {
         font-size: 80%;
         text-align: center;
     }
-    
     
     /* Section: Daily log visual title */
     #daily-logs-title { 
@@ -569,8 +555,6 @@ svg {
         width: 350px;
         height: auto;
     }
-    
-    
     
     /* Overall Progress Bar */
     .progress-bar {
@@ -726,7 +710,6 @@ hr {
 /* General styling for the form container */
 .edit-form {
     background-color: #CAAF8E; /* Darker background to match the theme */
-    /* background: white; */
     padding: 20px;
     border: 2px solid #000;
     border-radius: 8px;
