@@ -57,6 +57,8 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             dateDiv.addEventListener("click", function() { 
+                // Reset background of all dates
+                resetBackground(); 
                 selectDate(dateStr); 
                 // Set the background and border radius of the date that has just been clicked 
                 dateDiv.setAttribute('style','background-color: #674832; border-radius: 10%;');
@@ -89,6 +91,23 @@ document.addEventListener('DOMContentLoaded', function () {
         currentDate = new Date();
         updateCalendar(); 
         selectDate(dateToString(currentDate));
+    }
+
+    /**
+     * Resets the background of all date div's to original styling
+     * Resets background for today's date to intended styling 
+     */
+    function resetBackground() { 
+        let dateDivs = document.querySelectorAll('.date'); 
+        for (let i = 0; i < dateDivs.length; i++) { 
+            let dateDiv = dateDivs[i]; 
+            dateDiv.setAttribute('style',' background-color: #d1a689;');
+        } 
+        let today = document.querySelector('.date.today'); 
+        if (today) { 
+            today.setAttribute('style', 'background-color: #468c7a; color: #F4EDE3; border-radius: 50%;font-weight: bold;');
+        }
+
     }
 
     // Initialize the calendar
