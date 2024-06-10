@@ -118,6 +118,7 @@ function saveProjectDetails() {
     addProject(data);
     document.querySelector('.edit-overlay').style.display = "none";
   }
+  location.reload();
 }
 
 // Example function to add project cards dynamically
