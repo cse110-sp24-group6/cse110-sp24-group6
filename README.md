@@ -1,5 +1,7 @@
 # CSE 110- Group 6: Databaes
 
+[Final Project Demo](https://cse110-sp24-group6.github.io/cse110-sp24-group6/source/homepage.html)
+
 Welcome to the group project by Team 6 in CSE 110 Spring Quarter '24. This is a documentation of our entire process as a team, how we worked together, and how we integrated SWE principals in order to build our final project. Before we get started, here is the link to our [final project](https://cse110-sp24-group6.github.io/cse110-sp24-group6/source/homepage.html). Our project is a Dev Journal, i.e. a tool that allows developers to journal their journey and grow while using our tool and documenting their work and progress. 
 
 Here are the features within our Dev Journal:
@@ -89,6 +91,8 @@ Retrospectives are essential for teams following an agile development process as
 
 ### Testing
 Testing was a crucial aspect of our development process to ensure the quality and reliability of our product. We adopted a test-driven development (TDD) approach, where tests were written before the implementation of features. Our testing strategy included unit tests and end-to-end tests. We used automated testing frameworks such as Jest for unit testing and Puppeteer for end-to-end testing. Additionally, we performed manual testing to validate the user experience across different devices and browsers.
+
+(**Note**: Since we used JSDom as our environment for unit testing, we created a seperate file and command to run the e2e tests. This was so that both the tests can run separately)
 
 ![Testing](./admin/misc/testing-ex.png)
 
