@@ -12,8 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function setupDeleteButtons() {
   const deleteButtons = document.querySelectorAll('.delete-project-pic');
-  console.log("Setting up delete buttons for", deleteButtons.length, "buttons");
-  deleteButtons.forEach(delbutton => {
+    deleteButtons.forEach(delbutton => {
     delbutton.addEventListener('click', deleteProject);
   });
 }
@@ -39,7 +38,6 @@ function deleteProject(event) {
       projectsArray.splice(projectIndex, 1);
       localStorage.setItem('projects', JSON.stringify(projectsArray));
       projectCard.remove();
-      console.log("Project deleted successfully");
     } else {
       console.log("Project not found");
     }
@@ -50,8 +48,7 @@ function deleteProject(event) {
 
 function setupEditButtons() {
   const editIcons = document.querySelectorAll('.edit-icon');
-  console.log("Setting up edit buttons for", editIcons.length, "icons");
-  editIcons.forEach(icon => {
+    editIcons.forEach(icon => {
     icon.addEventListener('click', openEditForm);
   });
 }
@@ -88,7 +85,6 @@ const saveButton = document.querySelector("#save-button");
 saveButton.addEventListener('click', saveProjectDetails);
 
 function saveProjectDetails() {
-  console.log("Save button clicked");
   const projectName = document.querySelector("#input-project-name").value;
   const projectDescription = document.querySelector("#input-project-description").value;
   const githubLink = document.querySelector("#input-github-link").value;
@@ -115,7 +111,6 @@ function saveProjectDetails() {
 
     // Hide the form after saving
     document.querySelector('.edit-overlay').style.display = "none";
-    console.log("Project details saved and edit form hidden");
   } else {
     const projects = getProjectsFromStorage();
     projects.push(data);
@@ -167,7 +162,6 @@ function init() {
   //   }
   // ]
   projects.forEach(addProject);
-  console.log("Projects initialized");
 }
 // LOCAL STORAGE FUNCTIONALITY FOR PROJECTS
 function getProjectsFromStorage() {
@@ -182,6 +176,9 @@ function getProjectsFromStorage() {
 //DELETE inside of init() after CRUD is implemented for projects, inside code adds temporary project cards to page
 
 /* Daily Log Streak implementation */ 
+const checkedImgSrc = "../source/assets/HTML_homepage_pics/checked_in.png";
+const uncheckedImgSrc = "../source/assets/HTML_homepage_pics/unchecked.png";
+
 function getLogsFromStorage() { 
   let logs = localStorage.getItem('logs');
   let returnLog;
@@ -260,7 +257,6 @@ function getCirclesFromStorage() {
     // If circles is not in local storage, create dictionary
     // 0 = Sunday, 1 = Monday, 2 = Tuesday, ...
     // All images are unchecked 
-    const uncheckedImgSrc = "../source/assets/HTML_homepage_pics/unchecked.png";
     returnCircles = {};
     returnCircles['0'] = uncheckedImgSrc;
     returnCircles['1'] = uncheckedImgSrc;
@@ -305,7 +301,6 @@ function convertID(num) {
 
 // Reset localStorage to blank and all images to blank as well on Sunday 
 function sundayReset() { 
-  const uncheckedImgSrc = "../source/assets/HTML_homepage_pics/unchecked.png"; 
   let circles = getCirclesFromStorage();
   for (let i = 0; i < 7; i++) { 
     circles[`${i}`]  = uncheckedImgSrc;
@@ -319,7 +314,6 @@ function weekFillIn() {
   let todaysDate = new Date(); 
   let today = todaysDate.getDay(); 
   let circles = getCirclesFromStorage();
-  const checkedImgSrc = "../source/assets/HTML_homepage_pics/checked_in.png";
   // If today is Sunday (0), reset the circles 
   if (today===0) { 
     sundayReset();
@@ -332,15 +326,23 @@ function weekFillIn() {
     // if a log exists, fill in the circle and update local storage 
     if (log) { 
       circles[`${i}`] = checkedImgSrc;
+    } else {
+      circles[`${i}`] = uncheckedImgSrc;
     }
-    // Make sure homapage is up to date with localStorage 
-    document.getElementById(convertID(day.getDay())).src = circles[`${i}`] ;
+
+    const element = document.getElementById(convertID(day.getDay()));
+    if (element) {
+      element.src = circles[`${i}`];
+    }
   }
   setCirclesToStorage(circles);
 }
 
 weekFillIn(); 
-setStreakToStorage(findStreak()); 
-document.getElementById('daily-streak').textContent = getStreakFromStorage();
+setStreakToStorage(findStreak());
 
+const dailyStreakElement = document.getElementById('daily-streak');
+if (dailyStreakElement) {
+  dailyStreakElement.textContent = getStreakFromStorage();
+}
 

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,30 +5,40 @@
   <link rel="stylesheet" href="assets/styles/todolist.css">
 </head>
 <body>
+  <!-- Navigation bar container -->
   <div class="nav-bar-left-container">
     <nav class="nav-bar">
+        <!-- Databaes logo with link to homepage -->
         <img class="databaes-icon" src="assets/HTML_homepage_pics/databaes_logo.png" alt="databaes logo"/>
+        <!-- Homepage button -->
         <a id="home-page-button" class="page-icons" href="./homepage.html">
             <img class="home-icon" src="assets/HTML_homepage_pics/homepage_nav.png" alt="Homepage button"/>
         </a>
+        <!-- Daily log button -->
         <a id="daily-log-button" class="page-icons" href="./dailylog.html">
             <img class="daily-log-icon" src="assets/icons/homepage/daily_log/daily_log_green.png" alt="Daily Log Button"/>
         </a>
+        <!-- To-Do list button -->
         <a id="to-do-list-button" class="page-icons" href="./todolist.html">
             <img class="to-do-list-icon" src="assets/HTML_homepage_pics/to-do_list_nav.png" alt="To-Do List button"/>
         </a>
     </nav>
   </div>
+  <!-- Main heading -->
   <h1>To-Do List</h1>
   
+  <!-- Progress container -->
   <div id="progress-container">
+    <!-- Progress bar -->
     <div id="progress-bar"></div>
     <img src="assets/icons/otter.png" id="otter" alt="Otter">
     <img src="assets/icons/fish.png" id="fish" alt="Fish">
     <img src="assets/icons/celebration.png" id="celebration" alt="Celebrating Otter">
   </div>
   
+  <!-- Section for adding a task -->
   <h2>Add a Task</h2>
+  <!-- Task form -->
   <form id="task-form">
     <input type="text" id="task-input" placeholder="Enter task">
     <input type="date" id="due-date">
@@ -41,17 +50,22 @@
       <option value="Fun">Fun</option>
       <option value="Debugging">Debugging</option>
     </select>
-    <button type="submit">Add Task</button>
+    <!-- Button to add task -->
+    <button id="submit" type="submit">Add Task</button>
   </form>
   
+  <!-- Task list -->
   <ul id="task-list"></ul>
   
+  <!-- Button to delete all tasks -->
   <button id="delete-all">Delete All Tasks</button>
 
+  <!-- Edit modal for editing tasks -->
   <div id="edit-modal" class="modal hidden">
     <div class="modal-content">
       <span class="close">&times;</span>
       <h2>Edit Task</h2>
+      <!-- Form for editing task -->
       <form id="edit-task-form">
         <input type="text" id="edit-task-input" placeholder="Enter task">
         <input type="date" id="edit-due-date">
@@ -63,11 +77,13 @@
           <option value="Fun">Fun</option>
           <option value="Debugging">Debugging</option>
         </select>
-        <button type="submit">Update Task</button>
+        <!-- Button to update task -->
+        <button id="update" type="submit">Update Task</button>
       </form>
     </div>
   </div>
   
+  <!-- JavaScript for dynamic functionality -->
   <script>
     const taskList = document.getElementById('task-list');
     const taskInput = document.getElementById('task-input');
@@ -300,9 +316,9 @@
       }
 
       registerServiceWorker();
-    
+
   </script>
- <script src="assets/scripts/todolist.js"></script>
+  <!-- External JavaScript file -->
+  <script src="assets/scripts/todolist.js"></script>
 </body>
 </html>
-
