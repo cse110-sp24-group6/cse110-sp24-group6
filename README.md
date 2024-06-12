@@ -4,6 +4,8 @@
 
 [Public Video](https://youtu.be/7uBk-14DaFE)
 
+[Private Video](https://youtu.be/ESmJZ1G6enk)
+
 Welcome to the group project by Team 6 in CSE 110 Spring Quarter '24. This is a documentation of our entire process as a team, how we worked together, and how we integrated SWE principals in order to build our final project. Before we get started, here is the link to our [final project](https://cse110-sp24-group6.github.io/cse110-sp24-group6/source/homepage.html). Our project is a Dev Journal, i.e. a tool that allows developers to journal their journey and grow while using our tool and documenting their work and progress. 
 
 Here are the features within our Dev Journal:
